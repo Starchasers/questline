@@ -34,6 +34,7 @@ namespace Questline.Tests
         {
             // The setup's completions would each pop up "Quest complete" over the pictures.
             await OnClient();
+            ReferenceTests.LeaveTheGameRunning();
             Client.SetToasts(false);
             await OnServer();
             await World.SetCalendarTo(500 * 24 + 12);

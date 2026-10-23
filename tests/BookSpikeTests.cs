@@ -60,6 +60,7 @@ namespace Questline.Tests
         public async Task ReferenceTabHostsAHandbookPage()
         {
             await OnClient();
+            ReferenceTests.LeaveTheGameRunning();
             await Until(() => ObjectCacheUtil.TryGet<ItemStack[]>(Capi, "handbookallstacks") != null, 600, "the handbook's stack list");
 
             var anvil = new ItemStack(Capi.World.GetBlock(new AssetLocation("anvil-copper")));

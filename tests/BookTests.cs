@@ -32,6 +32,8 @@ namespace Questline.Tests
         [BeforeEach]
         public async Task StartFresh()
         {
+            await OnClient();
+            ReferenceTests.LeaveTheGameRunning();
             await OnServer();
             if (Engine.Registry.Get(GatherFlint) == null) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
             Engine.Reset(Me);

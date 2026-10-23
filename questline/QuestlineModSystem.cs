@@ -85,6 +85,17 @@ public class QuestlineModSystem : ModSystem
                     return TextCommandResult.Success(on ? "H opens the quest book's Reference tab" : "H opens the vanilla handbook");
                 })
             .EndSubCommand()
+            .BeginSubCommand("pause")
+                .WithDescription("Whether the Reference tab pauses a singleplayer game (on) or leaves it running (off); the handbook's Pause game setting")
+                .WithArgs(api.ChatCommands.Parsers.Bool("on or off"))
+                .HandleWith(args =>
+                {
+                    bool on = (bool)args[0];
+                    api.Settings.Bool[GuiDialogQuestBook.NoPauseSetting] = !on;
+                    book?.UpdatePause();
+                    return TextCommandResult.Success(on ? "The Reference tab pauses the game" : "The Reference tab leaves the game running");
+                })
+            .EndSubCommand()
             .BeginSubCommand("textsize")
                 .WithDescription("Set the quest book's text size, in percent: " + string.Join(", ", ClientSettings.TextSizes))
                 .WithArgs(api.ChatCommands.Parsers.Int("percent"))

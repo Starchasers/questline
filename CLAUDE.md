@@ -160,6 +160,9 @@ game install on the box (`~/.cairn/games/1.22.6/questline-*.png`).
 - **The book draws in the handbook's layer** (`DrawOrder` 0.2, with chests, barrels and firepits),
   so it can come up over them, and every way of showing it brings it to the front (`Show()`).
   L and H close it only when it's on top (`OnTop`); a buried book comes forward instead.
+- **The Reference tab pauses singleplayer**, as the handbook does (the handbook's `noHandbookPause`,
+  `GuiDialogQuestBook.NoPauseSetting`, turns that off), and a paused game's server runs nothing, a test's `OnServer()` included. A suite
+  that shows the tab calls `ReferenceTests.LeaveTheGameRunning()` first, or the next server call hangs.
 - **Text sizes come from `BookStyle.TextScale`**, the player's `TextSize` setting. The editor sets it
   back to 1 while editing, because its forms are laid out for the game's own sizes; check new layout
   at 150% as well as 115%.

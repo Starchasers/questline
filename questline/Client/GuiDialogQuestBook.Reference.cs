@@ -32,6 +32,11 @@ public partial class GuiDialogQuestBook
     List<GuiHandbookTextPage> guides;
     List<GuiHandbookPage> customPages;
     string refPage, search = "";
+    // Whether the game's pause is the book's to end, on leaving the Reference tab or closing the book.
+    bool holdsPause;
+
+    /// <summary>The handbook's own "Pause game" setting, which the Reference tab follows: true for no pause.</summary>
+    public const string NoPauseSetting = "noHandbookPause";
 
     /// <summary>The page shown, as above, or null on the guide list.</summary>
     public string PageCode => refPage;
@@ -418,6 +423,33 @@ public partial class GuiDialogQuestBook
     public void OpenHandbookLink(string target) => OpenPage(target.Replace("\\", ""));
 
     public bool OnReferenceTab => tab == ReferenceTab;
+
+    /// <summary>
+    /// As the handbook does, the Reference tab pauses a singleplayer game, unless the player has
+    /// turned the handbook's "Pause game" off. Only this tab: a paused game's server handles
+    /// nothing until it resumes, claims and checkboxes included. Called after every compose, on
+    /// close and when the setting changes.
+    /// </summary>
+    public void UpdatePause()
+    {
+        bool pause = IsOpened() && tab == ReferenceTab && capi.IsSinglePlayer && !capi.OpenedToLan && !capi.Settings.Bool[NoPauseSetting];
+        if (pause)
+        {
+            // Held even when the game is already paused: the escape menu's Survival guide opens the
+            // book from a paused game, then closes and pauses again, leaving the pause for the book to end.
+            if (!capi.IsGamePaused) capi.PauseGame(true);
+            holdsPause = true;
+        }
+        else if (holdsPause)
+        {
+            holdsPause = false;
+            // The handbook, character creation or the escape menu may be holding a pause of its own.
+            if (!capi.Gui.OpenedGuis.Any(d => d is GuiDialogHandbook or GuiDialogCreateCharacter || d.ToggleKeyCombinationCode == "escapemenudialog"))
+            {
+                capi.PauseGame(false);
+            }
+        }
+    }
 
     /// <summary>
     /// Shows the Reference tab at an item's page, and says whether it found one. A quest names an

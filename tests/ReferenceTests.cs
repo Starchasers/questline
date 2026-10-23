@@ -22,10 +22,18 @@ namespace Questline.Tests
         static QuestlineModSystem ClientSystem => Capi.ModLoader.GetModSystem<QuestlineModSystem>();
         static GuiDialogQuestBook Book => ClientSystem.Book;
 
+        /// <summary>
+        /// Turns off the Reference tab's pause (the handbook's "Pause game"). A paused singleplayer
+        /// server runs nothing, the tests' own calls to it included, so a suite that shows the tab
+        /// does this first. It stays off on the test box, as no hook runs after the last test.
+        /// </summary>
+        public static void LeaveTheGameRunning() => Capi.Settings.Bool[GuiDialogQuestBook.NoPauseSetting] = true;
+
         [BeforeEach]
         public async Task StartFresh()
         {
             await OnClient();
+            LeaveTheGameRunning();
             if (ClientSystem.Client.Registry?.Get("qltest:gather-flint") == null) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
             Book.SetEditing(false);
             Book.TryClose();
@@ -69,6 +77,69 @@ namespace Questline.Tests
             finally
             {
                 ClientSystem.Takeover.Enable();
+            }
+        }
+
+        [VsTest(TimeoutMs = 30000)]
+        public async Task TheReferenceTabPausesLikeTheHandbook()
+        {
+            await OnClient();
+            Capi.Settings.Bool[GuiDialogQuestBook.NoPauseSetting] = false;
+            try
+            {
+                Book.SelectTab(1);
+                await Frames.Wait(5);
+                Assert.True(Capi.IsGamePaused, "paused on the Reference tab");
+
+                Book.SelectTab(0);
+                await Frames.Wait(5);
+                Assert.False(Capi.IsGamePaused, "running on the Quests tab, where claims go to the server");
+
+                Book.SelectTab(1);
+                await Frames.Wait(5);
+                Book.TryClose();
+                await Frames.Wait(5);
+                Assert.False(Capi.IsGamePaused, "running once the book is shut");
+
+                Capi.Settings.Bool[GuiDialogQuestBook.NoPauseSetting] = true;
+                Book.SelectTab(1);
+                await Frames.Wait(5);
+                Assert.False(Capi.IsGamePaused, "the handbook's Pause game off leaves it running");
+            }
+            finally
+            {
+                LeaveTheGameRunning();
+                Book.TryClose();
+                Capi.PauseGame(false);
+            }
+        }
+
+        /// <summary>
+        /// The escape menu's Survival guide opens the book while the menu still pauses the game, and
+        /// leaves the game paused for the book. Closing the book has to end that pause too.
+        /// </summary>
+        [VsTest(TimeoutMs = 30000)]
+        public async Task ClosingTheBookEndsAPauseItWasOpenedInto()
+        {
+            await OnClient();
+            Capi.Settings.Bool[GuiDialogQuestBook.NoPauseSetting] = false;
+            try
+            {
+                Capi.PauseGame(true);
+                Capi.LinkProtocols["handbook"](new LinkTextComponent("handbook://craftinginfo-starterguide"));
+                await Frames.Wait(5);
+                Assert.True(Book.IsOpened() && Book.OnReferenceTab, "the guide opens in the book");
+                Assert.True(Capi.IsGamePaused, "still paused");
+
+                Book.TryClose();
+                await Frames.Wait(5);
+                Assert.False(Capi.IsGamePaused, "running once the book is shut");
+            }
+            finally
+            {
+                LeaveTheGameRunning();
+                Book.TryClose();
+                Capi.PauseGame(false);
             }
         }
 

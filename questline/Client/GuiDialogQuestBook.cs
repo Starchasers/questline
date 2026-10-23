@@ -102,6 +102,7 @@ public partial class GuiDialogQuestBook : GuiDialog
     public override void OnGuiClosed()
     {
         base.OnGuiClosed();
+        UpdatePause();
         // The editor's 100% ends with the book; the pinned quests go on at the player's size.
         BookStyle.TextScale = client.Settings.TextSize / 100.0;
     }
@@ -177,6 +178,7 @@ public partial class GuiDialogQuestBook : GuiDialog
         }
         InitPanels();
         if (detailScroll > 0) RestorePanelScroll("detail", detailScroll);
+        UpdatePause();
     }
 
     void OnTabClicked(int dataInt)
