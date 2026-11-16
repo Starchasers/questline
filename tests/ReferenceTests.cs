@@ -34,7 +34,7 @@ namespace Questline.Tests
         {
             await OnClient();
             LeaveTheGameRunning();
-            if (ClientSystem.Client.Registry?.Get("qltest:gather-flint") == null) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
+            Fixture.Require(Capi, ClientSystem.Client.Registry?.Get("qltest:gather-flint") != null);
             Book.SetEditing(false);
             Book.TryClose();
             foreach (var d in Capi.Gui.OpenedGuis.OfType<GuiDialogSurvivalHandbook>().ToList()) d.TryClose();

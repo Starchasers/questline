@@ -1,0 +1,6 @@
+{
+	"villageTypes": [
+		// Newtonsoft keeps this comment as an entry of the list, as it does VS Ascending's in its
+		// structures.json. StructureCodes must pass over it (VisitTests.ACommentInAWorldgenListIsPassedOver).
+	]
+}

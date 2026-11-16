@@ -41,7 +41,7 @@ namespace Questline.Tests
         public async Task StartFresh()
         {
             await OnServer();
-            if (Engine.Registry.Get("qltest:station-craft") == null) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
+            Fixture.Require(Sapi, Engine.Registry.Get("qltest:station-craft") != null);
             Engine.Reset(Me);
         }
 

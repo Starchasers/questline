@@ -20,7 +20,7 @@ namespace Questline.Tests
         public async Task AnExtensionJoinsItsChapterOnlyWithItsMods()
         {
             await OnServer();
-            if (!Engine.Registry.ChaptersById.TryGetValue("qltest:workshop", out var workshop)) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
+            Fixture.Require(Sapi, Engine.Registry.ChaptersById.TryGetValue("qltest:workshop", out var workshop));
 
             var ids = workshop.Quests.Select(q => q.Id).ToList();
             Log(string.Join(", ", ids));

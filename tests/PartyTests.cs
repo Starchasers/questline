@@ -39,7 +39,7 @@ namespace Questline.Tests
         public async Task StartFresh()
         {
             await OnServer();
-            if (Engine.Registry.Get(PartyWork) == null) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
+            Fixture.Require(Sapi, Engine.Registry.Get(PartyWork) != null);
             foreach (var uid in new[] { MyUid, Ghost })
             {
                 if (Engine.PartyOf(uid) != null) Engine.Leave(uid);

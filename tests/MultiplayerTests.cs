@@ -54,7 +54,7 @@ namespace Questline.Tests
         {
             await OnClient();
             await Until(() => Client.Ready, 200, "definitions on the client");
-            if (Client.Registry.Get("qltest:station-smith") == null) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
+            Fixture.Require(Capi, Client.Registry.Get("qltest:station-smith") != null);
 
             string credited = await Remote.Eval(Prelude + @"
                 engine.Reset(player);

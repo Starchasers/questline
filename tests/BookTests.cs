@@ -35,7 +35,7 @@ namespace Questline.Tests
             await OnClient();
             ReferenceTests.LeaveTheGameRunning();
             await OnServer();
-            if (Engine.Registry.Get(GatherFlint) == null) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
+            Fixture.Require(Sapi, Engine.Registry.Get(GatherFlint) != null);
             Engine.Reset(Me);
             await OnClient();
             await Until(() => ClientSystem.Client.StateOf(GatherFlint) == QuestState.Available, 60, "the reset to reach the client");

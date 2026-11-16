@@ -38,7 +38,7 @@ namespace Questline.Tests
         public async Task StartFresh()
         {
             await OnServer();
-            if (Engine.Registry.Get("qltest:gather-flint") == null) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
+            Fixture.Require(Sapi, Engine.Registry.Get("qltest:gather-flint") != null);
             Engine.Config.EditorDomain = Domain;
             string mine = Path.Combine(Engine.Editor.WorkingDir, Domain);
             if (Directory.Exists(mine)) Directory.Delete(mine, true);

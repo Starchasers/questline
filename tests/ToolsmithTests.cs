@@ -46,7 +46,7 @@ namespace Questline.Tests
         {
             await OnServer();
             if (!Sapi.ModLoader.IsModEnabled("toolsmith")) Skip("Toolsmith isn't loaded; run tests/fixtures/fetch.sh and pass --mods tests/fixtures/Toolsmith");
-            if (Engine.Registry.Get("qltest:station-craft") == null) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
+            Fixture.Require(Sapi, Engine.Registry.Get("qltest:station-craft") != null);
             Engine.Reset(Me);
             (held, offheld) = (Me.InventoryManager.ActiveHotbarSlot.Itemstack, Me.Entity.LeftHandItemSlot.Itemstack);
             handsSaved = true;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
@@ -22,8 +23,11 @@ public class StructureCodes
     /// <summary>Every structure code, with its domain.</summary>
     public HashSet<string> All { get; } = [];
 
+    readonly ILogger logger;
+
     public StructureCodes(ICoreAPI api)
     {
+        logger = api.Logger;
         // A story location's own ruins (worldgen/story/<code>/structures.json) are placed as ruins are.
         foreach (var asset in api.Assets.GetMany("worldgen/structures.json").Concat(api.Assets.GetMany("worldgen/story/").Where(a => a.Name == "structures.json")))
         {
@@ -34,25 +38,29 @@ public class StructureCodes
         foreach (var asset in api.Assets.GetMany("worldgen/tileddungeons.json")) Add(dungeons, asset, "dungeons");
     }
 
+    /// <summary>
+    /// Reads one mod's config. A file this can't make sense of costs only its own structures: this
+    /// runs as the engine starts, and one odd file once left the book with no chapters at all.
+    /// </summary>
     void Add(Dictionary<string, List<string>> into, IAsset asset, string list)
     {
-        JObject config;
         try
         {
-            config = asset.ToObject<JObject>();
+            // Newtonsoft keeps a // comment inside an array as a Comment token, so not every entry is
+            // an object. VS Ascending's structures.json has them.
+            foreach (var entry in (asset.ToObject<JObject>()?[list] as JArray ?? []).OfType<JObject>())
+            {
+                string code = (entry["code"] as JValue)?.Value as string;
+                if (string.IsNullOrEmpty(code)) continue;
+                string qualified = asset.Location.Domain + ":" + code;
+                if (!into.TryGetValue(code, out var codes)) into[code] = codes = [];
+                if (!codes.Contains(qualified)) codes.Add(qualified);
+                All.Add(qualified);
+            }
         }
-        catch
+        catch (Exception e)
         {
-            return;   // the game reports its own broken configs
-        }
-        foreach (var entry in config?[list] as JArray ?? [])
-        {
-            string code = (string)entry["code"];
-            if (string.IsNullOrEmpty(code)) continue;
-            string qualified = asset.Location.Domain + ":" + code;
-            if (!into.TryGetValue(code, out var codes)) into[code] = codes = [];
-            if (!codes.Contains(qualified)) codes.Add(qualified);
-            All.Add(qualified);
+            logger.Warning("Questline: can't read the structures in {0}, so visit tasks won't know them: {1}", asset.Location, e.Message);
         }
     }
 

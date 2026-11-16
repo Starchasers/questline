@@ -31,7 +31,7 @@ namespace Questline.Tests
         public async Task StartFresh()
         {
             await OnServer();
-            if (Engine.Registry.Get(FindATrader) == null) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
+            Fixture.Require(Sapi, Engine.Registry.Get(FindATrader) != null);
             Engine.Reset(Me);
             await Ticks(2);
         }
@@ -69,6 +69,17 @@ namespace Questline.Tests
             Assert.Equal("game:tobiascave", Of("tobiascave:story/tobiascave"));
             Assert.Equal("game:refinerynew", Of("game:refinerynew/simple/shaft/bottom1", "refinerynew"));
             Assert.Equal("", Of("game:nowhere/nothing"));
+        }
+
+        /// <summary>
+        /// The fixture's villages.json holds nothing but a comment, which once stopped the engine
+        /// starting (VS Ascending's structures.json, issue 1). Without the fix it's StartFresh that
+        /// fails, finding the fixture's quests missing; this only makes sure the file is still there.
+        /// </summary>
+        [VsTest]
+        public void ACommentInAWorldgenListIsPassedOver()
+        {
+            Assert.True(Sapi.Assets.Exists(new AssetLocation("qltest:worldgen/villages.json")), "the fixture's commented villages.json is loaded");
         }
 
         [VsTest]
