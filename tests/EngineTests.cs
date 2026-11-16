@@ -49,9 +49,13 @@ namespace Questline.Tests
                 slot.Itemstack = null;
                 slot.MarkDirty();
             }
+            Fixture.StrictLocking(Engine);
             Engine.Reset(Me);
             await Ticks(2);
         }
+
+        [AfterEach]
+        public void BackToTheDefault() => Fixture.RestoreLocking(Engine);
 
         [VsTest]
         public void RegistryFindsAQuestWithoutItsDomain()
@@ -122,6 +126,37 @@ namespace Questline.Tests
 
             Assert.NotNull(Engine.Claim(Me, GatherFlint, null), "a second claim");
             Assert.Equal(4, CountCarried("game:stick"));
+        }
+
+        /// <summary>
+        /// Open locking, the default: a quest waits for nothing but the mods, stages and discoveries
+        /// it needs. The quests before it only suggest an order.
+        /// </summary>
+        [VsTest]
+        public void OpenLockingLeavesOnlyModsStagesAndDiscoveries()
+        {
+            Engine.Config.Locking = QuestlineConfig.OpenLocking;
+            Assert.Equal(QuestState.Available, StateOf(DigSoil), "a quest after one not done");
+            Assert.Equal(QuestState.Available, StateOf("qltest:cu-after-server"), "a quest after a server quest not done");
+            Assert.Equal(QuestState.Locked, StateOf("qltest:cu-gated"), "a stage still gates");
+            Assert.Equal(QuestState.Locked, StateOf("qltest:cu-undiscovered"), "a discovery still gates");
+            Assert.Equal(QuestState.Locked, StateOf("qltest:needs-missing-mod"), "a missing mod still gates");
+
+            Engine.Config.Locking = QuestlineConfig.StrictLocking;
+            Assert.Equal(QuestState.Locked, StateOf(DigSoil), "strict locking holds it back");
+        }
+
+        [VsTest]
+        public void UnlockingUnderOpenLockingMeetsOnlyWhatLocks()
+        {
+            Engine.Config.Locking = QuestlineConfig.OpenLocking;
+            Engine.Unlock(Me.PlayerUID, DigSoil);
+            Assert.Equal(QuestState.Available, StateOf(DigSoil));
+            Assert.False(Engine.IsComplete(Me.PlayerUID, GatherFlint), "the quest before it, left undone");
+
+            Engine.Unlock(Me.PlayerUID, "qltest:cu-gated");
+            Assert.True(Engine.HasStage(Me.PlayerUID, "qltest:cu-stage"), "the stage it waits for");
+            Assert.False(Engine.IsComplete(Me.PlayerUID, "qltest:cu-staged"), "the quest that gives the stage");
         }
 
         [VsTest(TimeoutMs = 30000)]

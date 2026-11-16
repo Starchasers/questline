@@ -10,7 +10,10 @@ Every phase of the roadmap, minus the VS Quest importer:
 
 - Chapters from any mod's `assets/<domain>/questline/chapters/`, merged and checked at load;
   a broken quest is disabled and reported, never its chapter
-- `requires` as a tree of `all`, `any`, `atLeast`, quest ids and mod gates
+- `requires` as a tree of `all`, `any`, `atLeast`, quest ids and mod gates. `Locking` in
+  `ModConfig/questline.json` is `"open"` by default: every quest can be done from the start, in
+  any order, and its prerequisites only suggest one. `"strict"` keeps a quest locked until the
+  quests it needs are done. Either way a quest still waits for a mod, stage or discovery it needs
 - Tasks: obtain (liquids in a carried bucket count by the litre), kill, mount (rafts, boats,
   elk), place, break, craft (every shift-click batch, and Toolsmith's tools assembled in the
   hands or on its workbench), knap, clayform, smith, cook (firepit output), smelt (molds and

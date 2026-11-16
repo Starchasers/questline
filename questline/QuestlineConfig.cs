@@ -11,6 +11,18 @@ public class QuestlineConfig
     /// </summary>
     public bool CreditEarlierWork = true;
 
+    /// <summary>
+    /// "open" (the default): every quest can be done from the start, in any order, and a quest's
+    /// prerequisites only suggest an order. "strict": a quest stays locked until its prerequisite
+    /// quests are done. Either way a quest still waits for a mod, a stage or a discovery it needs.
+    /// </summary>
+    public string Locking = OpenLocking;
+
+    public const string OpenLocking = "open", StrictLocking = "strict";
+
+    /// <summary>Whether prerequisite quests lock what comes after them; anything but "strict" leaves them open.</summary>
+    public bool Strict => string.Equals(Locking, StrictLocking, System.StringComparison.OrdinalIgnoreCase);
+
     /// <summary>Players can form parties that share progress on party quests. Off, every party quest counts per player.</summary>
     public bool Parties = true;
 

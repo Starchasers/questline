@@ -90,6 +90,11 @@ game install on the box (`~/.cairn/games/1.22.6/questline-*.png`).
   from any of them, so a new or reworded line means translating it into every `lang/*.json`, with
   the game's own word for each item; `tools/lang/check.py` checks keys, `{0}` arguments and
   handbook links without the game.
+- **Locking is open by default** (`Locking` in the config): a quest's prerequisite quests only
+  suggest an order, and only mods, stages and discoveries lock it. The fixture's chapters were laid
+  out around strict locking, so suites about what unlocks what (`EngineTests`, `BookTests`) call
+  `Fixture.StrictLocking` before each test and `Fixture.DefaultLocking` after. A new suite that
+  reads `Locked` states needs the same, or it passes or fails with whatever ran before it.
 - **Look item codes up, don't guess them.** Variant codes differ from the file names: keep a
   headless session (`run.sh ... --keep`) and ask `bash scripts/vstk eval` what exists.
 - **The graph stands an ingot in for the metal.** Casting takes anything that melts into it;

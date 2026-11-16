@@ -369,7 +369,11 @@ public partial class QuestEngine
         _ => [playerUid],
     };
 
-    public bool IsUnlocked(QuestDef quest, string playerUid) => IsUnlocked(quest, playerUid, questsOpen: false);
+    /// <summary>
+    /// Whether the player can work on the quest. Under open locking (<see cref="QuestlineConfig.Locking"/>)
+    /// its prerequisite quests and chapters count as met; mods, stages and discoveries still have to be.
+    /// </summary>
+    public bool IsUnlocked(QuestDef quest, string playerUid) => IsUnlocked(quest, playerUid, questsOpen: !Config.Strict);
 
     bool IsUnlocked(QuestDef quest, string playerUid, bool questsOpen) =>
         quest.Requires == null || quest.Requires.Evaluate(new PlayerContext(this, playerUid) { QuestsOpen = questsOpen });
@@ -779,9 +783,10 @@ public partial class QuestEngine
     }
 
     /// <summary>
-    /// Makes a quest available to a player by meeting its requirements: completes the quests it
-    /// needs (and theirs, all the way back), and grants the stages. Where it may pick, as in an
-    /// any or an at-least, it meets the first options until enough hold. A missing mod can't be met.
+    /// Makes a quest available to a player by meeting what still locks it: under strict locking
+    /// the quests it needs (and theirs, all the way back), and either way the stages. Where it may
+    /// pick, as in an any or an at-least, it meets the first options until enough hold. A missing
+    /// mod can't be met, and under open locking the quests before it are left undone.
     /// </summary>
     public void Unlock(string playerUid, string questId)
     {
@@ -820,7 +825,7 @@ public partial class QuestEngine
     /// <summary>Meets one requirement for <see cref="Unlock"/>; <paramref name="seen"/> keeps each quest to one visit.</summary>
     void Satisfy(string playerUid, Requirement r, HashSet<string> seen)
     {
-        var ctx = new PlayerContext(this, playerUid);
+        var ctx = new PlayerContext(this, playerUid) { QuestsOpen = !Config.Strict };
         if (r.Evaluate(ctx)) return;
 
         switch (r)
@@ -1053,7 +1058,7 @@ public partial class QuestEngine
 
     class PlayerContext(QuestEngine engine, string playerUid) : IRequirementContext
     {
-        /// <summary>Prerequisite quests and chapters count as met: catching up asks only what else locks a quest.</summary>
+        /// <summary>Prerequisite quests and chapters count as met, as open locking has them.</summary>
         public bool QuestsOpen { get; init; }
 
         public bool IsQuestComplete(string questId) => QuestsOpen || engine.IsComplete(playerUid, questId);

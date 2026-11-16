@@ -1,3 +1,5 @@
+using questline;
+using questline.Server;
 using Vintagestory.API.Common;
 using VsTestkit.Testing;
 using static VsTestkit.Testing.Vs;
@@ -16,6 +18,25 @@ namespace Questline.Tests
         {
             if (!api.ModLoader.IsModEnabled("qltest")) Skip("the qltest fixture isn't loaded; pass --mods tests/fixtures/Mods");
             Assert.True(questsLoaded, "the qltest fixture is loaded, so its quests should be; did Questline start?");
+        }
+
+        static string lockingBefore;
+
+        /// <summary>
+        /// Strict locking, for a suite about what unlocks what (the fixture's chapters were laid out
+        /// around it). Call <see cref="RestoreLocking"/> after each test, or every suite after it runs strict.
+        /// </summary>
+        public static void StrictLocking(QuestEngine engine)
+        {
+            lockingBefore ??= engine.Config.Locking;
+            engine.Config.Locking = QuestlineConfig.StrictLocking;
+        }
+
+        /// <summary>Puts back the locking <see cref="StrictLocking"/> found.</summary>
+        public static void RestoreLocking(QuestEngine engine)
+        {
+            if (lockingBefore != null) engine.Config.Locking = lockingBefore;
+            lockingBefore = null;
         }
     }
 }

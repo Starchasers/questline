@@ -36,6 +36,7 @@ namespace Questline.Tests
             ReferenceTests.LeaveTheGameRunning();
             await OnServer();
             Fixture.Require(Sapi, Engine.Registry.Get(GatherFlint) != null);
+            Fixture.StrictLocking(Engine);
             Engine.Reset(Me);
             await OnClient();
             await Until(() => ClientSystem.Client.StateOf(GatherFlint) == QuestState.Available, 60, "the reset to reach the client");
@@ -43,6 +44,9 @@ namespace Questline.Tests
             Book.SelectChapter("qltest:basics");
             Book.TryClose();
         }
+
+        [AfterEach]
+        public void BackToTheDefault() => Fixture.RestoreLocking(Engine);
 
         [VsTest(TimeoutMs = 30000)]
         public async Task OpensOnTheFirstChapterWithItsVisibleQuests()
