@@ -1,9 +1,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using questline;
+using questline.Client;
 using questline.Model;
 using questline.Server;
+using Vintagestory.API.Common;
 using Vintagestory.API.Config;
+using Vintagestory.API.Util;
+using Vintagestory.GameContent;
 using VsTestkit.Testing;
 using static VsTestkit.Testing.Vs;
 
@@ -34,6 +38,72 @@ namespace Questline.Tests
             Assert.True(chapters.All(c => c.Questline == QuestRegistry.DefaultQuestline));
             Assert.True(chapters.All(c => c.Quests.Count >= 5), "no chapter left a stub");
             Assert.Greater(chapters.Sum(c => c.Quests.Count), 200);
+        }
+
+        /// <summary>
+        /// The stone-tool quests, the hoe's and the arrowheads' among them: the quest, which of its
+        /// tasks, the head knapped for it, the code with {0} for the stone, and a metal one made later.
+        /// </summary>
+        static readonly (string quest, int task, string head, string item, string metal)[] StoneTools =
+        [
+            ("knap-axe-head", 0, "axehead", "axehead-{0}", "axehead-copper"),
+            ("make-axe", 0, "axehead", "axe-{0}", "axe-felling-copper"),
+            ("knap-knife", 0, "knifeblade", "knifeblade-{0}", "knifeblade-copper"),
+            ("make-knife", 0, "knifeblade", "knife-generic-{0}", "knife-generic-copper"),
+            ("knap-spear", 0, "spearhead", "spearhead-{0}", "spearhead-copper"),
+            ("make-spear", 0, "spearhead", "spear-generic-{0}", "spear-generic-copper"),
+            ("knap-shovel", 0, "shovelhead", "shovelhead-{0}", "shovelhead-copper"),
+            ("knap-shovel", 1, "shovelhead", "shovel-{0}", "shovel-copper"),
+            ("knap-hoe", 0, "hoehead", "hoehead-{0}", "hoehead-copper"),
+            ("make-hoe", 0, "hoehead", "hoe-{0}", "hoe-copper"),
+            ("knap-arrowheads", 0, "arrowhead", "arrowhead-{0}", "arrowhead-copper"),
+        ];
+
+        /// <summary>
+        /// A stone tool takes every stone the game knaps its head from, not only flint, and no metal.
+        /// The stones come from the game's own knapping recipes, so one a game update adds fails here
+        /// until the quests take it too.
+        /// </summary>
+        [VsTest]
+        public async Task StoneToolsTakeEveryStoneTheGameKnaps()
+        {
+            await OnServer();
+            var knapped = Sapi.GetKnappingRecipes().Select(r => r.Output.Code).Where(c => c.Domain == "game").ToList();
+            foreach (var (quest, task, head, item, metal) in StoneTools)
+            {
+                var def = Engine.Registry.Get("questline:" + quest);
+                Assert.NotNull(def, quest + " is in the default questline");
+                var pattern = new AssetLocation(def.Tasks[task].Target);
+                string[] stones = knapped.Where(c => c.Path.StartsWith(head + "-")).Select(c => c.Path[(head.Length + 1)..]).Distinct().ToArray();
+                Assert.True(stones.Length > 1, $"the game knaps {head} from more than one stone");
+                foreach (string stone in stones)
+                {
+                    var code = new AssetLocation("game", string.Format(item, stone));
+                    Assert.NotNull(Sapi.World.GetItem(code), code + " is in the game");
+                    Assert.True(WildcardUtil.Match(pattern, code), $"{quest} takes {code}");
+                }
+                var later = new AssetLocation("game", metal);
+                Assert.NotNull(Sapi.World.GetItem(later), later + " is in the game");
+                Assert.False(WildcardUtil.Match(pattern, later), $"{quest} doesn't take {later}");
+            }
+        }
+
+        /// <summary>
+        /// The book shows a stone tool as a flint one, the stone the chapter just had you gather, rather
+        /// than the game's first variant, chert.
+        /// </summary>
+        [VsTest]
+        public async Task StoneToolsAreShownAsFlint()
+        {
+            await OnClient();
+            var client = Capi.ModLoader.GetModSystem<QuestlineModSystem>().Client;
+            await Until(() => client.Ready, 200, "definitions on the client");
+            var text = new QuestText(Capi, client);
+            foreach (var (quest, task, _, item, _) in StoneTools)
+            {
+                var shown = text.StackFor(client.Registry.Get("questline:" + quest).Tasks[task].Target);
+                Assert.Equal("game:" + string.Format(item, "flint"), shown?.Collectible.Code.ToString(), quest + " shows");
+            }
         }
 
         [VsTest(TimeoutMs = 60000)]

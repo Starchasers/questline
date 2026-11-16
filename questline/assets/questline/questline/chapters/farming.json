@@ -13,7 +13,7 @@
             "tasks": [
                 {
                     "type": "knap",
-                    "item": "game:hoehead-flint"
+                    "item": "game:@hoehead-(flint|chert|granite|andesite|basalt|obsidian|peridotite)"
                 }
             ],
             "rewards": [
@@ -78,7 +78,7 @@
             "tasks": [
                 {
                     "type": "craft",
-                    "item": "game:hoe-flint"
+                    "item": "game:@hoe-(flint|chert|granite|andesite|basalt|obsidian|peridotite)"
                 }
             ],
             "rewards": [

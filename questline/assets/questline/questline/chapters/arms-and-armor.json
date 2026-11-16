@@ -34,7 +34,7 @@
             "tasks": [
                 {
                     "type": "knap",
-                    "item": "game:arrowhead-flint",
+                    "item": "game:@arrowhead-(flint|obsidian)",
                     "count": 4
                 }
             ],

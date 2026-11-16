@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Text.RegularExpressions;
 using questline.Model;
 using questline.Server;
 using Vintagestory.API.Client;
@@ -26,16 +27,35 @@ public class QuestText(ICoreClientAPI capi, QuestClient client)
 
     public string State(QuestState state) => Lang.Get("questline:state-" + state.ToString().ToLowerInvariant());
 
-    /// <summary>A stack standing for a task or reward code: the item itself, or the first match of a wildcard.</summary>
+    /// <summary>
+    /// A stack standing for a task or reward code: the item itself, a regular expression's first
+    /// choice, or else the first match in the game's own order.
+    /// </summary>
     public ItemStack StackFor(string code, int size = 1)
     {
         if (code == null) return null;
         var loc = new AssetLocation(code);
         // "Anything at all" has no one item that stands for it.
         if (loc.Path == "*") return null;
-        CollectibleObject collectible = capi.World.GetItem(loc) ?? (CollectibleObject)capi.World.GetBlock(loc);
+        CollectibleObject collectible = Collectible(loc) ?? (FirstChoice(loc) is { } first ? Collectible(first) : null);
         collectible ??= capi.World.Collectibles.FirstOrDefault(c => c.Code != null && WildcardUtil.Match(loc, c.Code));
         return collectible == null ? null : new ItemStack(collectible, size);
+    }
+
+    CollectibleObject Collectible(AssetLocation loc) => capi.World.GetItem(loc) ?? (CollectibleObject)capi.World.GetBlock(loc);
+
+    static readonly Regex Choices = new(@"\(([^()|]*)(?:\|[^()]*)?\)");
+
+    /// <summary>
+    /// The item a regular expression names first: game:@axe-(flint|chert|granite) is a flint axe. The
+    /// game's own order would pick chert, its first variant, for every stone tool. Null for anything
+    /// that isn't a plain choice between alternatives.
+    /// </summary>
+    static AssetLocation FirstChoice(AssetLocation loc)
+    {
+        if (!loc.Path.StartsWith('@')) return null;
+        string path = Choices.Replace(loc.Path[1..], "$1");
+        return path.IndexOfAny(['(', ')', '|', '*', '+', '?', '.', '[', '\\', '^', '$', '{']) < 0 ? new AssetLocation(loc.Domain, path) : null;
     }
 
     /// <summary>A stage or custom key's own lang entry (<c>&lt;name&gt;-title</c>) if it has one, or the name itself.</summary>
