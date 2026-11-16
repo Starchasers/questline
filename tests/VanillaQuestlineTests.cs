@@ -88,6 +88,36 @@ namespace Questline.Tests
             }
         }
 
+        /// <summary>
+        /// Every task in the default questline that takes many things names what they share ("any
+        /// clay"), or says so itself ("any fruit"), rather than one of them ("any blue clay"), and
+        /// none shows an untranslated name.
+        /// </summary>
+        [VsTest, RequiresClient]
+        public async Task PatternTasksNameWhatTheyShare()
+        {
+            await OnClient();
+            var client = Capi.ModLoader.GetModSystem<QuestlineModSystem>().Client;
+            await Until(() => client.Ready, 200, "definitions on the client");
+            var text = new QuestText(Capi, client);
+            // A lang key as the game shows one it can't find, or a template it couldn't fill (mealrecipe-name--in-container).
+            var untranslated = new System.Text.RegularExpressions.Regex(@"[a-z0-9_-]+:(block|item)-|\b[a-z0-9]+(-[a-z0-9]*){2,}\b");
+            int faults = 0;
+            foreach (var quest in client.Registry.Quests.Values.Where(q => q.Id.StartsWith("questline:")))
+            {
+                foreach (var task in quest.Tasks.Where(t => t.OnCollectible && TaskDef.IsPattern(t.Target)))
+                {
+                    string line = text.TaskLine(task);
+                    Log($"{quest.Id}: {line}");
+                    if (task.Name == null && text.SharedName(task.Target) == null) { Log($"  {task.Target} has no shared name"); faults++; }
+                    if (untranslated.IsMatch(line)) { Log("  untranslated"); faults++; }
+                }
+            }
+            Assert.Equal(0, faults, "every pattern task named");
+            var findClay = client.Registry.Get("questline:find-clay").Tasks[0];
+            Assert.Equal(Lang.Get("questline:task-obtain", Lang.Get("questline:any-of", "clay")), text.TaskLine(findClay), "clay, whatever its colour");
+        }
+
         [VsTest(TimeoutMs = 60000)]
         public async Task EveryQuestCanBeReachedFromTheStart()
         {

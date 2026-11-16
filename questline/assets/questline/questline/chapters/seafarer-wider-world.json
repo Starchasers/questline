@@ -27,7 +27,8 @@
             "tasks": [
                 {
                     "type": "trade",
-                    "item": "seafarer:*"
+                    "item": "seafarer:*",
+                    "name": "questline:name-anything"
                 }
             ],
             "rewards": [

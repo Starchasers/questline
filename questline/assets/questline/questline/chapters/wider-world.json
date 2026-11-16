@@ -35,7 +35,8 @@
             "tasks": [
                 {
                     "type": "trade",
-                    "item": "*:*"
+                    "item": "*:*",
+                    "name": "questline:name-anything"
                 }
             ],
             "rewards": [

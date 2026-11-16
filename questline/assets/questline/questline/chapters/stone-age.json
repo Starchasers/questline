@@ -56,7 +56,8 @@
                 {
                     "type": "obtain",
                     "item": "game:fruit-*",
-                    "count": 8
+                    "count": 8,
+                    "name": "questline:name-any-fruit"
                 }
             ],
             "rewards": [
@@ -164,7 +165,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:axe-*"
+                    "item": "game:axe-*",
+                    "name": "questline:name-any-axe"
                 }
             ],
             "rewards": [
@@ -212,7 +214,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:spear-generic-*"
+                    "item": "game:spear-generic-*",
+                    "name": "questline:name-any-spear"
                 }
             ],
             "rewards": [

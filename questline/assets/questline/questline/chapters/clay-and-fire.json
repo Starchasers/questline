@@ -14,7 +14,8 @@
                 {
                     "type": "obtain",
                     "item": "game:clay-*",
-                    "count": 20
+                    "count": 20,
+                    "name": "questline:name-any-clay"
                 }
             ],
             "rewards": [
@@ -294,7 +295,8 @@
             "tasks": [
                 {
                     "type": "cook",
-                    "item": "game:claypot-*-cooked"
+                    "item": "game:claypot-*-cooked",
+                    "name": "questline:name-any-pot-meal"
                 }
             ],
             "rewards": [

@@ -96,7 +96,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "bricklayers:claytiles-*"
+                    "item": "bricklayers:claytiles-*",
+                    "name": "questline:name-any-clay-tiles"
                 }
             ],
             "rewards": [

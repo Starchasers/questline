@@ -56,7 +56,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:bow-*"
+                    "item": "game:bow-*",
+                    "name": "questline:name-any-bow"
                 }
             ],
             "rewards": [
@@ -81,7 +82,8 @@
                 {
                     "type": "obtain",
                     "item": "game:arrow-*",
-                    "count": 8
+                    "count": 8,
+                    "name": "questline:name-any-arrows"
                 }
             ],
             "rewards": [

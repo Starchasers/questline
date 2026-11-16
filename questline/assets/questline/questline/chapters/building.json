@@ -78,11 +78,13 @@
                 {
                     "type": "obtain",
                     "item": "game:woodenfence-*",
-                    "count": 8
+                    "count": 8,
+                    "name": "questline:name-any-fence"
                 },
                 {
                     "type": "obtain",
-                    "item": "game:woodenfencegate-*"
+                    "item": "game:woodenfencegate-*",
+                    "name": "questline:name-any-fence-gate"
                 }
             ],
             "rewards": [

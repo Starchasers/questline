@@ -13,7 +13,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:fruitingbushcutting-*"
+                    "item": "game:fruitingbushcutting-*",
+                    "name": "questline:name-any-bush-cutting"
                 }
             ],
             "rewards": [
@@ -98,7 +99,8 @@
             "tasks": [
                 {
                     "type": "place",
-                    "block": "game:fruitingbushcutting-*"
+                    "block": "game:fruitingbushcutting-*",
+                    "name": "questline:name-any-bush-cutting"
                 }
             ],
             "rewards": [

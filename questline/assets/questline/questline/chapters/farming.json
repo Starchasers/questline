@@ -125,7 +125,8 @@
                 {
                     "type": "obtain",
                     "item": "game:vegetable-*",
-                    "count": 12
+                    "count": 12,
+                    "name": "questline:name-any-vegetable"
                 }
             ],
             "rewards": [
@@ -253,7 +254,8 @@
                 {
                     "type": "obtain",
                     "item": "game:vegetable-*",
-                    "count": 24
+                    "count": 24,
+                    "name": "questline:name-any-vegetable"
                 }
             ],
             "rewards": [

@@ -99,6 +99,11 @@ game install on the box (`~/.cairn/games/1.22.6/questline-*.png`).
   Fibercraft's spindle, Toolsmith's bench), and a craft task never sees them. Keep `craft` only where
   crafting changes a thing without changing its code: a clay-coated head (`clayCovered`), a baited
   pole. Anything else that the game does with no event of its own still wants a checkbox.
+- **A task that takes many things must say what they are.** The book names a pattern by what every
+  match's name shares ("any axe head"), and a `name` lang key says it where they share nothing ("any
+  fruit"); `PatternTasksNameWhatTheyShare` holds the default questline to one or the other, so the
+  book never names one variant ("any blue clay"). A mod's items can break a shared name (with the
+  addon mods loaded, `game:clay-*` takes in a clay whose name doesn't say clay), so run it with them too.
 - **Ignite is patched on every block that can be lit,** the game's and every loaded mod's
   (`StationPatches.IgniteTargets`), under the code the block had before it caught. Whatever lights it
   ends in `OnTryIgniteBlockOver`, so another mod's lighter counts. `StationPatchCount` grows with them.

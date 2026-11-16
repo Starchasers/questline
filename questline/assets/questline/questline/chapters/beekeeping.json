@@ -60,7 +60,8 @@
                 {
                     "type": "place",
                     "block": "game:flower-*",
-                    "count": 6
+                    "count": 6,
+                    "name": "questline:name-any-flower"
                 }
             ],
             "rewards": [

@@ -115,7 +115,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:ciderportion-*"
+                    "item": "game:ciderportion-*",
+                    "name": "questline:name-any-fermented-drink"
                 }
             ],
             "rewards": [
@@ -303,7 +304,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:spiritportion-*"
+                    "item": "game:spiritportion-*",
+                    "name": "questline:name-any-spirit"
                 }
             ],
             "shape": "gear",

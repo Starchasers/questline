@@ -473,9 +473,13 @@ public partial class GuiDialogQuestBook
             ElementBounds.Fixed(FormX + FormWidth - FieldHeight, y, FieldHeight, FieldHeight), EnumButtonStyle.Small, key + "-remove");
     }
 
-    /// <summary>Puts a task's target in the field its type reads: entity, block, structure, key or item.</summary>
+    /// <summary>
+    /// Puts a task's target in the field its type reads: entity, block, structure, key or item. A
+    /// new target drops the task's name, which said what the old one stood for.
+    /// </summary>
     static void SetTarget(TaskDef task, string target)
     {
+        if (target != task.Target) task.Name = null;
         task.Item = task.Block = task.Entity = task.Structure = task.Key = null;
         switch (task.Type)
         {

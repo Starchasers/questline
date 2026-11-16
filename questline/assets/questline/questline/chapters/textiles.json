@@ -143,7 +143,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:clothes-upperbody-*"
+                    "item": "game:clothes-upperbody-*",
+                    "name": "questline:name-any-shirt"
                 }
             ],
             "rewards": [
@@ -164,7 +165,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:clothes-lowerbody-*"
+                    "item": "game:clothes-lowerbody-*",
+                    "name": "questline:name-any-trousers"
                 }
             ],
             "rewards": [

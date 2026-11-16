@@ -323,7 +323,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:clothes-head-furhat*"
+                    "item": "game:clothes-head-furhat*",
+                    "name": "questline:name-any-fur-hat"
                 }
             ],
             "rewards": [

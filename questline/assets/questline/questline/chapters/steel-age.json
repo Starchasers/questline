@@ -192,7 +192,8 @@
             "tasks": [
                 {
                     "type": "smith",
-                    "item": "game:*-steel"
+                    "item": "game:*-steel",
+                    "name": "questline:name-anything-steel"
                 }
             ],
             "rewards": [
@@ -238,7 +239,8 @@
             "tasks": [
                 {
                     "type": "craft",
-                    "item": "game:*head-steel"
+                    "item": "game:*head-steel",
+                    "name": "questline:name-any-head-steel"
                 }
             ],
             "rewards": [

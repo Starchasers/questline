@@ -171,7 +171,8 @@
             "tasks": [
                 {
                     "type": "smelt",
-                    "item": "game:*head-copper"
+                    "item": "game:*head-copper",
+                    "name": "questline:name-any-head-copper"
                 }
             ],
             "rewards": [
@@ -348,7 +349,8 @@
             "tasks": [
                 {
                     "type": "smith",
-                    "item": "game:*-copper"
+                    "item": "game:*-copper",
+                    "name": "questline:name-anything-copper"
                 }
             ],
             "rewards": [

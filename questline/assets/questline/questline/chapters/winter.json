@@ -61,7 +61,8 @@
                 {
                     "type": "obtain",
                     "item": "game:vegetable-*",
-                    "count": 16
+                    "count": 16,
+                    "name": "questline:name-any-vegetable"
                 }
             ],
             "rewards": [
@@ -104,7 +105,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:clothes-*fur*"
+                    "item": "game:clothes-*fur*",
+                    "name": "questline:name-any-fur-clothing"
                 }
             ],
             "rewards": [
@@ -133,12 +135,14 @@
                 {
                     "type": "obtain",
                     "item": "game:*-cured",
-                    "count": 8
+                    "count": 8,
+                    "name": "questline:name-any-cured-meat"
                 },
                 {
                     "type": "obtain",
                     "item": "game:pickledvegetable-*",
-                    "count": 8
+                    "count": 8,
+                    "name": "questline:name-any-pickled-vegetable"
                 }
             ],
             "shape": "gear",

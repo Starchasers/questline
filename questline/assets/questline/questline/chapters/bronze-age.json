@@ -122,7 +122,8 @@
             "tasks": [
                 {
                     "type": "smith",
-                    "item": "game:*-tinbronze"
+                    "item": "game:*-tinbronze",
+                    "name": "questline:name-anything-tinbronze"
                 }
             ],
             "rewards": [

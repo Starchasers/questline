@@ -175,6 +175,11 @@ public class TaskDef
     /// <summary>obtain only: take the items when the reward is claimed.</summary>
     public bool Consume;
     /// <summary>
+    /// A lang key for what a pattern target stands for, as the task line says it ("any fruit"),
+    /// where the matching items' own names have nothing in common to name them by.
+    /// </summary>
+    public string Name;
+    /// <summary>
     /// The recipe graph can't see how the target is made (a mod's own machines, say), so the
     /// checks that ask how it's made skip this task. The target must still exist.
     /// </summary>

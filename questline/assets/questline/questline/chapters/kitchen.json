@@ -41,7 +41,8 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:bowl-*-meal"
+                    "item": "game:bowl-*-meal",
+                    "name": "questline:name-any-bowl-meal"
                 }
             ],
             "rewards": [
@@ -70,7 +71,8 @@
                 },
                 {
                     "type": "cook",
-                    "item": "game:claypot-*-cooked"
+                    "item": "game:claypot-*-cooked",
+                    "name": "questline:name-any-pot-meal"
                 }
             ],
             "rewards": [
@@ -92,11 +94,13 @@
                 {
                     "type": "obtain",
                     "item": "game:vegetable-*",
-                    "count": 3
+                    "count": 3,
+                    "name": "questline:name-any-vegetable"
                 },
                 {
                     "type": "cook",
-                    "item": "game:claypot-*-cooked"
+                    "item": "game:claypot-*-cooked",
+                    "name": "questline:name-any-pot-meal"
                 }
             ],
             "rewards": [
@@ -122,7 +126,8 @@
                 },
                 {
                     "type": "cook",
-                    "item": "game:claypot-*-cooked"
+                    "item": "game:claypot-*-cooked",
+                    "name": "questline:name-any-pot-meal"
                 }
             ],
             "rewards": [

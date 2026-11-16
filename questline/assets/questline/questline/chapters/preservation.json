@@ -39,7 +39,8 @@
                 {
                     "type": "obtain",
                     "item": "game:*-cured",
-                    "count": 4
+                    "count": 4,
+                    "name": "questline:name-any-cured-meat"
                 }
             ],
             "rewards": [
@@ -86,7 +87,8 @@
                 {
                     "type": "obtain",
                     "item": "game:pickledvegetable-*",
-                    "count": 4
+                    "count": 4,
+                    "name": "questline:name-any-pickled-vegetable"
                 }
             ],
             "rewards": [

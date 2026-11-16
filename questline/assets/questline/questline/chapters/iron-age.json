@@ -192,7 +192,8 @@
             "tasks": [
                 {
                     "type": "smith",
-                    "item": "game:*-iron"
+                    "item": "game:*-iron",
+                    "name": "questline:name-anything-iron"
                 }
             ],
             "rewards": [
@@ -234,7 +235,8 @@
             "tasks": [
                 {
                     "type": "craft",
-                    "item": "game:*head-iron"
+                    "item": "game:*head-iron",
+                    "name": "questline:name-any-head-iron"
                 }
             ],
             "rewards": [
@@ -386,7 +388,8 @@
             "tasks": [
                 {
                     "type": "smith",
-                    "item": "game:*-meteoriciron"
+                    "item": "game:*-meteoriciron",
+                    "name": "questline:name-anything-meteoriciron"
                 }
             ],
             "rewards": [

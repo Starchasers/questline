@@ -22,7 +22,8 @@ Every phase of the roadmap, minus the VS Quest importer:
   once), custom, checkbox. The default questline asks to have a thing rather
   than to craft it, so a mod that makes it another way (a spindle, a workbench) still counts; it
   keeps craft only where crafting changes a thing without changing what it is (a clay-coated head,
-  a baited pole). A visit names the structure by its code in the
+  a baited pole). A task that takes many things names what they share ("any clay"), or carries a
+  `name` lang key that says it ("any fruit"). A visit names the structure by its code in the
   worldgen config, with that file's domain (`game:trader-*`,
   `betterruins:largeforlornhopetower`), and its place by the lang entry `<domain>:structure-<code>`;
   a village counts each of its buildings. `/questline structures` names whatever you are standing

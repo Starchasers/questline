@@ -80,7 +80,8 @@
                 {
                     "type": "obtain",
                     "item": "game:fishraw-*",
-                    "count": 3
+                    "count": 3,
+                    "name": "questline:name-any-raw-fish"
                 }
             ],
             "rewards": [

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using questline.Model;
@@ -93,10 +95,57 @@ public class QuestText(ICoreClientAPI capi, QuestClient client)
             return capi.World.EntityTypes.Any(e => e.Code.Equals(loc)) ? Lang.Get(loc.Domain + ":item-creature-" + loc.Path) : task.Target;
         }
 
+        if (task.Name != null) return Get(task.Name);
+        if (wildcard && SharedName(task.Target) is { } shared) return Lang.Get("questline:any-of", shared);
         var stack = StackFor(task.Target);
         if (stack == null) return task.Target;
         string name = stack.GetName();
         return wildcard ? Lang.Get("questline:any-of", name) : name;
+    }
+
+    readonly Dictionary<string, string> sharedNames = [];
+
+    /// <summary>
+    /// What every item a pattern matches is called, in the player's language: the one name they
+    /// share once each drops its bracketed variant ("Hand basket (reed)"), or else the words every
+    /// name has ("Chert axe head", "Flint axe head": "axe head"). Null when they have nothing in
+    /// common, as fruit don't; a task names those itself. Items with no name of their own (the
+    /// game shows their lang key) are left out.
+    /// </summary>
+    public string SharedName(string pattern)
+    {
+        if (sharedNames.TryGetValue(pattern, out var cached)) return cached;
+        var loc = new AssetLocation(pattern);
+        var names = capi.World.Collectibles
+            .Where(c => c.Code != null && WildcardUtil.Match(loc, c.Code))
+            .Select(c => new ItemStack(c).GetName())
+            .Where(n => !string.IsNullOrWhiteSpace(n) && !Untranslated.IsMatch(n))
+            .Select(BaseName).Distinct().ToList();
+        string shared = names.Count switch
+        {
+            0 => null,
+            1 => names[0],
+            _ => CommonWords(names),
+        };
+        return sharedNames[pattern] = string.IsNullOrWhiteSpace(shared) ? null : shared;
+    }
+
+    static readonly Regex Untranslated = new(@"^[a-z0-9_-]+:(block|item)-");
+    static readonly Regex VariantSuffix = new(@"\s*\([^()]*\)\s*$");
+
+    /// <summary>"Egg basket (walnut)" as "Egg basket": an item's name without its variant. Names that are nothing but a bracket stay whole.</summary>
+    internal static string BaseName(string name)
+    {
+        string stripped = name;
+        while (VariantSuffix.Match(stripped) is { Success: true } m && m.Index > 0) stripped = stripped[..m.Index];
+        return stripped;
+    }
+
+    /// <summary>The first name's words that every other name has too, in its order.</summary>
+    static string CommonWords(List<string> names)
+    {
+        var others = names.Skip(1).Select(n => n.ToLowerInvariant().Split(' ', StringSplitOptions.RemoveEmptyEntries).ToHashSet()).ToList();
+        return string.Join(" ", names[0].Split(' ', StringSplitOptions.RemoveEmptyEntries).Where(w => others.All(o => o.Contains(w.ToLowerInvariant()))));
     }
 
     public string RewardLine(RewardDef reward)

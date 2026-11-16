@@ -63,7 +63,7 @@ public partial class GuiDialogQuestBook
                 string code = GuiHandbookItemStackPage.PageCodeForStack(stack);
                 if (!stackByPageCode.TryAdd(code, stack)) continue;
                 string name = stack.GetName();
-                items.Add(new(stack, code, name, SearchKey(name), SearchKey(BaseName(name)), stack.Collectible.Code.Domain));
+                items.Add(new(stack, code, name, SearchKey(name), SearchKey(QuestText.BaseName(name)), stack.Collectible.Code.Domain));
             }
         }
 
@@ -251,7 +251,7 @@ public partial class GuiDialogQuestBook
             {
                 var list = mod.ToList();
                 var shown = list.FirstOrDefault(i => i.Key == family.Key) ?? list[0];
-                yield return (family.Key, ItemRow(shown, list.Count > 1 ? BaseName(shown.Name) : shown.Name, list.Count));
+                yield return (family.Key, ItemRow(shown, list.Count > 1 ? QuestText.BaseName(shown.Name) : shown.Name, list.Count));
             }
         }
     }
@@ -273,16 +273,6 @@ public partial class GuiDialogQuestBook
     static string SearchKey(string name) => Spaces.Replace(name.ToSearchFriendly().ToLowerInvariant(), " ").Trim();
 
     static readonly Regex Spaces = new(@"\s+");
-
-    static readonly Regex VariantSuffix = new(@"\s*\([^()]*\)\s*$");
-
-    /// <summary>"Egg basket (walnut)" as "Egg basket". Names that are nothing but a bracket stay whole.</summary>
-    static string BaseName(string name)
-    {
-        string stripped = name;
-        while (VariantSuffix.Match(stripped) is { Success: true } m && m.Index > 0) stripped = stripped[..m.Index];
-        return stripped;
-    }
 
     /// <summary>"Crafting Mechanic: Armor" as its group and name; a title without a colon has no group.</summary>
     static (string Group, string Name) SplitTitle(string title)
@@ -472,7 +462,7 @@ public partial class GuiDialogQuestBook
             return true;
         }
         // A bare pie is named "Empty pie crust", which finds nothing; "pie" finds its guides.
-        string[] tries = [BaseName(stack.GetName()), stack.Collectible.FirstCodePart()];
+        string[] tries = [QuestText.BaseName(stack.GetName()), stack.Collectible.FirstCodePart()];
         string query = tries.FirstOrDefault(t => { search = t; return ResultRows().Any(r => !r.Heading); }) ?? tries[0];
         search = "";
         SearchReference(query);

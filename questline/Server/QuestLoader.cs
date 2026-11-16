@@ -319,6 +319,7 @@ public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = n
             else if (!TargetExists(task)) yield return $"{task.Type} task target {task.Target} matches nothing";
             // Structures have no names of their own in the game.
             else if (task.Type == "visit" && !facts.HasLang(TaskDef.StructureNameKey(task.Target))) yield return $"visit task target {task.Target} has no name: no lang entry {TaskDef.StructureNameKey(task.Target)}";
+            if (task.Name != null && !facts.HasLang(task.Name)) yield return $"{task.Type} task name {task.Name} has no lang entry";
         }
 
         foreach (var reward in quest.Rewards)
