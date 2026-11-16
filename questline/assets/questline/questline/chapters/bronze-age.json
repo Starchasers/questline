@@ -13,7 +13,7 @@
             "requires": "first-smithing",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:prospectingpick-*"
                 }
             ],
@@ -98,7 +98,7 @@
             "requires": "alloy-bronze",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:pickaxe-*bronze"
                 }
             ],
@@ -157,7 +157,7 @@
             "requires": "alloy-bronze",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:axe-felling-*bronze"
                 }
             ],

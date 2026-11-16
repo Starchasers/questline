@@ -29,7 +29,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "expandedfoods:hardtack-*-raw",
                     "count": 4
                 },

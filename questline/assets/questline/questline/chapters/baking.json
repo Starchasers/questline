@@ -37,7 +37,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:dough-*",
                     "count": 2
                 }

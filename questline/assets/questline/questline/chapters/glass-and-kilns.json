@@ -37,7 +37,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:refractorybrick-raw-*",
                     "count": 12
                 }
@@ -62,7 +62,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:claybricks-good-fire",
                     "count": 8
                 }
@@ -105,7 +105,7 @@
             "requires": "find-quartz",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:lantern-*"
                 }
             ],
@@ -194,7 +194,7 @@
             "requires": "make-glass",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:glasspane-leaded-*",
                     "count": 4
                 }
@@ -219,7 +219,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:refractorybricks-good-*",
                     "count": 8
                 }
@@ -244,7 +244,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:refractorybrickgrating-good-*",
                     "count": 9
                 }
@@ -288,7 +288,7 @@
             "requires": "lay-refractory",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:doorkiln-*"
                 }
             ],

@@ -13,7 +13,7 @@
             "tasks": [
                 {
                     "type": "knap",
-                    "item": "game:@hoehead-(flint|chert|granite|andesite|basalt|obsidian|peridotite)"
+                    "item": "game:hoehead-*"
                 }
             ],
             "rewards": [
@@ -77,8 +77,8 @@
             "requires": "knap-hoe",
             "tasks": [
                 {
-                    "type": "craft",
-                    "item": "game:@hoe-(flint|chert|granite|andesite|basalt|obsidian|peridotite)"
+                    "type": "obtain",
+                    "item": "game:hoe-*"
                 }
             ],
             "rewards": [
@@ -148,7 +148,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:quern-*"
                 }
             ],
@@ -173,7 +173,7 @@
                     "item": "game:pumpkin-fruit-4"
                 },
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:vegetable-pumpkin"
                 }
             ],

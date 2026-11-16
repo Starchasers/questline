@@ -84,7 +84,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:hide-salted-*"
                 }
             ],
@@ -151,7 +151,7 @@
             "requires": "soak-hide",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:hide-scraped-*"
                 }
             ],
@@ -238,7 +238,7 @@
             "requires": "make-leather",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:backpack-normal"
                 }
             ],
@@ -259,7 +259,7 @@
             "requires": "make-leather",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:clothes-foot-*leather-boots"
                 }
             ],
@@ -280,7 +280,7 @@
             "requires": "get-hide",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:hide-oiled-*"
                 }
             ],
@@ -322,7 +322,7 @@
             "requires": "cure-pelt",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:clothes-head-furhat*"
                 }
             ],

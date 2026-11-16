@@ -103,7 +103,7 @@
             "requires": "make-pelt",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:clothes-*fur*"
                 }
             ],

@@ -19,7 +19,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:hoovedwearables-middleback-saddle1"
                 }
             ],
@@ -49,7 +49,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:hoovedwearables-head-bridle*"
                 }
             ],
@@ -76,7 +76,7 @@
             "requires": "ride-elk",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:hoovedwearables-lowerbackside-saddlebags1"
                 }
             ],
@@ -106,7 +106,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:hoovedwearables-lowerbackside-pillion-leather"
                 }
             ],

@@ -15,7 +15,7 @@
             "requires": "smith-iron",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "hexsmech:pipe-iron",
                     "count": 6
                 }
@@ -41,7 +41,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "hexsmech:reverberatoryhearth-*"
                 }
             ],
@@ -87,7 +87,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "hexsmech:bellowsinput-*"
                 }
             ],
@@ -168,7 +168,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:linkage-heavy-*"
                 },
                 {
@@ -245,7 +245,7 @@
             "requires": "build-reverb",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "hexsmech:fettling-*",
                     "count": 4
                 }
@@ -530,7 +530,7 @@
             "requires": "build-boiler",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "hexsmech:seeppick-*"
                 }
             ],

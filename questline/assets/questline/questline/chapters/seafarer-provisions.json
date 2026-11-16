@@ -62,7 +62,7 @@
             "requires": "make-boards",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "seafarer:preptable-*"
                 }
             ],
@@ -158,7 +158,7 @@
             "requires": "make-rope",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "seafarer:dryingframe-*"
                 }
             ],
@@ -430,7 +430,7 @@
             "requires": "gather-sticks",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "seafarer:mudrake-wooden"
                 }
             ],

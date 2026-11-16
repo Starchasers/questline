@@ -122,7 +122,7 @@
             "requires": "grind-soybeans",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "expandedfoods:soyprep-cultured",
                     "count": 8
                 }

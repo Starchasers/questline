@@ -14,7 +14,7 @@
             "requires": "make-breadcrumbs",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "efchefstricks:breadcrumbfeed",
                     "count": 4
                 }

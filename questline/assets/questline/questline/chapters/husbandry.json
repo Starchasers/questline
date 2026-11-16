@@ -55,7 +55,7 @@
             "requires": "make-boards",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:woodbucket"
                 }
             ],
@@ -198,7 +198,7 @@
             "requires": "make-knife",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:baskettrap-*"
                 }
             ],
@@ -222,7 +222,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:trapcrate-wood"
                 }
             ],
@@ -268,7 +268,7 @@
             "requires": "first-smithing",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:cleaver-*"
                 }
             ],

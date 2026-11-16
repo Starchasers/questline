@@ -29,7 +29,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "wool:clothes-upperbodyover-sweater-*"
                 }
             ],

@@ -51,7 +51,7 @@
             "requires": "wash-fleece",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "wool:twine-wool-*",
                     "count": 4
                 }
@@ -73,7 +73,7 @@
             "requires": "spin-wool",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "wool:cloth-wool-*"
                 }
             ],
@@ -94,7 +94,7 @@
             "requires": "spin-wool",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "wool:kneedle-*"
                 }
             ],

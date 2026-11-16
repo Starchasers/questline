@@ -110,7 +110,7 @@
             "requires": "roast-meat",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "aculinaryartillery:mixingbowl-*"
                 }
             ],
@@ -131,7 +131,7 @@
             "requires": "roast-meat",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "expandedfoods:meatnugget-*-raw",
                     "count": 4
                 }

@@ -19,7 +19,10 @@ Every phase of the roadmap, minus the VS Quest importer:
   it), craft (every shift-click batch, and Toolsmith's tools assembled in the hands or on its
   workbench), knap, clayform, smith, cook (firepit output), smelt (molds and bloomeries), trade
   (bought from a trader), visit (standing inside a structure worldgen placed, each structure
-  once), custom, checkbox. A visit names the structure by its code in the
+  once), custom, checkbox. The default questline asks to have a thing rather
+  than to craft it, so a mod that makes it another way (a spindle, a workbench) still counts; it
+  keeps craft only where crafting changes a thing without changing what it is (a clay-coated head,
+  a baited pole). A visit names the structure by its code in the
   worldgen config, with that file's domain (`game:trader-*`,
   `betterruins:largeforlornhopetower`), and its place by the lang entry `<domain>:structure-<code>`;
   a village counts each of its buildings. `/questline structures` names whatever you are standing

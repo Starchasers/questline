@@ -18,7 +18,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:bow-long"
                 }
             ],
@@ -50,7 +50,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-jerkin-leather"
                 }
             ],
@@ -77,7 +77,7 @@
             "requires": "make-jerkin",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-sewn-leather"
                 }
             ],
@@ -108,7 +108,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-sewn-linen"
                 }
             ],

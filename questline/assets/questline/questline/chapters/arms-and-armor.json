@@ -12,7 +12,7 @@
             "requires": "first-smithing",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:blade-falx-*"
                 }
             ],
@@ -34,7 +34,7 @@
             "tasks": [
                 {
                     "type": "knap",
-                    "item": "game:@arrowhead-(flint|obsidian)",
+                    "item": "game:arrowhead-*",
                     "count": 4
                 }
             ],
@@ -55,7 +55,7 @@
             "requires": "make-rope",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:bow-*"
                 }
             ],
@@ -79,7 +79,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:arrow-*",
                     "count": 8
                 }
@@ -104,7 +104,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:bowstave-*-raw"
                 }
             ],
@@ -128,7 +128,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:bow-long"
                 }
             ],
@@ -149,7 +149,7 @@
             "requires": "make-rope",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:sling"
                 }
             ],
@@ -170,7 +170,7 @@
             "requires": "gather-sticks",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:shield-crude"
                 }
             ],
@@ -195,7 +195,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:shield-woodmetal"
                 }
             ],
@@ -219,7 +219,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-improvised-wood"
                 }
             ],
@@ -243,7 +243,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-lamellar-wood"
                 }
             ],
@@ -267,7 +267,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-lamellar-copper"
                 }
             ],
@@ -288,7 +288,7 @@
             "requires": "make-leather",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-jerkin-leather"
                 }
             ],
@@ -309,7 +309,7 @@
             "requires": "make-jerkin",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-sewn-leather"
                 }
             ],
@@ -333,7 +333,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-brigandine-*"
                 }
             ],
@@ -354,7 +354,7 @@
             "requires": "make-brigandine",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-chain-*"
                 }
             ],
@@ -375,7 +375,7 @@
             "requires": "make-chain-armor",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-scale-*"
                 }
             ],
@@ -396,7 +396,7 @@
             "requires": "make-scale-armor",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-plate-*"
                 }
             ],
@@ -422,7 +422,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-plate-steel"
                 }
             ],
@@ -458,7 +458,7 @@
             "requires": "make-linen",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:armor-body-sewn-linen"
                 }
             ],

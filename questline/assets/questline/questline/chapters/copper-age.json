@@ -13,7 +13,7 @@
             "requires": "make-knife",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:pan-wooden"
                 }
             ],
@@ -120,7 +120,7 @@
             "requires": "make-rope",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:tongs"
                 }
             ],
@@ -212,7 +212,7 @@
             "requires": "cast-tool",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:pickaxe-copper"
                 }
             ],
@@ -233,7 +233,7 @@
             "requires": "cast-tool",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:axe-felling-copper"
                 }
             ],
@@ -254,7 +254,7 @@
             "requires": "cast-tool",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:hammer-copper"
                 }
             ],
@@ -299,7 +299,7 @@
             "requires": "make-pickaxe",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:forge"
                 }
             ],
@@ -383,7 +383,7 @@
             "requires": "first-smithing",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:saw-*"
                 }
             ],
@@ -404,7 +404,7 @@
             "requires": "first-smithing",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:knife-generic-copper"
                 }
             ],
@@ -425,7 +425,7 @@
             "requires": "first-smithing",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:scythe-*"
                 }
             ],
@@ -446,7 +446,7 @@
             "requires": "cast-tool",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:shovel-copper"
                 }
             ],

@@ -52,11 +52,11 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "charcoalkiln:kilndoor-*"
                 },
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "charcoalkiln:chimney-*"
                 }
             ],
@@ -142,11 +142,11 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "charcoalkiln:kilnliningkit-*"
                 },
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "charcoalkiln:heatingkit-*"
                 }
             ],

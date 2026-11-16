@@ -224,7 +224,7 @@
             "requires": "fire-pottery",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:rawbrick-*",
                     "count": 8
                 },

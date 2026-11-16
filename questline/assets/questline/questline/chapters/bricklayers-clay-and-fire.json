@@ -26,7 +26,7 @@
             "requires": "make-bricks",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "bricklayers:mudbrick-*",
                     "count": 8
                 }
@@ -48,7 +48,7 @@
             "requires": "make-mudbricks",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "bricklayers:mudbricks-*",
                     "count": 2
                 }

@@ -12,7 +12,7 @@
             "requires": "make-knife",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:wormgrunter"
                 }
             ],
@@ -33,7 +33,7 @@
             "requires": "make-rope",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:fishingpole-simple-*"
                 }
             ],
@@ -144,7 +144,7 @@
             "requires": "make-rope",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:oar-crude-*"
                 }
             ],
@@ -165,7 +165,7 @@
             "requires": "make-rope",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:boat-raft-*"
                 }
             ],
@@ -211,7 +211,7 @@
             "requires": "chop-wood",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:roller",
                     "count": 5
                 }
@@ -233,7 +233,7 @@
             "requires": "make-rope",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:plumbandsquare",
                     "count": 2
                 }
@@ -299,7 +299,7 @@
             "requires": "build-sailboat",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:ratlines"
                 }
             ],
@@ -320,7 +320,7 @@
             "requires": "build-sailboat",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:boatseat-*"
                 }
             ],
@@ -341,7 +341,7 @@
             "requires": "build-sailboat",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:anchor-stone"
                 }
             ],

@@ -56,7 +56,7 @@
             "requires": "smith-iron",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:metaldoor-s*-iron"
                 }
             ],
@@ -212,11 +212,11 @@
             "requires": "smith-steel",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:pickaxe-steel"
                 },
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:axe-felling-steel"
                 }
             ],

@@ -34,7 +34,7 @@
             "requires": "make-boards",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:door-solid-*"
                 }
             ],
@@ -55,7 +55,7 @@
             "requires": "make-boards",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:ladder-wood-*"
                 }
             ],
@@ -76,12 +76,12 @@
             "requires": "make-boards",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:woodenfence-*",
                     "count": 8
                 },
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:woodenfencegate-*"
                 }
             ],
@@ -102,7 +102,7 @@
             "requires": "make-boards",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:slantedroofing-*",
                     "count": 8
                 }
@@ -148,7 +148,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:chest-*"
                 }
             ],
@@ -169,7 +169,7 @@
             "requires": "fire-pottery",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:oillamp-*"
                 }
             ],
@@ -211,7 +211,7 @@
             "requires": "make-chisel",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:stonebrick-*",
                     "count": 8
                 }
@@ -302,7 +302,7 @@
             "requires": "burn-quicklime",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:plaster-*",
                     "count": 4
                 }
@@ -351,7 +351,7 @@
             "size": 1.25,
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:stonebricks-*",
                     "count": 4
                 }
@@ -388,7 +388,7 @@
             "requires": "make-boards",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:barrel"
                 }
             ],
@@ -409,7 +409,7 @@
             "requires": "make-boards",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:table-*"
                 }
             ],

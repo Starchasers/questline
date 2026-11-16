@@ -45,9 +45,12 @@ public partial class QuestEngine
     public StructureCodes Structures { get; private set; }
     public QuestlineConfig Config { get; set; } = new();
 
-    // Task types a player's history records. Obtain follows the inventory instead, and a
-    // checkbox has nothing to remember.
+    // Task types a player's history records. Obtain follows the inventory instead (though a quest
+    // that unlocks takes what was found before, see SeedFromHistory), and a checkbox has nothing
+    // to remember.
     static readonly HashSet<string> HistoryTypes = ["kill", "mount", "place", "break", "ignite", "craft", "knap", "clayform", "smith", "cook", "smelt", "trade", "visit", "custom"];
+    static bool FromHistory(TaskDef task) => HistoryTypes.Contains(task.Type) || task is { Type: "obtain", Count: 1, Consume: false };
+
     // Task types an item carried now proves were done: the item is what the task gets or makes.
     static readonly HashSet<string> ProofTypes = ["obtain", "craft", "knap", "clayform", "smith", "smelt", "cook"];
     public List<string> Problems { get; private set; } = [];
@@ -513,7 +516,10 @@ public partial class QuestEngine
 
     /// <summary>
     /// Credits each newly unlocked quest, once, with what was done before it unlocked: by the
-    /// player, or by every member for a party quest. Server quests count only live work.
+    /// player, or by every member for a party quest. Server quests count only live work. An obtain
+    /// task that asks for one thing takes having carried it once (the history's "found"), so a thing
+    /// made and put down before its quest unlocked still counts; one that takes the items at the
+    /// claim, or asks for several, needs them in hand.
     /// </summary>
     public void SeedFromHistory(string playerUid)
     {
@@ -521,7 +527,7 @@ public partial class QuestEngine
 
         foreach (var quest in Registry.Quests.Values)
         {
-            if (quest.Mode == QuestMode.Server || !quest.Tasks.Any(t => HistoryTypes.Contains(t.Type))) continue;
+            if (quest.Mode == QuestMode.Server || !quest.Tasks.Any(FromHistory)) continue;
             var holder = Holder(quest, playerUid);
             if (holder.Find(quest.Id)?.Seeded == true || !IsActive(quest, playerUid)) continue;
 
@@ -531,9 +537,9 @@ public partial class QuestEngine
             for (int i = 0; i < quest.Tasks.Count; i++)
             {
                 var task = quest.Tasks[i];
-                if (!HistoryTypes.Contains(task.Type)) continue;
+                if (!FromHistory(task)) continue;
 
-                string prefix = task.Type + "|";
+                string prefix = (task.Type == "obtain" ? "found" : task.Type) + "|";
                 var pattern = Pattern(task);
                 int done = histories.SelectMany(h => h)
                     .Where(h => h.Key.StartsWith(prefix) && WildcardUtil.Match(pattern, new AssetLocation(h.Key[prefix.Length..])))

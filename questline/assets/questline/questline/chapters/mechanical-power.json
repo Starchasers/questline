@@ -37,7 +37,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:sail",
                     "count": 4
                 }
@@ -112,7 +112,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:windmillrotor-wood-*"
                 }
             ],
@@ -133,7 +133,7 @@
             "requires": "melt-fat",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:woodenaxle-*",
                     "count": 4
                 }
@@ -158,7 +158,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:angledgears-*",
                     "count": 2
                 }
@@ -256,12 +256,12 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:pounder-*",
                     "count": 2
                 },
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:pulverizertoggle-*"
                 }
             ],
@@ -282,7 +282,7 @@
             "requires": "cast-helve-head",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:helvehammer-*"
                 }
             ],

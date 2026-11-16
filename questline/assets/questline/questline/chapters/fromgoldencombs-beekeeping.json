@@ -177,7 +177,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "fromgoldencombs:framerack-*"
                 }
             ],
@@ -201,7 +201,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "fromgoldencombs:langstrothsuper-*",
                     "count": 2
                 }
@@ -226,7 +226,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "fromgoldencombs:langstrothbase-*"
                 }
             ],
@@ -247,7 +247,7 @@
             "requires": "make-hive-supers",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "fromgoldencombs:langstrothbroodtop-*"
                 },
                 {
@@ -296,7 +296,7 @@
             "requires": "wax-linen",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "fromgoldencombs:frameliner",
                     "count": 5
                 }
@@ -321,7 +321,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "fromgoldencombs:beeframe-*-empty",
                     "count": 5
                 }

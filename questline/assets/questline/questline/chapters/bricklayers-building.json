@@ -26,7 +26,7 @@
             "requires": "lay-stone-bricks",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "bricklayers:smallstonebrick-*",
                     "count": 8
                 }
@@ -48,7 +48,7 @@
             "requires": "cut-small-bricks",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "bricklayers:smallstonebricks-*",
                     "count": 2
                 }
@@ -70,7 +70,7 @@
             "requires": "mix-mortar",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "bricklayers:cement-tile",
                     "count": 8
                 }
@@ -95,7 +95,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "bricklayers:claytiles-*"
                 }
             ],
@@ -116,7 +116,7 @@
             "requires": "mix-tile-cement",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "bricklayers:stonetiles-*"
                 }
             ],
@@ -140,7 +140,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "bricklayers:polishingset-*"
                 }
             ],
@@ -161,7 +161,7 @@
             "requires": "make-polishing-set",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "bricklayers:stonerawtileshiny-*",
                     "count": 4
                 }

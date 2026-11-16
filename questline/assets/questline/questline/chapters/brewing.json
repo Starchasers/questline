@@ -157,7 +157,7 @@
             "requires": "first-smithing",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:solderingiron"
                 }
             ],
@@ -227,7 +227,7 @@
             ],
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:solderbar-tin"
                 }
             ],

@@ -34,7 +34,7 @@
             "requires": "grow-flax",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:flaxtwine",
                     "count": 4
                 }
@@ -56,7 +56,7 @@
             "requires": "spin-twine",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:linen-*",
                     "count": 2
                 }
@@ -78,7 +78,7 @@
             "requires": "spin-twine",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:sewingkit"
                 }
             ],
@@ -99,7 +99,7 @@
             "requires": "make-linen",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:linensack"
                 }
             ],
@@ -120,7 +120,7 @@
             "requires": "make-linen",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:cloth-plain",
                     "count": 4
                 }
@@ -142,7 +142,7 @@
             "requires": "make-cloth",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:clothes-upperbody-*"
                 }
             ],
@@ -163,7 +163,7 @@
             "requires": "make-cloth",
             "tasks": [
                 {
-                    "type": "craft",
+                    "type": "obtain",
                     "item": "game:clothes-lowerbody-*"
                 }
             ],

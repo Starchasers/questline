@@ -95,6 +95,10 @@ game install on the box (`~/.cairn/games/1.22.6/questline-*.png`).
   out around strict locking, so suites about what unlocks what (`EngineTests`, `BookTests`) call
   `Fixture.StrictLocking` before each test and `Fixture.DefaultLocking` after. A new suite that
   reads `Locked` states needs the same, or it passes or fails with whatever ran before it.
+- **A "make X" quest asks to have X, not to craft it.** Mods make things outside the grid (Immersive
+  Fibercraft's spindle, Toolsmith's bench), and a craft task never sees them. Keep `craft` only where
+  crafting changes a thing without changing its code: a clay-coated head (`clayCovered`), a baited
+  pole. Anything else that the game does with no event of its own still wants a checkbox.
 - **Ignite is patched on every block that can be lit,** the game's and every loaded mod's
   (`StationPatches.IgniteTargets`), under the code the block had before it caught. Whatever lights it
   ends in `OnTryIgniteBlockOver`, so another mod's lighter counts. `StationPatchCount` grows with them.

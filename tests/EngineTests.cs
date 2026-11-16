@@ -160,6 +160,27 @@ namespace Questline.Tests
         }
 
         [VsTest(TimeoutMs = 30000)]
+        public async Task AThingHeldBeforeItsQuestUnlocksCounts()
+        {
+            // cu-after-server asks for one bone and waits for a server quest.
+            await Player.Hold("game:bone", 1);
+            await Until(() => Engine.HasDiscovered(Me.PlayerUID, "game:bone"), 60, "the bone noticed");
+            await Player.Hold("game:stick", 1);
+            await Ticks(5);
+            Assert.Equal(QuestState.Locked, StateOf("qltest:cu-after-server"));
+            try
+            {
+                Engine.ForceComplete(Me, "qltest:cu-server");
+                await Until(() => StateOf("qltest:cu-after-server") >= QuestState.Claimable, 60, "the bone put down before it unlocked");
+            }
+            finally
+            {
+                // A server quest outlives a player's reset.
+                Engine.Reset(Me.PlayerUID, "qltest:cu-server");
+            }
+        }
+
+        [VsTest(TimeoutMs = 30000)]
         public async Task CatchingUpCompletesWhatTheInventoryProves()
         {
             // gather-flint is open, and a tick's inventory scan would complete it the ordinary way
