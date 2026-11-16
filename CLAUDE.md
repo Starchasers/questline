@@ -93,10 +93,12 @@ game install on the box (`~/.cairn/games/1.22.6/questline-*.png`).
 - **Locking is open by default** (`Locking` in the config): a quest's prerequisite quests only
   suggest an order, and only mods, stages and discoveries lock it. The fixture's chapters were laid
   out around strict locking, so suites about what unlocks what (`EngineTests`, `BookTests`) call
-  `Fixture.StrictLocking` before each test and `Fixture.DefaultLocking` after. A new suite that
+  `Fixture.StrictLocking` before each test and `Fixture.RestoreLocking` after. A new suite that
   reads `Locked` states needs the same, or it passes or fails with whatever ran before it.
 - **A "make X" quest asks to have X, not to craft it.** Mods make things outside the grid (Immersive
-  Fibercraft's spindle, Toolsmith's bench), and a craft task never sees them. Keep `craft` only where
+  Fibercraft's spindle, Toolsmith's bench), and a craft task never sees them. An obtain task for one thing
+  that the claim doesn't take is done once it's had (`OnceIsEnough`), as a craft was: putting it down, or
+  placing it for the quest's next task, doesn't undo it. Keep `craft` only where
   crafting changes a thing without changing its code: a clay-coated head (`clayCovered`), a baited
   pole. Anything else that the game does with no event of its own still wants a checkbox.
 - **A task that takes many things must say what they are.** The book names a pattern by what every
@@ -106,7 +108,8 @@ game install on the box (`~/.cairn/games/1.22.6/questline-*.png`).
   addon mods loaded, `game:clay-*` takes in a clay whose name doesn't say clay), so run it with them too.
 - **Ignite is patched on every block that can be lit,** the game's and every loaded mod's
   (`StationPatches.IgniteTargets`), under the code the block had before it caught. Whatever lights it
-  ends in `OnTryIgniteBlockOver`, so another mod's lighter counts. `StationPatchCount` grows with them.
+  ends in `OnTryIgniteBlockOver`, so another mod's lighter counts. A torch calls that on anything it's
+  held to with shift, so the patch first asks the block (`OnTryIgniteBlock`) whether it could be lit. `StationPatchCount` grows with them.
 - **Look item codes up, don't guess them.** Variant codes differ from the file names: keep a
   headless session (`run.sh ... --keep`) and ask `bash scripts/vstk eval` what exists.
 - **The graph stands an ingot in for the metal.** Casting takes anything that melts into it;

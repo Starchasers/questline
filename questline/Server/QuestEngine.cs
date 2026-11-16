@@ -45,11 +45,18 @@ public partial class QuestEngine
     public StructureCodes Structures { get; private set; }
     public QuestlineConfig Config { get; set; } = new();
 
-    // Task types a player's history records. Obtain follows the inventory instead (though a quest
-    // that unlocks takes what was found before, see SeedFromHistory), and a checkbox has nothing
-    // to remember.
+    // Task types a player's history records. Obtain follows the inventory instead, and a checkbox
+    // has nothing to remember.
     static readonly HashSet<string> HistoryTypes = ["kill", "mount", "place", "break", "ignite", "craft", "knap", "clayform", "smith", "cook", "smelt", "trade", "visit", "custom"];
-    static bool FromHistory(TaskDef task) => HistoryTypes.Contains(task.Type) || task is { Type: "obtain", Count: 1, Consume: false };
+    static bool FromHistory(TaskDef task) => HistoryTypes.Contains(task.Type) || OnceIsEnough(task);
+
+    /// <summary>
+    /// An obtain task for one thing the claim doesn't take: "make an axe". Having it once is the
+    /// task done, so it counts what was found before its quest unlocked (the history's "found"), and
+    /// putting the thing down, or placing it as the quest's next task asks, doesn't undo it. One that
+    /// asks for several, or takes them at the claim, wants them all in hand at once.
+    /// </summary>
+    static bool OnceIsEnough(TaskDef task) => task is { Type: "obtain", Count: 1, Consume: false };
 
     // Task types an item carried now proves were done: the item is what the task gets or makes.
     static readonly HashSet<string> ProofTypes = ["obtain", "craft", "knap", "clayform", "smith", "smelt", "cook"];
@@ -516,10 +523,8 @@ public partial class QuestEngine
 
     /// <summary>
     /// Credits each newly unlocked quest, once, with what was done before it unlocked: by the
-    /// player, or by every member for a party quest. Server quests count only live work. An obtain
-    /// task that asks for one thing takes having carried it once (the history's "found"), so a thing
-    /// made and put down before its quest unlocked still counts; one that takes the items at the
-    /// claim, or asks for several, needs them in hand.
+    /// player, or by every member for a party quest. Server quests count only live work, and an
+    /// obtain task only when <see cref="OnceIsEnough"/>.
     /// </summary>
     public void SeedFromHistory(string playerUid)
     {
@@ -553,7 +558,10 @@ public partial class QuestEngine
         }
     }
 
-    /// <summary>Sets every active obtain task to what is carried now: by the player, or pooled across whoever shares the quest.</summary>
+    /// <summary>
+    /// Sets every active obtain task to what is carried now: by the player, or pooled across whoever
+    /// shares the quest. A task <see cref="OnceIsEnough"/> only ever goes up.
+    /// </summary>
     void ScanInventory(string playerUid)
     {
         if (!tasksByType.TryGetValue("obtain", out var tasks)) return;
@@ -567,7 +575,9 @@ public partial class QuestEngine
             int held = Math.Min(task.Count, OnlineContributors(quest, playerUid).Sum(p => CountCarried(p, pattern)));
             var holder = Holder(quest, playerUid);
             var qp = holder.Find(quest.Id);
-            if ((qp == null ? 0 : qp.Tasks[index]) == held) continue;
+            int was = qp == null ? 0 : qp.Tasks[index];
+            if (OnceIsEnough(task)) held = Math.Max(held, was);
+            if (was == held) continue;
 
             qp = holder.GetOrCreate(quest);
             qp.Tasks[index] = held;

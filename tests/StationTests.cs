@@ -186,9 +186,14 @@ namespace Questline.Tests
 
             var pos = P(17, 1, 3);
             World.SetBlock("game:firepit-cold", pos);
-            var block = Sapi.World.BlockAccessor.GetBlock(pos);
-            var ignitable = block.GetInterface<IIgnitable>(Sapi.World, pos);
+            var ignitable = Ignitable(pos);
             var handling = EnumHandling.PassThrough;
+
+            // A firepit with nothing to burn can't be lit.
+            ignitable.OnTryIgniteBlockOver(Me.Entity, pos, 5, ref handling);
+            Assert.Equal(0, Progress("ignite"), "an empty firepit");
+
+            World.BE<BlockEntityFirepit>(pos).Inventory[0].Itemstack = World.Stack("game:firewood", 2);
             ignitable.OnTryIgniteBlockOver(Me.Entity, pos, 5, ref handling);
             Assert.Equal(1, Progress("ignite"));
             Assert.True(Engine.ProgressOf(Me.PlayerUID).History.ContainsKey(PlayerProgress.HistoryKey("ignite", "game:firepit-cold")), "kept under the code it had");
@@ -197,6 +202,26 @@ namespace Questline.Tests
             ignitable.OnTryIgniteBlockOver(null, pos, 5, ref handling);
             Assert.Equal(1, Progress("ignite"));
         }
+
+        /// <summary>
+        /// A torch held to a block with shift lights it after three seconds whatever the block is, so
+        /// the block has to say it could be lit: a torch already burning isn't lit again.
+        /// </summary>
+        [VsTest]
+        public void LightingWhatAlreadyBurnsCountsForNothing()
+        {
+            var pos = P(18, 1, 3);
+            World.SetBlock("game:torch-basic-lit-up", pos);
+            var handling = EnumHandling.PassThrough;
+            Ignitable(pos).OnTryIgniteBlockOver(Me.Entity, pos, 5, ref handling);
+            Assert.Equal(0, Progress("ignite"), "a lit torch");
+
+            World.SetBlock("game:torch-basic-extinct-up", pos);
+            Ignitable(pos).OnTryIgniteBlockOver(Me.Entity, pos, 5, ref handling);
+            Assert.Equal(1, Progress("ignite"), "an extinct one");
+        }
+
+        static IIgnitable Ignitable(BlockPos pos) => Sapi.World.BlockAccessor.GetBlock(pos).GetInterface<IIgnitable>(Sapi.World, pos);
 
         [VsTest]
         public void TakingFromMoldsCountsAsSmelting()

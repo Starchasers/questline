@@ -56,6 +56,14 @@
             "mode": "party",
             "tasks": [ { "type": "obtain", "item": "game:charcoal", "count": 1 } ],
             "rewards": [ { "type": "item", "item": "game:stick", "count": 1 } ]
+        },
+        {
+            "id": "cu-pair",
+            "pos": [2, 6],
+            "tasks": [
+                { "type": "obtain", "item": "game:rot", "count": 1 },
+                { "type": "obtain", "item": "game:drygrass", "count": 1 }
+            ]
         }
     ]
 }

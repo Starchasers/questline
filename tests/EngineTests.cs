@@ -181,6 +181,16 @@ namespace Questline.Tests
         }
 
         [VsTest(TimeoutMs = 30000)]
+        public async Task AThingHadOnceStaysHad()
+        {
+            // cu-pair asks for one rot and one dry grass; the rot is put down before the grass is had.
+            await Player.Hold("game:rot", 1);
+            await Until(() => Engine.ProgressOf(Me.PlayerUID).Find("qltest:cu-pair")?.Tasks[0] == 1, 60, "the rot had");
+            await Player.Hold("game:drygrass", 1);
+            await Until(() => StateOf("qltest:cu-pair") >= QuestState.Claimable, 60, "the rot still counted with the grass");
+        }
+
+        [VsTest(TimeoutMs = 30000)]
         public async Task CatchingUpCompletesWhatTheInventoryProves()
         {
             // gather-flint is open, and a tick's inventory scan would complete it the ordinary way

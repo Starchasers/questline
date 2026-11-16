@@ -238,7 +238,7 @@ public static class StationPatches
     /// it ends in this call once the block catches.
     /// </summary>
     public static IEnumerable<MethodBase> IgniteTargets() => AccessTools.AllTypes()
-        .Where(t => t.IsClass && !t.IsAbstract && typeof(IIgnitable).IsAssignableFrom(t))
+        .Where(t => t.IsClass && !t.IsAbstract && !t.ContainsGenericParameters && typeof(IIgnitable).IsAssignableFrom(t))
         .Select(t => t.GetInterfaceMap(typeof(IIgnitable)))
         .SelectMany(map => map.TargetMethods.Where((m, i) => map.InterfaceMethods[i].Name == nameof(IIgnitable.OnTryIgniteBlockOver)))
         .Where(m => m.DeclaringType != null && !m.IsAbstract && m.GetMethodBody() != null)
@@ -250,11 +250,18 @@ public static class StationPatches
     {
         static IEnumerable<MethodBase> TargetMethods() => IgniteTargets();
 
-        // By position: mods name the parameters as they like.
-        static void Prefix(object[] __args, out AssetLocation __state) =>
-            __state = __args[0] is EntityPlayer { World.Side: EnumAppSide.Server } entity && __args[1] is BlockPos pos
-                ? entity.World.BlockAccessor.GetBlock(pos)?.Code
-                : null;
+        // By position: mods name the parameters as they like. A torch held to a block calls this
+        // after three seconds whether or not the block could be lit (shift starts it on anything),
+        // so the block is asked first, as a firestarter asks it, and one already burning or with
+        // nothing to burn is no credit.
+        static void Prefix(object __instance, object[] __args, out AssetLocation __state)
+        {
+            __state = null;
+            if (__args[0] is not EntityPlayer { World.Side: EnumAppSide.Server } entity || __args[1] is not BlockPos pos) return;
+            if (__instance is not IIgnitable ignitable || __args[2] is not float seconds) return;
+            if (ignitable.OnTryIgniteBlock(entity, pos, seconds) is not (EnumIgniteState.Ignitable or EnumIgniteState.IgniteNow)) return;
+            __state = entity.World.BlockAccessor.GetBlock(pos)?.Code;
+        }
 
         static void Postfix(object[] __args, AssetLocation __state)
         {
