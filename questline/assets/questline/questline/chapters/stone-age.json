@@ -389,7 +389,8 @@
             ],
             "tasks": [
                 {
-                    "type": "checkbox"
+                    "type": "ignite",
+                    "block": "game:firepit-*"
                 }
             ],
             "icon": "game:firepit-lit",

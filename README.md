@@ -15,10 +15,11 @@ Every phase of the roadmap, minus the VS Quest importer:
   any order, and its prerequisites only suggest one. `"strict"` keeps a quest locked until the
   quests it needs are done. Either way a quest still waits for a mod, stage or discovery it needs
 - Tasks: obtain (liquids in a carried bucket count by the litre), kill, mount (rafts, boats,
-  elk), place, break, craft (every shift-click batch, and Toolsmith's tools assembled in the
-  hands or on its workbench), knap, clayform, smith, cook (firepit output), smelt (molds and
-  bloomeries), trade (bought from a trader), visit (standing inside a structure worldgen placed,
-  each structure once), custom, checkbox. A visit names the structure by its code in the
+  elk), place, break, ignite (lighting a firepit, forge, kiln or torch, with anything that lights
+  it), craft (every shift-click batch, and Toolsmith's tools assembled in the hands or on its
+  workbench), knap, clayform, smith, cook (firepit output), smelt (molds and bloomeries), trade
+  (bought from a trader), visit (standing inside a structure worldgen placed, each structure
+  once), custom, checkbox. A visit names the structure by its code in the
   worldgen config, with that file's domain (`game:trader-*`,
   `betterruins:largeforlornhopetower`), and its place by the lang entry `<domain>:structure-<code>`;
   a village counts each of its buildings. `/questline structures` names whatever you are standing

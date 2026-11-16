@@ -47,7 +47,7 @@ public partial class QuestEngine
 
     // Task types a player's history records. Obtain follows the inventory instead, and a
     // checkbox has nothing to remember.
-    static readonly HashSet<string> HistoryTypes = ["kill", "mount", "place", "break", "craft", "knap", "clayform", "smith", "cook", "smelt", "trade", "visit", "custom"];
+    static readonly HashSet<string> HistoryTypes = ["kill", "mount", "place", "break", "ignite", "craft", "knap", "clayform", "smith", "cook", "smelt", "trade", "visit", "custom"];
     // Task types an item carried now proves were done: the item is what the task gets or makes.
     static readonly HashSet<string> ProofTypes = ["obtain", "craft", "knap", "clayform", "smith", "smelt", "cook"];
     public List<string> Problems { get; private set; } = [];

@@ -18,8 +18,8 @@ namespace questline.Server;
 /// </summary>
 public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = null)
 {
-    public static readonly HashSet<string> TaskTypes = ["obtain", "kill", "mount", "place", "break", "craft", "knap", "clayform", "smith", "cook", "smelt", "trade", "visit", "custom", "checkbox"];
-    static readonly HashSet<string> BlockTasks = ["place", "break"];
+    public static readonly HashSet<string> TaskTypes = ["obtain", "kill", "mount", "place", "break", "ignite", "craft", "knap", "clayform", "smith", "cook", "smelt", "trade", "visit", "custom", "checkbox"];
+    static readonly HashSet<string> BlockTasks = ["place", "break", "ignite"];
     static readonly HashSet<string> RewardTypes = ["item", "choice", "stage"];
 
     public List<string> Problems { get; } = [];

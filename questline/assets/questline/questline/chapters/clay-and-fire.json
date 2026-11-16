@@ -10,7 +10,6 @@
                 0,
                 0.0
             ],
-            "requires": "make-fire",
             "tasks": [
                 {
                     "type": "obtain",
@@ -140,7 +139,8 @@
             ],
             "requires": [
                 "form-bowl",
-                "form-pot"
+                "form-pot",
+                "make-firestarter"
             ],
             "tasks": [
                 {

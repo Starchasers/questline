@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Reflection;
 using questline;
+using questline.Model;
 using questline.Server;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -33,7 +34,7 @@ namespace Questline.Tests
         static MethodInfo Method(System.Type type, string name) => type.GetMethod(name, Any);
 
         /// <summary>The methods StationPatches patches: three more of Toolsmith's when it's installed.</summary>
-        public static int StationPatchCount(ICoreAPI api) => 10 + (api.ModLoader.IsModEnabled("toolsmith") ? 3 : 0);
+        public static int StationPatchCount(ICoreAPI api) => 10 + (api.ModLoader.IsModEnabled("toolsmith") ? 3 : 0) + StationPatches.IgniteTargets().Count();
 
         static int Progress(string type) => Engine.ProgressOf(Me.PlayerUID).Find("qltest:station-" + type)?.Tasks[0] ?? 0;
 
@@ -168,6 +169,33 @@ namespace Questline.Tests
             var op2 = new ItemStackMoveOperation(Sapi.World, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge, 2) { ActingPlayer = Me };
             firepit.Inventory[0].TryPutInto(fuel, ref op2);
             Assert.Equal(3, Progress("cook"));
+        }
+
+        /// <summary>
+        /// A block lit counts as ignited under the code it had before it caught, whatever lit it:
+        /// the patch is on the block, so another mod's lighter counts as a firestarter does.
+        /// </summary>
+        [VsTest]
+        public void LightingAFirepitCountsAsIgniting()
+        {
+            var targets = StationPatches.IgniteTargets().Select(m => m.DeclaringType.Name).ToList();
+            foreach (string type in new[] { "BlockFirepit", "BlockForge", "BlockPitkiln", "BlockTorch" })
+            {
+                Assert.True(targets.Contains(type), type + " can be lit");
+            }
+
+            var pos = P(17, 1, 3);
+            World.SetBlock("game:firepit-cold", pos);
+            var block = Sapi.World.BlockAccessor.GetBlock(pos);
+            var ignitable = block.GetInterface<IIgnitable>(Sapi.World, pos);
+            var handling = EnumHandling.PassThrough;
+            ignitable.OnTryIgniteBlockOver(Me.Entity, pos, 5, ref handling);
+            Assert.Equal(1, Progress("ignite"));
+            Assert.True(Engine.ProgressOf(Me.PlayerUID).History.ContainsKey(PlayerProgress.HistoryKey("ignite", "game:firepit-cold")), "kept under the code it had");
+
+            // A fire spreading on its own has no one to credit.
+            ignitable.OnTryIgniteBlockOver(null, pos, 5, ref handling);
+            Assert.Equal(1, Progress("ignite"));
         }
 
         [VsTest]

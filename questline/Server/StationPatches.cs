@@ -233,6 +233,36 @@ public static class StationPatches
     }
 
     /// <summary>
+    /// The method each block that can be lit implements, the game's and every mod's: firepits,
+    /// forges, kilns, torches. Whatever lit it (a firestarter, a torch, another mod's own lighter),
+    /// it ends in this call once the block catches.
+    /// </summary>
+    public static IEnumerable<MethodBase> IgniteTargets() => AccessTools.AllTypes()
+        .Where(t => t.IsClass && !t.IsAbstract && typeof(IIgnitable).IsAssignableFrom(t))
+        .Select(t => t.GetInterfaceMap(typeof(IIgnitable)))
+        .SelectMany(map => map.TargetMethods.Where((m, i) => map.InterfaceMethods[i].Name == nameof(IIgnitable.OnTryIgniteBlockOver)))
+        .Where(m => m.DeclaringType != null && !m.IsAbstract && m.GetMethodBody() != null)
+        .Distinct();
+
+    /// <summary>A player lit a block: an ignite task's credit, under the block's code before it caught.</summary>
+    [HarmonyPatch]
+    static class Ignite
+    {
+        static IEnumerable<MethodBase> TargetMethods() => IgniteTargets();
+
+        // By position: mods name the parameters as they like.
+        static void Prefix(object[] __args, out AssetLocation __state) =>
+            __state = __args[0] is EntityPlayer { World.Side: EnumAppSide.Server } entity && __args[1] is BlockPos pos
+                ? entity.World.BlockAccessor.GetBlock(pos)?.Code
+                : null;
+
+        static void Postfix(object[] __args, AssetLocation __state)
+        {
+            if (__state != null && __args[0] is EntityPlayer { Player: IServerPlayer player }) engine?.Report(player, "ignite", __state, 1);
+        }
+    }
+
+    /// <summary>
     /// A Toolsmith tool assembled in the hands, from a bundle of head and handle and a binding in
     /// the other hand. Toolsmith works outside the crafting grid, but its tool is the vanilla item,
     /// so it counts toward the same craft tasks. Only a finished tool replaces the bundle in its slot.

@@ -159,7 +159,7 @@ public class PageBlock
 
 public class TaskDef
 {
-    /// <summary>obtain, kill, mount, place, break, craft, knap, clayform, smith, cook, smelt, trade, visit, custom or checkbox.</summary>
+    /// <summary>obtain, kill, mount, place, break, ignite, craft, knap, clayform, smith, cook, smelt, trade, visit, custom or checkbox.</summary>
     public string Type;
     public string Item;
     public string Block;

@@ -85,6 +85,20 @@
                     "count": 100000
                 }
             ]
+        },
+        {
+            "id": "station-ignite",
+            "pos": [
+                12,
+                0
+            ],
+            "tasks": [
+                {
+                    "type": "ignite",
+                    "block": "game:*",
+                    "count": 100000
+                }
+            ]
         }
     ]
 }

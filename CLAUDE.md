@@ -95,6 +95,9 @@ game install on the box (`~/.cairn/games/1.22.6/questline-*.png`).
   out around strict locking, so suites about what unlocks what (`EngineTests`, `BookTests`) call
   `Fixture.StrictLocking` before each test and `Fixture.DefaultLocking` after. A new suite that
   reads `Locked` states needs the same, or it passes or fails with whatever ran before it.
+- **Ignite is patched on every block that can be lit,** the game's and every loaded mod's
+  (`StationPatches.IgniteTargets`), under the code the block had before it caught. Whatever lights it
+  ends in `OnTryIgniteBlockOver`, so another mod's lighter counts. `StationPatchCount` grows with them.
 - **Look item codes up, don't guess them.** Variant codes differ from the file names: keep a
   headless session (`run.sh ... --keep`) and ask `bash scripts/vstk eval` what exists.
 - **The graph stands an ingot in for the metal.** Casting takes anything that melts into it;

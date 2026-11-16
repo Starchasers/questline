@@ -25,7 +25,7 @@ public partial class GuiDialogQuestBook
     const int QuestPage = 0, TasksPage = 1, RewardsPage = 2, OptionsPage = 3;
     const double FieldHeight = 28, LabelHeight = 18, RowGap = 6;
 
-    static readonly string[] TaskTypes = ["obtain", "kill", "mount", "place", "break", "craft", "knap", "clayform", "smith", "cook", "smelt", "trade", "visit", "custom", "checkbox"];
+    static readonly string[] TaskTypes = ["obtain", "kill", "mount", "place", "break", "ignite", "craft", "knap", "clayform", "smith", "cook", "smelt", "trade", "visit", "custom", "checkbox"];
     static readonly string[] RewardTypes = ["item", "stage"];
     static readonly string[] SizeValues = ["1", "1.25", "1.5", "2"];
 
@@ -481,7 +481,7 @@ public partial class GuiDialogQuestBook
         {
             case "checkbox": break;
             case "kill" or "mount": task.Entity = target; break;
-            case "place" or "break": task.Block = target; break;
+            case "place" or "break" or "ignite": task.Block = target; break;
             case "visit": task.Structure = target; break;
             case "custom": task.Key = target; break;
             default: task.Item = target; break;
