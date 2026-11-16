@@ -131,58 +131,62 @@ namespace Questline.Tests
             // first: no await between filling the slots and catching up.
             var done = CatchUpCarrying(("qltest:gizmo-part", 1), ("game:flint", 3));
 
-            // A crafted part proves its quest was done, and the gizmo quest it needs before it.
+            // A crafted part proves its quest was done, and nothing about the gizmo quest before it.
             Assert.True(done.Contains("qltest:check-late-part"), "the quest the part proves");
-            Assert.True(done.Contains("qltest:check-early-gizmo"), "the quest it needs");
+            Assert.False(done.Contains("qltest:check-early-gizmo"), "the quest before it, which nothing carried proves");
             Assert.False(done.Contains("qltest:check-gizmo-after"), "a gizmo quest nothing carried proves");
 
-            // Rewards for earlier work are spent: done, not claimable, and nothing given.
-            Assert.Equal(QuestState.Done, StateOf(GatherFlint));
-            Assert.Equal(0, CountCarried("game:stick"));
+            // The rewards wait in the book.
+            Assert.Equal(QuestState.Claimable, StateOf(GatherFlint));
+            Assert.Equal(0, CountCarried("game:stick"), "nothing given before the claim");
 
             // Not proven: a count the inventory doesn't reach, a break task, a checkbox.
             Assert.False(done.Contains("qltest:station-craft"), "a count the inventory doesn't reach");
             Assert.Equal(QuestState.Available, StateOf(DigSoil));
             Assert.Equal(QuestState.Available, StateOf(ReadTheBook));
 
-            await Until(() => Client.StateOf("qltest:check-late-part") == QuestState.Done, 60, "the client to hear about it");
+            await Until(() => Client.StateOf(GatherFlint) == QuestState.Claimable, 60, "the client to hear about it");
         }
 
         [VsTest]
-        public void CatchingUpTakesOnlyTheProvenSideOfAChoice()
+        public void CatchingUpTakesNeitherSideOfAChoiceOnTrust()
         {
-            // cu-wax needs either quest; the honeycomb proves the second, so the first stays undone
-            // (and its reward unspent), though Unlock would pick it.
+            // cu-wax needs either quest; the honeycomb proves the second, and the first stays undone.
             var done = CatchUpCarrying(("game:beeswax", 1), ("game:honeycomb", 1));
             Assert.True(done.Contains("qltest:cu-wax"), "the proven quest");
             Assert.True(done.Contains("qltest:cu-harvest"), "the proven option");
-            Assert.Equal(QuestState.Available, StateOf("qltest:cu-raid"), "the option nothing proves");
+            Assert.False(Engine.IsComplete(Me.PlayerUID, "qltest:cu-raid"), "the option nothing proves");
 
-            // With neither option proven there's nothing to go on, and the quest is left locked.
+            // The wax alone proves its own quest, and neither option.
             Engine.Reset(Me);
             done = CatchUpCarrying(("game:beeswax", 1));
-            Assert.Equal(0, done.Count);
-            Assert.Equal(QuestState.Locked, StateOf("qltest:cu-wax"));
+            Assert.True(done.Contains("qltest:cu-wax"), "the wax quest, proven by the wax");
+            Assert.False(Engine.IsComplete(Me.PlayerUID, "qltest:cu-raid") || Engine.IsComplete(Me.PlayerUID, "qltest:cu-harvest"), "an option taken on trust");
         }
 
         [VsTest]
-        public void CatchingUpGrantsTheStagesItsQuestsGive()
+        public void CatchingUpLeavesStagesToTheClaim()
         {
             // cu-gated comes first in the chapter, before the quest whose stage opens it.
             var done = CatchUpCarrying(("game:feather", 1), ("game:resin", 1));
             Assert.True(done.Contains("qltest:cu-staged"), "the quest giving the stage");
-            Assert.True(Engine.HasStage(Me.PlayerUID, "qltest:cu-stage"), "its stage, though its reward is spent");
-            Assert.True(done.Contains("qltest:cu-gated"), "the quest the stage opens");
+            Assert.False(Engine.HasStage(Me.PlayerUID, "qltest:cu-stage"), "its stage, before its claim");
+            Assert.False(done.Contains("qltest:cu-gated"), "the quest the stage opens, still shut");
+
+            Assert.Equal(null, Engine.Claim(Me, "qltest:cu-staged", null));
+            Assert.True(Engine.HasStage(Me.PlayerUID, "qltest:cu-stage"), "its stage, claimed");
+            Assert.True(CatchUpCarrying(("game:feather", 1)).Contains("qltest:cu-gated"), "the quest the stage opened");
         }
 
         [VsTest]
         public void CatchingUpLeavesWhatItCantMeet()
         {
-            // The bone proves both quests, but one needs a server quest and the other a discovery.
+            // The bone proves both quests. One comes after a server quest, which isn't one player's
+            // to complete, and is done all the same; the other waits for a discovery.
             var done = CatchUpCarrying(("game:bone", 1));
-            Assert.Equal(0, done.Count);
-            Assert.False(Engine.IsComplete(Me.PlayerUID, "qltest:cu-server"), "a server quest isn't one player's to complete");
-            Assert.Equal(QuestState.Locked, StateOf("qltest:cu-after-server"));
+            Assert.True(done.Contains("qltest:cu-after-server"), "proven, whatever came before it");
+            Assert.False(Engine.IsComplete(Me.PlayerUID, "qltest:cu-server"), "the server quest");
+            Assert.False(done.Contains("qltest:cu-undiscovered"), "a quest waiting for a discovery");
             Assert.Equal(QuestState.Locked, StateOf("qltest:cu-undiscovered"));
         }
 

@@ -205,7 +205,7 @@ public class QuestlineModSystem : ModSystem
                 .HandleWith(args => ForQuest(args, Engine.Unlock, "Unlocked {0} for {1}"))
             .EndSubCommand()
             .BeginSubCommand("catchup")
-                .WithDescription("Complete the quests a player's carried items show they've done (for worlds older than Questline)")
+                .WithDescription("Complete the quests a player's carried items show they've done, rewards left to claim (for worlds older than Questline)")
                 .WithArgs(parsers.OptionalPlayerUids("player"))
                 .HandleWith(args =>
                 {
@@ -214,7 +214,7 @@ public class QuestlineModSystem : ModSystem
                     int count = Engine.CatchUp(player).Count;
                     return TextCommandResult.Success(count == 0
                         ? $"Nothing {name} carries completes a quest: only tools and goods in the hotbar or backpack count"
-                        : $"Caught {name} up: {count} quests completed");
+                        : $"Caught {name} up: {count} quests completed, their rewards waiting in the book");
                 })
             .EndSubCommand()
             .BeginSubCommand("reset")

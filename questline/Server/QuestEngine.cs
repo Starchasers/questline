@@ -369,8 +369,10 @@ public partial class QuestEngine
         _ => [playerUid],
     };
 
-    public bool IsUnlocked(QuestDef quest, string playerUid) =>
-        quest.Requires == null || quest.Requires.Evaluate(new PlayerContext(this, playerUid));
+    public bool IsUnlocked(QuestDef quest, string playerUid) => IsUnlocked(quest, playerUid, questsOpen: false);
+
+    bool IsUnlocked(QuestDef quest, string playerUid, bool questsOpen) =>
+        quest.Requires == null || quest.Requires.Evaluate(new PlayerContext(this, playerUid) { QuestsOpen = questsOpen });
 
     public QuestState StateOf(string playerUid, string questId)
     {
@@ -784,104 +786,62 @@ public partial class QuestEngine
     public void Unlock(string playerUid, string questId)
     {
         var quest = Registry.Get(questId) ?? throw new ArgumentException($"No quest {questId}");
-        if (quest.Requires != null) Satisfy(playerUid, quest.Requires, new Satisfying());
+        if (quest.Requires != null) Satisfy(playerUid, quest.Requires, []);
         Touch(quest, playerUid);
         FlushSync();
     }
 
     /// <summary>
     /// Catches a player up from what they carry, for a world played before Questline was added:
-    /// every quest whose tasks are all things they now hold, as many as each asks, is completed
-    /// along with everything it needs, without guessing (see <see cref="Satisfying.Proven"/>).
-    /// Rewards for what was done before are spent, so the quests it completes are marked claimed,
-    /// for every member of a party; their stages are granted as they complete, since later quests
-    /// need them. Returns the quests it completed.
+    /// completes every quest whose tasks are all things they now hold, as many as each asks, and
+    /// only those. Nothing is assumed about the quests before them, and a mod, stage or discovery
+    /// the quest waits for must still be there; a server quest isn't one player's to complete.
+    /// The rewards are left to claim. Returns the quests it completed.
     /// </summary>
     public List<string> CatchUp(IServerPlayer player)
     {
         string uid = player.PlayerUID;
-        var before = Registry.Quests.Keys.Where(id => IsComplete(uid, id)).ToHashSet();
         var proven = Registry.Quests.Values
-            .Where(q => q.Mode != QuestMode.Server && q.Tasks.Count > 0
+            .Where(q => q.Mode != QuestMode.Server && q.Tasks.Count > 0 && !IsComplete(uid, q.Id)
+                && IsUnlocked(q, uid, questsOpen: true)
                 && q.Tasks.All(t => ProofTypes.Contains(t.Type) && CountCarried(player, Pattern(t)) >= t.Count))
-            .Select(q => q.Id).ToHashSet();
-
-        // A stage one quest gives can unlock a quest the pass has already left locked, so pass
-        // again until a pass completes nothing.
-        int complete = before.Count, last;
-        do
+            .ToList();
+        foreach (var quest in proven)
         {
-            last = complete;
-            var pass = new Satisfying { Proven = proven };
-            foreach (string id in proven) Satisfy(uid, new QuestRequirement(id), pass);
-            complete = Registry.Quests.Keys.Count(id => IsComplete(uid, id));
-        } while (complete > last);
-
-        var done = Registry.Quests.Values.Where(q => !before.Contains(q.Id) && IsComplete(uid, q.Id)).ToList();
-        foreach (var quest in done)
-        {
-            foreach (string sharer in Sharers(quest, uid))
-            {
-                ClaimHolder(quest, sharer).GetOrCreate(quest).Claimed = true;
-                // Forget what they were sent, so the next sync is a full one: the book toasts only
-                // on a partial sync, and this would be a toast for every quest.
-                sent.Remove(sharer);
-            }
-            Touch(quest, uid);
+            CompleteTasks(uid, quest);
+            // Forget what they were sent, so the next sync is a full one: the book toasts only on
+            // a partial sync, and this would be a toast for every quest.
+            foreach (string sharer in Sharers(quest, uid)) sent.Remove(sharer);
         }
         FlushSync();
-        return done.Select(q => q.Id).ToList();
+        return proven.Select(q => q.Id).ToList();
     }
 
-    /// <summary>One pass of <see cref="Satisfy"/> over requirement trees.</summary>
-    sealed class Satisfying
-    {
-        public readonly HashSet<string> Seen = [];
-
-        /// <summary>
-        /// When catching up, the quests what the player carries proves. Satisfy then guesses
-        /// nothing: at a choice it takes only these, it grants no stage but those the quests it
-        /// completes give, it leaves alone a quest still locked once its requirements are met
-        /// as far as they can be (a discovery, a missing mod), and a server quest isn't one
-        /// player's to complete.
-        /// </summary>
-        public HashSet<string> Proven;
-
-        public bool CatchingUp => Proven != null;
-
-        /// <summary>The options of a choice to try, in order.</summary>
-        public IEnumerable<Requirement> Choices(List<Requirement> of) =>
-            CatchingUp ? of.Where(o => o is QuestRequirement q && Proven.Contains(q.QuestId)) : of;
-    }
-
-    void Satisfy(string playerUid, Requirement r, Satisfying pass)
+    /// <summary>Meets one requirement for <see cref="Unlock"/>; <paramref name="seen"/> keeps each quest to one visit.</summary>
+    void Satisfy(string playerUid, Requirement r, HashSet<string> seen)
     {
         var ctx = new PlayerContext(this, playerUid);
         if (r.Evaluate(ctx)) return;
 
         switch (r)
         {
-            case QuestRequirement q when Registry.Get(q.QuestId) is { } pre && pass.Seen.Add(pre.Id):
-                if (pass.CatchingUp && pre.Mode == QuestMode.Server) break;
-                if (pre.Requires != null) Satisfy(playerUid, pre.Requires, pass);
-                if (pass.CatchingUp && !IsUnlocked(pre, playerUid)) break;
+            case QuestRequirement q when Registry.Get(q.QuestId) is { } pre && seen.Add(pre.Id):
+                if (pre.Requires != null) Satisfy(playerUid, pre.Requires, seen);
                 CompleteTasks(playerUid, pre);
-                if (!pass.CatchingUp) break;
-                foreach (var reward in pre.Rewards.Where(w => w.Type == "stage")) SetStage(StageHolder(pre, playerUid), reward.Stage, Sharers(pre, playerUid));
                 break;
-            case StageRequirement s when !pass.CatchingUp:
+            case StageRequirement s:
                 SetStage(ProgressOf(playerUid), s.Stage, [playerUid]);
                 break;
             case ChapterCompleteRequirement c when Registry.ChaptersById.TryGetValue(c.ChapterId, out var chapter):
-                foreach (var each in chapter.Quests) Satisfy(playerUid, new QuestRequirement(each.Id), pass);
+                foreach (var each in chapter.Quests) Satisfy(playerUid, new QuestRequirement(each.Id), seen);
                 break;
             case AllRequirement all:
-                foreach (var each in all.Of) Satisfy(playerUid, each, pass);
+                foreach (var each in all.Of) Satisfy(playerUid, each, seen);
                 break;
             case CompositeRequirement choice: // any or at least; all is above
-                foreach (var each in pass.Choices(choice.Of))
+                foreach (var each in choice.Of)
                 {
-                    Satisfy(playerUid, each, pass);
+                    Satisfy(playerUid, each, seen);
                     if (r.Evaluate(ctx)) break;
                 }
                 break;
@@ -1093,10 +1053,13 @@ public partial class QuestEngine
 
     class PlayerContext(QuestEngine engine, string playerUid) : IRequirementContext
     {
-        public bool IsQuestComplete(string questId) => engine.IsComplete(playerUid, questId);
+        /// <summary>Prerequisite quests and chapters count as met: catching up asks only what else locks a quest.</summary>
+        public bool QuestsOpen { get; init; }
+
+        public bool IsQuestComplete(string questId) => QuestsOpen || engine.IsComplete(playerUid, questId);
         public bool IsModLoaded(string modId) => engine.api.ModLoader.IsModEnabled(modId);
         public bool HasStage(string stage) => engine.HasStage(playerUid, stage);
-        public bool IsChapterComplete(string chapterId) =>
+        public bool IsChapterComplete(string chapterId) => QuestsOpen ||
             engine.Registry.ChaptersById.TryGetValue(chapterId, out var chapter) && chapter.Quests.All(q => engine.IsComplete(playerUid, q.Id));
         public bool HasDiscovered(string pattern) => engine.HasDiscovered(playerUid, pattern);
     }

@@ -61,7 +61,7 @@ namespace Questline.Tests
         }
 
         [VsTest]
-        public void CatchingUpSpendsEveryMembersClaim()
+        public void CatchingUpLeavesEveryMembersClaim()
         {
             PartyWithGhost();
             var slot = Me.InventoryManager.ActiveHotbarSlot;
@@ -70,8 +70,8 @@ namespace Questline.Tests
             try
             {
                 Assert.True(Engine.CatchUp(Me).Contains("qltest:cu-party"), "the charcoal proves the party quest");
-                Assert.Equal(QuestState.Done, Engine.StateOf(MyUid, "qltest:cu-party"));
-                Assert.Equal(QuestState.Done, Engine.StateOf(Ghost, "qltest:cu-party"), "the ghost's claim is spent too");
+                Assert.Equal(QuestState.Claimable, Engine.StateOf(MyUid, "qltest:cu-party"));
+                Assert.Equal(QuestState.Claimable, Engine.StateOf(Ghost, "qltest:cu-party"), "the ghost's claim waits too");
             }
             finally
             {

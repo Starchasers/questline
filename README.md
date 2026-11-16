@@ -27,9 +27,9 @@ Every phase of the roadmap, minus the VS Quest importer:
 - Player history: a quest that unlocks is credited with work done before it unlocked, since
   Questline was installed (`CreditEarlierWork` in `ModConfig/questline.json`). The game keeps no
   record of its own, so for a world played before then, `/questline catchup [player]` completes
-  every quest whose items the player carries in the hotbar and backpack, with everything it needs.
-  Where a quest needs one of several, it takes only one the items prove; it never completes a
-  server quest. Those quests count as claimed, for the whole party: earlier work doesn't pay out
+  every quest whose items the player carries in the hotbar and backpack, and only those: nothing
+  is assumed about the quests before them, and a quest still waiting for a mod, stage or discovery
+  is left alone, as is a server quest. Their rewards wait in the book to be claimed
 - `QuestlineApi` for other mods (custom tasks, stages, completion events), also over the
   event bus for mods that don't reference Questline
 - The book (L): a chapter rail, a pannable and zoomable tree, and quest pages with text,
