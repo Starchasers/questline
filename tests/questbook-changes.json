@@ -1,0 +1,24 @@
+{
+    "new": [
+        "build-firepit",
+        "dry-fresh-grass",
+        "fell-tree",
+        "knap-whetstone",
+        "mow-green-grass",
+        "pack-dirt",
+        "place-chopping-block",
+        "roast-on-stick"
+    ],
+    "rewritten": [
+        "build-cellar",
+        "build-shelter",
+        "chop-wood",
+        "cut-grass",
+        "fire-pottery",
+        "forage",
+        "make-axe",
+        "make-fire",
+        "make-knife",
+        "make-torch"
+    ]
+}
