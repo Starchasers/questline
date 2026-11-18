@@ -1,0 +1,564 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/6",
+    "value": {
+      "id": "make-firestarter",
+      "pos": [
+        8,
+        1.5
+      ],
+      "requires": "cut-grass",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:firestarter"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:drygrass",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-make-firestarter"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/10",
+    "value": {
+      "id": "knap-shovel",
+      "pos": [
+        4,
+        7.5
+      ],
+      "requires": [
+        "gather-flint",
+        "gather-sticks"
+      ],
+      "tasks": [
+        {
+          "type": "knap",
+          "item": "game:shovelhead-*"
+        },
+        {
+          "type": "obtain",
+          "item": "game:shovel-*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:cattailtops",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-knap-shovel"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/13",
+    "value": {
+      "id": "cut-grass",
+      "pos": [
+        6,
+        1.5
+      ],
+      "requires": {
+        "all": [
+          "make-knife",
+          "questlineartofgrowing:dry-grass"
+        ]
+      },
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:drygrass",
+          "count": 10
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:stick",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-cut-grass"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/14",
+    "value": {
+      "id": "gather-reeds",
+      "pos": [
+        6,
+        3.0
+      ],
+      "requires": "make-knife",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:cattailtops",
+          "count": 10
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:drygrass",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-gather-reeds"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/15",
+    "value": {
+      "id": "first-hunt",
+      "pos": [
+        6,
+        4.5
+      ],
+      "requires": "make-spear",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "game:chicken-*"
+        }
+      ],
+      "icon": "game:spear-generic-flint",
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:drygrass",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-first-hunt"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/16",
+    "value": {
+      "id": "ground-storage",
+      "pos": [
+        8,
+        -1.5
+      ],
+      "requires": "chop-wood",
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "icon": "game:firewood",
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-ground-storage"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/17",
+    "value": {
+      "id": "make-fire",
+      "pos": [
+        10,
+        0.0
+      ],
+      "requires": [
+        "chop-wood",
+        "make-firestarter"
+      ],
+      "tasks": [
+        {
+          "type": "ignite",
+          "block": "*:firepit-*"
+        }
+      ],
+      "icon": "game:firepit-lit",
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:firewood",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-make-fire"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/18",
+    "value": {
+      "id": "make-basket",
+      "pos": [
+        8,
+        4.5
+      ],
+      "requires": "gather-reeds",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:basket-normal-*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-make-basket"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/19",
+    "value": {
+      "id": "hay-bed",
+      "pos": [
+        8,
+        6.0
+      ],
+      "requires": {
+        "all": [
+          "cut-grass",
+          "questlineartofgrowing:convert-hay-straw-blocks"
+        ]
+      },
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "*:@^bed-(hay|thatch)-.*$"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:firewood",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-hay-bed"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/20",
+    "value": {
+      "id": "make-torch",
+      "pos": [
+        12,
+        0.0
+      ],
+      "requires": "make-fire",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:torch-basic-*",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:firewood",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-make-torch"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/21",
+    "value": {
+      "id": "cook-roots",
+      "pos": [
+        12,
+        3.0
+      ],
+      "requires": [
+        "gather-reeds",
+        "make-fire"
+      ],
+      "tasks": [
+        {
+          "type": "cook",
+          "item": "game:vegetable-cookedcattailroot"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-cook-roots"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/22",
+    "value": {
+      "id": "build-shelter",
+      "pos": [
+        10,
+        7.5
+      ],
+      "requires": [
+        "hay-bed",
+        "knap-shovel"
+      ],
+      "shape": "gear",
+      "size": 1.25,
+      "tasks": [
+        {
+          "type": "place",
+          "block": "game:cob-*",
+          "count": 20
+        }
+      ],
+      "rewards": [
+        {
+          "type": "choice",
+          "options": [
+            {
+              "type": "item",
+              "item": "game:firewood",
+              "count": 16
+            },
+            {
+              "type": "item",
+              "item": "game:redmeat-raw",
+              "count": 6
+            },
+            {
+              "type": "item",
+              "item": "game:gear-rusty",
+              "count": 3
+            }
+          ]
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-build-shelter"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/stone-age.json",
+    "path": "/quests/23",
+    "value": {
+      "id": "make-rope",
+      "pos": [
+        8,
+        0.0
+      ],
+      "requires": "make-knife",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:rope"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:cattailtops",
+          "count": 6
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-stone-age-make-rope"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

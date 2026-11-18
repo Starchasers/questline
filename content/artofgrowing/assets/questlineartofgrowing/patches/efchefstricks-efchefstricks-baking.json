@@ -1,0 +1,43 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/efchefstricks-baking.json",
+    "path": "/quests/0",
+    "value": {
+      "id": "make-crumb-feed",
+      "pos": [
+        8,
+        1.5
+      ],
+      "requires": "make-breadcrumbs",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "efchefstricks:breadcrumbfeed",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-efchefstricks-efchefstricks-baking-make-crumb-feed"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlineefchefstricks"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

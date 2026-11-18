@@ -1,0 +1,43 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/bricklayers-clay-and-fire.json",
+    "path": "/quests/0",
+    "value": {
+      "id": "make-mudbricks",
+      "pos": [
+        10,
+        -4.5
+      ],
+      "requires": "make-bricks",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "bricklayers:mudbrick-*",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:drygrass",
+          "count": 8
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-bricklayers-bricklayers-clay-and-fire-make-mudbricks"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinebricklayers"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

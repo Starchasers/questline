@@ -1,0 +1,45 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/expandedfoods-stone-age.json",
+    "path": "/quests/0",
+    "value": {
+      "id": "cook-roots",
+      "pos": [
+        12,
+        3.0
+      ],
+      "requires": [
+        "gather-reeds",
+        "make-fire"
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-expandedfoods-expandedfoods-stone-age-cook-roots"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "cook",
+          "item": "expandedfoods:cookedveggie-cattailroot-charred"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlineexpandedfoods"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

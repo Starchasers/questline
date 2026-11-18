@@ -1,0 +1,17 @@
+{
+  "type": "content",
+  "modid": "questlineartofgrowing",
+  "name": "Questline: Art of Growing",
+  "authors": [
+    "dizzyd"
+  ],
+  "description": "Art of Growing 1.2.2 grass, grain, flax, feed and material journeys. Independently patches owning vanilla and optional content records without competing quest extensions.",
+  "version": "0.14.0",
+  "dependencies": {
+    "game": "1.22.0",
+    "questline": "0.15.0",
+    "questlinevanilla": "0.14.0",
+    "artofgrowingpatch": "1.2.2",
+    "coreofartspatch": "1.2.2"
+  }
+}

@@ -28,11 +28,21 @@ Install optional integrations only for gameplay mods you use:
 | seafarer | questlineseafarer | 3 | 35 |
 | tailorsdelight | questlinetailorsdelight | 5 | 21 |
 | wool | questlinewool | 3 | 8 |
+| artofgrowing | questlineartofgrowing | 4 own-domain process extensions | 65 indexed D+C overrides + 15 additive stages |
 
-Declare `game >= 1.22.0` and `questline >= 0.15.0` in every package. Optional
-packages also depend on `questlinevanilla >= 0.14.0` and their same-named
-gameplay mod. Gameplay-mod minimum versions are `0.0.0`: the mod must be present,
-but this does not assert a specific tested release.
+Declare `game >= 1.22.0` and `questline >= 0.15.0`.
+Optional packages also depend on `questlinevanilla >= 0.14.0`. The eleven
+original optional packages use same-named gameplay providers with minimum `0.0.0` (presence
+required, no tested release asserted). The thirteenth content package,
+**Art of Growing**, instead uses **`artofgrowingpatch >= 1.2.2`** and
+`coreofartspatch >= 1.2.2`; `artofgrowing` is a provider asset domain, not its mod ID.
+Its own asset domain is `questlineartofgrowing`, including chapters, patches and
+English strings. See the [integration and graph contract](artofgrowing.md).
+
+**The supplied `srMi9` upload returns 404.** The inspected AoG/Core 1.2.2 cache
+cannot be asserted to equal the current pack. Full archive hashes, all 532 audit
+rows, 65 D+C recommendations and locally unaffected justifications are linked
+from that integration document. Native gameplay remains untested.
 
 Chef's Tricks and Meals Module also require `expandedfoods` and
 `questlineexpandedfoods >= 0.14.0`. Their original quests reference Expanded
@@ -62,7 +72,7 @@ records, fields, dependencies, rewards, page links, or strings.
 
 Keep the original translations unchanged in core at
 `questline/assets/questline/lang/`, including integration-specific text and
-links. Content packages do not own self-contained localization: framework-only
+links. The original twelve content packages do not own self-contained localization: framework-only
 installs still load text for uninstalled packages, and content-text updates may
 need a coordinated core update. This deliberate initial limit avoids concurrent
 edits and preserves every original translation.
@@ -76,9 +86,13 @@ into every pack.
 Run from the repository root:
 
 ```sh
-python -m unittest discover -s tests -p test_content_extraction.py -v
+python3 tests/test_content_extraction.py -v
+python3 verification/artofgrowing/check.py
 ```
 
+The canonical extraction suite isolates the twelve original catalog entries and
+shared translation namespace while allowing new addon-owned assets. The AoG
+checker validates the thirteenth package separately.
 Keep the upstream commit available locally; fetch it in shallow checkouts.
 The tests read actual `git show <upstream>:<path>` blobs, not a regenerated
 snapshot. They check one-to-one relocation, exact bytes, original paths,

@@ -1,0 +1,75 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/wider-world.json",
+    "path": "/quests/7",
+    "value": {
+      "id": "relight-fire",
+      "pos": [
+        0,
+        6.0
+      ],
+      "requires": "make-torch",
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "icon": "game:firestarter",
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-wider-world-relight-fire"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/wider-world.json",
+    "path": "/quests/8",
+    "value": {
+      "id": "make-poultice",
+      "pos": [
+        0,
+        7.5
+      ],
+      "requires": "forage",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:poultice-*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-wider-world-make-poultice"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

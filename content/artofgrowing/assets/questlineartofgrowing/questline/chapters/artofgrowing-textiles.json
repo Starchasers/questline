@@ -1,0 +1,255 @@
+{
+  "id": "questlineartofgrowing:textiles-processes",
+  "extends": "questline:textiles",
+  "requiresMod": [
+    "questlinevanilla",
+    "artofgrowingpatch",
+    "coreofartspatch"
+  ],
+  "quests": [
+    {
+      "id": "questlineartofgrowing:harvest-flax-bundles",
+      "pos": [
+        -14,
+        0
+      ],
+      "requires": "questline:harvest-grain",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "artofgrowing:grainbundle-flax-wet",
+          "count": 16
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-harvest-flax-bundles"
+        },
+        {
+          "type": "items",
+          "items": [
+            "artofgrowing:grainbundle-flax-wet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questlineartofgrowing:dry-flax-bundles",
+      "pos": [
+        -12,
+        0
+      ],
+      "requires": "questlineartofgrowing:harvest-flax-bundles",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "artofgrowing:grainbundle-flax-dry",
+          "count": 16
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-dry-flax-bundles"
+        },
+        {
+          "type": "items",
+          "items": [
+            "artofgrowing:grainbundle-flax-dry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questlineartofgrowing:thresh-flax-stalks",
+      "pos": [
+        -10,
+        0
+      ],
+      "requires": "questlineartofgrowing:dry-flax-bundles",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "artofgrowing:flaxbundle-dry",
+          "count": 16
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-thresh-flax-stalks"
+        },
+        {
+          "type": "items",
+          "items": [
+            "artofgrowing:flaxbundle-dry",
+            "game:seeds-flax"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questlineartofgrowing:ret-flax-stalks",
+      "pos": [
+        -8,
+        0
+      ],
+      "requires": "questlineartofgrowing:thresh-flax-stalks",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "artofgrowing:flaxbundle-wet",
+          "count": 16
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-ret-flax-stalks"
+        },
+        {
+          "type": "items",
+          "items": [
+            "artofgrowing:flaxbundle-wet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questlineartofgrowing:wash-flax-stalks",
+      "pos": [
+        -6,
+        0
+      ],
+      "requires": "questlineartofgrowing:ret-flax-stalks",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "artofgrowing:flaxbundle-clear",
+          "count": 16
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-wash-flax-stalks"
+        },
+        {
+          "type": "items",
+          "items": [
+            "artofgrowing:flaxbundle-clear"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questlineartofgrowing:soften-flax-stalks",
+      "pos": [
+        -4,
+        0
+      ],
+      "requires": "questlineartofgrowing:wash-flax-stalks",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "artofgrowing:flaxbundle-soft",
+          "count": 16
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-soften-flax-stalks"
+        },
+        {
+          "type": "items",
+          "items": [
+            "artofgrowing:flaxbundle-soft"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questlineartofgrowing:make-flax-ridge",
+      "pos": [
+        -2,
+        2
+      ],
+      "requires": {
+        "all": [
+          "questlineartofgrowing:thresh-flax-stalks",
+          "questline:make-rope"
+        ]
+      },
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "artofgrowing:ridge-*",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-make-flax-ridge"
+        },
+        {
+          "type": "items",
+          "items": [
+            "artofgrowing:ridge-rough"
+          ]
+        }
+      ]
+    }
+  ]
+}

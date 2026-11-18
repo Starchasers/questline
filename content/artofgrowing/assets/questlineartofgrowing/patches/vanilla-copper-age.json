@@ -1,0 +1,83 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/copper-age.json",
+    "path": "/quests/1",
+    "value": {
+      "id": "make-charcoal",
+      "pos": [
+        0,
+        0.0
+      ],
+      "requires": "chop-wood",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:charcoal",
+          "count": 16
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:firewood",
+          "count": 8
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-copper-age-make-charcoal"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/copper-age.json",
+    "path": "/quests/18",
+    "value": {
+      "id": "make-scythe",
+      "pos": [
+        12,
+        4.5
+      ],
+      "requires": "first-smithing",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:scythe-*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:seeds-spelt",
+          "count": 6
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-copper-age-make-scythe"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

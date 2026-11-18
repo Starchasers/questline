@@ -5,12 +5,20 @@ A modular quest framework for Vintage Story, derived from dizzyd/questline v0.14
 ## Fork layout and verification
 
 - **Framework:** `questline/`, version 0.15.0. Ships no quest chapters.
-- **Questbooks:** `content/vanilla/` plus eleven optional mod content packages. Install vanilla for the original shared book; add only the integrations you use.
+- **Questbooks:** 13 independent content packages: `content/vanilla/`, eleven original optional integrations, and `content/artofgrowing/`. Install only the integrations you use.
 - **Executable adapters:** `compat/toolsmith/`, optional and separate from quest content.
 - **Rewards:** original material payouts become Quest Cookies; stage grants and claiming remain supported.
-- **Translations:** shared text still lives in the framework. Independent localization ownership is not implemented.
+- **Translations:** original shared text still lives in the framework. Independent localization ownership for the original packages is not implemented; new Art of Growing prose belongs to the addon's `questlineartofgrowing` domain.
 
 Native game/client/server acceptance is pending. Compilation, offline checks and synthetic Harmony tests do not prove in-world compatibility. Intermediate archives are **not validated releases**.
+
+The optional [Art of Growing integration](docs/artofgrowing.md) uses the actual
+provider mod ID **`artofgrowingpatch`**, not its `artofgrowing` asset domain.
+**The supplied `srMi9` upload returns 404: the inspected AoG 1.2.2 + Core 1.2.2
+cache cannot be asserted to equal the current pack.** The [532-record impact
+matrix](docs/artofgrowing-impact-audit.md), [crop-process evidence](docs/artofgrowing-crop-research.md)
+and [graph/verification contract](docs/artofgrowing.md) document the evidence and
+limits. Native gameplay has not been run.
 
 ## Developer guides
 

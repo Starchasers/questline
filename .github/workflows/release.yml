@@ -61,8 +61,16 @@ jobs:
           path: test-results
       - name: Recheck downloaded checksums
         run: |
-          test "$(find Releases -maxdepth 1 -name '*.zip' -type f | wc -l)" -eq 14
-          test "$(wc -l < Releases/SHA256SUMS)" -eq 14
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          roots = [Path('questline/modinfo.json'), *Path('content').glob('*/modinfo.json'), *Path('compat').glob('*/modinfo.json')]
+          mods = [json.loads(p.read_text()) for p in roots]
+          expected = {f"{m['modid']}_{m['version']}.zip" for m in mods}
+          assert len(expected) == len(mods), 'duplicate artifact identity'
+          assert {p.name for p in Path('Releases').glob('*.zip')} == expected
+          assert len(Path('Releases/SHA256SUMS').read_text().splitlines()) == len(expected)
+          PY
           (cd Releases && sha256sum --check SHA256SUMS)
       - name: Attest all package provenance
         uses: actions/attest-build-provenance@8beda2b7ed98355c0e97c0a63bec38ae472e66c4 # v4
@@ -75,7 +83,7 @@ jobs:
           notes=$(mktemp)
           {
             printf 'Built by GitHub Actions from `%s`.\n\n' "$GITHUB_SHA"
-            printf 'Includes the framework, 12 independent content packs, and optional Toolsmith adapter.\n'
+            printf 'Includes the framework, independently installable catalog content packs (including Art of Growing), and optional adapters.\n'
             printf 'Install only the packages you need; preserve the individual ZIPs.\n\n'
             printf '### Build inputs\n\n```text\n'
             cat test-results/build-environment.txt
@@ -99,7 +107,8 @@ jobs:
           expected = {p.name for p in Path('Releases').iterdir() if p.is_file()}
           assert not release['isDraft'], release
           assert {a['name'] for a in release['assets']} == expected, release
-          assert len(release['assets']) == 15, release
+          manifests = [Path('questline/modinfo.json'), *Path('content').glob('*/modinfo.json'), *Path('compat').glob('*/modinfo.json')]
+          assert len(release['assets']) == len(manifests) + 1, release
           PY
           published=$(mktemp -d)
           gh release download "$GITHUB_REF_NAME" --dir "$published" --pattern '*.zip' --pattern SHA256SUMS

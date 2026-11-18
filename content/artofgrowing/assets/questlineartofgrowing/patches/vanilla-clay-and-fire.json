@@ -1,0 +1,173 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/clay-and-fire.json",
+    "path": "/quests/2",
+    "value": {
+      "id": "form-bowl",
+      "pos": [
+        2,
+        -1.5
+      ],
+      "requires": "find-clay",
+      "tasks": [
+        {
+          "type": "clayform",
+          "item": "game:bowl-*-raw"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:drygrass",
+          "count": 6
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-clay-and-fire-form-bowl"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/clay-and-fire.json",
+    "path": "/quests/6",
+    "value": {
+      "id": "fire-pottery",
+      "pos": [
+        4,
+        0.0
+      ],
+      "requires": [
+        "form-bowl",
+        "form-pot",
+        "make-firestarter"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:bowl-*-fired"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:seeds-carrot",
+          "count": 2
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-clay-and-fire-fire-pottery"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/clay-and-fire.json",
+    "path": "/quests/9",
+    "value": {
+      "id": "make-bricks",
+      "pos": [
+        6,
+        -3.0
+      ],
+      "requires": "fire-pottery",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:rawbrick-*",
+          "count": 8
+        },
+        {
+          "type": "obtain",
+          "item": "game:burnedbrick-*",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-clay-and-fire-make-bricks"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/clay-and-fire.json",
+    "path": "/quests/12",
+    "value": {
+      "id": "cook-meal",
+      "pos": [
+        8,
+        3.0
+      ],
+      "requires": "fire-pot",
+      "tasks": [
+        {
+          "type": "cook",
+          "item": "game:claypot-*-cooked",
+          "name": "questline:name-any-pot-meal"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:bowl-blue-fired",
+          "count": 2
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-clay-and-fire-cook-meal"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

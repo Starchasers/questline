@@ -1,0 +1,94 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/textiles.json",
+    "path": "/quests/0",
+    "value": {
+      "id": "grow-flax",
+      "pos": [
+        0,
+        0.0
+      ],
+      "requires": {
+        "all": [
+          "harvest-grain",
+          {
+            "all": [
+              "questlineartofgrowing:soften-flax-stalks",
+              "questlineartofgrowing:make-flax-ridge"
+            ]
+          }
+        ]
+      },
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:flaxfibers",
+          "count": 16
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:seeds-flax",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-textiles-grow-flax"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/textiles.json",
+    "path": "/quests/1",
+    "value": {
+      "id": "spin-twine",
+      "pos": [
+        2,
+        0.0
+      ],
+      "requires": "grow-flax",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:flaxtwine",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:flaxfibers",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-textiles-spin-twine"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

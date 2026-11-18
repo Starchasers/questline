@@ -1,0 +1,232 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/expandedfoods-farming.json",
+    "path": "/quests/0",
+    "value": {
+      "id": "press-oil",
+      "pos": [
+        0,
+        7.5
+      ],
+      "requires": [
+        "grow-flax",
+        "make-fruit-press"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "expandedfoods:foodoilportion-*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-expandedfoods-expandedfoods-farming-press-oil"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlineexpandedfoods"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/expandedfoods-farming.json",
+    "path": "/quests/1",
+    "value": {
+      "id": "grow-soybeans",
+      "pos": [
+        2,
+        7.5
+      ],
+      "requires": "gather-seeds",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:legume-soybean",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-expandedfoods-expandedfoods-farming-grow-soybeans"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlineexpandedfoods"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/expandedfoods-farming.json",
+    "path": "/quests/2",
+    "value": {
+      "id": "soak-soybeans",
+      "pos": [
+        4,
+        7.5
+      ],
+      "requires": [
+        "grow-soybeans",
+        "make-barrel"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "expandedfoods:soyprep-soaked",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-expandedfoods-expandedfoods-farming-soak-soybeans"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlineexpandedfoods"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/expandedfoods-farming.json",
+    "path": "/quests/4",
+    "value": {
+      "id": "culture-soybeans",
+      "pos": [
+        10,
+        7.5
+      ],
+      "requires": "grind-soybeans",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "expandedfoods:soyprep-cultured",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-expandedfoods-expandedfoods-farming-culture-soybeans"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlineexpandedfoods"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/expandedfoods-farming.json",
+    "path": "/quests/5",
+    "value": {
+      "id": "brew-soy-sauce",
+      "pos": [
+        12,
+        7.5
+      ],
+      "requires": [
+        "culture-soybeans",
+        "make-brine",
+        "make-fruit-press"
+      ],
+      "shape": "gear",
+      "size": 1.25,
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "expandedfoods:soysauce"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "choice",
+          "options": [
+            {
+              "type": "item",
+              "item": "game:seeds-soybean",
+              "count": 8
+            },
+            {
+              "type": "item",
+              "item": "game:firewood",
+              "count": 32
+            },
+            {
+              "type": "item",
+              "item": "game:gear-rusty",
+              "count": 6
+            }
+          ]
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-expandedfoods-expandedfoods-farming-brew-soy-sauce"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlineexpandedfoods"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

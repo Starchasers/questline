@@ -7,6 +7,27 @@
   "sharedTranslations": "questline/assets/questline/lang",
   "packages": [
     {
+      "key": "artofgrowing",
+      "path": "content/artofgrowing",
+      "modid": "questlineartofgrowing",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "artofgrowingpatch": "1.2.2",
+        "coreofartspatch": "1.2.2"
+      },
+      "assetDomain": "questlineartofgrowing",
+      "chapterPath": "assets/questlineartofgrowing/questline/chapters",
+      "patchPath": "assets/questlineartofgrowing/patches",
+      "chapters": [
+        "artofgrowing-farming.json",
+        "artofgrowing-stone-age.json",
+        "artofgrowing-textiles.json",
+        "artofgrowing-winter.json"
+      ]
+    },
+    {
       "key": "betterruins",
       "path": "content/betterruins",
       "modid": "questlinebetterruins",
