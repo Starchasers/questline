@@ -19,6 +19,7 @@ Install only the integrations whose gameplay mods you use:
 | vanilla | questlinevanilla | 25 | 322 |
 | betterruins | questlinebetterruins | 1 | 22 |
 | bricklayers | questlinebricklayers | 3 | 24 |
+| butchering | questlinebutchering | 3 | 15 |
 | charcoalkiln | questlinecharcoalkiln | 1 | 6 |
 | efchefstricks | questlineefchefstricks | 3 | 4 |
 | efmealsmodule | questlineefmealsmodule | 1 | 1 |
@@ -31,7 +32,7 @@ Install only the integrations whose gameplay mods you use:
 
 Every package explicitly depends on `game >= 1.22.0` and `questline >= 0.15.0`.
 Every optional package also depends on `questlinevanilla >= 0.14.0` and its
-same-named gameplay mod. Gameplay mod minimum versions use `0.0.0`: presence is
+same-named gameplay mod. Inherited gameplay mod minimum versions use `0.0.0`: presence is
 required, but no specific tested gameplay-mod release is asserted here.
 
 Chef's Tricks and Meals Module additionally require both `expandedfoods` and
@@ -87,3 +88,7 @@ TDD baseline before extraction: 5 tests ran, with 3 failures and 1 error
 (expected missing content/manifest and chapters still in core); translation
 preservation already passed. After extraction all 5 pass. These are structural
 tests, not a claim of a native game installation or integration smoke test.
+
+## Authored Butchering addon
+
+Install `questlinebutchering_0.14.0.zip` alongside framework, vanilla and Butchering >= 1.14.3. Its three files add fourteen quests and replace only `first-hunt` in place, retaining its kill task and saved ID. Other vanilla assets remain byte-identical. It owns only new English localization keys; other languages use the game's English fallback (not native-reviewed translations). This is separate from the historical extraction totals above. See [journey and evidence](butchering.md).

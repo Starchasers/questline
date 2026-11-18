@@ -1,0 +1,37 @@
+{
+  "id": "butchering-leatherwork",
+  "extends": "leatherwork",
+  "requiresMod": [
+    "butchering"
+  ],
+  "quests": [
+    {
+      "id": "butchering-leather",
+      "pos": [
+        0,
+        9
+      ],
+      "requires": "butchering-skin",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-leather-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

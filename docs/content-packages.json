@@ -37,6 +37,22 @@
       ]
     },
     {
+      "key": "butchering",
+      "path": "content/butchering",
+      "modid": "questlinebutchering",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "butchering": "1.14.3"
+      },
+      "chapters": [
+        "butchering-leatherwork.json",
+        "butchering-stone-age.json",
+        "butchering.json"
+      ]
+    },
+    {
       "key": "charcoalkiln",
       "path": "content/charcoalkiln",
       "modid": "questlinecharcoalkiln",

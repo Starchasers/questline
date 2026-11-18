@@ -1,0 +1,37 @@
+{
+  "id": "butchering-stone-age",
+  "extends": "stone-age",
+  "requiresMod": [
+    "butchering"
+  ],
+  "quests": [
+    {
+      "id": "first-hunt",
+      "pos": [
+        6,
+        4.5
+      ],
+      "requires": "make-spear",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "game:chicken-*"
+        }
+      ],
+      "icon": "game:spear-generic-flint",
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-hunt-desc"
+        }
+      ]
+    }
+  ]
+}

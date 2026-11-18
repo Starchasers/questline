@@ -1,0 +1,374 @@
+{
+  "id": "butchering",
+  "order": 52,
+  "icon": "game:knife-generic-flint",
+  "requiresMod": [
+    "butchering"
+  ],
+  "quests": [
+    {
+      "id": "butchering-prepare",
+      "pos": [
+        0,
+        0
+      ],
+      "requires": "make-knife",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-prepare-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-hook",
+      "pos": [
+        0,
+        1.5
+      ],
+      "requires": "butchering-prepare",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-hook-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-table",
+      "pos": [
+        0,
+        3
+      ],
+      "requires": "butchering-hook",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-table-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-retrieve",
+      "pos": [
+        0,
+        4.5
+      ],
+      "requires": "butchering-table",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-retrieve-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-skin",
+      "pos": [
+        0,
+        6
+      ],
+      "requires": "butchering-retrieve",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-skin-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-bleed",
+      "pos": [
+        0,
+        7.5
+      ],
+      "requires": "butchering-skin",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-bleed-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-process",
+      "pos": [
+        0,
+        9
+      ],
+      "requires": "butchering-bleed",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-process-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-blood",
+      "pos": [
+        3,
+        6
+      ],
+      "requires": "butchering-skin",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-blood-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-preserve",
+      "pos": [
+        0,
+        10.5
+      ],
+      "requires": "butchering-process",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-preserve-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-offal",
+      "pos": [
+        3,
+        9
+      ],
+      "requires": "butchering-process",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-offal-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-sinew",
+      "pos": [
+        6,
+        9
+      ],
+      "requires": "butchering-process",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-sinew-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-bones",
+      "pos": [
+        3,
+        10.5
+      ],
+      "requires": "butchering-process",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-bones-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-bag",
+      "pos": [
+        6,
+        10.5
+      ],
+      "requires": "butchering-process",
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-bag-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

@@ -173,12 +173,12 @@ Test("same-domain working filenames use last ordinal winner regardless of creati
         } finally { if (Directory.Exists(dir)) Directory.Delete(dir, true); }
     }
 });
-Test("all 16 shipped base-to-extension replacements survive shuffled real content composition", () => {
+Test("all 17 shipped base-to-extension replacements survive shuffled real content composition", () => {
     string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
     var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
         .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
         .Select(f => (Domain: new DirectoryInfo(Path.GetDirectoryName(f)).Parent.Parent.Name, Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
-    Check(files.Length == 56, $"expected 56 extracted content files, got {files.Length}");
+    Check(files.Length == 59, $"expected 59 content files, got {files.Length}");
     var baseline = Load(files);
     var qualified = files.Select(f => {
         var c = JsonConvert.DeserializeObject<ChapterDef>(f.Json);
@@ -189,7 +189,7 @@ Test("all 16 shipped base-to-extension replacements survive shuffled real conten
     var bases = qualified.Where(c => c.Extends == null).ToDictionary(c => c.Id);
     var replacements = qualified.Where(c => c.Extends != null).SelectMany(c => c.Quests
         .Where(q => bases[c.Extends].Quests.Any(b => b.Id == q.Id))).ToArray();
-    Check(replacements.Length == 16, $"expected 16 intentional replacements, got {replacements.Length}");
+    Check(replacements.Length == 17, $"expected 17 intentional replacements, got {replacements.Length}");
     Check(!baseline.Loader.Problems.Any(p => p.Contains("ambiguous extension")), "shipped content has composition conflicts");
     foreach (var q in replacements) {
         var actual = baseline.Registry.Get(q.Id);
@@ -204,6 +204,23 @@ Test("all 16 shipped base-to-extension replacements survive shuffled real conten
         var rng = new Random(seed); var p = files.OrderBy(_ => rng.Next()).ToArray(); var loaded = Load(p);
         Check(snapshot == loaded.Registry.ToJson() + string.Join("\n", loaded.Loader.Problems), "shipped registry/diagnostics changed under seed " + seed);
     }
+});
+Test("Butchering present/absent keeps vanilla progression and optional output branches honest", () => {
+    string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
+    var files = new[] { "vanilla", "butchering" }.SelectMany(pack =>
+        Directory.GetFiles(Path.Combine(root, "content", pack), "*.json", SearchOption.AllDirectories)
+        .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
+        .Select(f => (Domain: "questline", Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f)))).ToArray();
+    var present = Load(files);
+    var absent = Load(files, missingMods: ["butchering"]);
+    Check(present.Registry.Get("questline:butchering-process") != null, "journey missing with mod present");
+    Check(absent.Registry.Get("questline:butchering-process") == null, "journey leaked with mod absent");
+    Check(present.Registry.Quests.Count - absent.Registry.Quests.Count == 14, "expected exactly fourteen added quest IDs");
+    Check(present.Registry.Get("questline:first-hunt").Tasks.Single().Type == "kill", "hunt task changed");
+    Check(absent.Registry.Get("questline:first-hunt").Page.Count == 0, "replacement leaked into absent mode");
+    foreach (string id in new[] { "get-hide", "make-leather", "make-cleaver" })
+        Check(JsonConvert.SerializeObject(present.Registry.Get("questline:" + id)) == JsonConvert.SerializeObject(absent.Registry.Get("questline:" + id)), "unrelated vanilla quest changed: " + id);
+    Check(!present.Loader.Problems.Any(p => p.Contains("missing prerequisite") || p.Contains("ambiguous extension")), string.Join("; ", present.Loader.Problems));
 });
 Console.WriteLine($"Composition: {passed} passed, {failed} failed");
 return failed == 0 ? 0 : 1;

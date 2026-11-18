@@ -65,7 +65,7 @@ jobs:
       - name: Packaging regression suite
         run: python3 -m unittest discover -s tools/packaging -v 2>&1 | tee test-results/packaging.log
       - name: Content extraction regression suite
-        run: python3 -m unittest discover -s tests -p 'test_content_extraction.py' -v 2>&1 | tee test-results/content.log
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v 2>&1 | tee test-results/content.log
       - name: Translation consistency
         run: python3 tools/lang/check.py 2>&1 | tee test-results/translations.log
       - name: Toolsmith source regression suite
@@ -92,7 +92,7 @@ jobs:
               info = json.loads(manifest.read_text())
               expected.add(f"{info['modid']}_{info['version']}.zip")
           actual = {p.name for p in Path('Releases').glob('*.zip')}
-          assert len(manifests) == len(expected) == 14, (len(manifests), expected)
+          assert len(manifests) == len(expected) == 15, (len(manifests), expected)
           assert actual == expected, (actual - expected, expected - actual)
           sums = Path('Releases/SHA256SUMS').read_text().splitlines()
           assert len(sums) == len(expected), sums
@@ -102,7 +102,7 @@ jobs:
           (cd Releases && sha256sum --check SHA256SUMS) | tee test-results/checksums.log
           {
             echo '### Modular verification'
-            echo 'Built and checked 14 independent ZIPs (core, 12 content packs, Toolsmith adapter).'
+            echo 'Built and checked 15 independent ZIPs (core, 13 content packs, Toolsmith adapter).'
             echo 'Offline suites do not replace native VsTestkit / real-world acceptance gates.'
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Upload all installable packages and checksums

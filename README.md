@@ -5,11 +5,12 @@ This repository derives from dizzyd/questline v0.14.0 under the MIT license. The
 ## Fork layout and verification
 
 - Framework: `questline/`, version 0.15.0; no bundled quest chapters.
-- Questbooks: `content/vanilla/` and eleven optional mod content packages. Install vanilla content for the original shared book, then only the integrations you need.
+- Questbooks: `content/vanilla/` and twelve optional mod content packages. Install vanilla content for the original shared book, then only the integrations you need.
 - Optional executable adapters: `compat/toolsmith/`.
 - Approved scope: [fork contract](docs/fork-contract.md).
 - Installation, dependencies and unchanged-content guarantees: [content packages](docs/content-packages.md).
 - Build/package commands and deterministic archive policy: [build and packaging](docs/build-packaging.md).
+- New Butchering journey: [installation, evidence and directed map](docs/butchering.md).
 - Shared translations currently remain in the framework; independent localization ownership is not yet implemented.
 - Native game/client/server acceptance is pending. Compilation, offline checks and synthetic Harmony tests do not establish in-world compatibility. Do not treat intermediate archives as a validated release.
 
