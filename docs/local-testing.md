@@ -1,28 +1,33 @@
 # Local testing: modular Questline fork
 
-These are test builds, not native-game-validated releases. Back up your world and ModData before installation. Target game dependency: Vintage Story 1.22.0 or newer within the supported 1.22 series; builds must record the actual SDK used.
+**Use a copied world and back up ModData.** These test builds are not native-game-validated releases. Target Vintage Story 1.22.0 or newer within the supported 1.22 series, and record the actual SDK used for each build.
 
 ## Install
 
-1. Close Vintage Story/server. Use a copied test world and matching client/server mod sets.
-2. Remove the original Questline ZIP/folder. This fork deliberately retains the `questline` mod ID; never install both.
-3. Put `questline_0.15.0.zip` and `questlinevanilla_0.14.0.zip` in your Mods directory. Keep each mod ZIP intact; do not unpack it.
-4. Add optional `questline<provider>_0.14.0.zip` files only for gameplay mods you actually have installed. These are quest definitions, not bundled gameplay mods. Consult `content-packages.md` for dependencies. Chef's Tricks and Meals Module questbooks also require the Expanded Foods questbook and gameplay mod.
-5. Install `questlinetoolsmith_0.1.0.zip` only when using Toolsmith; it is a server-side compatibility adapter.
-6. Start the copied world. Check startup logs for missing dependencies, asset collisions, disabled quests and Harmony errors before playing.
+1. Close the game/server. Use a copied world with matching client/server mod sets.
+2. Remove upstream Questline's ZIP/folder. Both versions use `questline`; never install them together.
+3. Install `questline_0.15.0.zip` and `questlinevanilla_0.14.0.zip` in Mods. Keep individual mod ZIPs intact.
+4. Add `questline<provider>_0.14.0.zip` only for installed gameplay mods. These packages contain quests, not the gameplay mods. Check [content dependencies](content-packages.md); Chef's Tricks and Meals Module need both the Expanded Foods questbook and gameplay mod.
+5. Add server-side `questlinetoolsmith_0.1.0.zip` only when using Toolsmith.
+6. Start the copied world. Inspect startup logs for missing dependencies, asset collisions, disabled quests and Harmony errors before playing.
 
-A downloadable bundle may contain these individual ZIPs in folders. Extract that outer bundle first; never put the outer bundle in Mods. Do not blindly install every optional addon.
+If a download wraps these ZIPs in an outer bundle, extract the wrapper first. Never put that outer bundle in Mods or blindly install every optional addon.
 
 ## Smoke checks
 
-- Open the book; verify vanilla chapters, descriptions, tasks, icons, page links and graph layout.
-- With each installed provider, verify its chapters/extensions and replaced vanilla quests appear in the same shared book.
-- Complete a normal quest and a milestone. Claim exactly one cookie for each original material-reward quest; never receive original resources. A repeated claim must give nothing.
-- Eat the cookie: verify tiny satiety, no health/buff gain, correct name and texture. Check that it does not spoil.
-- Try grid crafting, cooking, baking/heating, grinding, crushing, barrel processing, pressing, animal feed, fuel and planting against the actual enabled modpack. External wildcard recipes can introduce uses this project does not supply.
-- Verify hand-in requirements still consume exactly once; missing hand-ins must not claim or consume unrelated items.
-- Test personal, party and server claim scopes with multiple players. Save, close, reopen, and verify progress/claimed state survives.
-- With real Toolsmith plus adapter, craft in hand and at a workbench; verify exact single task credit, correct player attribution, and history after reload.
-- On a copied existing save, verify completed and previously claimed quests remain intact. Remove/reinstall optional content on the copy and check progress survives without silently remapping IDs.
+### Content and payouts
 
-Report game version, installed mod versions, exact artifact/checksum, client/server logs and reproduction steps. Automated compilation/headless checks do not replace these native checks.
+- Open the book. Check vanilla chapters, descriptions, tasks, icons, page links and graph layout.
+- For each installed provider, check its chapters/extensions and replaced vanilla quests appear in the shared book.
+- Complete a normal quest and a milestone. Each original material-reward quest must pay exactly one cookie and no original resources. Repeating a claim must pay nothing.
+- Eat a cookie. Check tiny satiety, no health/buff gain, correct name/texture and no spoilage.
+- Check the enabled modpack for cookie use in grid crafting, cooking, baking/heating, grinding, crushing, barrels, pressing, animal feed, fuel and planting. External wildcard recipes may add uses this project does not supply.
+
+### Claims, providers and persistence
+
+- Check hand-ins consume exactly once. Missing hand-ins must neither claim nor consume unrelated items.
+- Test personal, party and server claims with multiple players. Save, close and reopen; progress and claim state must survive.
+- With real Toolsmith and the adapter, craft in hand and at a workbench. Require exact single task credit, correct player attribution and craft history after reload.
+- On a copied existing save, preserve completed and previously claimed quests. Remove/reinstall optional content on that copy; progress must survive without silent ID remapping.
+
+Report the game and installed mod versions, exact artifact/checksum, client/server logs and reproduction steps. Compilation and headless checks do not replace these native checks.
