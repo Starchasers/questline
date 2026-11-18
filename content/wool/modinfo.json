@@ -1,0 +1,16 @@
+{
+    "type": "content",
+    "modid": "questlinewool",
+    "name": "Questline: wool",
+    "authors": [
+        "dizzyd"
+    ],
+    "description": "Original Questline wool chapters. Requires the Questline framework; preserves the questline asset domain.",
+    "version": "0.14.0",
+    "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "wool": "0.0.0"
+    }
+}

@@ -51,6 +51,15 @@ public class QuestRegistry
         QuestDef Current(string full) => Get(full) ?? (full != null && Aliases.TryGetValue(full, out var renamed) ? Get(renamed) : null);
     }
 
+    /// <summary>A detached player-facing reward view; source metadata stays available to editors.</summary>
+    public QuestRegistry WithRewards(QuestlineConfig config)
+    {
+        var registry = FromJson(ToJson());
+        foreach (var quest in registry.Quests.Values)
+            quest.Rewards = RewardPolicy.Apply(quest.Rewards, config.ItemRewards);
+        return registry;
+    }
+
     /// <summary>
     /// Multiplies every reward of <paramref name="item"/>, choice options included, rounding to
     /// whole items; one scaled to nothing is dropped. The server's own taste in a pack's rewards:
@@ -124,8 +133,8 @@ public class QuestRegistry
     /// <summary>Rebuilds the lookups from <see cref="Chapters"/>. Call after any change to them.</summary>
     public void Index()
     {
-        Chapters = Chapters.OrderBy(c => c.Order).ThenBy(c => c.Id).ToList();
-        Questlines = Questlines.OrderBy(q => q.Order).ThenBy(q => q.Id).ToList();
+        Chapters = Chapters.OrderBy(c => c.Order).ThenBy(c => c.Id, StringComparer.Ordinal).ToList();
+        Questlines = Questlines.OrderBy(q => q.Order).ThenBy(q => q.Id, StringComparer.Ordinal).ToList();
         ChaptersById = Chapters.ToDictionary(c => c.Id);
         Quests = [];
         Aliases = [];

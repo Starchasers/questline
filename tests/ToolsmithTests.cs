@@ -14,8 +14,9 @@ namespace Questline.Tests
 {
     /// <summary>
     /// Toolsmith puts tools together outside the crafting grid, in the hands or on its workbench,
-    /// and either way the tool counts as crafted. Needs the real mod: run tests/fixtures/fetch.sh
-    /// and pass --mods tests/fixtures/Toolsmith as well as the fixture Mods.
+    /// and either way the tool counts as crafted. Requires Questline >= 0.15.0 and the optional
+    /// questlinetoolsmith adapter, as well as real Toolsmith: run tests/fixtures/fetch.sh and pass
+    /// --mods tests/fixtures/Toolsmith plus compat/toolsmith/bin/Release/mod and the fixture Mods.
     /// </summary>
     [RequiresClient, SingleplayerOnly]
     public class ToolsmithTests
@@ -46,6 +47,8 @@ namespace Questline.Tests
         {
             await OnServer();
             if (!Sapi.ModLoader.IsModEnabled("toolsmith")) Skip("Toolsmith isn't loaded; run tests/fixtures/fetch.sh and pass --mods tests/fixtures/Toolsmith");
+            if (!Sapi.ModLoader.IsModEnabled("questlinetoolsmith")) Skip("The optional Questline Toolsmith adapter isn't loaded; build and pass --mods compat/toolsmith/bin/Release/mod");
+            Assert.True(ToolsmithType("Questline.ToolsmithCompat.ToolsmithCompatSystem") != null, "adapter assembly loaded");
             Fixture.Require(Sapi, Engine.Registry.Get("qltest:station-craft") != null);
             Engine.Reset(Me);
             (held, offheld) = (Me.InventoryManager.ActiveHotbarSlot.Itemstack, Me.Entity.LeftHandItemSlot.Itemstack);
@@ -58,6 +61,32 @@ namespace Questline.Tests
             if (!handsSaved) return;
             await OnServer();
             (Me.InventoryManager.ActiveHotbarSlot.Itemstack, Me.Entity.LeftHandItemSlot.Itemstack) = (held, offheld);
+        }
+
+        [VsTest]
+        public void EveryAdapterHookAttachesOnce()
+        {
+            // No compile-time Harmony/adapter reference: native test compilation also runs server-side.
+            var harmony = ToolsmithType("HarmonyLib.Harmony");
+            Assert.True(harmony != null, "Harmony loaded");
+            var patchInfo = harmony.GetMethod("GetPatchInfo", Any);
+            var bench = ToolsmithType("Toolsmith.ToolTinkering.Blocks.BlockEntityWorkbench");
+            Assert.True(Utility != null && bench != null, "native Toolsmith targets loaded");
+            void CheckHooks(Type target, string method, int prefixes, int postfixes, int finalizers)
+            {
+                var original = target.GetMethod(method, Any);
+                Assert.True(original != null, method + " exists");
+                var info = patchInfo.Invoke(null, [original]);
+                Assert.True(info != null, method + " is patched");
+                int Count(string kind) => ((IEnumerable)info.GetType().GetField(kind, Any).GetValue(info))
+                    .Cast<object>().Count(p => (string)p.GetType().GetField("owner", Any).GetValue(p) == "com.dizzyd.questline.toolsmith");
+                Assert.Equal(prefixes, Count("Prefixes"), method + " adapter prefixes");
+                Assert.Equal(postfixes, Count("Postfixes"), method + " adapter postfixes");
+                Assert.Equal(finalizers, Count("Finalizers"), method + " adapter finalizers");
+            }
+            CheckHooks(Utility, "AssembleFullTool", 1, 1, 0);
+            CheckHooks(bench, "AttemptToCraft", 1, 0, 1);
+            CheckHooks(Utility, "TryCraftToolFromSlots", 0, 1, 0);
         }
 
         /// <summary>Head in the hand and handle in the other make a bundle, which is no tool yet; the hand holds it after.</summary>

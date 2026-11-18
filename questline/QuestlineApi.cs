@@ -34,6 +34,21 @@ public class QuestlineApi : ModSystem
     /// <summary>Credits <paramref name="amount"/> towards every active custom task with this key.</summary>
     public void Report(IServerPlayer player, string key, int amount = 1) => engine.Report(player, "custom", new AssetLocation(key), amount);
 
+    /// <summary>
+    /// Reports a finished craft from a server-side compatibility tracker. Unlike Report, this
+    /// credits craft tasks and their existing history. Returns false for invalid input or before
+    /// server initialization; true means accepted, not necessarily that a quest advanced.
+    /// Call on the server thread, once per output, never for preview recipes or bundles.
+    /// </summary>
+    public bool ReportCraft(IServerPlayer player, AssetLocation code, int amount = 1)
+    {
+        if (engine == null || player == null || amount <= 0 || code == null || !code.Valid
+            || string.IsNullOrWhiteSpace(code.Domain) || string.IsNullOrWhiteSpace(code.Path)
+            || code.ToString().IndexOfAny(['*', '?']) >= 0) return false;
+        engine.Report(player, "craft", code, amount);
+        return true;
+    }
+
     /// <summary>Whether the player has the stage: their own, their party's or the server's.</summary>
     public bool HasStage(IPlayer player, string stage) => engine.HasStage(player.PlayerUID, stage);
 

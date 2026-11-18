@@ -1,0 +1,16 @@
+{
+    "type": "content",
+    "modid": "questlinebricklayers",
+    "name": "Questline: bricklayers",
+    "authors": [
+        "dizzyd"
+    ],
+    "description": "Original Questline bricklayers chapters. Requires the Questline framework; preserves the questline asset domain.",
+    "version": "0.14.0",
+    "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "bricklayers": "0.0.0"
+    }
+}

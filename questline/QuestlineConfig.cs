@@ -36,8 +36,8 @@ public class QuestlineConfig
     public string RevealLevel = "hints";
 
     /// <summary>
-    /// Multiplies the rusty gears quests give, on top of the pack's own amounts, rounding to whole
-    /// gears: 2 doubles them for a server that trades a lot, 0 gives none at all.
+    /// Legacy setting retained for configuration compatibility. This fork's cookie payout policy
+    /// ignores rusty-gear multipliers; use ItemRewards to disable material rewards.
     /// </summary>
     public double GearRewards = 1;
 

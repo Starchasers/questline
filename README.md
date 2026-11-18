@@ -1,4 +1,19 @@
-# Questline
+# Questline framework fork
+
+This repository derives from dizzyd/questline v0.14.0 under the MIT license. The framework retains the `questline` identity for quest/save compatibility; do not install it alongside upstream Questline.
+
+## Fork layout and verification
+
+- Framework: `questline/`, version 0.15.0; no bundled quest chapters.
+- Questbooks: `content/vanilla/` and eleven optional mod content packages. Install vanilla content for the original shared book, then only the integrations you need.
+- Optional executable adapters: `compat/toolsmith/`.
+- Approved scope: [fork contract](docs/fork-contract.md).
+- Installation, dependencies and unchanged-content guarantees: [content packages](docs/content-packages.md).
+- Build/package commands and deterministic archive policy: [build and packaging](docs/build-packaging.md).
+- Shared translations currently remain in the framework; independent localization ownership is not yet implemented.
+- Native game/client/server acceptance is pending. Compilation, offline checks and synthetic Harmony tests do not establish in-world compatibility. Do not treat intermediate archives as a validated release.
+
+The upstream overview below describes inherited capabilities; fork-specific behavior and release gates are defined by the documents above.
 
 A quest book for Vintage Story built to carry a long progression across a whole modpack:
 chapters of quests laid out as dependency trees, tasks detected automatically, and rewards
@@ -28,10 +43,11 @@ Every phase of the roadmap, minus the VS Quest importer:
   `betterruins:largeforlornhopetower`), and its place by the lang entry `<domain>:structure-<code>`;
   a village counts each of its buildings. `/questline structures` names whatever you are standing
   in, and a `discovered` gate sees places visited
-- Rewards: items, pick-one choices and stages, claimed in the book. `GearRewards` in
-  `ModConfig/questline.json` scales the rusty gears they give (2 for a trading server, 0 for none);
-  `"ItemRewards": false` gives no items at all (stages still), so quests finish without a claim,
-  for a server that only tracks progression. `/questline reload` re-reads these settings
+- Rewards: material payouts become a tiny Quest Cookie; bundled rewarded quests each give one.
+  Stage grants, claim ownership and hand-in consumption remain supported. `GearRewards` is
+  retained for configuration compatibility but cannot multiply cookie payouts.
+  `"ItemRewards": false` disables material payouts while retaining stages. See
+  [cookie reward policy and verification limits](docs/quest-cookie-rewards.md).
 - Player history: a quest that unlocks is credited with work done before it unlocked, since
   Questline was installed (`CreditEarlierWork` in `ModConfig/questline.json`). The game keeps no
   record of its own, so for a world played before then, `/questline catchup [player]` completes

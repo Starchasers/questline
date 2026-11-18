@@ -122,10 +122,12 @@ namespace Questline.Tests
 
             Assert.Equal(null, Engine.Claim(Me, GatherFlint, null));
             Assert.Equal(QuestState.Done, StateOf(GatherFlint));
-            Assert.Equal(4, CountCarried("game:stick"));
+            Assert.Equal(1, CountCarried(RewardPolicy.CookieCode));
+            Assert.Equal(0, CountCarried("game:stick"));
 
             Assert.NotNull(Engine.Claim(Me, GatherFlint, null), "a second claim");
-            Assert.Equal(4, CountCarried("game:stick"));
+            Assert.Equal(1, CountCarried(RewardPolicy.CookieCode));
+            Assert.Equal(0, CountCarried("game:stick"));
         }
 
         /// <summary>
@@ -415,18 +417,19 @@ namespace Questline.Tests
         }
 
         [VsTest(TimeoutMs = 30000)]
-        public async Task ChoiceRewardNeedsAPickAndTakesTheItems()
+        public async Task ResourceChoiceBecomesCookieAndStillTakesTheItems()
         {
             await Player.Hold("game:stick", 2);
             await Until(() => StateOf(TradeSticks) == QuestState.Claimable, 60, "two sticks carried");
 
-            Assert.NotNull(Engine.Claim(Me, TradeSticks, null), "a claim with no pick");
-            Assert.Equal(QuestState.Claimable, StateOf(TradeSticks));
-
-            Assert.Equal(null, Engine.Claim(Me, TradeSticks, [1]));
+            Assert.Equal("item", Engine.Registry.Get(TradeSticks).Rewards.Single().Type);
+            Assert.Equal(null, Engine.Claim(Me, TradeSticks, null));
             Assert.Equal(QuestState.Done, StateOf(TradeSticks));
             Assert.Equal(0, CountCarried("game:stick"));
-            Assert.Equal(5, CountCarried("game:clay-blue"));
+            Assert.Equal(0, CountCarried("game:clay-blue"));
+            Assert.Equal(1, CountCarried(RewardPolicy.CookieCode));
+            Assert.NotNull(Engine.Claim(Me, TradeSticks, null), "a second claim");
+            Assert.Equal(1, CountCarried(RewardPolicy.CookieCode));
         }
 
         [VsTest(TimeoutMs = 30000)]

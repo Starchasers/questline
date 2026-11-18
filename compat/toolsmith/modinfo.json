@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "modid": "questlinetoolsmith",
+  "name": "Questline Toolsmith Compatibility",
+  "authors": ["dizzyd"],
+  "description": "Optional server-side Toolsmith craft progress adapter for Questline.",
+  "version": "0.1.0",
+  "side": "Server",
+  "requiredOnClient": false,
+  "requiredOnServer": true,
+  "dependencies": { "game": "1.22.0", "questline": "0.15.0", "toolsmith": "" }
+}

@@ -1,0 +1,10 @@
+{
+  "code": "questcookie",
+  "class": "Item",
+  "maxstacksize": 64,
+  "texture": { "base": "questline:item/questcookie" },
+  "nutritionProps": { "satiety": 10, "foodcategory": "NoNutrition", "health": 0 },
+  "heldTpIdleAnimation": "holdbothhands",
+  "heldTpUseAnimation": "eat",
+  "creativeinventory": { "general": ["*"], "items": ["*"] }
+}

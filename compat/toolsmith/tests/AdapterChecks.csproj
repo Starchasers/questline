@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><VINTAGE_STORY Condition="'$(VINTAGE_STORY)' == ''">$(HOME)/.cairn/games/1.22.7</VINTAGE_STORY></PropertyGroup>
+ <ItemGroup>
+  <ProjectReference Include="../QuestlineToolsmith.csproj" />
+  <ProjectReference Include="../../../questline/questline.csproj" />
+  <Reference Include="VintagestoryLib" HintPath="$(VINTAGE_STORY)/VintagestoryLib.dll" />
+  <Reference Include="VintagestoryAPI" HintPath="$(VINTAGE_STORY)/VintagestoryAPI.dll" />
+  <Reference Include="0Harmony" HintPath="$(VINTAGE_STORY)/Lib/0Harmony.dll" />
+  <Reference Include="Newtonsoft.Json" HintPath="$(VINTAGE_STORY)/Lib/Newtonsoft.Json.dll" />
+  <Reference Include="protobuf-net" HintPath="$(VINTAGE_STORY)/Lib/protobuf-net.dll" />
+ </ItemGroup>
+</Project>
