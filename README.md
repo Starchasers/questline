@@ -4,8 +4,8 @@ A modular quest framework for Vintage Story, derived from dizzyd/questline v0.14
 
 ## Fork layout and verification
 
-- **Framework:** `questline/`, version 0.15.0. Ships no quest chapters.
-- **Questbooks:** `content/vanilla/` plus eleven optional mod content packages. Install vanilla for the original shared book; add only the integrations you use.
+- **Mod:** `questline/`, version 0.16.0. One mod holds the framework and the whole questbook; chapters live in `questline/assets/questline/questline/chapters/`.
+- **Questbook:** the original vanilla chapters plus the integrations for Bricklayers, Expanded Foods (with Chef's Tricks and Meals), From Golden Combs, Tailor's Delight and Wool. Integrations for mods outside the target modpack (Better Ruins, Charcoal Kiln, Hex's Machinery, Seafarer) were removed. Uninstall any earlier `questlinevanilla` or `questline<provider>` content ZIPs before installing 0.16.0.
 - **Executable adapters:** `compat/toolsmith/`, optional and separate from quest content.
 - **Rewards:** original material payouts become Quest Cookies; stage grants and claiming remain supported.
 - **Translations:** shared text still lives in the framework. Independent localization ownership is not implemented.
@@ -19,7 +19,7 @@ Start with [CONTRIBUTING.md](CONTRIBUTING.md). AI assistants must also read [AGE
 | Task | Guide |
 | --- | --- |
 | Check approved scope and compatibility boundaries | [Fork contract](docs/fork-contract.md) |
-| Select packages and dependencies; preserve content identity | [Content packages](docs/content-packages.md) |
+| Where quest content lives; preserve content identity | [Questbook content](docs/content-packages.md) |
 | Build deterministic archives | [Build and packaging](docs/build-packaging.md) |
 | Understand CI and release gates | [CI](docs/ci.md) |
 | Author addons and resolve extension conflicts | [Framework composition](docs/framework-composition.md) |

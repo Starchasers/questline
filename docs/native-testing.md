@@ -4,10 +4,8 @@ Stage the modular fork's content explicitly. Historical upstream `CLAUDE.md` com
 
 ## Stage required packages
 
-- Install framework plus `content/vanilla` for vanilla-dependent native tests, BookTests and Gallery.
-- Pair every optional questbook with its gameplay provider and prerequisites. Gameplay providers alone no longer install quest definitions.
-- Add `content/expandedfoods` for Expanded Foods screenshots, alongside vanilla and the gameplay mods.
-- Include Expanded Foods gameplay and questbook packages for Chef's Tricks and Meals Module questbooks.
+- Install the single `questline` mod; it carries every chapter. No separate content packages exist.
+- Chapters that integrate a gameplay mod keep their `requiresMod` gate, so install that gameplay mod (and its prerequisites) to see them, for example Expanded Foods for its screenshots.
 - For Toolsmith native tests, build/install `compat/toolsmith`, core and Toolsmith. With the inspected VsTestkit runner, pass `--mods <checkout>/compat/toolsmith/bin/Release` for the adapter output—not `--mod`, which uses a different output convention.
 
 ## Screenshots and acceptance limits

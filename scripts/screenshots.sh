@@ -33,7 +33,7 @@ if [ "${clients:-0}" != "0" ] && [ "$force" = "0" ]; then
     exit 1
 fi
 
-# sync-linux.sh copies the project's parent tree, including content/, to mods/<repo-name>.
+# sync-linux.sh copies the project's parent tree to mods/<repo-name>; the questbook ships inside questline/.
 # Pin the slot: a checkout named questline-framework must still use vstestkit-questline.
 (cd "$vstestkit" && bash scripts/sync-linux.sh "$host" --slot questline --mod "$repo/questline")
 printf -v remote_repo '%q' "mods/$(basename "$repo")"
@@ -43,10 +43,6 @@ printf -v remote_repo '%q' "mods/$(basename "$repo")"
 run='set -e
     cd vstestkit-questline
     repo='$remote_repo'
-    stage="$PWD/run/questline-gallery-content"
-    mkdir -p "$stage/base" "$stage/expandedfoods"
-    rsync -a --delete "$repo/content/vanilla/" "$stage/base/questlinevanilla/"
-    rsync -a --delete "$repo/content/expandedfoods/" "$stage/expandedfoods/questlineexpandedfoods/"
     sed -i -e "s/\"screenWidth\": [0-9]*/\"screenWidth\": '$width'/" -e "s/\"screenHeight\": [0-9]*/\"screenHeight\": '$height'/" templates/clientsettings.json
     export VSTK_SCREEN_WIDTH='$width' VSTK_SCREEN_HEIGHT='$height
 
@@ -55,8 +51,8 @@ status=0
 ssh "$host" "rm -f ~/.cairn/games/*/questline-gallery-*.png
     $run
     status=0
-    bash scripts/run.sh \"\$repo/tests\" --mod \"\$repo/questline\" --mods \"\$stage/base\" --client --filter Gallery || status=\$?
-    bash scripts/run.sh \"\$repo/tests\" --mod \"\$repo/questline\" --mods \"\$stage/base\" --mods \"\$stage/expandedfoods\" --mods \"\$HOME/questline-addon-mods\" --client --filter ExpandedFoodsKitchen || status=\$?
+    bash scripts/run.sh \"\$repo/tests\" --mod \"\$repo/questline\" --client --filter Gallery || status=\$?
+    bash scripts/run.sh \"\$repo/tests\" --mod \"\$repo/questline\" --mods \"\$HOME/questline-addon-mods\" --client --filter ExpandedFoodsKitchen || status=\$?
     exit \$status" || status=$?
 
 mkdir -p "$out"

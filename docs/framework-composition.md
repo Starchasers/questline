@@ -1,6 +1,8 @@
 # Framework composition and addon author contract
 
-Build independent content assets, not one monolithic quest pack. Content can
+This fork ships its own questbook inside the single `questline` mod (see
+[questbook content](content-packages.md)). The rules below describe how the loader
+composes chapter files, and still apply to third-party addons. Content can
 own a questline, append to an installed chapter, or intentionally replace one
 quest in a chapter. Do not use file order as a priority system.
 
@@ -95,7 +97,7 @@ the loader rather than substituting regex assertions. Coverage includes:
 
 - Exhaustive small discovery/conflict permutations and discovery under two cultures.
 - Inactive extensions, stable duplicate diagnostics, editor precedence, and qualified cross-addon links.
-- 12 seeded shuffles of all 56 extracted chapter files.
+- 12 seeded shuffles of all 49 shipped chapter files.
 - All **16 intentional base-to-one-extension replacements** in the real content, including tasks, prose, and prerequisites.
 
 Game existence/lang lookups use permissive mocks. This verifies composition,

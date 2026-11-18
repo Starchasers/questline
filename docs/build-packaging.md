@@ -1,9 +1,10 @@
 # Build and deterministic mod packaging
 
-Run `build.sh` to build the framework first, then every discovered `compat/*` code
-project, and package each mod in its own ZIP. Treat `content/*` directories as
-content-only mods. Add a manifest to every immediate directory under `content/`
-or `compat/`; discovery uses no curated package list.
+Run `build.sh` to build the `questline` mod first, then every discovered `compat/*` code
+project, and package each mod in its own ZIP. The questbook ships inside the `questline`
+ZIP as assets; the repository has no `content/` directory. The packager still accepts
+content-only mods under `content/` if one is ever added, and needs a manifest in every
+immediate directory under `content/` or `compat/`; discovery uses no curated package list.
 
 ## Requirements and usage
 

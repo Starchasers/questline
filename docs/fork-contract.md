@@ -2,13 +2,13 @@
 
 ## Source and licensing
 
-Start from dizzyd/questline commit `9a2fd4e2b2e24046de08c7a86aff335294558939` (v0.14.0). Preserve its MIT license and attribution. Fork framework version: 0.15.0.
+Start from dizzyd/questline commit `9a2fd4e2b2e24046de08c7a86aff335294558939` (v0.14.0). Preserve its MIT license and attribution. Fork version: 0.16.0 (0.15.0 was the last release that shipped content as separate packages).
 
 Keep the `questline` mod ID, asset namespace and public compatibility identities stable: changing them can silently change quest/save identifiers. Never install upstream and this fork together.
 
 ## Approved requirements
 
-1. Keep the framework, independently installable vanilla and optional mod questbooks, and optional executable provider adapters in one repository.
+1. Ship the framework and the whole questbook as one `questline` mod; keep optional executable provider adapters separate. (Superseded the 0.15.0 rule of independently installable questbook packages.)
 2. Preserve original chapter files, quest prose, tasks, IDs, dependencies, pages, links, positions and intentional replacements. Change existing quest behavior only for the approved reward substitution.
 3. Retain claiming and replace item/resource payouts with a custom tiny edible Quest Cookie. Explicit user approval superseded the earlier request to remove all quest rewards.
 4. Make cookies quest-only, with tiny satiety and no buffs/healing. Supply no recipes or downstream crafting/cooking/planting/processing/fuel/feed uses, and avoid spoilage into useful materials. This does not guarantee immunity to arbitrary external recipes; inspect wildcard interactions in the enabled modpack before release.

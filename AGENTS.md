@@ -18,7 +18,7 @@
 
 ## Non-negotiable contracts
 
-- `questline/` is framework code and shared resources; `content/*` owns quest definitions; `compat/toolsmith/` owns executable Toolsmith integration. Keep core independent of optional providers.
+- `questline/` is the single mod: framework code, shared resources and all quest definitions (`questline/assets/questline/questline/`); `compat/toolsmith/` owns executable Toolsmith integration. Keep core independent of optional providers.
 - Preserve `questline` identity, asset domains, chapter filenames, quest/task IDs, extension targets, translations and saved progress unless a migration is explicitly approved.
 - The server owns progress, parties, claims, hand-in consumption and persistence. Clients request actions; never grant rewards or trust client completion directly.
 - Keep packet registration order identical on both sides. Keep game-independent loading/checks behind `IGameFacts`.
@@ -47,5 +47,5 @@ Read the matching `SKILL.md` before work. These are repository-local playbooks; 
 
 - [AI workflow and sources](docs/ai-workflow.md)
 - [Build and packaging](docs/build-packaging.md), [CI](docs/ci.md)
-- [Framework composition](docs/framework-composition.md), [content packages](docs/content-packages.md)
+- [Framework composition](docs/framework-composition.md), [questbook content](docs/content-packages.md)
 - [Development notes](docs/development-notes.md), [native testing](docs/native-testing.md)
