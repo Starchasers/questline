@@ -155,12 +155,22 @@ public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = n
 
         registry.Text = Text;
         registry.Index();
+        FilterNavigation(registry);
         Validate(registry);
         registry.Index();
+        // Validation can disable an optional destination; never send its link to clients.
+        FilterNavigation(registry);
 
         logger.Notification("[questline] loaded {0} quests in {1} chapters across {2} questlines, {3} problems",
             registry.Quests.Count, registry.Chapters.Count, registry.Questlines.Count, Problems.Count);
         return registry;
+    }
+
+    void FilterNavigation(QuestRegistry registry)
+    {
+        foreach (var quest in registry.Quests.Values)
+            quest.Page.RemoveAll(block => !(block.RequiresMod ?? []).All(facts.IsModLoaded)
+                || !(block.RequiresQuest ?? []).All(id => registry.Get(id) != null));
     }
 
     List<QuestlineDef> LoadQuestlines()
@@ -222,6 +232,7 @@ public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = n
             {
                 if (block.Lang != null) block.Lang = Requirement.QualifyId(block.Lang, domain);
                 if (block.Caption != null) block.Caption = Requirement.QualifyId(block.Caption, domain);
+                block.RequiresQuest = (block.RequiresQuest ?? []).Select(id => Requirement.QualifyId(id, domain)).ToArray();
             }
             foreach (var reward in quest.Rewards.Where(r => r.Stage != null)) reward.Stage = Requirement.QualifyId(reward.Stage, domain);
         }

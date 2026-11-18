@@ -132,6 +132,10 @@ public class QuestDef
 /// <summary>One block of a quest's page: text, an image, a row of items or a recipe.</summary>
 public class PageBlock
 {
+    /// <summary>Optional paragraph/navigation guards, resolved by the server after composition.</summary>
+    public string[] RequiresMod = [];
+    /// <summary>All these qualified quest IDs must survive composition/validation.</summary>
+    public string[] RequiresQuest = [];
     /// <summary>text, image, items or recipe.</summary>
     public string Type;
     /// <summary>text: the lang key of the paragraph.</summary>

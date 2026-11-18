@@ -5,7 +5,7 @@
   "authors": [
     "Kuboczoch"
   ],
-  "description": "Source-backed Butchering journey: carcass handling, skinning, bleeding and useful products. Manual action milestones preserve honest tracking.",
+  "description": "Source-backed Butchering journey with automatic output objectives, item icons and conditional native crossmod navigation. Possession is not processing-action proof.",
   "version": "0.14.0",
   "dependencies": {
     "game": "1.22.0",

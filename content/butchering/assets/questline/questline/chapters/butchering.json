@@ -1,7 +1,7 @@
 {
   "id": "butchering",
   "order": 52,
-  "icon": "game:knife-generic-flint",
+  "icon": "butchering:butcherhook-flint-north",
   "requiresMod": [
     "butchering"
   ],
@@ -16,7 +16,8 @@
       "icon": "game:knife-generic-flint",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "item": "game:knife-generic-*",
           "count": 1
         }
       ],
@@ -24,6 +25,10 @@
         {
           "type": "text",
           "lang": "butchering-prepare-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-native-guides"
         }
       ],
       "rewards": [
@@ -41,10 +46,11 @@
         1.5
       ],
       "requires": "butchering-prepare",
-      "icon": "game:knife-generic-flint",
+      "icon": "butchering:butcherhook-flint-north",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "block": "butchering:butcherhook-*",
           "count": 1
         }
       ],
@@ -69,10 +75,11 @@
         3
       ],
       "requires": "butchering-hook",
-      "icon": "game:knife-generic-flint",
+      "icon": "butchering:butchertable-primitive-north",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "craft",
+          "block": "butchering:butchertable-*",
           "count": 1
         }
       ],
@@ -97,10 +104,11 @@
         4.5
       ],
       "requires": "butchering-table",
-      "icon": "game:knife-generic-flint",
+      "icon": "butchering:deadhare-male-european-1-dead",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "item": "butchering:dead*-dead",
           "count": 1
         }
       ],
@@ -121,14 +129,15 @@
     {
       "id": "butchering-skin",
       "pos": [
-        0,
-        6
+        -2,
+        4
       ],
       "requires": "butchering-retrieve",
-      "icon": "game:knife-generic-flint",
+      "icon": "game:hide-raw-small",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "item": "game:hide-raw-*",
           "count": 1
         }
       ],
@@ -152,11 +161,12 @@
         0,
         7.5
       ],
-      "requires": "butchering-skin",
-      "icon": "game:knife-generic-flint",
+      "requires": "butchering-retrieve",
+      "icon": "butchering:deadhare-male-european-1-bledout",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "item": "butchering:dead*-bledout",
           "count": 1
         }
       ],
@@ -181,10 +191,11 @@
         9
       ],
       "requires": "butchering-bleed",
-      "icon": "game:knife-generic-flint",
+      "icon": "game:redmeat-raw",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "item": "game:@(redmeat|poultry|bushmeat)-raw",
           "count": 1
         }
       ],
@@ -208,11 +219,12 @@
         3,
         6
       ],
-      "requires": "butchering-skin",
-      "icon": "game:knife-generic-flint",
+      "requires": "butchering-table",
+      "icon": "butchering:bloodportion",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "item": "butchering:bloodportion",
           "count": 1
         }
       ],
@@ -237,10 +249,11 @@
         10.5
       ],
       "requires": "butchering-process",
-      "icon": "game:knife-generic-flint",
+      "icon": "butchering:smoked-none-redmeat",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "item": "butchering:smoked-*",
           "count": 1
         }
       ],
@@ -248,6 +261,29 @@
         {
           "type": "text",
           "lang": "butchering-preserve-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-ef-rack-link",
+          "requiresMod": [
+            "expandedfoods"
+          ],
+          "requiresQuest": [
+            "questline:build-meat-rack",
+            "questline:dry-age-meat"
+          ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-chef-salt-link",
+          "requiresMod": [
+            "efchefstricks",
+            "expandedfoods"
+          ],
+          "requiresQuest": [
+            "questline:crystallize-salt",
+            "questline:dry-salt-crystal"
+          ]
         }
       ],
       "rewards": [
@@ -265,10 +301,11 @@
         9
       ],
       "requires": "butchering-process",
-      "icon": "game:knife-generic-flint",
+      "icon": "butchering:offal-clean",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "item": "butchering:offal-clean",
           "count": 1
         }
       ],
@@ -276,6 +313,16 @@
         {
           "type": "text",
           "lang": "butchering-offal-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-ef-sausage-link",
+          "requiresMod": [
+            "expandedfoods"
+          ],
+          "requiresQuest": [
+            "questline:knead-sausage"
+          ]
         }
       ],
       "rewards": [
@@ -293,10 +340,11 @@
         9
       ],
       "requires": "butchering-process",
-      "icon": "game:knife-generic-flint",
+      "icon": "butchering:sinew-dry",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "item": "butchering:sinew-dry",
           "count": 1
         }
       ],
@@ -321,10 +369,11 @@
         10.5
       ],
       "requires": "butchering-process",
-      "icon": "game:knife-generic-flint",
+      "icon": "butchering:strongbone",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "item": "butchering:strongbone",
           "count": 1
         }
       ],
@@ -332,6 +381,13 @@
         {
           "type": "text",
           "lang": "butchering-bones-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-bonemeal-link",
+          "requiresQuest": [
+            "questline:grind-bonemeal"
+          ]
         }
       ],
       "rewards": [
@@ -349,10 +405,11 @@
         10.5
       ],
       "requires": "butchering-process",
-      "icon": "game:knife-generic-flint",
+      "icon": "butchering:butcherybag-primitive",
       "tasks": [
         {
-          "type": "checkbox",
+          "type": "obtain",
+          "item": "butchering:butcherybag-*",
           "count": 1
         }
       ],
@@ -360,6 +417,13 @@
         {
           "type": "text",
           "lang": "butchering-bag-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-cleaver-link",
+          "requiresQuest": [
+            "questline:make-cleaver"
+          ]
         }
       ],
       "rewards": [

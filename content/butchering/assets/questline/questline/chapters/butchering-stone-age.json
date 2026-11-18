@@ -18,7 +18,7 @@
           "entity": "game:chicken-*"
         }
       ],
-      "icon": "game:spear-generic-flint",
+      "icon": "game:poultry-raw",
       "rewards": [
         {
           "type": "item",
@@ -30,6 +30,34 @@
         {
           "type": "text",
           "lang": "butchering-hunt-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-hunt-link",
+          "requiresQuest": [
+            "questline:butchering-prepare"
+          ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-bh-link",
+          "requiresMod": [
+            "betterhusbandry"
+          ],
+          "requiresQuest": [
+            "questline:breed-animals"
+          ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-lw-link",
+          "requiresMod": [
+            "livestockwelfare"
+          ],
+          "requiresQuest": [
+            "questline:make-trough",
+            "questline:breed-animals"
+          ]
         }
       ]
     }

@@ -1,0 +1,184 @@
+{
+  "evidence": "Pinned Pszczoly 1.2.0 export and Butchering 1.14.3; archive hashes in butchering-sources.json. Asset identity is static evidence, not native acceptance.",
+  "quests": {
+    "butchering-prepare": {
+      "icon": "game:knife-generic-flint",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:knife-generic-*",
+          "count": 1
+        }
+      ],
+      "source": "vanilla stone-age knife task; Butchering hook interaction requires a knife",
+      "proves": "a working knife"
+    },
+    "butchering-hook": {
+      "icon": "butchering:butcherhook-flint-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:butcherhook-*",
+          "count": 1
+        }
+      ],
+      "source": "blocktypes/butcherhook.json; recipes/grid/butcherhook.json",
+      "proves": "a skinning-hook block"
+    },
+    "butchering-table": {
+      "icon": "butchering:butchertable-primitive-north",
+      "tasks": [
+        {
+          "type": "craft",
+          "block": "butchering:butchertable-*",
+          "count": 1
+        }
+      ],
+      "source": "blocktypes/butchertable.json",
+      "proves": "a grid-crafted table output, not placement or processing"
+    },
+    "butchering-retrieve": {
+      "icon": "butchering:deadhare-male-european-1-dead",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:dead*-dead",
+          "count": 1
+        }
+      ],
+      "source": "itemtypes/butchercreatures/hare.json and other butchercreatures: state=dead",
+      "proves": "an intact supported corpse in carried inventory"
+    },
+    "butchering-skin": {
+      "icon": "game:hide-raw-small",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:hide-raw-*",
+          "count": 1
+        }
+      ],
+      "source": "vanilla leatherwork/get-hide; itemtypes/butchercreatures/* skinning products",
+      "proves": "a raw hide, not proof of hook skinning"
+    },
+    "butchering-bleed": {
+      "icon": "butchering:deadhare-male-european-1-bledout",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:dead*-bledout",
+          "count": 1
+        }
+      ],
+      "source": "itemtypes/butchercreatures/hare.json: state=bledout; ItemButcherable.cs",
+      "proves": "a bled-out supported corpse in carried inventory"
+    },
+    "butchering-process": {
+      "icon": "game:redmeat-raw",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:@(redmeat|poultry|bushmeat)-raw",
+          "count": 1
+        }
+      ],
+      "source": "Butchering guide and butchercreatures table outputs; vanilla raw meat assets",
+      "proves": "ordinary raw meat, not proof of table processing"
+    },
+    "butchering-blood": {
+      "icon": "butchering:bloodportion",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:bloodportion",
+          "count": 1
+        }
+      ],
+      "source": "itemtypes/liquids/bloodportion.json; BlockEntityButcherHook.cs",
+      "proves": "at least one whole litre of blood in a carried liquid container (liquid contents are counted by litre)"
+    },
+    "butchering-preserve": {
+      "icon": "butchering:smoked-none-redmeat",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:smoked-*",
+          "count": 1
+        }
+      ],
+      "source": "itemtypes/food/smoked.json; blocktypes/smokingrack.json",
+      "proves": "a smoked Butchering food item, not proof of operating a rack"
+    },
+    "butchering-offal": {
+      "icon": "butchering:offal-clean",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:offal-clean",
+          "count": 1
+        }
+      ],
+      "source": "itemtypes/resource/offal.json; recipes/barrel/cleanoffal.json",
+      "proves": "clean offal, not proof of barrel operation"
+    },
+    "butchering-sinew": {
+      "icon": "butchering:sinew-dry",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:sinew-dry",
+          "count": 1
+        }
+      ],
+      "source": "itemtypes/resource/sinew.json: wet -> dry Cure transition",
+      "proves": "dry sinew, not proof of waiting for curing"
+    },
+    "butchering-bones": {
+      "icon": "butchering:strongbone",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:strongbone",
+          "count": 1
+        }
+      ],
+      "source": "itemtypes/resource/strongbone.json; BlockEntityButcherTable.cs",
+      "proves": "a strong bone, not proof of breaking a carcass or making a tool"
+    },
+    "butchering-bag": {
+      "icon": "butchering:butcherybag-primitive",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:butcherybag-*",
+          "count": 1
+        }
+      ],
+      "source": "itemtypes/tool/butcherybag.json",
+      "proves": "an unequipped butchery bag carried in hotbar/backpack inventory"
+    },
+    "butchering-leather": {
+      "icon": "game:leather-normal-plain",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:leather-*",
+          "count": 1
+        }
+      ],
+      "source": "vanilla leatherwork/make-leather and existing game leather assets",
+      "proves": "finished leather, not an oiled pelt or proof of tanning"
+    },
+    "first-hunt": {
+      "icon": "game:poultry-raw",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "game:chicken-*"
+        }
+      ],
+      "source": "vanilla stone-age/first-hunt chicken kill objective; game poultry asset",
+      "proves": "a chicken kill, not carcass processing"
+    }
+  }
+}

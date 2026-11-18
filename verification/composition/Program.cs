@@ -28,6 +28,30 @@ IEnumerable<T[]> Permutations<T>(T[] items) {
     for (int i = 0; i < items.Length; i++)
         foreach (var rest in Permutations(items.Where((_, j) => i != j).ToArray())) yield return new[] { items[i] }.Concat(rest).ToArray();
 }
+Test("optional navigation is filtered after composition, not by provider presence alone", () => {
+    var source = Q("source", 0);
+    source.Page = JsonConvert.DeserializeObject<List<PageBlock>>("""
+        [{"type":"text","lang":"always"},
+         {"type":"text","lang":"optional","requiresMod":["provider"],"requiresQuest":["target"]},
+         {"type":"text","lang":"missing","requiresQuest":["absent"]}]
+        """);
+    var files = new[] { C("questline", "base", "base", null, source),
+        C("questline", "ext", "ext", "base", Q("target", 1)) };
+    foreach (var order in Permutations(files)) {
+        var (present, _) = Load(order);
+        Check(present.Get("questline:source").Page.Count == 2, "present target link missing or dangling link retained");
+        var roundtrip = QuestRegistry.FromJson(present.ToJson());
+        Check(roundtrip.Get("questline:source").Page.Count == 2, "network registry lost filtered navigation");
+        var (absent, _) = Load(order, missingMods: ["provider"]);
+        Check(absent.Get("questline:source").Page.Count == 1, "missing provider link leaked");
+    }
+    var (noBook, _) = Load([files[0]]);
+    Check(noBook.Get("questline:source").Page.Count == 1, "provider without questbook leaves a dangling link");
+    var invalidTarget = Q("target", 1);
+    invalidTarget.Tasks[0].Type = "unsupported";
+    var (invalid, _) = Load([files[0], C("questline", "invalid", "invalid", null, invalidTarget)]);
+    Check(invalid.Get("questline:source").Page.Count == 1, "link to a validation-disabled destination survived");
+});
 Test("chapter discovery is ordinal and preserves in-file quest order across 24 permutations", () => {
     var files = new[] { C("z", "b", "z:b", null, Q("second", 2), Q("first", 1)), C("a", "z", "a:z", null, Q("q", 1)),
         C("a", "A", "a:A", null, Q("qA", 1)), C("a", "a", "a:a", null, Q("qa", 1)) };
@@ -221,6 +245,37 @@ Test("Butchering present/absent keeps vanilla progression and optional output br
     foreach (string id in new[] { "get-hide", "make-leather", "make-cleaver" })
         Check(JsonConvert.SerializeObject(present.Registry.Get("questline:" + id)) == JsonConvert.SerializeObject(absent.Registry.Get("questline:" + id)), "unrelated vanilla quest changed: " + id);
     Check(!present.Loader.Problems.Any(p => p.Contains("missing prerequisite") || p.Contains("ambiguous extension")), string.Join("; ", present.Loader.Problems));
+});
+Test("shipped Butchering navigation and native wildcard targets survive composition", () => {
+    string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
+    var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
+        .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
+        .Select(f => (Domain: "questline", Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
+    var absentSets = new[] { Array.Empty<string>(), new[] { "butchering" }, new[] { "expandedfoods" },
+        new[] { "tailorsdelight" }, new[] { "efchefstricks" }, new[] { "immersivewoodworking" },
+        new[] { "betterhusbandry" }, new[] { "livestockwelfare" } };
+    foreach (var missing in absentSets)
+    foreach (var order in new[] { files, files.Reverse().ToArray() }) {
+        var (registry, loader) = Load(order, missingMods: missing.ToHashSet());
+        foreach (var q in registry.Quests.Values)
+        foreach (var block in q.Page) {
+            Check(!block.RequiresMod.Intersect(missing).Any(), "absent provider paragraph leaked: " + block.Lang);
+            Check(block.RequiresQuest.All(id => registry.Get(id) != null), "dangling optional quest link: " + block.Lang);
+        }
+        if (!missing.Contains("butchering")) {
+            var hunt = registry.Get("questline:first-hunt");
+            Check(hunt.Tasks.Single().Type == "kill", "hunt event contract changed");
+            Check(registry.Get("questline:butchering-table").Tasks.Single().Type == "craft", "table equipment cannot satisfy obtain; keep real grid craft credit");
+            Check(registry.Get("questline:butchering-bleed").Requires.QuestIds().Contains("questline:butchering-retrieve"), "species-specific raw hide blocks core route");
+        }
+    }
+    var examples = Newtonsoft.Json.Linq.JObject.Parse(File.ReadAllText(Path.Combine(root, "docs/evidence/butchering-assets.json")));
+    var (present, _) = Load(files);
+    foreach (var prop in (Newtonsoft.Json.Linq.JObject)examples["taskExamples"]) {
+        var task = present.Get("questline:" + prop.Key).Tasks.Single();
+        string example = (string)prop.Value["code"];
+        Check(Vintagestory.API.Util.WildcardUtil.Match(new AssetLocation(task.Target), new AssetLocation(example)), "native wildcard does not match source output: " + prop.Key);
+    }
 });
 Console.WriteLine($"Composition: {passed} passed, {failed} failed");
 return failed == 0 ? 0 : 1;

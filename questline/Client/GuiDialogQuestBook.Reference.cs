@@ -401,6 +401,12 @@ public partial class GuiDialogQuestBook
     /// </summary>
     bool OpenPage(string code)
     {
+        if (code.StartsWith("quest:", StringComparison.Ordinal))
+        {
+            string id = code["quest:".Length..];
+            if (client.Registry?.Get(id) != null) SelectQuest(id);
+            return true;
+        }
         EnsureIndex();
         if (stackByPageCode != null && stackByPageCode.ContainsKey(code)) OpenRef("item:" + code);
         else if (AllGuides().Any(g => g.PageCode == code)) OpenRef("guide:" + code);

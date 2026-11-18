@@ -11,19 +11,18 @@ class ButcheringTests(unittest.TestCase):
     def test_journey_and_action_semantics(self):
         chapter = json.loads((CHAPTERS / 'butchering.json').read_text())
         quests = {q['id']: q for q in chapter['quests']}
-        spine = ['butchering-prepare', 'butchering-hook', 'butchering-table', 'butchering-retrieve', 'butchering-skin', 'butchering-bleed', 'butchering-process']
+        spine = ['butchering-prepare', 'butchering-hook', 'butchering-table', 'butchering-retrieve', 'butchering-bleed', 'butchering-process']
         for a, b in zip(spine, spine[1:]):
             self.assertEqual(a, quests[b]['requires'])
         for q in quests.values():
             self.assertEqual([{'type': 'item', 'item': 'questline:questcookie', 'count': 1}], q['rewards'])
-            self.assertEqual([{'type': 'checkbox', 'count': 1}], q['tasks'])
+            self.assertTrue(all(t['type'] in ('obtain', 'craft') for t in q['tasks']))
         self.assertNotIn('butchering-blood', str(quests['butchering-process']['requires']))
         self.assertEqual(['butchering'], chapter['requiresMod'])
         en = json.loads((PACK / 'assets/questline/lang/en.json').read_text())
         self.assertIn(chapter['id'] + '-title', en)
-        self.assertEqual('game:knife-generic-flint', chapter['icon'])
-        for q in quests.values():
-            self.assertEqual('game:knife-generic-flint', q['icon'])
+        self.assertEqual('butchering:butcherhook-flint-north', chapter['icon'])
+        self.assertGreaterEqual(len({q['icon'] for q in quests.values()}), 12)
         self.assertEqual(len(quests), len({tuple(q['pos']) for q in quests.values()}))
 
     def test_ci_and_release_count_every_owned_package(self):
