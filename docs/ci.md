@@ -43,7 +43,7 @@ dotnet run --project compat/toolsmith/tests/AdapterChecks.csproj -c Release -p:V
 ```
 
 CI additionally compares ZIP names and checksum entries to every owned package's
-`modinfo.json`, requiring exactly **14**: framework, 12 content packs, and optional
+`modinfo.json`, requiring exactly **15**: framework, 13 content packs, and optional
 Toolsmith adapter. The core and adapter compile against real game assemblies;
 content packs are independently validated and packaged. No build-only fixture,
 game assembly, or external provider is shipped.
@@ -61,7 +61,7 @@ after a failure. A failed check is not evidence that those later suites ran.
 
 Successful runs upload two artifacts, retained for 14 days:
 
-- **questline-packages**: all 14 individually installable ZIPs and `SHA256SUMS`.
+- **questline-packages**: all 15 individually installable ZIPs and `SHA256SUMS`.
 - **questline-test-results**: text logs for each executed suite, build/checksum
   output, source commit, server archive checksum, and toolchain versions. Logs are
   not fabricated JUnit/TRX reports: the executable suites use their own assertions
@@ -81,8 +81,8 @@ framework manifest version must equal the tag without the leading `v`; content
 and adapter packages retain their own manifest versions.
 
 The publisher downloads the verified artifacts from its own workflow run (no
-rebuild), rechecks all 14 ZIP checksums, attests every ZIP, then attaches all 14
-ZIPs and `SHA256SUMS` to the GitHub release. The publisher reads back all 15
+rebuild), rechecks all 15 ZIP checksums, attests every ZIP, then attaches all 15
+ZIPs and `SHA256SUMS` to the GitHub release. The publisher reads back all 16
 release assets, downloads them again, and checks their hashes against the verified
 checksum file. Notes include checksums and recorded build inputs. It refuses to overwrite an existing release rather than replacing
 assets silently. The trusted tag publisher checks out metadata only; it does not

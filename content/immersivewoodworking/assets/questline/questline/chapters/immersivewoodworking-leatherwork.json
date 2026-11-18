@@ -1,0 +1,68 @@
+{
+  "id": "immersivewoodworking-leatherwork",
+  "extends": "leatherwork",
+  "requiresMod": [
+    "immersivewoodworking"
+  ],
+  "quests": [
+    {
+      "id": "weak-tannin",
+      "pos": [
+        0,
+        3.0
+      ],
+      "requires": [
+        "make-barrel",
+        "iw-tanning-bark"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "iw-weak-tannin-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "game:leather-normal-plain"
+    },
+    {
+      "id": "strong-tannin",
+      "pos": [
+        2,
+        3.0
+      ],
+      "requires": [
+        "weak-tannin"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "iw-strong-tannin-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "game:leather-normal-plain"
+    }
+  ]
+}

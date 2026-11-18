@@ -1,0 +1,228 @@
+{
+  "pack": {
+    "url": "https://up.snet.ovh/u/srMi9",
+    "sha256": "daafd4c1cb217b2553711128adfbd71511f5f0734cfb2927a6c4ffea02e0bb2d",
+    "identity": "Pszczoly 1.0; Vintage Story 1.22.7",
+    "provenance": "Retained original extensionless download; historical session 20261114_105735_37d6e7d2 message 865002 downloads srMi9 to woodworking-tutorial/modpack. Live URL returned 404 during research."
+  },
+  "mod": {
+    "path": "mods/immersivewoodworking_1.3.13.zip",
+    "sha256": "91c6a6da78e01f95ac4b2490c55875043f344a380f303e2c2fdc369ca70963d8"
+  },
+  "configs": {
+    "config/ModConfig/ImmersiveWoodworking/automation.json": {
+      "SawmillSpeed": 1.0,
+      "SawmillMinTorque": 0.05,
+      "SawmillResistance": 0.085,
+      "SawmillBladeWearMultiplier": 1.0,
+      "ChopperSpeed": 1.0,
+      "ChopperMinTorque": 0.05,
+      "ChopperResistance": 0.085,
+      "ChopperHeadWearMultiplier": 1.0
+    },
+    "config/ModConfig/ImmersiveWoodworking/bark.json": {
+      "BarkPerLog": 3,
+      "BarkChanceMultKnife": 0.5,
+      "BarkChanceMultAxeHammer": 0.75,
+      "BarkChanceMultSpud": 1.0,
+      "BarkChanceMultSpudSteelBonus": 0.25,
+      "TarPotCapacityPoints": 64,
+      "TarBirchPointsWet": 1,
+      "TarBirchPointsDry": 2,
+      "TarYield": 8,
+      "BarkDryHours": 96.0
+    },
+    "config/ModConfig/ImmersiveWoodworking/chopping.json": {
+      "HalfLogChopStage": true,
+      "AllowFirewoodToSticks": true,
+      "ChopSeconds": 0.75,
+      "ChopSpeedMultiplier": 1.0,
+      "FirewoodChopSpeedMultiplier": 2.25,
+      "HalfLogChopSpeedMultiplier": 2.0,
+      "MaulChopSpeedMultiplier": 1.5,
+      "ChopProgressJitter": 0.2,
+      "AxeDurabilityPerLog": 3,
+      "ChopRestockDelaySeconds": 0.3
+    },
+    "config/ModConfig/ImmersiveWoodworking/debarking.json": {
+      "DebarkSeconds": 1.5,
+      "AllowKnifeDebark": true,
+      "KnifeDebarkSpeedMultiplier": 0.15,
+      "AxeHammerDebarkSpeedMultiplier": 0.3,
+      "DebarkDurabilityPerLog": 1,
+      "DebarkRestockDelaySeconds": 0.3
+    },
+    "config/ModConfig/ImmersiveWoodworking/drops.json": {
+      "FirewoodPerLog": 8,
+      "ChopperFirewoodPerLog": -1,
+      "FirewoodDropCount": 4,
+      "ChopperFirewoodDropCount": -1,
+      "SticksPerFirewood": 2,
+      "ChopperSticksPerFirewood": -1,
+      "SticksDropCount": 2,
+      "ChopperSticksDropCount": -1,
+      "PlanksPerLog": 24,
+      "SawmillPlanksPerLog": -1,
+      "PlankDropCount": 4,
+      "SawmillPlankDropCount": -1,
+      "BeamsPerDebarkedLog": 6,
+      "SawmillBeamsPerDebarkedLog": -1,
+      "BeamDropCount": 2,
+      "SawmillBeamDropCount": -1
+    },
+    "config/ModConfig/ImmersiveWoodworking/flotsam.json": {
+      "FlotsamBreakSeconds": 1.1111112,
+      "FlotsamFirewoodLarge": 2,
+      "FlotsamSticksLarge": 2,
+      "FlotsamFirewoodNormal": 1,
+      "FlotsamSticksNormal": 1,
+      "FlotsamFirewoodSmall": 0,
+      "FlotsamSticksSmall": 2
+    },
+    "config/ModConfig/ImmersiveWoodworking/general.json": {
+      "EnableSawmill": true,
+      "EnableChopper": true,
+      "EnableBarkChain": true,
+      "AutoRestock": true,
+      "DropsAtPlayer": false,
+      "ScaleWorkSpeedByToolTier": true,
+      "DisableVanillaFirewoodCrafting": true,
+      "DisableVanillaPlankCrafting": true,
+      "DisableVanillaDebarkCrafting": true,
+      "DisableVanillaLogTannin": true,
+      "KeepTraitRecipes": true,
+      "AllowVanillaSaw": true,
+      "RemovePitSaw": false,
+      "CraftableSawhorse": false,
+      "LogRecoverThreshold": 0.25
+    },
+    "config/ModConfig/ImmersiveWoodworking/integration.json": {
+      "SharpnessSpeedFloor": 0.5,
+      "ChopSharpnessCeiling": 1.4,
+      "XSkillsIntegration": true,
+      "XSkillsSawXpPerSection": 0.075,
+      "XSkillsDebarkXpPerStrip": 0.15,
+      "XSkillsChopXpPerWorkpiece": 0.1,
+      "XSkillsFirewoodChopXp": 0.025,
+      "XSkillsCoopXpFullToBoth": true,
+      "XSkillsSawyerYield": true,
+      "XSkillsSplitterYield": true,
+      "XSkillsCarefulSawyer": true,
+      "XSkillsSwiftsawSpeed": true,
+      "XSkillsSwiftsawMaxChopSpeedBonus": 0.35,
+      "XSkillsSwiftsawMaxSawSpeedBonus": 0.35,
+      "SeraphLevelingIntegration": true
+    },
+    "config/ModConfig/ImmersiveWoodworking/sawing.json": {
+      "SawSeconds": 6.0,
+      "SawDurabilityPerStage": 1,
+      "VanillaSawSpeedMultiplier": 0.5,
+      "SawRestockDelaySeconds": 0.3
+    }
+  },
+  "assets": {
+    "modinfo.json": {
+      "sha256": "e8893dbcad517561f67611766a33f3f3c88d59c79467ca57b5dacc2a15dca7f6",
+      "text": "{\n    \"$schema\": \"https://moddbcdn.vintagestory.at/schema/modinfo.latest.json\",\n    \"type\": \"Code\",\n    \"modid\": \"immersivewoodworking\",\n    \"name\": \"ImmersiveWoodworking\",\n    \"authors\": [\n        \"Bobrik00\"\n    ],\n    \"description\": \"Woodworking expansion\",\n    \"version\": \"1.3.13\",\n    \"dependencies\": {\n        \"game\": \"1.22.2\"\n    }\n}"
+    },
+    "assets/immersivewoodworking/itemtypes/bark.json": {
+      "sha256": "55c2f98b2e39156341fe7e9e1f1b6c7c57c380eb2572b53058b33b11bae5f87c",
+      "text": "{\n\tcode: \"bark\",\n\tvariantgroups: [\n\t\t{ code: \"kind\", states: [\"generic\", \"tan-green\", \"tan-dry\", \"birch-green\", \"birch-dry\", \"bast\", \"medicinal\"] }\n\t],\n\ttagsByType: {\n\t\t\"bark-generic\":     [\"bark\", \"bark-compost\"],\n\t\t\"bark-tan-green\":   [\"bark\", \"bark-tannin\"],\n\t\t\"bark-tan-dry\":     [\"bark\", \"bark-tannin-dry\"],\n\t\t\"bark-birch-green\": [\"bark\", \"bark-birch\", \"bark-compost\"],\n\t\t\"bark-birch-dry\":   [\"bark\", \"bark-birch\", \"bark-compost\"],\n\t\t\"bark-bast\":        [\"bark\", \"bark-fiber\", \"bark-compost\"],\n\t\t\"bark-medicinal\":   [\"bark\", \"bark-medicinal\", \"bark-compost\"]\n\t},\n\tshapeByType: {\n\t\t\"bark-generic\":     { base: \"immersivewoodworking:item/bark/bark-generic\" },\n\t\t\"bark-tan-green\":   { base: \"immersivewoodworking:item/bark/bark-tan\" },\n\t\t\"bark-tan-dry\":     { base: \"immersivewoodworking:item/bark/bark-tan\" },\n\t\t\"bark-birch-green\": { base: \"immersivewoodworking:item/bark/bark-birch\" },\n\t\t\"bark-birch-dry\":   { base: \"immersivewoodworking:item/bark/bark-birch\" },\n\t\t\"bark-bast\":        { base: \"immersivewoodworking:item/bark/bark-bast\" },\n\t\t\"bark-medicinal\":   { base: \"immersivewoodworking:item/bark/bark-medicinal\" }\n\t},\n\ttexturesByType: {\n\t\t\"bark-tan-green\": {\n\t\t\t\"bark-tan\":      { base: \"immersivewoodworking:item/bark/bark-tan\", blendedOverlays: [{ base: \"immersivewoodworking:item/bark/tint-wet\", blendMode: \"Multiply\" }] },\n\t\t\t\"oak\":           { base: \"game:block/wood/oak\",                     blendedOverlays: [{ base: \"immersivewoodworking:item/bark/tint-wet\", blendMode: \"Multiply\" }] },\n\t\t\t\"oak-bark_dark\": { base: \"game:block/wood/oak-dark\",                blendedOverlays: [{ base: \"immersivewoodworking:item/bark/tint-wet\", blendMode: \"Multiply\" }] }\n\t\t},\n\t\t\"bark-birch-green\": {\n\t\t\t\"birch-h\":        { base: \"game:block/wood/bark/birch-h\",   blendedOverlays: [{ base: \"immersivewoodworking:item/bark/tint-wet\", blendMode: \"Multiply\" }] },\n\t\t\t\"birch-debarked\": { base: \"game:block/wood/debarked/birch\", blendedOverlays: [{ base: \"immersivewoodworking:item/bark/tint-wet\", blendMode: \"Multiply\" }] }\n\t\t}\n\t},\n\tbehaviorsByType: {\n\t\t\"bark-bast\": [],\n\t\t\"*\": [\n\t\t\t{\n\t\t\t\tname: \"GroundStorable\",\n\t\t\t\tproperties: {\n\t\t\t\t\tlayout: \"Stacking\",\n\t\t\t\t\tplaceRemoveSound: \"game:sounds/block/loosestick\",\n\t\t\t\t\tupSolid: false,\n\t\t\t\t\tstackingCapacityByType: {\n\t\t\t\t\t\t\"bark-generic\": 64, \"bark-tan-green\": 48, \"bark-tan-dry\": 48,\n\t\t\t\t\t\t\"bark-birch-green\": 48, \"bark-birch-dry\": 48, \"bark-medicinal\": 36\n\t\t\t\t\t},\n\t\t\t\t\ttransferQuantity: 1,\n\t\t\t\t\tbulkTransferQuantity: 8,\n\t\t\t\t\tcollisionBoxByType: {\n\t\t\t\t\t\t\"bark-generic\":     { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.04,  z2: 1 },\n\t\t\t\t\t\t\"bark-tan-green\":   { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.045, z2: 1 },\n\t\t\t\t\t\t\"bark-tan-dry\":     { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.045, z2: 1 },\n\t\t\t\t\t\t\"bark-birch-green\": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.095, z2: 1 },\n\t\t\t\t\t\t\"bark-birch-dry\":   { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.095, z2: 1 },\n\t\t\t\t\t\t\"bark-medicinal\":   { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.09,  z2: 1 }\n\t\t\t\t\t},\n\t\t\t\t\tcbScaleYByLayerByType: {\n\t\t\t\t\t\t\"bark-generic\": 0.25, \"bark-tan-green\": 0.3333, \"bark-tan-dry\": 0.3333,\n\t\t\t\t\t\t\"bark-birch-green\": 0.1, \"bark-birch-dry\": 0.1, \"bark-medicinal\": 0.3333\n\t\t\t\t\t},\n\t\t\t\t\tstackingModelByType: {\n\t\t\t\t\t\t\"bark-generic\":     \"item/bark/bark-generic-pile\",\n\t\t\t\t\t\t\"bark-tan-green\":   \"item/bark/bark-tan-pile\",\n\t\t\t\t\t\t\"bark-tan-dry\":     \"item/bark/bark-tan-pile\",\n\t\t\t\t\t\t\"bark-birch-green\": \"item/bark/bark-birch-pile\",\n\t\t\t\t\t\t\"bark-birch-dry\":   \"item/bark/bark-birch-pile\",\n\t\t\t\t\t\t\"bark-medicinal\":   \"item/bark/bark-medicinal-pile\"\n\t\t\t\t\t},\n\t\t\t\t\tcuboidsPerModelByType: {\n\t\t\t\t\t\t\"bark-generic\": 6, \"bark-tan-green\": 8, \"bark-tan-dry\": 8,\n\t\t\t\t\t\t\"bark-birch-green\": 7, \"bark-birch-dry\": 7, \"bark-medicinal\": 8\n\t\t\t\t\t},\n\t\t\t\t\titemsPerModelByType: {\n\t\t\t\t\t\t\"bark-generic\": 1, \"bark-tan-green\": 1, \"bark-tan-dry\": 1,\n\t\t\t\t\t\t\"bark-birch-green\": 1, \"bark-birch-dry\": 1, \"bark-medicinal\": 1\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t},\n\tmaxstacksize: 64,\n\tmaterialDensity: 350,\n\tcombustibleProps: { burnTemperature: 400, burnDuration: 4 },\n\tclassByType: {\n\t\t\"bark-tan-green\": \"iw-greenbark\",\n\t\t\"bark-birch-green\": \"iw-greenbark\"\n\t},\n\ttransitionablePropsByType: {\n\t\t\"bark-tan-green\": [{\n\t\t\ttype: \"Dry\",\n\t\t\tfreshHours: { avg: 0 },\n\t\t\ttransitionHours: { avg: 96 },\n\t\t\ttransitionedStack: { type: \"item\", code: \"immersivewoodworking:bark-tan-dry\" },\n\t\t\ttransitionRatio: 1\n\t\t}],\n\t\t\"bark-birch-green\": [{\n\t\t\ttype: \"Dry\",\n\t\t\tfreshHours: { avg: 0 },\n\t\t\ttransitionHours: { avg: 96 },\n\t\t\ttransitionedStack: { type: \"item\", code: \"immersivewoodworking:bark-birch-dry\" },\n\t\t\ttransitionRatio: 1\n\t\t}]\n\t},\n\tgrindingPropsByType: {\n\t\t\"bark-tan-dry\": { groundStack: { type: \"item\", code: \"immersivewoodworking:barkcrushed\" } }\n\t},\n\tcreativeinventory: { \"general\": [\"*\"], \"items\": [\"*\"] },\n\tattributes: {\n\t\thandbook: { groupBy: [\"bark-*\"] },\n\t\tplaceSound: \"game:sounds/block/loosestick\"\n\t},\n\tattributesByType: {\n\t\t\"bark-generic\": {\n\t\t\tinContainerTexture: { base: \"game:block/wood/oak-dark\" },\n\t\t\thandbook: {\n\t\t\t\tgroupBy: [\"bark-*\"],\n\t\t\t\textraSections: [\n\t\t\t\t\t{ title: \"immersivewoodworking:bark-generic-handbook-title\", text: \"immersivewoodworking:bark-generic-handbook-text\" }\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t\"bark-tan-green\": {\n\t\t\tinContainerTexture: { base: \"immersivewoodworking:item/bark/bark-tan\", blendedOverlays: [{ base: \"immersivewoodworking:item/bark/tint-wet\", blendMode: \"Multiply\" }] },\n\t\t\thandbook: {\n\t\t\t\tgroupBy: [\"bark-*\"],\n\t\t\t\textraSections: [\n\t\t\t\t\t{ title: \"immersivewoodworking:bark-tan-green-handbook-title\", text: \"immersivewoodworking:bark-tan-green-handbook-text\" }\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t\"bark-tan-dry\": {\n\t\t\tinContainerTexture: { base: \"immersivewoodworking:item/bark/bark-tan\" },\n\t\t\thandbook: {\n\t\t\t\tgroupBy: [\"bark-*\"],\n\t\t\t\textraSections: [\n\t\t\t\t\t{ title: \"immersivewoodworking:bark-tan-dry-handbook-title\", text: \"immersivewoodworking:bark-tan-dry-handbook-text\" }\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t\"bark-birch-green\": {\n\t\t\tinContainerTexture: { base: \"game:block/wood/bark/birch-h\", blendedOverlays: [{ base: \"immersivewoodworking:item/bark/tint-wet\", blendMode: \"Multiply\" }] },\n\t\t\thandbook: {\n\t\t\t\tgroupBy: [\"bark-*\"],\n\t\t\t\textraSections: [\n\t\t\t\t\t{ title: \"immersivewoodworking:bark-birch-green-handbook-title\", text: \"immersivewoodworking:bark-birch-green-handbook-text\" }\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t\"bark-birch-dry\": {\n\t\t\tinContainerTexture: { base: \"game:block/wood/bark/birch-h\" },\n\t\t\thandbook: {\n\t\t\t\tgroupBy: [\"bark-*\"],\n\t\t\t\textraSections: [\n\t\t\t\t\t{ title: \"immersivewoodworking:bark-birch-dry-handbook-title\", text: \"immersivewoodworking:bark-birch-dry-handbook-text\" }\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t\"bark-bast\": {\n\t\t\tinContainerTexture: { base: \"game:block/wood/debarked/larch\" },\n\t\t\thandbook: {\n\t\t\t\tgroupBy: [\"bark-*\"],\n\t\t\t\textraSections: [\n\t\t\t\t\t{ title: \"immersivewoodworking:bark-bast-handbook-title\", text: \"immersivewoodworking:bark-bast-handbook-text\" }\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t\"bark-medicinal\": {\n\t\t\tinContainerTexture: { base: \"immersivewoodworking:item/bark/bark-medical_debarked\" },\n\t\t\thandbook: {\n\t\t\t\tgroupBy: [\"bark-*\"],\n\t\t\t\textraSections: [\n\t\t\t\t\t{ title: \"immersivewoodworking:bark-medicinal-handbook-title\", text: \"immersivewoodworking:bark-medicinal-handbook-text\" }\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t},\n\tguiTransformByType: {\n\t\t\"bark-generic\":     { translation: { x: 3, y: 4, z: 0 }, rotation: { x: -37, y: -40, z: -168 }, origin: { x: 0.5, y: 0, z: 0.5 }, scale: 2.33 },\n\t\t\"bark-tan-green\":   { translation: { x: 3, y: 3, z: 0 }, rotation: { x: 140, y: 44, z: -9 },    origin: { x: 0.5, y: 0, z: 0.5 }, scale: 2.25 },\n\t\t\"bark-tan-dry\":     { translation: { x: 3, y: 3, z: 0 }, rotation: { x: 140, y: 44, z: -9 },    origin: { x: 0.5, y: 0, z: 0.5 }, scale: 2.25 },\n\t\t\"bark-birch-green\": { translation: { x: 1, y: 5, z: 0 }, rotation: { x: -38, y: -42, z: -180 }, origin: { x: 0.5, y: 0, z: 0.5 }, scale: 2.47 },\n\t\t\"bark-birch-dry\":   { translation: { x: 1, y: 5, z: 0 }, rotation: { x: -38, y: -42, z: -180 }, origin: { x: 0.5, y: 0, z: 0.5 }, scale: 2.47 },\n\t\t\"bark-bast\":        { translation: { x: 3, y: 4, z: 0 }, rotation: { x: -49, y: -44, z: -144 }, origin: { x: 0.5, y: 0, z: 0.5 }, scale: 2.58 },\n\t\t\"bark-medicinal\":   { translation: { x: 2, y: 2, z: 0 }, rotation: { x: -58, y: -49, z: -144 }, origin: { x: 0.5, y: 0, z: 0.5 }, scale: 2.07 }\n\t},\n\tfpHandTransform: {\n\t\ttranslation: { x: 0.05, y: 0.5, z: 0 },\n\t\trotation: { x: 17, y: -8, z: 14 },\n\t\torigin: { x: 0.5, y: 0, z: 0.5 },\n\t\tscale: 2.21\n\t},\n\ttpHandTransform: {\n\t\ttranslation: { x: -1, y: 0, z: -0.8 },\n\t\trotation: { x: 0, y: -86, z: 0 },\n\t\torigin: { x: 0.5, y: 0, z: 0.5 },\n\t\tscale: 0.57\n\t},\n\tgroundTransform: {\n\t\ttranslation: { x: 0, y: 0, z: 0 },\n\t\trotation: { x: 0, y: 0, z: 0 },\n\t\torigin: { x: 0.5, y: 0, z: 0.5299 },\n\t\tscale: 3.5\n\t}\n}\n"
+    },
+    "assets/immersivewoodworking/config/barkdrops.json": {
+      "sha256": "0dbf523f66ce525849b2ea315c84a4eb7903979a915cfa50086274c1e6c2d644",
+      "text": "{\n\tbySpecies: {\n\t\t\"oak\":         [ { kind: \"tan\",       chance: 1.0 } ],\n\t\t\"acacia\":      [ { kind: \"tan\",       chance: 0.8 } ],\n\t\t\"larch\":       [ { kind: \"tan\",       chance: 0.5 } ],\n\t\t\"pine\":        [ { kind: \"tan\",       chance: 0.25 } ],\n\t\t\"birch\":       [ { kind: \"birch\",     chance: 1.0 } ],\n\t\t\"baldcypress\": [ { kind: \"bast\",      chance: 0.4 } ],\n\t\t\"redwood\":     [ { kind: \"bast\",      chance: 0.3 } ],\n\t\t\"maple\":       [ { kind: \"medicinal\", chance: 0.25 } ],\n\t\t\"kapok\":       [ { kind: \"medicinal\", chance: 0.6 } ],\n\t\t\"ebony\":       [ { kind: \"medicinal\", chance: 0.6 } ],\n\t\t\"walnut\":      [],\n\t\t\"purpleheart\": [],\n\t\t\"aged\":        [],\n\t\t\"willow\":      [ { kind: \"bast\",      chance: 0.4 }, { kind: \"medicinal\", chance: 0.4 } ],\n\t\t\"linden\":      [ { kind: \"bast\",      chance: 0.7 } ],\n\t\t\"elm\":         [ { kind: \"bast\",      chance: 0.7 } ],\n\t\t\"poplar\":      [ { kind: \"bast\",      chance: 0.7 } ],\n\t\t\"spruce\":      [ { kind: \"tan\",       chance: 0.25 } ],\n\t\t\"fir\":         [ { kind: \"tan\",       chance: 0.25 } ]\n\t},\n\tcountBySpecies: {\n\t\t\"oak\":         3,\n\t\t\"acacia\":      3,\n\t\t\"larch\":       3,\n\t\t\"pine\":        3,\n\t\t\"birch\":       3,\n\t\t\"baldcypress\": 3,\n\t\t\"redwood\":     3,\n\t\t\"maple\":       3,\n\t\t\"kapok\":       3,\n\t\t\"ebony\":       3,\n\t\t\"walnut\":      3,\n\t\t\"purpleheart\": 3,\n\t\t\"aged\":        3,\n\t\t\"willow\":      3,\n\t\t\"linden\":      3,\n\t\t\"elm\":         3,\n\t\t\"poplar\":      3,\n\t\t\"spruce\":      3,\n\t\t\"fir\":         3\n\t}\n}\n"
+    },
+    "assets/immersivewoodworking/recipes/barrel/weaktannin-bark.json": {
+      "sha256": "bef29bccce163825c125dc2b3b830875bcf40c67a44fe2fbdec713624c09fb0b",
+      "text": "[\n\t{\n\t\tcode: \"weaktannin-green\",\n\t\tsealHours: 72,\n\t\tingredients: [\n\t\t\t{ type: \"item\", tags: [\"bark-tannin\"], quantity: 1 },\n\t\t\t{ type: \"item\", code: \"game:waterportion\", litres: 1 }\n\t\t],\n\t\toutput: { type: \"item\", code: \"game:weaktanninportion\", litres: 1 }\n\t},\n\t{\n\t\tcode: \"weaktannin-dry\",\n\t\tsealHours: 48,\n\t\tingredients: [\n\t\t\t{ type: \"item\", tags: [\"bark-tannin-dry\"], quantity: 1 },\n\t\t\t{ type: \"item\", code: \"game:waterportion\", litres: 1 }\n\t\t],\n\t\toutput: { type: \"item\", code: \"game:weaktanninportion\", litres: 1 }\n\t},\n\t{\n\t\tcode: \"weaktannin-crushed\",\n\t\tsealHours: 24,\n\t\tingredients: [\n\t\t\t{ type: \"item\", tags: [\"bark-tannin-crushed\"], quantity: 1 },\n\t\t\t{ type: \"item\", code: \"game:waterportion\", litres: 2 }\n\t\t],\n\t\toutput: { type: \"item\", code: \"game:weaktanninportion\", litres: 2 }\n\t}\n]\n"
+    },
+    "assets/immersivewoodworking/recipes/barrel/strongtannin-bark.json": {
+      "sha256": "2a990b265a6ebf7ebea413d0007c334e96f38b86e7a6605556d721ff282a151f",
+      "text": "[\n\t{\n\t\tcode: \"strongtannin-green\",\n\t\tsealHours: 72,\n\t\tingredients: [\n\t\t\t{ type: \"item\", tags: [\"bark-tannin\"], quantity: 1 },\n\t\t\t{ type: \"item\", code: \"game:weaktanninportion\", litres: 1 }\n\t\t],\n\t\toutput: { type: \"item\", code: \"game:strongtanninportion\", litres: 1 }\n\t},\n\t{\n\t\tcode: \"strongtannin-dry\",\n\t\tsealHours: 48,\n\t\tingredients: [\n\t\t\t{ type: \"item\", tags: [\"bark-tannin-dry\"], quantity: 1 },\n\t\t\t{ type: \"item\", code: \"game:weaktanninportion\", litres: 1 }\n\t\t],\n\t\toutput: { type: \"item\", code: \"game:strongtanninportion\", litres: 1 }\n\t},\n\t{\n\t\tcode: \"strongtannin-crushed\",\n\t\tsealHours: 24,\n\t\tingredients: [\n\t\t\t{ type: \"item\", tags: [\"bark-tannin-crushed\"], quantity: 1 },\n\t\t\t{ type: \"item\", code: \"game:weaktanninportion\", litres: 2 }\n\t\t],\n\t\toutput: { type: \"item\", code: \"game:strongtanninportion\", litres: 2 }\n\t}\n]\n"
+    },
+    "assets/immersivewoodworking/blocktypes/choppingblock.json": {
+      "sha256": "d2474b4e2d5a35f232b27eac9ffedcfe16810faa6fde9e81a39f8457e3b7a332",
+      "text": "{\n\tcode: \"choppingblock\",\n\tclass: \"iw-choppingblock\",\n\tentityClass: \"iw-choppingblock\",\n\tshape: { base: \"immersivewoodworking:block/choppingblock\" },\n\ttextures: {\n\t\t\"M1\": { base: \"game:block/wood/bark/oak\" },\n\t\t\"M2\": { base: \"game:block/wood/treetrunk/oak\" }\n\t},\n\tsideopaque: { all: false },\n\tsidesolid: { all: false },\n\tcreativeinventory: { \"general\": [\"*\"] },\n\tattributes: {\n\t\thandbook: {\n\t\t\textraSections: [\n\t\t\t\t{\n\t\t\t\t\ttitle: \"immersivewoodworking:choppingblock-handbook-title\",\n\t\t\t\t\ttext: \"immersivewoodworking:choppingblock-handbook-text\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t},\n\tblockmaterial: \"Wood\",\n\tmaxStackSize: 1,\n\tresistance: 3.5,\n\tmaterialDensity: 700,\n\tcombustibleProps: { burnTemperature: 800, burnDuration: 54 },\n\tsounds: {\n\t\t\"place\": \"game:block/planks\",\n\t\t\"walk\": \"game:walk/wood\",\n\t\t\"hit\": \"game:block/planks\",\n\t\t\"break\": \"game:block/planks\",\n\t\tbyTool: {\n\t\t\t\"Axe\": { hit: \"game:block/chop\", break: \"game:block/planks\" }\n\t\t}\n\t},\n\tcollisionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.6875, z2: 1 },\n\tselectionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 1.0, z2: 1 }\n}\n"
+    },
+    "assets/immersivewoodworking/blocktypes/sawhorse.json": {
+      "sha256": "06613d3bc5a0ae88966bfc4325ee9401aa8bd9c42acb030fd665d55e78536b6f",
+      "text": "{\n\tcode: \"sawhorse\",\n\tclass: \"iw-sawhorse\",\n\tentityClass: \"iw-sawhorse\",\n\tattributes: {\n\t\thandbook: {\n\t\t\tinclude: true,\n\t\t\textraSections: [\n\t\t\t\t{ title: \"immersivewoodworking:sawhorse-handbook-title\", text: \"immersivewoodworking:sawhorse-handbook-text\" }\n\t\t\t]\n\t\t},\n\t\tcollisionBoxes: {\n\t\t\ttrestle: { x1: -0.115, y1: 0,    z1: 0.388,  x2: 1.049, y2: 1.005, z2: 0.675 },\n\t\t\tlog:     { x1: 0.146,  y1: 0.58, z1: -0.812, x2: 0.854, y2: 1.287, z2: 0.812 }\n\t\t},\n\t\tselectionBoxes: {\n\t\t\ttrestle: { x1: -0.115, y1: 0,    z1: 0.388,  x2: 1.049, y2: 1.005, z2: 0.675 },\n\t\t\tlog:     { x1: 0.146,  y1: 0.58, z1: -0.812, x2: 0.854, y2: 1.287, z2: 0.812 }\n\t\t}\n\t},\n\tbehaviors: [\n\t\t{ name: \"Unstable\", properties: { attachedToFaces: [\"down\"] } }\n\t],\n\tshape: { base: \"immersivewoodworking:block/sawhorses_p3\" },\n\ttextures: {\n\t\t\"oak\":  { base: \"game:block/wood/debarked/oak\" },\n\t\t\"rope\": { base: \"game:item/resource/rope\" }\n\t},\n\tsideopaque: { all: false },\n\tsidesolid: { all: false },\n\tlightAbsorption: 0,\n\tblockmaterial: \"Wood\",\n\tmaxStackSize: 1,\n\tresistance: 1.5,\n\tdrops: [],\n\tsounds: {\n\t\t\"place\": \"game:block/planks\",\n\t\t\"walk\": \"game:walk/wood\",\n\t\t\"hit\": \"game:block/planks\",\n\t\t\"break\": \"game:block/planks\"\n\t},\n\tcollisionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 1 },\n\tselectionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 1 }\n}\n"
+    },
+    "assets/immersivewoodworking/blocktypes/sawmill/frame.json": {
+      "sha256": "fd3e741b07033a26c508ba03f39165b4323801db898e118effc834432dd0e371",
+      "text": "{\n\tcode: \"sawmill\",\n\tclass: \"iw-sawmill\",\n\tentityClass: \"iw-sawmill\",\n\tbehaviors: [ { name: \"HorizontalOrientable\" } ],\n\tvariantgroups: [\n\t\t{ code: \"type\", states: [ \"frame\" ] },\n\t\t{ code: \"side\", loadFromProperties: \"abstract/horizontalorientation\" }\n\t],\n\tshapeByType: {\n\t\t\"*-north\": { base: \"immersivewoodworking:block/sawmill/sawmill_frame\", rotateY: 180 },\n\t\t\"*-east\":  { base: \"immersivewoodworking:block/sawmill/sawmill_frame\", rotateY: 90 },\n\t\t\"*-south\": { base: \"immersivewoodworking:block/sawmill/sawmill_frame\", rotateY: 0 },\n\t\t\"*-west\":  { base: \"immersivewoodworking:block/sawmill/sawmill_frame\", rotateY: 270 }\n\t},\n\ttextures: {\n\t\t\"metal\":         { base: \"game:block/metal/plate/iron\" },\n\t\t\"oak\":           { base: \"game:block/wood/debarked/oak\" },\n\t\t\"wood\":          { base: \"game:block/wood/planks/oak1\" },\n\t\t\"wood_corner\":   { base: \"game:block/wood/debarked/oak\" },\n\t\t\"debarked_wood\": { base: \"game:block/wood/debarked/oak\" },\n\t\t\"rope\":          { base: \"game:item/resource/rope\" },\n\t\t\"0\":             { base: \"game:block/wood/debarked/oak\" }\n\t},\n\tattributes: {\n\t\thandbook: {\n\t\t\textraSections: [\n\t\t\t\t{ title: \"immersivewoodworking:sawmill-handbook-title\", text: \"immersivewoodworking:sawmill-handbook-text\" }\n\t\t\t]\n\t\t}\n\t},\n\tsideopaque: { all: false },\n\tsidesolid: { all: false },\n\tlightAbsorption: 0,\n\tcreativeinventory: { \"general\": [\"*-north\"] },\n\tblockmaterial: \"Wood\",\n\theldTpIdleAnimation: \"holdbothhandslarge\",\n\theldRightReadyAnimation: \"heldblockready\",\n\theldTpUseAnimation: \"twohandplaceblock\",\n\ttpHandTransform: {\n\t\ttranslation: { x: -0.8, y: -0.8, z: -0.6 },\n\t\trotation: { x: 6, y: 16, z: -77 },\n\t\tscale: 0.53\n\t},\n\tgroundTransform: {\n\t\ttranslation: { x: 0, y: 0, z: 0 },\n\t\trotation: { x: 0, y: -122, z: 0 },\n\t\torigin: { x: 0.5, y: 0, z: 0.5 },\n\t\tscale: 3\n\t},\n\tmaxStackSize: 1,\n\tresistance: 3.5,\n\tsounds: {\n\t\t\"place\": \"game:block/planks\",\n\t\t\"walk\": \"game:walk/wood\",\n\t\t\"hit\": \"game:block/planks\",\n\t\t\"break\": \"game:block/planks\"\n\t},\n\tcollisionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 1 },\n\tselectionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 1 }\n}\n"
+    },
+    "assets/immersivewoodworking/blocktypes/chopper/frame.json": {
+      "sha256": "efecdecd3ee3cb18903f6f6bc283ad5506a9183e70c3f4115c0fda9f0d79ce35",
+      "text": "{\n\tcode: \"chopper\",\n\tclass: \"iw-chopper\",\n\tentityClass: \"iw-chopper\",\n\tbehaviors: [ { name: \"HorizontalOrientable\" } ],\n\tvariantgroups: [\n\t\t{ code: \"type\", states: [ \"frame\" ] },\n\t\t{ code: \"side\", loadFromProperties: \"abstract/horizontalorientation\" }\n\t],\n\tshapeByType: {\n\t\t\"*-north\": { base: \"immersivewoodworking:block/chopper/chopper_frame\", rotateY: 180 },\n\t\t\"*-east\":  { base: \"immersivewoodworking:block/chopper/chopper_frame\", rotateY: 90 },\n\t\t\"*-south\": { base: \"immersivewoodworking:block/chopper/chopper_frame\", rotateY: 0 },\n\t\t\"*-west\":  { base: \"immersivewoodworking:block/chopper/chopper_frame\", rotateY: 270 }\n\t},\n\ttextures: {\n\t\t\"oak\":   { base: \"game:block/wood/debarked/oak\" },\n\t\t\"metal\": { base: \"game:block/metal/plate/iron\" },\n\t\t\"0\":     { base: \"game:block/wood/debarked/oak\" }\n\t},\n\tattributes: {\n\t\thandbook: {\n\t\t\textraSections: [\n\t\t\t\t{ title: \"immersivewoodworking:chopper-handbook-title\", text: \"immersivewoodworking:chopper-handbook-text\" }\n\t\t\t]\n\t\t}\n\t},\n\tsideopaque: { all: false },\n\tsidesolid: { all: false },\n\tlightAbsorption: 0,\n\tcreativeinventory: { \"general\": [\"*-north\"] },\n\tblockmaterial: \"Wood\",\n\theldTpIdleAnimation: \"holdbothhandslarge\",\n\theldRightReadyAnimation: \"heldblockready\",\n\theldTpUseAnimation: \"twohandplaceblock\",\n\ttpHandTransform: {\n\t\ttranslation: { x: -1.6, y: -1, z: -0.6 },\n\t\trotation: { x: -81, y: 11, z: -101 },\n\t\tscale: 0.45\n\t},\n\tgroundTransform: {\n\t\ttranslation: { x: 0, y: 0, z: 0 },\n\t\trotation: { x: 0, y: -45, z: 0 },\n\t\torigin: { x: 0.5, y: 0, z: 0.5 },\n\t\tscale: 2.52\n\t},\n\tguiTransform: {\n\t\trotation: { x: -22.6, y: -45.3, z: 0 },\n\t\torigin: { x: 0.5, y: 0.5, z: 0.5 },\n\t\tscale: 0.76\n\t},\n\tmaxStackSize: 1,\n\tresistance: 3.5,\n\tsounds: {\n\t\t\"place\": \"game:block/planks\",\n\t\t\"walk\": \"game:walk/wood\",\n\t\t\"hit\": \"game:block/planks\",\n\t\t\"break\": \"game:block/planks\"\n\t},\n\tcollisionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 1 },\n\tselectionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 1 }\n}\n"
+    },
+    "assets/immersivewoodworking/itemtypes/barkcrushed.json": {
+      "sha256": "158ace8e6cec504700f7fd1d43eaf98bea7db139fd310934052fda390bc455bb",
+      "text": "{\n\tcode: \"barkcrushed\",\n\tshape: { base: \"immersivewoodworking:item/bark/crushed-bark-tan\" },\n\ttags: [\"bark-tannin-crushed\"],\n\tmaxstacksize: 64,\n\tmaterialDensity: 350,\n\tcreativeinventory: { \"general\": [\"*\"], \"items\": [\"*\"] },\n\tattributes: {\n\t\thandbook: {\n\t\t\textraSections: [\n\t\t\t\t{ title: \"immersivewoodworking:barkcrushed-handbook-title\", text: \"immersivewoodworking:barkcrushed-handbook-text\" }\n\t\t\t]\n\t\t},\n\t\tinContainerTexture: { base: \"immersivewoodworking:item/bark/bark-tan\" }\n\t},\n\tguiTransform: {\n\t\trotation: { x: 155, y: 12, z: 0 },\n\t\torigin: { x: 0.48, y: 0.09, z: 0.49 },\n\t\tscale: 2.54\n\t},\n\ttpHandTransform: {\n\t\ttranslation: { x: -1.87, y: -1.25, z: -0.8 },\n\t\trotation: { x: 70, y: 11, z: -65 },\n\t\tscale: 0.41\n\t},\n\tgroundTransform: {\n\t\ttranslation: { x: 0, y: 0.46, z: 0 },\n\t\trotation: { x: 0.2, y: 8, z: -0.2 },\n\t\tscale: 4.5\n\t}\n}\n"
+    }
+  },
+  "handbook": {
+    "barkcrushed-handbook-title": "Crushed tanning bark",
+    "barkcrushed-handbook-text": "Dried tanning bark, ground on a quern into a coarse powder. Grinding concentrates its tannin.",
+    "bark-generic-handbook-title": "Ordinary bark",
+    "bark-generic-handbook-text": "Ordinary bark, stripped from any log that has no special bark of its own. A pit kiln takes it in place of gathered sticks, accepting only the ordinary kind. It can be stacked on the ground.",
+    "bark-tan-green-handbook-title": "Fresh tanning bark",
+    "bark-tan-green-handbook-text": "Fresh tanning bark, stripped off a log on the sawhorses. Left to itself it dries into the dried kind. In a pile on the ground it dries as fast as in your inventory. In a chest it dries four times slower. Keep it near a lit firepit, forge, clay oven or anything else that warms you, in a pile or in a chest, to dry it up to twice as fast as in your inventory.",
+    "bark-tan-dry-handbook-title": "Dried tanning bark",
+    "bark-tan-dry-handbook-text": "Dried tanning bark, what the fresh kind turns into once it has dried out. A quern grinds it into crushed tanning bark.",
+    "bark-birch-green-handbook-title": "Fresh birch bark",
+    "bark-birch-green-handbook-text": "Fresh birch bark, stripped only from birch logs. It yields birch tar: pack it into a <a href=\"handbook://block-immersivewoodworking:perforatedpot-blue-fired\">perforated pot</a>, seal it with clay and fire it in a pit kiln. Left to itself it dries into the dried kind. In a pile on the ground it dries as fast as in your inventory. In a chest it dries four times slower. Keep it near a lit firepit, forge, clay oven or anything else that warms you, in a pile or in a chest, to dry it up to twice as fast as in your inventory.",
+    "bark-birch-dry-handbook-title": "Dried birch bark",
+    "bark-birch-dry-handbook-text": "Dried birch bark, what the fresh kind turns into once it has dried out. Filling a tar pot takes fewer pieces of it than of the fresh kind.",
+    "bark-bast-handbook-title": "Bast",
+    "bark-bast-handbook-text": "The fibrous inner bark, stripped from the stringy-barked woods.",
+    "bark-medicinal-handbook-title": "Medicinal bark",
+    "bark-medicinal-handbook-text": "Medicinal bark. Simmer it in a pot with water for <a href=\"handbook://item-immersivewoodworking:barkbrew\">bark decoction</a>.",
+    "barkbrew-handbook-title": "Bark decoction",
+    "barkbrew-handbook-text": "Simmer <a href=\"handbook://item-immersivewoodworking:bark-medicinal\">medicinal bark</a> with water in a clay pot on a firepit to brew the decoction.\n\nSpread a bowl of it on cloth, cattail, or <a href=\"handbook://item-immersivewoodworking:bark-bast\">bast</a> to make a healing <a href=\"handbook://item-poultice-linen-bark-medicinal\">poultice</a>.\n\nSee the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "halflog-handbook-title": "Half-log",
+    "halflog-handbook-text": "Half of a log, split lengthwise. Chop it on a <a href=\"handbook://block-immersivewoodworking:choppingblock\">chopping block</a> to split it into firewood.\n\nIt is also a building block. Place it with <hk>rightmouse</hk> and it becomes a half-log slab, split side out.\n\nSee also the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "maul-handbook-title": "Splitting logs into firewood",
+    "maul-handbook-text": "Laid on a <a href=\"handbook://block-immersivewoodworking:choppingblock\">chopping block</a> and struck with the maul, a whole log splits straight into firewood in one pass.\n\nForge a <a href=\"handbook://item-immersivewoodworking:maulhead-copper\">maul head</a> and haft it onto a stick. Keep an axe for felling trees.\n\nSee the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "chopperpart-handbook-title": "Chopper part",
+    "chopperpart-handbook-text": "One of the parts used to build the <a href=\"handbook://block-immersivewoodworking:chopper-frame-north\">automated chopper</a>. Install it with <hk>rightmouse</hk> to assemble the machine.",
+    "chopperheadhalf-handbook-title": "Chopper head half",
+    "chopperheadhalf-handbook-text": "Half of an <a href=\"handbook://item-immersivewoodworking:chopperhead-copper\">automated chopper head</a>. Forge two halves of the same metal on an anvil, then join them with a hammer on the crafting grid into a finished head.",
+    "chopper-handbook-title": "The chopper",
+    "chopper-handbook-text": "Place the chopper frame, then install its parts with <hk>rightmouse</hk> in any order: a <a href=\"handbook://item-immersivewoodworking:chopperdrive\">drive</a>, an <a href=\"handbook://item-immersivewoodworking:chopperarm\">arm</a> and an ordinary <a href=\"handbook://block-immersivewoodworking:choppingblock\">chopping block</a> as the bed, then a <a href=\"handbook://item-immersivewoodworking:chopperhead-copper\">chopper head</a> into the arm. Only the head can be taken back out, with <strong><hk>ctrl</hk> + <hk>rightmouse</hk></strong>. The three mechanism parts are fixed once installed, so break the frame to recover them.\n\nDrive the assembled frame with an axle from a windmill or water wheel. Load it by hand with <hk>rightmouse</hk> or through a chute: it takes whatever the hand chopping block takes, and the finished batch is ejected in front. The reduction gearing trades many turns of the shaft for one slow, heavy fall of the axe. A whole log goes straight to firewood here, and the metal the head is made of affects its durability.\n\nSee also the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "sawmillpart-handbook-title": "Sawmill part",
+    "sawmillpart-handbook-text": "One of the parts used to build the <a href=\"handbook://block-immersivewoodworking:sawmill-frame-north\">automated sawmill</a>. Install it with <hk>rightmouse</hk> to assemble the machine.",
+    "pitsaw-handbook-title": "Ripping logs",
+    "pitsaw-handbook-text": "Used on a pair of <a href=\"handbook://block-immersivewoodworking:sawhorse\">sawhorses</a> to rip a log lengthwise into planks or support beams; aim at the pair and press <hk>toolmode</hk> to pick which, and any log serves, barked or debarked. The trestles are built around it.\n\nForge a <a href=\"handbook://item-immersivewoodworking:pitsawblade-copper\">pit saw blade</a> and haft it onto a stick.\n\nSee the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "barkspud-handbook-title": "Stripping bark",
+    "barkspud-handbook-text": "Used on a pair of <a href=\"handbook://block-immersivewoodworking:sawhorse\">sawhorses</a> to strip the bark off a log, turning it into a debarked log.\n\nForge a <a href=\"handbook://item-immersivewoodworking:barkspudhead-copper\">bark spud head</a> and haft it onto a stick.\n\nSee the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "choppingblock-handbook-title": "Splitting wood",
+    "choppingblock-handbook-text": "Place a log or half-log on the block with <hk>rightmouse</hk>, then hold <hk>rightmouse</hk> with an axe to chop it. Take placed wood back with <strong><hk>ctrl</hk> + <hk>rightmouse</hk></strong>.\n\n{0} {1}\n\nThe block itself can be burned as fuel.\n\nSee also the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "choppingblock-handbook-frag-halflog": "A log splits into <a href=\"handbook://item-immersivewoodworking:halflog\">half-logs</a> that drop off the block; put one back to split it into firewood.",
+    "choppingblock-handbook-frag-halflog-atplayer": "A log splits into <a href=\"handbook://item-immersivewoodworking:halflog\">half-logs</a> that drop at your feet; put one back to split it into firewood.",
+    "choppingblock-handbook-frag-direct": "A log splits straight into firewood, which drops off the block.",
+    "choppingblock-handbook-frag-direct-atplayer": "A log splits straight into firewood, which drops at your feet.",
+    "choppingblock-handbook-frag-sticks": "Firewood goes on the block too, and splits into sticks.",
+    "sawhorse-handbook-title": "Sawing and stripping logs",
+    "sawhorse-handbook-text": "Build a trestle with <hk>rightmouse</hk>: a stick, a second stick, then a length of rope. Set a second trestle directly beside the first (not diagonally), and the two lock into a working pair.\n\nLay a log or debarked log on the pair with <hk>rightmouse</hk>, stand at either end and hold <hk>rightmouse</hk> with a saw to rip it lengthwise into planks or support beams; aim at the pair and press <hk>toolmode</hk> to pick which, and any log rips into either. {0} Keep holding and the pair feeds itself the next matching log from your inventory, so a whole stack flows through in one go.\n\nTo strip bark instead, stand at the side rather than an end and hold <hk>rightmouse</hk> with a <a href=\"handbook://item-immersivewoodworking:barkspud-copper\">bark spud</a>, the tool made for it, or with an axe and a hammer in the offhand. {1} {2} A log can be sawn or stripped, not both; whichever you begin first locks it in.\n\nTake the log back with <strong><hk>ctrl</hk> + <hk>rightmouse</hk></strong>. It comes back whole while the work is barely started. Once you are well into it the wood is committed, and the same gesture (or breaking a trestle) discards it.\n\nSee also the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "sawhorse-handbook-frag-bothsaws": "The <a href=\"handbook://item-immersivewoodworking:pitsaw-copper\">pit saw</a> is the tool made for it; an ordinary saw serves as well.",
+    "sawhorse-handbook-frag-pitsawonly": "Only the <a href=\"handbook://item-immersivewoodworking:pitsaw-copper\">pit saw</a> rips here; an ordinary saw is turned away.",
+    "sawhorse-handbook-frag-nopitsaw": "An ordinary saw is the rip tool here.",
+    "sawhorse-handbook-frag-knife": "A knife serves as well.",
+    "sawhorse-handbook-frag-debarked": "The debarked log drops out beside the pair, so lay it back to rip it into planks or beams like any barked log.",
+    "sawhorse-handbook-frag-debarked-atplayer": "The debarked log drops at your feet, so lay it back to rip it into planks or beams like any barked log.",
+    "sawmill-handbook-title": "The sawmill",
+    "sawmill-handbook-text": "Place the sawmill frame, then install its parts with <hk>rightmouse</hk> in any order: a <a href=\"handbook://item-immersivewoodworking:sawmillcarriage\">carriage</a>, a <a href=\"handbook://item-immersivewoodworking:sawmillsash\">saw sash</a>, a <a href=\"handbook://item-immersivewoodworking:sawmillcrankshaft\">crankshaft</a> and <a href=\"handbook://item-immersivewoodworking:sawmilllevers\">feed levers</a>, then a <a href=\"handbook://item-immersivewoodworking:sawmillblade-copper\">blade kit</a> into the sash. Only the blade kit can be taken back out, with <strong><hk>ctrl</hk> + <hk>rightmouse</hk></strong>. The four mechanism parts are fixed once installed, so break the frame to recover them.\n\nDrive the assembled frame with an axle from a windmill or water wheel. Feed a log or debarked log into the top, by hand with <hk>rightmouse</hk> or through a chute; it rips into planks or support beams, and you cycle which with <hk>shift</hk> + <hk>rightmouse</hk> on the frame. The metal the blades are made of affects their durability.\n\nSee also the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "barktar-handbook-title": "Birch tar",
+    "barktar-handbook-text": "Hard, resinous tar rendered out of birch bark. Open a <a href=\"handbook://item-immersivewoodworking:tarpot-blue-blue-fired\">fired tar pot</a> to get it.\n\nIt stands in for resin: most recipes that call for resin take tar instead. For the others, cook tar alone in a clay pot on a firepit to boil it down into <a href=\"handbook://item-resin\">resin</a>.\n\nSee the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "tarpot-sealed-handbook-title": "Firing the tar pot",
+    "tarpot-sealed-handbook-text": "Lay the sealed pot on the ground, build a pit kiln over it and light the kiln. It comes out as a <a href=\"handbook://item-immersivewoodworking:tarpot-blue-blue-fired\">fired tar pot</a>.\n\nSeal one on the rig: an empty clay pot with a bark-packed <a href=\"handbook://block-immersivewoodworking:perforatedpot-blue-fired\">perforated pot</a> on top, capped with clay.\n\nSee the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "tarpot-fired-handbook-title": "Opening the pot",
+    "tarpot-fired-handbook-text": "Hold the fired pot and press <hk>rightmouse</hk> to pry it open. Out come <a href=\"handbook://item-immersivewoodworking:barktar\">birch tar</a>, the <a href=\"handbook://block-immersivewoodworking:perforatedpot-blue-fired\">perforated pot</a> and the receiver, now a dirty clay pot.\n\nA pit kiln turns a <a href=\"handbook://item-immersivewoodworking:tarpot-blue-blue-sealed\">sealed tar pot</a> into this one. Both vessels can be used again.\n\nSee the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "perforatedpot-raw-handbook-title": "Firing the pot",
+    "perforatedpot-raw-handbook-text": "Fire the raw pot in a pit kiln to get a working <a href=\"handbook://block-immersivewoodworking:perforatedpot-blue-fired\">perforated pot</a>. Lay it on the ground and build the kiln over it, like any other raw pottery.\n\nIts bottom is perforated so that tar can drip through into the pot beneath it.\n\nSee the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview.",
+    "perforatedpot-fired-handbook-title": "Building a tar pot",
+    "perforatedpot-fired-handbook-text": "Set a single empty clay pot on the ground, then assemble this pot onto it with <strong><hk>shift</hk> + <hk>rightmouse</hk></strong>. The two pots together are the tar rig: bark chars in the upper pot and tar drips into the lower one.\n\nPack the rig with <a href=\"handbook://item-immersivewoodworking:bark-birch-green\">birch bark</a> using <strong><hk>shift</hk> + <hk>rightmouse</hk></strong>, or a batch at a time with <strong><hk>ctrl</hk> + <hk>shift</hk> + <hk>rightmouse</hk></strong>. Seal the full rig with clay the same way and it becomes a <a href=\"handbook://item-immersivewoodworking:tarpot-blue-blue-sealed\">sealed tar pot</a>.\n\nThe perforated pot comes back when the fired tar pot is opened.\n\nSee the <a href=\"handbook://craftinginfo-woodworking\">Woodworking</a> overview."
+  }
+}

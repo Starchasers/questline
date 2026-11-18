@@ -14,6 +14,7 @@ GROUPS = {
     "charcoalkiln": (1, 6), "efchefstricks": (3, 4), "efmealsmodule": (1, 1),
     "expandedfoods": (8, 37), "fromgoldencombs": (1, 14), "hexsmech": (2, 38),
     "seafarer": (3, 35), "tailorsdelight": (5, 21), "wool": (3, 8),
+    "immersivewoodworking": (4, 26),
 }
 
 
@@ -37,7 +38,8 @@ class ContentExtractionTests(unittest.TestCase):
         return json.loads((ROOT / "docs/content-packages.json").read_text())
 
     def test_every_chapter_is_moved_once_byte_for_byte(self):
-        actual = list((ROOT / "content").glob("*/assets/questline/questline/chapters/*.json"))
+        actual = [p for p in (ROOT / "content").glob("*/assets/questline/questline/chapters/*.json")
+                  if p.relative_to(ROOT / "content").parts[0] != "immersivewoodworking"]
         self.assertEqual(56, len(self.upstream))
         self.assertEqual(set(self.upstream), {p.name for p in actual})
         self.assertEqual(56, len(actual))
@@ -61,7 +63,7 @@ class ContentExtractionTests(unittest.TestCase):
         self.assertEqual(UPSTREAM, manifest["upstream"])
         packages = manifest["packages"]
         self.assertEqual(set(GROUPS), {p["key"] for p in packages})
-        self.assertEqual(12, len(packages))
+        self.assertEqual(13, len(packages))
         ids = set()
         for package in packages:
             group = package["key"]
@@ -78,13 +80,15 @@ class ContentExtractionTests(unittest.TestCase):
                 expected.update({"questlinevanilla": "0.14.0", group: "0.0.0"})
             if group in ("efchefstricks", "efmealsmodule"):
                 expected.update({"expandedfoods": "0.0.0", "questlineexpandedfoods": "0.14.0"})
+            if group == "immersivewoodworking":
+                expected.update({"game": "1.22.2", "immersivewoodworking": "1.3.13"})
             self.assertEqual(expected, info["dependencies"])
             self.assertEqual(expected, package["dependencies"])
             paths = sorted((ROOT / package["path"] / LEGACY / "chapters").glob("*.json"))
             self.assertEqual([p.name for p in paths], package["chapters"])
             self.assertEqual(GROUPS[group][0], len(paths))
             self.assertEqual(GROUPS[group][1], sum(len(json.loads(p.read_bytes())["quests"]) for p in paths))
-        self.assertEqual(12, len(ids))
+        self.assertEqual(13, len(ids))
 
     def test_totals_and_replacements_are_identical_to_upstream(self):
         def signature(payloads):
@@ -95,7 +99,8 @@ class ContentExtractionTests(unittest.TestCase):
             extensions = sorted((d["id"], d["extends"]) for d in docs if "extends" in d)
             return (len(docs), sum(ids.values()), tasks, len(ids)), replacements, extensions
         expected = signature(self.upstream.values())
-        actual = signature(p.read_bytes() for p in (ROOT / "content").glob("*/assets/questline/questline/chapters/*.json"))
+        actual = signature(p.read_bytes() for p in (ROOT / "content").glob("*/assets/questline/questline/chapters/*.json")
+                           if p.relative_to(ROOT / "content").parts[0] != "immersivewoodworking")
         self.assertEqual((56, 532, 589, 516), expected[0])
         self.assertEqual(expected, actual)
         self.assertEqual(16, len(actual[1]))

@@ -25,6 +25,7 @@ Install only the integrations whose gameplay mods you use:
 | expandedfoods | questlineexpandedfoods | 8 | 37 |
 | fromgoldencombs | questlinefromgoldencombs | 1 | 14 |
 | hexsmech | questlinehexsmech | 2 | 38 |
+| immersivewoodworking | questlineimmersivewoodworking | 4 | 26 |
 | seafarer | questlineseafarer | 3 | 35 |
 | tailorsdelight | questlinetailorsdelight | 5 | 21 |
 | wool | questlinewool | 3 | 8 |
@@ -33,6 +34,12 @@ Every package explicitly depends on `game >= 1.22.0` and `questline >= 0.15.0`.
 Every optional package also depends on `questlinevanilla >= 0.14.0` and its
 same-named gameplay mod. Gameplay mod minimum versions use `0.0.0`: presence is
 required, but no specific tested gameplay-mod release is asserted here.
+
+Exception: the new [Immersive Woodworking journey](immersivewoodworking-questbook.md)
+requires `game >= 1.22.2` and `immersivewoodworking >= 1.3.13`, the researched
+historical pack's mod release. It adds 22 quests and four gated replacements;
+its four new contribution files are not part of the 56-file upstream byte-for-byte
+preservation baseline below. The catalog now contains 13 content packages.
 
 Chef's Tricks and Meals Module additionally require both `expandedfoods` and
 `questlineexpandedfoods >= 0.14.0`: their original quests reference Expanded

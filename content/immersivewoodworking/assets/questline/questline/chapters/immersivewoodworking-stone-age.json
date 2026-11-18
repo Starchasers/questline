@@ -1,0 +1,40 @@
+{
+  "id": "immersivewoodworking-stone-age",
+  "extends": "stone-age",
+  "requiresMod": [
+    "immersivewoodworking"
+  ],
+  "quests": [
+    {
+      "id": "chop-wood",
+      "pos": [
+        6,
+        -1.5
+      ],
+      "requires": [
+        "iw-half-log"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:firewood",
+          "count": 8
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "iw-chop-wood-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "game:firewood"
+    }
+  ]
+}

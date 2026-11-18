@@ -135,6 +135,23 @@
       ]
     },
     {
+      "key": "immersivewoodworking",
+      "path": "content/immersivewoodworking",
+      "modid": "questlineimmersivewoodworking",
+      "dependencies": {
+        "game": "1.22.2",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "immersivewoodworking": "1.3.13"
+      },
+      "chapters": [
+        "immersivewoodworking-building.json",
+        "immersivewoodworking-leatherwork.json",
+        "immersivewoodworking-stone-age.json",
+        "immersivewoodworking-workshop.json"
+      ]
+    },
+    {
       "key": "seafarer",
       "path": "content/seafarer",
       "modid": "questlineseafarer",

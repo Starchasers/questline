@@ -1,0 +1,558 @@
+{
+  "id": "iw-workshop",
+  "order": 56,
+  "icon": "immersivewoodworking:choppingblock",
+  "requiresMod": [
+    "immersivewoodworking"
+  ],
+  "art": [
+    {
+      "type": "text",
+      "pos": [
+        6,
+        -4
+      ],
+      "text": "iw-map-fuel",
+      "scale": 1,
+      "color": "#d9a76b"
+    },
+    {
+      "type": "text",
+      "pos": [
+        6,
+        2
+      ],
+      "text": "iw-map-timber",
+      "scale": 1,
+      "color": "#a9c786"
+    },
+    {
+      "type": "text",
+      "pos": [
+        9,
+        10
+      ],
+      "text": "iw-map-tannery",
+      "scale": 1,
+      "color": "#9fb9cd"
+    },
+    {
+      "type": "text",
+      "pos": [
+        12,
+        14
+      ],
+      "text": "iw-map-tar",
+      "color": "#c5a9cd",
+      "scale": 1
+    }
+  ],
+  "quests": [
+    {
+      "id": "iw-workshop",
+      "pos": [
+        0,
+        0
+      ],
+      "requires": "make-axe",
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "shape": "hexagon",
+      "size": 1.25,
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:choppingblock"
+    },
+    {
+      "id": "iw-chopping-block",
+      "pos": [
+        3,
+        0
+      ],
+      "requires": "iw-workshop",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "immersivewoodworking:choppingblock",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:choppingblock"
+    },
+    {
+      "id": "iw-half-log",
+      "pos": [
+        6,
+        0
+      ],
+      "requires": "iw-chopping-block",
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:choppingblock"
+    },
+    {
+      "id": "iw-kindling",
+      "pos": [
+        9,
+        0
+      ],
+      "requires": "iw-half-log",
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:choppingblock"
+    },
+    {
+      "id": "iw-sawhorses",
+      "pos": [
+        3,
+        4
+      ],
+      "requires": [
+        "iw-workshop",
+        "make-rope"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:sawhorse"
+    },
+    {
+      "id": "iw-rip-planks",
+      "pos": [
+        6,
+        4
+      ],
+      "requires": [
+        "iw-sawhorses",
+        "make-saw"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:sawhorse"
+    },
+    {
+      "id": "iw-beams",
+      "pos": [
+        9,
+        4
+      ],
+      "requires": "iw-rip-planks",
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:sawhorse"
+    },
+    {
+      "id": "iw-debark",
+      "pos": [
+        6,
+        8
+      ],
+      "requires": "iw-sawhorses",
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:sawhorse"
+    },
+    {
+      "id": "iw-tanning-bark",
+      "pos": [
+        9,
+        8
+      ],
+      "requires": "iw-debark",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "immersivewoodworking:bark-tan-green",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:bark-tan-green"
+    },
+    {
+      "id": "iw-dry-bark",
+      "pos": [
+        12,
+        8
+      ],
+      "requires": "iw-tanning-bark",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "immersivewoodworking:bark-tan-dry",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:bark-tan-green"
+    },
+    {
+      "id": "iw-crush-bark",
+      "pos": [
+        15,
+        8
+      ],
+      "requires": [
+        "iw-dry-bark",
+        "make-quern"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "immersivewoodworking:barkcrushed",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:bark-tan-green"
+    },
+    {
+      "id": "iw-sawmill",
+      "pos": [
+        12,
+        2
+      ],
+      "requires": [
+        "iw-beams",
+        "connect-power"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:sawmill-frame-north"
+    },
+    {
+      "id": "iw-power-sawmill",
+      "pos": [
+        15,
+        2
+      ],
+      "requires": "iw-sawmill",
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:sawmill-frame-north"
+    },
+    {
+      "id": "iw-chopper",
+      "pos": [
+        12,
+        -2
+      ],
+      "requires": [
+        "iw-kindling",
+        "connect-power"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:chopper-frame-north"
+    },
+    {
+      "id": "iw-power-chopper",
+      "pos": [
+        15,
+        -2
+      ],
+      "requires": "iw-chopper",
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:chopper-frame-north"
+    },
+    {
+      "id": "iw-complete",
+      "pos": [
+        18,
+        0
+      ],
+      "requires": [
+        "iw-power-sawmill",
+        "iw-power-chopper"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "shape": "hexagon",
+      "size": 1.25,
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "immersivewoodworking:choppingblock"
+    },
+    {
+      "id": "iw-maul",
+      "pos": [
+        9,
+        -3
+      ],
+      "requires": [
+        "iw-half-log",
+        "first-smithing"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "icon": "immersivewoodworking:choppingblock",
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "iw-other-bark",
+      "pos": [
+        6,
+        12
+      ],
+      "requires": [
+        "iw-debark"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "icon": "immersivewoodworking:bark-tan-green",
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "iw-birch-bark",
+      "pos": [
+        9,
+        12
+      ],
+      "requires": [
+        "iw-debark"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "icon": "immersivewoodworking:bark-birch-green",
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "iw-tar-rig",
+      "pos": [
+        12,
+        12
+      ],
+      "requires": [
+        "iw-birch-bark",
+        "fire-pottery"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "icon": "immersivewoodworking:bark-birch-green",
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "iw-tar-fire",
+      "pos": [
+        15,
+        12
+      ],
+      "requires": [
+        "iw-tar-rig"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "icon": "immersivewoodworking:bark-birch-green",
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "iw-tar-open",
+      "pos": [
+        18,
+        12
+      ],
+      "requires": [
+        "iw-tar-fire"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "icon": "immersivewoodworking:bark-birch-green",
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}
