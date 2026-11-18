@@ -1,0 +1,191 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/kitchen.json",
+    "path": "/quests/0",
+    "value": {
+      "id": "roast-meat",
+      "pos": [
+        0,
+        0.0
+      ],
+      "requires": [
+        "first-hunt",
+        "make-fire"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:poultry-raw"
+        },
+        {
+          "type": "cook",
+          "item": "game:poultry-cooked"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:firewood",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-kitchen-roast-meat"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/kitchen.json",
+    "path": "/quests/2",
+    "value": {
+      "id": "cook-stew",
+      "pos": [
+        2,
+        0.0
+      ],
+      "requires": [
+        "serve-meal",
+        "roast-meat"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:poultry-raw",
+          "count": 2
+        },
+        {
+          "type": "cook",
+          "item": "game:claypot-*-cooked",
+          "name": "questline:name-any-pot-meal"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:seeds-onion",
+          "count": 3
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-kitchen-cook-stew"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/kitchen.json",
+    "path": "/quests/3",
+    "value": {
+      "id": "cook-soup",
+      "pos": [
+        2,
+        3.0
+      ],
+      "requires": "serve-meal",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:vegetable-*",
+          "count": 3,
+          "name": "questline:name-any-vegetable"
+        },
+        {
+          "type": "cook",
+          "item": "game:claypot-*-cooked",
+          "name": "questline:name-any-pot-meal"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:seeds-parsnip",
+          "count": 3
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-kitchen-cook-soup"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/kitchen.json",
+    "path": "/quests/4",
+    "value": {
+      "id": "cook-porridge",
+      "pos": [
+        2,
+        4.5
+      ],
+      "requires": "serve-meal",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:grain-*",
+          "count": 4
+        },
+        {
+          "type": "cook",
+          "item": "game:claypot-*-cooked",
+          "name": "questline:name-any-pot-meal"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:redmeat-raw",
+          "count": 2
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-kitchen-cook-porridge"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

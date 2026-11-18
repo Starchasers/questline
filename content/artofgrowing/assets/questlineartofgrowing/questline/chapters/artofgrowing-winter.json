@@ -1,0 +1,47 @@
+{
+  "id": "questlineartofgrowing:winter-processes",
+  "extends": "questline:winter",
+  "requiresMod": [
+    "questlinevanilla",
+    "artofgrowingpatch",
+    "coreofartspatch"
+  ],
+  "quests": [
+    {
+      "id": "questlineartofgrowing:prepare-winter-feed",
+      "pos": [
+        2,
+        -3
+      ],
+      "requires": "questline:stock-grain",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1,
+          "name": "questlineartofgrowing:check-prepare-winter-feed"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-prepare-winter-feed"
+        },
+        {
+          "type": "items",
+          "items": [
+            "game:drygrass",
+            "game:thatch",
+            "game:seeds-rye"
+          ]
+        }
+      ]
+    }
+  ]
+}

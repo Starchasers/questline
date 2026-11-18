@@ -59,7 +59,10 @@ class ContentExtractionTests(unittest.TestCase):
     def test_package_metadata_and_explicit_dependency_closure(self):
         manifest = self.manifest()
         self.assertEqual(UPSTREAM, manifest["upstream"])
-        packages = manifest["packages"]
+        # Preserve the twelve extracted packages' original contracts separately
+        # from independently authored addons, whose contracts have their own suite.
+        self.assertEqual(set(GROUPS) | {"artofgrowing"}, {p["key"] for p in manifest["packages"]})
+        packages = [p for p in manifest["packages"] if p["key"] in GROUPS]
         self.assertEqual(set(GROUPS), {p["key"] for p in packages})
         self.assertEqual(12, len(packages))
         ids = set()
@@ -110,7 +113,14 @@ class ContentExtractionTests(unittest.TestCase):
             for key, value in original.items():
                 self.assertIn(key, current, name)
                 self.assertEqual(value, current[key], f"{name}:{key}")
-        self.assertFalse(list((ROOT / "content").glob("*/assets/*/lang/*")))
+        self.assertFalse(list((ROOT / "content").glob("*/assets/questline/lang/*")))
+        # Independently authored translations must stay in their declared domain,
+        # never shadowing the shared extraction corpus.
+        owned_domains = {"artofgrowing": "questlineartofgrowing"}
+        for path in (ROOT / "content").glob("*/assets/*/lang/*"):
+            group = path.relative_to(ROOT / "content").parts[0]
+            self.assertIn(group, owned_domains)
+            self.assertEqual(owned_domains[group], path.parent.parent.name)
 
 
 if __name__ == "__main__":

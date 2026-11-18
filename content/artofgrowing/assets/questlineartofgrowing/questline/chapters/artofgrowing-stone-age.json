@@ -1,0 +1,113 @@
+{
+  "id": "questlineartofgrowing:stone-age-processes",
+  "extends": "questline:stone-age",
+  "requiresMod": [
+    "questlinevanilla",
+    "artofgrowingpatch",
+    "coreofartspatch"
+  ],
+  "quests": [
+    {
+      "id": "questlineartofgrowing:gather-fresh-grass",
+      "pos": [
+        4,
+        -3
+      ],
+      "requires": "questline:make-knife",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "artofgrowing:grass",
+          "count": 10
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-gather-fresh-grass"
+        },
+        {
+          "type": "items",
+          "items": [
+            "artofgrowing:grass"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questlineartofgrowing:dry-grass",
+      "pos": [
+        6,
+        -3
+      ],
+      "requires": "questlineartofgrowing:gather-fresh-grass",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1,
+          "name": "questlineartofgrowing:check-dry-grass"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-dry-grass"
+        },
+        {
+          "type": "items",
+          "items": [
+            "game:drygrass"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questlineartofgrowing:convert-hay-straw-blocks",
+      "pos": [
+        8,
+        -3
+      ],
+      "requires": "questline:cut-grass",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1,
+          "name": "questlineartofgrowing:check-convert-hay-straw-blocks"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-convert-hay-straw-blocks"
+        },
+        {
+          "type": "items",
+          "items": [
+            "artofgrowing:thatchhay-normal-ud"
+          ]
+        }
+      ]
+    }
+  ]
+}

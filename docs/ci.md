@@ -32,19 +32,20 @@ extracted server directory and `dotnet` on `PATH`:
 
 ```sh
 python3 -m unittest discover -s tools/packaging -v
-python3 -m unittest discover -s tests -p 'test_content_extraction.py' -v
+python3 tests/test_content_extraction.py -v
 python3 tools/lang/check.py
 python3 compat/toolsmith/tests/regression.py
 sh ./build.sh
 dotnet run --project verification/composition/CompositionTests.csproj -c Release -p:VINTAGE_STORY="$VINTAGE_STORY"
+dotnet run --project verification/artofgrowing/ArtOfGrowingTests.csproj -c Release -p:VINTAGE_STORY="$VINTAGE_STORY"
 dotnet run --project verification/rewards/RewardTests.csproj -c Release -p:VINTAGE_STORY="$VINTAGE_STORY"
 dotnet run --project compat/toolsmith/tests/AdapterChecks.csproj -c Release -p:VINTAGE_STORY="$VINTAGE_STORY"
 (cd Releases && sha256sum --check SHA256SUMS)
 ```
 
 CI additionally compares ZIP names and checksum entries to every owned package's
-`modinfo.json`, requiring exactly **14**: framework, 12 content packs, and optional
-Toolsmith adapter. The core and adapter compile against real game assemblies;
+`modinfo.json` and the catalog, deriving the expected count dynamically (currently **15**: framework, 13 content packs, and optional
+Toolsmith adapter). The core and adapter compile against real game assemblies;
 content packs are independently validated and packaged. No build-only fixture,
 game assembly, or external provider is shipped.
 
@@ -57,11 +58,22 @@ Bash pipelines preserve failing test exit statuses (`pipefail`); logs are upload
 with `always()` even when a gate fails. Later verification/build steps are skipped
 after a failure. A failed check is not evidence that those later suites ran.
 
+The AoG suite applies actual shipped indexed replacement patches to original
+chapter JSON before invoking the production loader. It verifies all 532 audit
+rows are fresh, exactly 25 D + 40 C override records, 467 unaffected records,
+provider and addon absence, eight optional EF/Chef's Tricks/Bricklayers selections,
+complete prerequisite closure, retained source IDs/content, no ambiguous
+extensions, and shuffled/culture-independent results. Addon-owned English keys
+are checked there; the normal language checker still validates original shared
+translations. See [AoG evidence limits](artofgrowing.md): public upload `srMi9`
+is unavailable (404), cached archives do not establish the current pack, and
+native gameplay has not run.
+
 ### Downloadable outputs
 
 Successful runs upload two artifacts, retained for 14 days:
 
-- **questline-packages**: all 14 individually installable ZIPs and `SHA256SUMS`.
+- **questline-packages**: all independently installable ZIPs (currently 15) and `SHA256SUMS`.
 - **questline-test-results**: text logs for each executed suite, build/checksum
   output, source commit, server archive checksum, and toolchain versions. Logs are
   not fabricated JUnit/TRX reports: the executable suites use their own assertions
@@ -81,8 +93,9 @@ framework manifest version must equal the tag without the leading `v`; content
 and adapter packages retain their own manifest versions.
 
 The publisher downloads the verified artifacts from its own workflow run (no
-rebuild), rechecks all 14 ZIP checksums, attests every ZIP, then attaches all 14
-ZIPs and `SHA256SUMS` to the GitHub release. The publisher reads back all 15
+rebuild), rechecks every ZIP checksum, attests every ZIP, then attaches all verified
+ZIPs and `SHA256SUMS` to the GitHub release. Counts come from manifests (currently
+15 ZIPs and 16 release assets). The publisher reads back all expected
 release assets, downloads them again, and checks their hashes against the verified
 checksum file. Notes include checksums and recorded build inputs. It refuses to overwrite an existing release rather than replacing
 assets silently. The trusted tag publisher checks out metadata only; it does not

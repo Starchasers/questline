@@ -1,0 +1,189 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/beekeeping.json",
+    "path": "/quests/0",
+    "value": {
+      "id": "raid-wild-hive",
+      "pos": [
+        4,
+        0.0
+      ],
+      "requires": "forage",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:honeycomb",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:cattailtops",
+          "count": 6
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-beekeeping-raid-wild-hive"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/beekeeping.json",
+    "path": "/quests/1",
+    "value": {
+      "id": "make-skep",
+      "pos": [
+        0,
+        1.5
+      ],
+      "requires": [
+        "find-clay",
+        "make-knife"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:skep-*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:cattailtops",
+          "count": 6
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-beekeeping-make-skep"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/beekeeping.json",
+    "path": "/quests/6",
+    "value": {
+      "id": "squeeze-honey",
+      "pos": [
+        6,
+        0.0
+      ],
+      "requires": {
+        "any": [
+          "raid-wild-hive",
+          "harvest-honey"
+        ]
+      },
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:honeyportion"
+        }
+      ],
+      "shape": "gear",
+      "size": 1.25,
+      "rewards": [
+        {
+          "type": "choice",
+          "options": [
+            {
+              "type": "item",
+              "item": "game:fruit-redapple",
+              "count": 10
+            },
+            {
+              "type": "item",
+              "item": "game:cattailtops",
+              "count": 12
+            },
+            {
+              "type": "item",
+              "item": "game:gear-rusty",
+              "count": 5
+            }
+          ]
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-beekeeping-squeeze-honey"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/beekeeping.json",
+    "path": "/quests/8",
+    "value": {
+      "id": "make-candle",
+      "pos": [
+        8,
+        1.5
+      ],
+      "requires": "collect-beeswax",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:candle",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:candle",
+          "count": 2
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-beekeeping-make-candle"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

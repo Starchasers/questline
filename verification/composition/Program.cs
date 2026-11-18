@@ -176,7 +176,10 @@ Test("same-domain working filenames use last ordinal winner regardless of creati
 Test("all 16 shipped base-to-extension replacements survive shuffled real content composition", () => {
     string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
     var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
-        .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
+        // Original extraction contract only: own-domain addon extensions are exercised by
+        // verification/artofgrowing after applying their actual shipped JSON patches.
+        // Patch JSON is not a chapter, even when its filename names a chapter.
+        .Where(f => f.Replace('\\', '/').Contains("/assets/questline/questline/chapters/"))
         .Select(f => (Domain: new DirectoryInfo(Path.GetDirectoryName(f)).Parent.Parent.Name, Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
     Check(files.Length == 56, $"expected 56 extracted content files, got {files.Length}");
     var baseline = Load(files);

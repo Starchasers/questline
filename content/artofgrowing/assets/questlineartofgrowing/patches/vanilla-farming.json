@@ -1,0 +1,291 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/farming.json",
+    "path": "/quests/1",
+    "value": {
+      "id": "gather-seeds",
+      "pos": [
+        0,
+        3.0
+      ],
+      "requires": "make-knife",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:seeds-*",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:seeds-spelt",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-farming-gather-seeds"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/farming.json",
+    "path": "/quests/4",
+    "value": {
+      "id": "harvest-grain",
+      "pos": [
+        4,
+        1.5
+      ],
+      "requires": {
+        "all": [
+          [
+            "make-hoe",
+            "gather-seeds"
+          ],
+          "questlineartofgrowing:hull-cereal-seeds"
+        ]
+      },
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:grain-*",
+          "count": 16
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:seeds-flax",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-farming-harvest-grain"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/farming.json",
+    "path": "/quests/5",
+    "value": {
+      "id": "grow-vegetables",
+      "pos": [
+        6,
+        0.0
+      ],
+      "requires": "harvest-grain",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:vegetable-*",
+          "count": 12,
+          "name": "questline:name-any-vegetable"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:seeds-pumpkin",
+          "count": 2
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-farming-grow-vegetables"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/farming.json",
+    "path": "/quests/6",
+    "value": {
+      "id": "make-quern",
+      "pos": [
+        6,
+        3.0
+      ],
+      "requires": [
+        "harvest-grain",
+        "first-smithing"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:quern-*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:grain-spelt",
+          "count": 8
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-farming-make-quern"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/farming.json",
+    "path": "/quests/7",
+    "value": {
+      "id": "grow-pumpkin",
+      "pos": [
+        6,
+        4.5
+      ],
+      "requires": "harvest-grain",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:pumpkin-fruit-4"
+        },
+        {
+          "type": "obtain",
+          "item": "game:vegetable-pumpkin"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-farming-grow-pumpkin"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/farming.json",
+    "path": "/quests/10",
+    "value": {
+      "id": "full-harvest",
+      "pos": [
+        10,
+        0.0
+      ],
+      "requires": [
+        "grow-vegetables",
+        "grind-bonemeal",
+        "grow-pumpkin",
+        "make-compost",
+        "grow-flax"
+      ],
+      "shape": "gear",
+      "size": 1.25,
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:grain-*",
+          "count": 32
+        },
+        {
+          "type": "obtain",
+          "item": "game:vegetable-*",
+          "count": 24,
+          "name": "questline:name-any-vegetable"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "choice",
+          "options": [
+            {
+              "type": "item",
+              "item": "game:seeds-rye",
+              "count": 8
+            },
+            {
+              "type": "item",
+              "item": "game:seeds-soybean",
+              "count": 8
+            },
+            {
+              "type": "item",
+              "item": "game:gear-rusty",
+              "count": 6
+            }
+          ]
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-farming-full-harvest"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

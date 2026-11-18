@@ -1,0 +1,112 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/expandedfoods-kitchen.json",
+    "path": "/quests/0",
+    "value": {
+      "id": "roast-meat",
+      "pos": [
+        0,
+        0.0
+      ],
+      "requires": [
+        "first-hunt",
+        "make-fire",
+        "fire-pottery"
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-expandedfoods-expandedfoods-kitchen-roast-meat"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "clayform",
+          "item": "aculinaryartillery:saucepan-*-raw"
+        },
+        {
+          "type": "obtain",
+          "item": "game:@(redmeat|bushmeat|poultry)-cooked",
+          "unchecked": true
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:firewood",
+          "count": 4
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlineexpandedfoods"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/expandedfoods-kitchen.json",
+    "path": "/quests/10",
+    "value": {
+      "id": "power-mixing-bowl",
+      "pos": [
+        6,
+        -3.0
+      ],
+      "requires": [
+        "knead-pasta",
+        "knead-sausage",
+        "connect-power"
+      ],
+      "shape": "gear",
+      "size": 1.25,
+      "tasks": [
+        {
+          "type": "place",
+          "block": "aculinaryartillery:poweredmixingbowl-*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "choice",
+          "options": [
+            {
+              "type": "item",
+              "item": "game:firewood",
+              "count": 32
+            },
+            {
+              "type": "item",
+              "item": "game:grain-spelt",
+              "count": 16
+            },
+            {
+              "type": "item",
+              "item": "game:gear-rusty",
+              "count": 6
+            }
+          ]
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-expandedfoods-expandedfoods-kitchen-power-mixing-bowl"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlineexpandedfoods"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

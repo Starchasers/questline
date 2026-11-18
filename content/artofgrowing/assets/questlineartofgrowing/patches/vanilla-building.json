@@ -1,0 +1,43 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/building.json",
+    "path": "/quests/4",
+    "value": {
+      "id": "make-roof",
+      "pos": [
+        2,
+        3.0
+      ],
+      "requires": "make-boards",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "*:slantedroofing-*",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-building-make-roof"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

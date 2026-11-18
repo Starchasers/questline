@@ -28,11 +28,21 @@ Install only the integrations whose gameplay mods you use:
 | seafarer | questlineseafarer | 3 | 35 |
 | tailorsdelight | questlinetailorsdelight | 5 | 21 |
 | wool | questlinewool | 3 | 8 |
+| artofgrowing | questlineartofgrowing | 4 own-domain process extensions | 65 indexed D+C overrides + 15 additive stages |
 
 Every package explicitly depends on `game >= 1.22.0` and `questline >= 0.15.0`.
-Every optional package also depends on `questlinevanilla >= 0.14.0` and its
-same-named gameplay mod. Gameplay mod minimum versions use `0.0.0`: presence is
-required, but no specific tested gameplay-mod release is asserted here.
+Every optional package also depends on `questlinevanilla >= 0.14.0`. The eleven
+original optional packages use same-named gameplay providers with minimum `0.0.0` (presence
+required, no tested release asserted). The thirteenth content package,
+**Art of Growing**, instead uses **`artofgrowingpatch >= 1.2.2`** and
+`coreofartspatch >= 1.2.2`; `artofgrowing` is a provider asset domain, not its mod ID.
+Its own asset domain is `questlineartofgrowing`, including chapters, patches and
+English strings. See the [integration and graph contract](artofgrowing.md).
+
+**The supplied `srMi9` upload returns 404.** The inspected AoG/Core 1.2.2 cache
+cannot be asserted to equal the current pack. Full archive hashes, all 532 audit
+rows, 65 D+C recommendations and locally unaffected justifications are linked
+from that integration document. Native gameplay remains untested.
 
 Chef's Tricks and Meals Module additionally require both `expandedfoods` and
 `questlineexpandedfoods >= 0.14.0`: their original quests reference Expanded
@@ -52,7 +62,7 @@ extension targets and prerequisites, and breaks saved progression identity.
 
 The original `assets/questline/questline/questline.json` is likewise unchanged
 and belongs only to vanilla. Optional packages must not duplicate that manifest.
-There are 532 quest records, 589 task records and 516 distinct quest IDs. The
+The original corpus has 532 quest records, 589 task records and 516 distinct quest IDs. The
 16 duplicate IDs are intentional extension replacement records, not accidental
 copies to remove. The loader joins extensions into their original chapters and
 replaces matching IDs; none of those records, fields, dependencies, rewards,
@@ -61,7 +71,7 @@ page links, or strings were rewritten during extraction.
 ## Shared translation ownership limitation
 
 All original translations remain in core at `questline/assets/questline/lang/`
-unchanged, including integration-specific text and links. Content packages are
+unchanged, including integration-specific text and links. The original twelve content packages are
 therefore not self-contained localization owners: installing only the framework
 still loads quest text for uninstalled packages, and updating content text may
 require a coordinated core update. This deliberate initial limitation avoids
@@ -74,10 +84,11 @@ domain and cross-package links; do not copy whole language files into every pack
 Run from the repository root:
 
 ```sh
-python -m unittest discover -s tests -p test_content_extraction.py -v
+python3 tests/test_content_extraction.py -v
+python3 verification/artofgrowing/check.py
 ```
 
-The tests use actual `git show <upstream>:<path>` blobs, not a regenerated
+The canonical extraction suite isolates the twelve original catalog entries and shared translation namespace while explicitly allowing new addon-owned assets; the AoG checker validates the thirteenth package separately. The tests use actual `git show <upstream>:<path>` blobs, not a regenerated
 snapshot. The upstream commit must remain available locally (fetch it in shallow
 checkouts). They verify one-to-one relocation, exact bytes, original paths,
 package counts and IDs, explicit dependency closure, manifest ownership,

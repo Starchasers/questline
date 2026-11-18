@@ -1,0 +1,285 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/husbandry.json",
+    "path": "/quests/1",
+    "value": {
+      "id": "make-trough",
+      "pos": [
+        0,
+        1.5
+      ],
+      "requires": "make-boards",
+      "tasks": [
+        {
+          "type": "place",
+          "block": "game:trough-*-small-*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-husbandry-make-trough"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/husbandry.json",
+    "path": "/quests/3",
+    "value": {
+      "id": "make-large-trough",
+      "pos": [
+        2,
+        1.5
+      ],
+      "requires": "make-trough",
+      "tasks": [
+        {
+          "type": "place",
+          "block": "game:trough-*-large-*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-husbandry-make-large-trough"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/husbandry.json",
+    "path": "/quests/4",
+    "value": {
+      "id": "breed-animals",
+      "pos": [
+        4,
+        0.0
+      ],
+      "requires": [
+        "build-pen",
+        "make-large-trough"
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "icon": "game:egg-chicken-raw",
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-husbandry-breed-animals"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/husbandry.json",
+    "path": "/quests/6",
+    "value": {
+      "id": "make-henbox",
+      "pos": [
+        2,
+        4.5
+      ],
+      "requires": "make-trough",
+      "tasks": [
+        {
+          "type": "place",
+          "block": "game:henbox*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:drygrass",
+          "count": 12
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-husbandry-make-henbox"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/husbandry.json",
+    "path": "/quests/8",
+    "value": {
+      "id": "make-basket-trap",
+      "pos": [
+        0,
+        6.0
+      ],
+      "requires": "make-knife",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:baskettrap-*"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:fruit-blueberry",
+          "count": 4
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-husbandry-make-basket-trap"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/husbandry.json",
+    "path": "/quests/9",
+    "value": {
+      "id": "make-crate-trap",
+      "pos": [
+        0,
+        7.5
+      ],
+      "requires": [
+        "make-boards",
+        "smith-bronze"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:trapcrate-wood"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-husbandry-make-crate-trap"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/husbandry.json",
+    "path": "/quests/10",
+    "value": {
+      "id": "melt-fat",
+      "pos": [
+        0,
+        9.0
+      ],
+      "requires": [
+        "first-hunt",
+        "cook-meal"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:fat-rendered",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-husbandry-melt-fat"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

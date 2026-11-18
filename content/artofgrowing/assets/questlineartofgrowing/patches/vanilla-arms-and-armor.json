@@ -1,0 +1,85 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/arms-and-armor.json",
+    "path": "/quests/7",
+    "value": {
+      "id": "make-crude-shield",
+      "pos": [
+        0,
+        4.5
+      ],
+      "requires": "gather-sticks",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:shield-crude"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-arms-and-armor-make-crude-shield"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/arms-and-armor.json",
+    "path": "/quests/9",
+    "value": {
+      "id": "make-improvised-armor",
+      "pos": [
+        0,
+        6.0
+      ],
+      "requires": [
+        "make-rope",
+        "make-knife"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:armor-body-improvised-wood"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-arms-and-armor-make-improvised-armor"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]

@@ -1,0 +1,153 @@
+{
+  "id": "questlineartofgrowing:farming-processes",
+  "extends": "questline:farming",
+  "requiresMod": [
+    "questlinevanilla",
+    "artofgrowingpatch",
+    "coreofartspatch"
+  ],
+  "quests": [
+    {
+      "id": "questlineartofgrowing:harvest-cereal-bundles",
+      "pos": [
+        -8,
+        0
+      ],
+      "requires": {
+        "all": [
+          "questline:make-hoe",
+          "questline:gather-seeds"
+        ]
+      },
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1,
+          "name": "questlineartofgrowing:check-harvest-cereal-bundles"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-harvest-cereal-bundles"
+        },
+        {
+          "type": "items",
+          "items": [
+            "artofgrowing:grainbundle-rye-wet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questlineartofgrowing:dry-cereal-bundles",
+      "pos": [
+        -6,
+        0
+      ],
+      "requires": "questlineartofgrowing:harvest-cereal-bundles",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "artofgrowing:@^grainbundle-(rye|spelt|rice|amaranth)-dry$",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-dry-cereal-bundles"
+        },
+        {
+          "type": "items",
+          "items": [
+            "artofgrowing:grainbundle-rye-dry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questlineartofgrowing:thresh-cereal-bundles",
+      "pos": [
+        -4,
+        0
+      ],
+      "requires": "questlineartofgrowing:dry-cereal-bundles",
+      "tasks": [
+        {
+          "type": "checkbox",
+          "count": 1,
+          "name": "questlineartofgrowing:check-thresh-cereal-bundles"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-thresh-cereal-bundles"
+        },
+        {
+          "type": "items",
+          "items": [
+            "game:seeds-rye",
+            "game:thatch"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questlineartofgrowing:hull-cereal-seeds",
+      "pos": [
+        -2,
+        0
+      ],
+      "requires": "questlineartofgrowing:thresh-cereal-bundles",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:grain-*",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-hull-cereal-seeds"
+        },
+        {
+          "type": "items",
+          "items": [
+            "game:grain-rye"
+          ]
+        }
+      ]
+    }
+  ]
+}

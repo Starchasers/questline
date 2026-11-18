@@ -1,5 +1,22 @@
 # Packaging verification
 
+## Art of Growing integration verification
+
+An independent output directory was built against .NET 10 and Vintage Story
+1.22.7 assemblies after adding `content/artofgrowing`. Core and Toolsmith builds
+both returned **0 warnings, 0 errors**. The exact manifest-derived set was
+**15 ZIPs**: framework, thirteen content addons, and Toolsmith. All fifteen
+`SHA256SUMS` digests were independently recomputed and matched. The separate
+`questlineartofgrowing_0.14.0.zip` contained all 29 expected entries: root manifest,
+root MIT license, twenty JSON patch files, four extension chapters and three
+English locale files; no DLLs or provider binaries.
+
+This is local package and offline composition evidence, not a native gameplay
+run or a completed GitHub Actions run. See [AoG integration](artofgrowing.md) for
+public-source 404/cache limits, full impact audit and open native gates.
+
+## Earlier packaging hardening evidence
+
 Executed locally against the external .NET SDK at
 `/home/brunette/.hermes/cache/scratch/woodworking-tutorial/dotnet/dotnet`
 (version supplied for this task: 10.0.404), with `VINTAGE_STORY` pointing to the
@@ -32,7 +49,7 @@ Repeated the complete real build/package entry point twice. The resulting
 opened each advertised ZIP and checked checksum, manifest, expected DLL membership,
 MIT LICENSE bytes, sorted unique names, CRC, fixed timestamp and mode.
 
-Current snapshot: **14 artifacts** in `Releases/`:
+Historical pre-AoG snapshot: **14 artifacts** in `Releases/` (the current catalog adds the separate AoG ZIP; see the newer verification below):
 
 - `questline_0.15.0.zip`
 - `questlinevanilla_0.14.0.zip`

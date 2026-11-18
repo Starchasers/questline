@@ -5,13 +5,21 @@ This repository derives from dizzyd/questline v0.14.0 under the MIT license. The
 ## Fork layout and verification
 
 - Framework: `questline/`, version 0.15.0; no bundled quest chapters.
-- Questbooks: `content/vanilla/` and eleven optional mod content packages. Install vanilla content for the original shared book, then only the integrations you need.
+- Questbooks: 13 independent content packages: `content/vanilla/`, eleven original optional integrations, and the new optional `content/artofgrowing/` addon. Install only the integrations you need.
 - Optional executable adapters: `compat/toolsmith/`.
 - Approved scope: [fork contract](docs/fork-contract.md).
 - Installation, dependencies and unchanged-content guarantees: [content packages](docs/content-packages.md).
 - Build/package commands and deterministic archive policy: [build and packaging](docs/build-packaging.md).
-- Shared translations currently remain in the framework; independent localization ownership is not yet implemented.
+- Original shared translations remain in the framework; new Art of Growing prose is owned by the addon's `questlineartofgrowing` language domain.
 - Native game/client/server acceptance is pending. Compilation, offline checks and synthetic Harmony tests do not establish in-world compatibility. Do not treat intermediate archives as a validated release.
+
+The optional [Art of Growing integration](docs/artofgrowing.md) uses the actual
+provider mod ID **`artofgrowingpatch`**, not its `artofgrowing` asset domain.
+**The supplied `srMi9` upload returns 404: the inspected AoG 1.2.2 + Core 1.2.2
+cache cannot be asserted to equal the current pack.** The [532-record impact
+matrix](docs/artofgrowing-impact-audit.md), [crop-process evidence](docs/artofgrowing-crop-research.md)
+and [graph/verification contract](docs/artofgrowing.md) document the evidence and
+limits. Native gameplay has not been run.
 
 The upstream overview below describes inherited capabilities; fork-specific behavior and release gates are defined by the documents above.
 

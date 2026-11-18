@@ -1,0 +1,44 @@
+[
+  {
+    "op": "replace",
+    "file": "questline:questline/chapters/preservation.json",
+    "path": "/quests/3",
+    "value": {
+      "id": "pickle-vegetables",
+      "pos": [
+        4,
+        1.5
+      ],
+      "requires": "make-brine",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:pickledvegetable-*",
+          "count": 4,
+          "name": "questline:name-any-pickled-vegetable"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "game:gear-rusty",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "questlineartofgrowing:page-vanilla-preservation-pickle-vegetables"
+        }
+      ]
+    },
+    "dependsOn": [
+      {
+        "modid": "questlinevanilla"
+      },
+      {
+        "modid": "artofgrowingpatch"
+      }
+    ]
+  }
+]
