@@ -219,6 +219,20 @@
         "wool-textiles.json",
         "wool-winter.json"
       ]
+    },
+    {
+      "key": "livestockwelfare",
+      "path": "content/livestockwelfare",
+      "modid": "questlinelivestockwelfare",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "livestockwelfare": "0.15.0"
+      },
+      "chapters": [
+        "livestockwelfare-care.json"
+      ]
     }
   ]
 }

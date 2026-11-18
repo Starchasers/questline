@@ -178,7 +178,7 @@ Test("all 16 shipped base-to-extension replacements survive shuffled real conten
     var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
         .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
         .Select(f => (Domain: new DirectoryInfo(Path.GetDirectoryName(f)).Parent.Parent.Name, Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
-    Check(files.Length == 56, $"expected 56 extracted content files, got {files.Length}");
+    Check(files.Length == JsonConvert.DeserializeObject<Newtonsoft.Json.Linq.JObject>(File.ReadAllText(Path.Combine(root, "docs/content-packages.json")))["packages"].Sum(p => p["chapters"].Count()), "shipped chapter count differs from package catalog");
     var baseline = Load(files);
     var qualified = files.Select(f => {
         var c = JsonConvert.DeserializeObject<ChapterDef>(f.Json);
@@ -204,6 +204,33 @@ Test("all 16 shipped base-to-extension replacements survive shuffled real conten
         var rng = new Random(seed); var p = files.OrderBy(_ => rng.Next()).ToArray(); var loaded = Load(p);
         Check(snapshot == loaded.Registry.ToJson() + string.Join("\n", loaded.Loader.Problems), "shipped registry/diagnostics changed under seed " + seed);
     }
+});
+Test("Livestock Welfare absence/presence and Better Husbandry coexistence use real loader", () => {
+    string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
+    var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
+        .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
+        .Select(f => (Domain: "questline", Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToList();
+    var noAddon = Load(files.Where(f => f.Name != "livestockwelfare-care"));
+    Check(noAddon.Registry.Get("questline:lw-read-herd") == null && noAddon.Registry.Get("questline:breed-animals") != null, "addon absence changes base milestones");
+    // Optional sibling-addon check exercises its real authored JSON, not provider simulation.
+    string bhRoot = Environment.GetEnvironmentVariable("BETTER_HUSBANDRY_QUESTLINE_ROOT");
+    if (!string.IsNullOrEmpty(bhRoot)) files.AddRange(Directory.GetFiles(Path.Combine(bhRoot, "content/betterhusbandry"), "*.json", SearchOption.AllDirectories)
+        .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
+        .Select(f => ("questline", Path.GetFileNameWithoutExtension(f), File.ReadAllText(f))));
+    foreach (bool lw in new[] { false, true }) foreach (bool bh in new[] { false, true }) {
+        var missing = new HashSet<string>(); if (!lw) missing.Add("livestockwelfare"); if (!bh) missing.Add("betterhusbandry");
+        var (registry, loader) = Load(files, missingMods: missing);
+        Check(registry.Chapters.SelectMany(c => c.Quests).Count(q => q.Id.StartsWith("questline:lw-")) == (lw ? 16 : 0), "wrong welfare visibility");
+        Check(registry.Get("questline:breed-animals") != null && registry.Get("questline:milk-animal") != null, "base husbandry milestones lost");
+        Check(!loader.Problems.Any(p => p.Contains("ambiguous extension") || p.Contains("missing quest")), string.Join("; ", loader.Problems));
+        if (!string.IsNullOrEmpty(bhRoot)) {
+            Check((registry.Get("questline:bh-welfare-readiness") != null) == (lw && bh), "combined BH welfare bridge gate wrong");
+            Check((registry.Get("questline:bh-observe-care-change") != null) == bh, "BH care visibility wrong");
+        }
+        var reversed = Load(files.AsEnumerable().Reverse(), missingMods: missing);
+        Check(registry.ToJson() == reversed.Registry.ToJson(), "addon load order changed result");
+    }
+    Console.WriteLine(string.IsNullOrEmpty(bhRoot) ? "BH mod-state matrix only; sibling-addon JSON not supplied" : "Actual Better Husbandry sibling-addon JSON matrix passed");
 });
 Console.WriteLine($"Composition: {passed} passed, {failed} failed");
 return failed == 0 ? 0 : 1;

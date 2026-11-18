@@ -28,6 +28,13 @@ Install optional integrations only for gameplay mods you use:
 | seafarer | questlineseafarer | 3 | 35 |
 | tailorsdelight | questlinetailorsdelight | 5 | 21 |
 | wool | questlinewool | 3 | 8 |
+| livestockwelfare | questlinelivestockwelfare | 1 | 16 |
+
+The Livestock Welfare addon is new authored content, not part of the frozen
+upstream extraction totals. See [installation, care map and coexistence](livestockwelfare.md)
+and its pinned [source research](research/livestockwelfare-0.15.0.md). It requires
+Livestock Welfare >= 0.15.0; its sixteen tasks are explicit manual care checks.
+Non-English locale entries currently use English fallback text.
 
 Declare `game >= 1.22.0` and `questline >= 0.15.0` in every package. Optional
 packages also depend on `questlinevanilla >= 0.14.0` and their same-named

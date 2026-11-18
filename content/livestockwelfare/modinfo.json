@@ -1,0 +1,17 @@
+{
+  "type": "content",
+  "modid": "questlinelivestockwelfare",
+  "name": "Questline: Livestock Welfare",
+  "authors": [
+    "Nebs",
+    "Kuboczoch"
+  ],
+  "description": "Source-backed care milestones for Livestock Welfare 0.15.0; manual welfare observation, no stat bridge.",
+  "version": "0.1.0",
+  "dependencies": {
+    "game": "1.22.0",
+    "questline": "0.15.0",
+    "questlinevanilla": "0.14.0",
+    "livestockwelfare": "0.15.0"
+  }
+}
