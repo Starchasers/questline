@@ -1,0 +1,3082 @@
+{
+  "scope": "Static retained client export; no assemblies executed, no live world verification; original repos unchanged.",
+  "pack": {
+    "path": "/home/brunette/.hermes/cache/scratch/woodworking-tutorial/modpack",
+    "sha256": "daafd4c1cb217b2553711128adfbd71511f5f0734cfb2927a6c4ffea02e0bb2d",
+    "manifest_metadata": {
+      "Format": 1,
+      "Name": "Pszczoly 1.0",
+      "Description": "Pszczoly server 13.11.2026",
+      "CreatedWith": "eViSTool 1.1.1",
+      "Created": "2026-11-12T20:50:19.3284355Z",
+      "GameVersion": "1.22.7",
+      "Kind": "Client",
+      "IncludesModConfig": true
+    },
+    "zip_crc_error": null
+  },
+  "official_source": {
+    "repository": "https://github.com/ReginArtDesign/livestockwelfare",
+    "commit": "c1df75afabbbbb638b87da0255f0a40e65b79785",
+    "snapshot": "/home/brunette/.hermes/cache/scratch/lw-audit/source",
+    "head_not_modified": true
+  },
+  "providers": [
+    {
+      "ModId": "betterhusbandry",
+      "Name": "betterhusbandry",
+      "Version": "1.4.0",
+      "Enabled": true,
+      "FileName": "betterhusbandry_1.4.0.zip",
+      "Sha256": "4B9F6DAF8E4E9EF6E8FE4C18F57FCFE05EB7E842908E42A86EC1E940AEB2D861",
+      "Bundled": true,
+      "Side": null,
+      "actual_sha256": "4b9f6daf8e4e9ef6e8fe4c18f57fcfe05eb7e842908e42a86ec1e940aeb2d861",
+      "manifest_hash_matches": true
+    },
+    {
+      "ModId": "butchering",
+      "Name": "Butchering",
+      "Version": "1.14.3",
+      "Enabled": true,
+      "FileName": "butchering_1.14.3.zip",
+      "Sha256": "8332A390C42677AB4376E8817EF93E8835B3F074E9CD3FE534FF32A8D5508862",
+      "Bundled": true,
+      "Side": "universal",
+      "actual_sha256": "8332a390c42677ab4376e8817ef93e8835b3f074e9cd3fe534ff32a8d5508862",
+      "manifest_hash_matches": true
+    },
+    {
+      "ModId": "catchlivestock",
+      "Name": "Catch Livestock",
+      "Version": "0.2.4",
+      "Enabled": true,
+      "FileName": "Catch Livestock_0.2.4.zip",
+      "Sha256": "5443B3207981DE5F0502C20CE3E3F358BC58E69EA241A61517D0D7BA406B38FD",
+      "Bundled": true,
+      "Side": "universal",
+      "actual_sha256": "5443b3207981de5f0502c20ce3e3f358bc58e69ea241a61517d0d7ba406b38fd",
+      "manifest_hash_matches": true
+    },
+    {
+      "ModId": "genelib",
+      "Name": "Genelib",
+      "Version": "3.2.1",
+      "Enabled": true,
+      "FileName": "genelib_3.2.1.zip",
+      "Sha256": "A222D7B1D6F30F2B7479703BD14A1D0BB994D7FC3829EF757BF7C0625FF28165",
+      "Bundled": true,
+      "Side": null,
+      "actual_sha256": "a222d7b1d6f30f2b7479703bd14a1d0bb994d7fc3829ef757bf7c0625ff28165",
+      "manifest_hash_matches": true
+    },
+    {
+      "ModId": "livestockwelfare",
+      "Name": "Livestock Welfare",
+      "Version": "0.15.0",
+      "Enabled": true,
+      "FileName": "livestockwelfare_0.15.0.zip",
+      "Sha256": "F1C41843B32AE9CCD20C42B38A4C518755369EA08E2249B30DF041F4734AD065",
+      "Bundled": true,
+      "Side": "Universal",
+      "actual_sha256": "f1c41843b32ae9ccd20c42b38a4c518755369ea08e2249b30df041f4734ad065",
+      "manifest_hash_matches": true
+    },
+    {
+      "ModId": "naturalfertilizer",
+      "Name": "Natural Fertilizer",
+      "Version": "1.5.1",
+      "Enabled": true,
+      "FileName": "naturalfertilizer-v1.22.0-1.5.1.zip",
+      "Sha256": "639776FCCB7FFEAEF2C1D4C0A2752045C0084BFC2E82BA71E345027B57E1EC9B",
+      "Bundled": true,
+      "Side": "Universal",
+      "actual_sha256": "639776fccb7ffeaef2c1d4c0a2752045c0084bfc2e82ba71e345027b57e1ec9b",
+      "manifest_hash_matches": true
+    }
+  ],
+  "configs": {
+    "config/ModConfig/livestockwelfare.json": {
+      "sha256": "4e98781c4f09aebf1f7ed6eebd323f8e1938fc5b3739d72470b6b17ec7354641",
+      "value": {
+        "OldAgeFraction": 0.75,
+        "OldAnimalsInfertile": true,
+        "DieOfOldAge": true,
+        "Species": {
+          "sheep": {
+            "LifespanYearsMin": 3.0,
+            "LifespanYearsMax": 5.0
+          },
+          "goat": {
+            "LifespanYearsMin": 4.0,
+            "LifespanYearsMax": 6.0
+          },
+          "pig": {
+            "LifespanYearsMin": 3.0,
+            "LifespanYearsMax": 4.0
+          },
+          "chicken": {
+            "LifespanYearsMin": 2.0,
+            "LifespanYearsMax": 3.0
+          },
+          "dog": {
+            "LifespanYearsMin": 5.0,
+            "LifespanYearsMax": 7.0
+          },
+          "giantboar": {
+            "LifespanYearsMin": 4.0,
+            "LifespanYearsMax": 6.0
+          },
+          "greathorn": {
+            "LifespanYearsMin": 4.0,
+            "LifespanYearsMax": 6.0
+          },
+          "giantredriver": {
+            "LifespanYearsMin": 3.0,
+            "LifespanYearsMax": 5.0
+          },
+          "cow": {
+            "LifespanYearsMin": 5.0,
+            "LifespanYearsMax": 8.0
+          }
+        },
+        "Hygiene": {
+          "Enabled": true,
+          "DroppingBlockCodes": [
+            "naturalfertilizer:dung-*",
+            "naturalfertilizer:smallpoop-*",
+            "naturalfertilizer:chickenpoop-*"
+          ],
+          "DroppingScanRadius": 3,
+          "DirtPerDropping": 0.05,
+          "DirtPerMuckLevel": 0.03,
+          "DirtPerRotItem": 0.01,
+          "MuckChancePerDay": 0.15,
+          "MuckCrowdingBonus": 0.15,
+          "MuckMinGeneration": 1,
+          "CrowdingRadius": 4,
+          "CrowdingFreeAnimals": 6,
+          "DirtPerExtraAnimal": 0.1,
+          "FilthAdaptHours": 24.0,
+          "FilthCleanHours": 96.0,
+          "SelfCleaningSpecies": [
+            "chicken"
+          ],
+          "SelfCleaningHours": 12.0,
+          "DustBathing": true,
+          "DustBathBlockCodes": [
+            "game:sand-*",
+            "game:sandwavy-*"
+          ],
+          "DustBathRadius": 10,
+          "DustBathAboveFilth": 0.1,
+          "DustBathEveryHours": 20.0,
+          "UnbathedDays": 2.0,
+          "UnbathedFilth": 0.5,
+          "DustBathSeconds": 12.0,
+          "ShovelsHarmless": true,
+          "GroomFilthReduction": 0.25,
+          "GroomItemUseChance": 0.5,
+          "SicknessChancePerDay": 0.25,
+          "OldAgeSicknessMultiplier": 2.0,
+          "ContagionRadius": 3,
+          "ContagionChancePerDay": 0.1,
+          "RecoveryChancePerDay": 0.35,
+          "ImmunityDays": 6.0,
+          "SickDamagePerDay": 3.0,
+          "CollapseHealthFraction": 0.3
+        },
+        "Weather": {
+          "Enabled": true,
+          "RainStress": 0.35,
+          "SnowStress": 0.45,
+          "ColdStressPerDegree": 0.05,
+          "RoofColdFactor": 0.5,
+          "HeatStressPerDegree": 0.06,
+          "HeatListlessAboveStress": 0.25,
+          "HeatLieDownChance": 0.05,
+          "HeatLossOfAppetite": true,
+          "SleepOutsideStress": 0.3,
+          "StressAdaptHours": 12.0,
+          "SicknessWeight": 1.0,
+          "NoBreedingAboveStress": 0.5,
+          "HarmAboveStress": 0.8,
+          "HarmPerDay": 2.0,
+          "SeekShelter": true,
+          "SeekShelterRadius": 24,
+          "SleepUnderRoof": true,
+          "ShelterYieldsHoursWithoutFood": 4.0,
+          "ShelterYieldsAboveThirst": 0.35,
+          "PetStressReduction": 0.2,
+          "PetCooldownHours": 2.0,
+          "Species": {
+            "default": {
+              "ColdBelowC": -2.0,
+              "HotAboveC": 30.0
+            },
+            "sheep": {
+              "ColdBelowC": -10.0,
+              "HotAboveC": 27.0
+            },
+            "goat": {
+              "ColdBelowC": -6.0,
+              "HotAboveC": 32.0
+            },
+            "pig": {
+              "ColdBelowC": 2.0,
+              "HotAboveC": 26.0
+            },
+            "chicken": {
+              "ColdBelowC": 0.0,
+              "HotAboveC": 30.0
+            },
+            "dog": {
+              "ColdBelowC": -12.0,
+              "HotAboveC": 28.0
+            },
+            "giantboar": {
+              "ColdBelowC": -8.0,
+              "HotAboveC": 27.0
+            },
+            "greathorn": {
+              "ColdBelowC": -15.0,
+              "HotAboveC": 25.0
+            },
+            "giantredriver": {
+              "ColdBelowC": 6.0,
+              "HotAboveC": 33.0
+            },
+            "cow": {
+              "ColdBelowC": -15.0,
+              "HotAboveC": 26.0
+            }
+          }
+        },
+        "Thirst": {
+          "Enabled": true,
+          "ThirstPerDay": 0.8,
+          "WarmAboveC": 20.0,
+          "HotSunMultiplier": 1.5,
+          "DrinkAboveThirst": 0.25,
+          "WalkToWater": true,
+          "SeekWaterAboveThirst": 0.2,
+          "SeekWaterRadius": 16,
+          "RemoteDrinkAboveThirst": 0.6,
+          "DrinkRadius": 6,
+          "DrinkFromNaturalWater": true,
+          "NoBreedingAboveThirst": 0.6,
+          "HarmAboveThirst": 0.95,
+          "HarmPerDay": 3.0,
+          "LitresPerFullDrink": {
+            "default": 1.0,
+            "sheep": 1.0,
+            "goat": 1.0,
+            "pig": 1.5,
+            "chicken": 0.1,
+            "dog": 0.5,
+            "giantboar": 2.5,
+            "greathorn": 2.0,
+            "giantredriver": 2.0,
+            "cow": 3.0
+          }
+        },
+        "Babies": {
+          "Enabled": true,
+          "NursingDistance": 10,
+          "NourishAdaptHours": 6.0,
+          "HungerPerDay": 0.6,
+          "NourishmentPerPortion": 0.25,
+          "LearnTroughWithMotherDays": 2.0,
+          "HandFeedingsToLearnTrough": 3,
+          "HandFeedMilkLitres": 0.5,
+          "HandFeedMilkNourishment": 0.35,
+          "HandFeedFoodNourishment": 0.2,
+          "SickMotherMilk": 0.5,
+          "StressedMotherMilkLoss": 0.5,
+          "SickMotherContagionPerDay": 0.3,
+          "SlowGrowthBelow": 0.5,
+          "HarmBelow": 0.15,
+          "HarmPerDay": 2.0,
+          "ColdSensitivityC": 5.0,
+          "HeatSensitivityC": 2.0
+        },
+        "Safety": {
+          "AnimalsCanDie": true,
+          "OldAgeCanKill": true,
+          "DiseaseCanKill": true,
+          "ExposureCanKill": true,
+          "ThirstCanKill": true,
+          "MalnutritionCanKill": true,
+          "PauseWhenNoPlayerNearby": false,
+          "PlayerRadius": 64
+        },
+        "Dogs": {
+          "Enabled": true,
+          "StartBond": 0.5,
+          "BondPerPet": 0.1,
+          "PetCooldownHours": 2.0,
+          "BondLossPerDay": 0.08,
+          "CompanyRadius": 8,
+          "LonelyBelowBond": 0.25,
+          "LoyalAboveBond": 0.75,
+          "Width": 0.6,
+          "LurePups": true,
+          "PupLureCodes": [
+            "game:bone",
+            "game:redmeat-raw",
+            "game:bushmeat-raw",
+            "game:poultry-raw"
+          ],
+          "PoopChancePerDay": 0.5,
+          "DoorSearchRadius": 16,
+          "ComeBackHours": 2.0,
+          "AccidentAfterHours": 8.0,
+          "SpareKeptAnimals": true,
+          "SparePlayers": true,
+          "HuntOnlyWoundedGame": true,
+          "HelpHunt": true,
+          "GuardHerd": true,
+          "GuardRadius": 12,
+          "GuardBiteDamage": 4.0,
+          "ChaseCodes": [
+            "game:wolf-*",
+            "game:fox-*",
+            "game:hyena-*",
+            "caninae:*"
+          ],
+          "GuardGarden": true,
+          "GardenWatchRadius": 24,
+          "GardenCropRadius": 4,
+          "GardenChaseOffDistance": 16,
+          "GardenPestCodes": [
+            "game:hare-*",
+            "game:deer-*",
+            "game:gazelle-*",
+            "game:moose-*",
+            "game:goat-*",
+            "game:sheep-*",
+            "game:pig-*"
+          ],
+          "TripAftermath": true,
+          "TripFilth": 0.5,
+          "TripStress": 0.4,
+          "TripRestHours": 4.0,
+          "BedRadius": 24,
+          "BedCodes": [
+            "petai:petnest-*",
+            "feralkinshipcompanions:foxbed-*"
+          ],
+          "SleepInBedAtNight": true,
+          "BedtimeHour": 21.0,
+          "WakeUpHour": 6.0,
+          "Bark": true,
+          "BarkRadius": 20,
+          "BarkCooldownSeconds": 8.0,
+          "BarkCodes": [
+            "game:bear-*",
+            "game:drifter-*",
+            "game:bowtorn-*",
+            "game:shiver-*",
+            "game:locust-*"
+          ],
+          "AnyGuarding": true
+        },
+        "Treats": {
+          "Enabled": true,
+          "AnimalCodes": [
+            "game:chicken-*"
+          ],
+          "FollowRadius": 10,
+          "FollowDistance": 1.5,
+          "HandFeedCooldownHours": 1.0
+        },
+        "Breeding": {
+          "Enabled": false,
+          "RequireBedding": true,
+          "BeddingRadius": 16,
+          "MatingSeconds": 15.0,
+          "NewbornDays": 1.0,
+          "BeddingBlockCodes": [
+            "livestockwelfare:strawbedding-clean"
+          ],
+          "Species": {
+            "sheep": {
+              "PortionsToBreed": 10.0,
+              "PregnancyDays": 20.0,
+              "RestDaysMin": 4.0,
+              "RestDaysMax": 11.0,
+              "GrowUpDays": 14.0
+            },
+            "goat": {
+              "PortionsToBreed": 10.0,
+              "PregnancyDays": 20.0,
+              "RestDaysMin": 4.0,
+              "RestDaysMax": 11.0,
+              "GrowUpDays": 14.0
+            },
+            "pig": {
+              "PortionsToBreed": 10.0,
+              "PregnancyDays": 25.0,
+              "RestDaysMin": 6.0,
+              "RestDaysMax": 11.0,
+              "GrowUpDays": 7.0
+            },
+            "chicken": {
+              "PortionsToBreed": 4.0,
+              "PregnancyDays": null,
+              "RestDaysMin": 0.0,
+              "RestDaysMax": 3.0,
+              "GrowUpDays": 8.3
+            }
+          }
+        }
+      }
+    },
+    "config/ModConfig/betterhusbandry.json": {
+      "sha256": "a1a6246ac724e1afb4e4582be82b1f63df003dd2a02e759f660cd1489b8414e8",
+      "value": {
+        "version": 2,
+        "feedFloor": -3.0,
+        "feedCeiling": 3.0,
+        "feedGrowthPerDay": 0.03,
+        "feedDecayPerDay": 0.2,
+        "feedGoodWeightThreshold": 0.95,
+        "feedOkWeightThreshold": 0.75,
+        "interactFloor": -3.0,
+        "interactCeiling": 3.0,
+        "interactGrowthPerDay": 0.03,
+        "interactDecayPerDay": 0.2,
+        "interactGraceDays": 1.0,
+        "interactgenerationDecayMultiplier": 0.5,
+        "interactMemoryDays": 30,
+        "offlineFullProtect": true,
+        "offlineGraceDays": 7
+      }
+    }
+  },
+  "lw_dll_sha256": "17f4b9dca236d9fc27fbb9727352988083ceb5c3d307e729552b7e26c694f860",
+  "source_asset_comparison": [
+    {
+      "member": "assets/feralkinshipcompanions/lang/hu.json",
+      "sha256": "be954d17b7a80d697412ade3d21bdef92f630fcf0d9af886f4a61609671ca027",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/feralkinshipcompanions/lang/hu.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/game/lang/hu.json",
+      "sha256": "4df6fca7eb37f02ecdd382a10e25a5a5f3a3b4a0efd2a96a377fcc9e4a26fcb2",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/game/lang/hu.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/blocktypes/dogpoop.json",
+      "sha256": "570bef319e10c088fd7d0bed7eff40ad604360fa1112225036817b17032729e6",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/blocktypes/dogpoop.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/blocktypes/foodbowl.json",
+      "sha256": "4a749d0e176d999576468c277aee65bd04f2af7395e361d7c568c07e9067ddd5",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/blocktypes/foodbowl.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/blocktypes/muck.json",
+      "sha256": "e60cb69eeadaa202ec5ab0b385b8d1cced30ac78987cd97f3ce65ead98f6cf28",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/blocktypes/muck.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/blocktypes/strawbedding.json",
+      "sha256": "8afa185698455d8cc383db4f9f2aac6365f273e811d02c74bdc2a11093310772",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/blocktypes/strawbedding.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/blocktypes/waterbowl.json",
+      "sha256": "939e041a1423a5a14f64fdc5fb1bd9e84433d773e488c10aad1b4b293ac07f96",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/blocktypes/waterbowl.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/blocktypes/waterer.json",
+      "sha256": "ab1fe45001b3baa909ba22a9600032c4ab62e09c8c33f38e20fcd01988c25297",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/blocktypes/waterer.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/entities/deathcause.json",
+      "sha256": "c078ea40ffbff4f5c7a1fb54591e91e87ae51a5050539a35b46afca220aa0ccc",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/entities/deathcause.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/itemtypes/chickencoop.json",
+      "sha256": "f6c6b9e6f58c8af98f1d68ef52378b987e961e61d4b483d8c799942e5cc4ecd3",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/itemtypes/chickencoop.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/itemtypes/groomingbrush.json",
+      "sha256": "690ad47d88a47fa50c0cd9eb1381ab4395f9b61eb263e54690ec997720d700b8",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/itemtypes/groomingbrush.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/lang/en.json",
+      "sha256": "9acefcd1100c8803b98381d965eb011f71c8b341009d14285386239d76ff64f7",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/lang/en.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/lang/hu.json",
+      "sha256": "5e2b56fbf489f854d3b5f05139920e55d25c7fa2baeb4312bee6f63eae478ee5",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/lang/hu.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/patches/babies.json",
+      "sha256": "b4bae20a25b3bb8f3fb7c48a8ad3484683a3df7593161694c98a7498a56d1050",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/patches/babies.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/patches/babymouth.json",
+      "sha256": "ec9b71ddd48679b2f99ed8cee14c83837ab74d6c078dd93c43db1350e8fd02b3",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/patches/babymouth.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/patches/dogs.json",
+      "sha256": "12ded669e29f683261f6600db35f0ada0b9d4de178bb9f6015a749b442c1ab08",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/patches/dogs.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/patches/dogshapes.json",
+      "sha256": "afc5b3430152339ba4bd4bfde2680d138aa12a8f86baca78f57c3e23ec75823a",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/patches/dogshapes.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/patches/groom.json",
+      "sha256": "cea1b118ed1d70b36c90e6cbee972a4e2b98c1241046eb84dca2e612963703ff",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/patches/groom.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/patches/livestock.json",
+      "sha256": "747819b1d8eaa69133446c00b4c3a9179104d919a0e6beaa186ebc64317bbd4f",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/patches/livestock.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/patches/troughs.json",
+      "sha256": "a9358a99963b3d0b3a496ba7db5bacbd7b2fff18fd88174fb30fe74cdb072bc9",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/patches/troughs.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/config/handbook/livestockwelfare.json",
+      "sha256": "66d86d6a5886c3c2f3afc2dbefaaa66d97f3dc81cb2078d14d6848bb5e7bbb7f",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/config/handbook/livestockwelfare.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/patches/othermods/feralkinship.json",
+      "sha256": "4ccceec24a64c86b7311ed980f6bb6359706edf2100c28d481307a1ecc16127c",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/patches/othermods/feralkinship.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/patches/othermods/fkc-dogbackpack.json",
+      "sha256": "41e6c1ed2a9174fba7eb0af0da914fc2af81ef4660476b83b9fe08577b821fd9",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/patches/othermods/fkc-dogbackpack.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/patches/othermods/teapots.json",
+      "sha256": "a55a55c0f6b5445c6e7528c0699262ebfbef29c799c46c188a555a0e459edb3b",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/patches/othermods/teapots.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/recipes/clayforming/foodbowl.json",
+      "sha256": "8e120268a76f572e6a8bed5518c9a7bd3efa488c358d488b0fa517d4b380f1eb",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/recipes/clayforming/foodbowl.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/recipes/clayforming/waterbowl.json",
+      "sha256": "70ab4576d99da3107297c00f1b01afa29e38393d20d25046bca62a756728259a",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/recipes/clayforming/waterbowl.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/recipes/clayforming/waterer.json",
+      "sha256": "5c53f747ee85ab412b3d6aed524d4de7cf875293f6b308925f3ff62f1ae588c4",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/recipes/clayforming/waterer.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/recipes/grid/chickencoop.json",
+      "sha256": "a9e584199bab0905abf29517145dfaead264e3e0085ae78ca8ba2e9ff43db690",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/recipes/grid/chickencoop.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/recipes/grid/groomingbrush.json",
+      "sha256": "2bdc6044c13a28713eb7b1cd661c0f80342e97751c945c338bd240ee2d406a50",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/recipes/grid/groomingbrush.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/recipes/grid/strawbedding.json",
+      "sha256": "76d1604ad231ac3ed596162897560aba2a137e8fb526ecb10f1b8da20b649974",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/recipes/grid/strawbedding.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/item/chickencoop.json",
+      "sha256": "a8c334733fd3af828ea3456bf125508558959eafe2257ca1c7d7bc0687d81c19",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/item/chickencoop.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/item/groomingbrush.json",
+      "sha256": "6a33bdc8153a82f32e65c082f9c01d1c84b82871db21d19cef61957054a9cb5e",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/item/groomingbrush.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/textures/block/muck.png",
+      "sha256": "98d267605529c3f3417e265460e4d8e337eb48dc56d9e16ec0d6e0287071c63d",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/textures/block/muck.png",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/textures/block/waterer.png",
+      "sha256": "1a7b38ef4042fe8ac7874fe694892384243e5cbd7a4d54381605d4fe720a7773",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/textures/block/waterer.png",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/dogbowl/bowl.json",
+      "sha256": "068f831589f2ae5da9504b6fd687624178c4c3fd8bda82f67afc2be1dd34ffc1",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/dogbowl/bowl.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/dogbowl/contents.json",
+      "sha256": "3901cbc9c73efae9acdc0fa298e22b61e1c99068192c3ed945def811d9be73ed",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/dogbowl/contents.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/dogbowl/liquidcontents.json",
+      "sha256": "7d2209ece2b9c96cf863390a0c8f2b0a9fad20faecdc7f638fa9d183db5cd1f0",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/dogbowl/liquidcontents.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/dogpoop/dogpoop.json",
+      "sha256": "5ce4f2f6aee8a20c61df06b9e59331cc682fd9c3432f5ca56475719c950ceef2",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/dogpoop/dogpoop.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/muck/muck-1.json",
+      "sha256": "006bcf257b300cf51fc16046f03df218cc7e056e0d145f23be41f4cde1e213f7",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/muck/muck-1.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/muck/muck-2.json",
+      "sha256": "349b92f8d501512e924a2e26a2de5eddbb7494a622317290c5a61376bb966121",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/muck/muck-2.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/muck/muck-3.json",
+      "sha256": "de6013a58164f70158058757288e525c11f6af373890460eff5c5f0bbe0169fe",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/muck/muck-3.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/muck/muck-4.json",
+      "sha256": "6ff76fc9665b35514abb835c38e1e54933791614a45b85fdd08459a4c80978ab",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/muck/muck-4.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/strawbedding/strawbedding.json",
+      "sha256": "7c3c1567fb96c0e5bd6a043d50791f8a80888f8407650d6eb079a466654c34a8",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/strawbedding/strawbedding.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/waterer/contents.json",
+      "sha256": "b96ae21dbc3b1f1568caad13955ff1a0cde7c41a6aa22c42b26ae93b3319e7ee",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/waterer/contents.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/waterer/drinker.json",
+      "sha256": "189df8d58887e6e51e37db60a4b8876277b966e6a7309eca6c34044d43477353",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/waterer/drinker.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/livestockwelfare/shapes/block/waterer/liquidcontents.json",
+      "sha256": "4ec78cc104c109c2d8bb6b9484657921c92594caffb37b54d4767694e3d1d204",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/livestockwelfare/shapes/block/waterer/liquidcontents.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/game/shapes/block/livestockwelfare/dogbowl/meatfill1.json",
+      "sha256": "36210f01fe502c7dfdefc42d37b8da390ae8e9911066a29b99c1841313ae16cc",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/game/shapes/block/livestockwelfare/dogbowl/meatfill1.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/game/shapes/block/livestockwelfare/dogbowl/meatfill2.json",
+      "sha256": "50e762d47b300e3e31b04c9bb6b6a35ac6bcac8c3710ad27327ee3a3c738efbf",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/game/shapes/block/livestockwelfare/dogbowl/meatfill2.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/game/shapes/block/livestockwelfare/dogbowl/meatfill3.json",
+      "sha256": "e585ecc18d577edf20b7a68e18818728b655d1bf232ef1d7ac598e6507b46296",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/game/shapes/block/livestockwelfare/dogbowl/meatfill3.json",
+      "source_bytes_equal": true
+    },
+    {
+      "member": "assets/game/shapes/block/livestockwelfare/dogbowl/meatfill4.json",
+      "sha256": "ed4b5504ce61c6e0935b190c6e0166872ca1ec9ef4457d3e8d1aeef5d10aeeaf",
+      "source_path": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/assets/game/shapes/block/livestockwelfare/dogbowl/meatfill4.json",
+      "source_bytes_equal": true
+    }
+  ],
+  "conditional_integrations": [
+    {
+      "member": "assets/livestockwelfare/patches/othermods/feralkinship.json",
+      "dependencies": {
+        "feralkinship": false
+      }
+    },
+    {
+      "member": "assets/livestockwelfare/patches/othermods/fkc-dogbackpack.json",
+      "dependencies": {
+        "feralkinshipcompanions": false,
+        "wolftaming": false
+      }
+    },
+    {
+      "member": "assets/livestockwelfare/patches/othermods/teapots.json",
+      "dependencies": {
+        "teapotsgiantboar": false,
+        "teapotsgiantredriver": false,
+        "teapotsgreatbighorn": false
+      }
+    }
+  ],
+  "absent_companion_ids": [
+    "petai",
+    "wolftaming",
+    "feralkinship",
+    "feralkinshipcompanions"
+  ],
+  "evidence": {
+    "age": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/EntityBehaviorLivestockAge.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/EntityBehaviorLivestockAge.cs",
+      "matches": [
+        {
+          "line": 21,
+          "text": "const string LifespanAttr = \"lwLifespanYears\";"
+        },
+        {
+          "line": 39,
+          "text": "public override void Initialize(EntityProperties properties, JsonObject attributes)"
+        },
+        {
+          "line": 41,
+          "text": "base.Initialize(properties, attributes);"
+        },
+        {
+          "line": 64,
+          "text": "int DaysPerYear => entity.World.Calendar.DaysPerYear;"
+        },
+        {
+          "line": 79,
+          "text": "if (!attrs.HasAttribute(LifespanAttr) && Aging is { } aging)"
+        },
+        {
+          "line": 81,
+          "text": "double lifespan = aging.LifespanYearsMin + rand.NextDouble() * (aging.LifespanYearsMax - aging.LifespanYearsMin);"
+        },
+        {
+          "line": 82,
+          "text": "attrs.SetDouble(LifespanAttr, lifespan);"
+        },
+        {
+          "line": 98,
+          "text": "double lifespan = attrs.GetDouble(LifespanAttr, 2);"
+        },
+        {
+          "line": 99,
+          "text": "double assumedYears = 1 + rand.NextDouble() * Math.Max(0, lifespan / 2 - 1);"
+        },
+        {
+          "line": 100,
+          "text": "attrs.SetDouble(BirthAttr, entity.World.Calendar.TotalDays - assumedYears * DaysPerYear);"
+        },
+        {
+          "line": 108,
+          "text": "(AgeDays ?? -1) / DaysPerYear, entity.WatchedAttributes.GetDouble(LifespanAttr),"
+        },
+        {
+          "line": 109,
+          "text": "entity.WatchedAttributes.GetDouble(BirthAttr), entity.World.Calendar.TotalDays, DaysPerYear);"
+        },
+        {
+          "line": 121,
+          "text": "public bool IsOld => entity.WatchedAttributes.GetBool(OldAttr);"
+        },
+        {
+          "line": 137,
+          "text": "double lifespanYears = entity.WatchedAttributes.GetDouble(LifespanAttr);"
+        },
+        {
+          "line": 140,
+          "text": "double ageYears = ageDays.Value / DaysPerYear;"
+        },
+        {
+          "line": 142,
+          "text": "if (config.DieOfOldAge && ageYears >= lifespanYears && LivestockUtil.CanKill(LivestockUtil.OldAgeDeathCause))"
+        },
+        {
+          "line": 145,
+          "text": "LivestockUtil.Kill(entity, LivestockUtil.OldAgeDeathCause);"
+        },
+        {
+          "line": 149,
+          "text": "bool old = ageYears >= lifespanYears * config.OldAgeFraction;"
+        },
+        {
+          "line": 150,
+          "text": "if (old != IsOld) entity.WatchedAttributes.SetBool(OldAttr, old);"
+        },
+        {
+          "line": 152,
+          "text": "if (old && config.OldAnimalsInfertile) LivestockUtil.BlockBreeding(entity);"
+        },
+        {
+          "line": 186,
+          "text": "int years = (int)(ageDays.Value / DaysPerYear);"
+        },
+        {
+          "line": 187,
+          "text": "int days = (int)(ageDays.Value % DaysPerYear);"
+        },
+        {
+          "line": 197,
+          "text": "if (IsOld) infotext.AppendLine(Lang.Get(\"livestockwelfare:old\"));"
+        },
+        {
+          "line": 209,
+          "text": "if (mode != EnumInteractMode.Interact || !byEntity.Controls.ShiftKey || !itemslot.Empty) return;"
+        },
+        {
+          "line": 222,
+          "text": "if (IsOld) message += \" — \" + LivestockUtil.Translate(lang, \"livestockwelfare:old\");"
+        }
+      ]
+    },
+    "hygiene": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/EntityBehaviorLivestockHygiene.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/EntityBehaviorLivestockHygiene.cs",
+      "matches": [
+        {
+          "line": 147,
+          "text": "UpdateSelfCleaning();"
+        },
+        {
+          "line": 148,
+          "text": "if (SelfCleaning && entity is EntityAgent agent && Settings is { DustBathing: true })"
+        },
+        {
+          "line": 183,
+          "text": "bool KeptClean => baby && !entity.WatchedAttributes.GetBool(EntityBehaviorLivestockNursing.OrphanAttr);"
+        },
+        {
+          "line": 193,
+          "text": "bool SelfCleaning => entity.WatchedAttributes.GetBool(SelfCleaningAttr);"
+        },
+        {
+          "line": 194,
+          "text": "const string SelfCleaningAttr = \"lwSelfCleaning\";"
+        },
+        {
+          "line": 196,
+          "text": "void UpdateSelfCleaning()"
+        },
+        {
+          "line": 198,
+          "text": "bool selfCleaning = livestockwelfareModSystem.Config?.Hygiene.SelfCleaningSpecies is { } list && Array.IndexOf(list, species) >= 0;"
+        },
+        {
+          "line": 199,
+          "text": "if (selfCleaning != SelfCleaning) entity.WatchedAttributes.SetBool(SelfCleaningAttr, selfCleaning);"
+        },
+        {
+          "line": 203,
+          "text": "public bool CanBeGroomed => !KeptClean && !SelfCleaning;"
+        },
+        {
+          "line": 211,
+          "text": "HygieneSettings? Settings =>"
+        },
+        {
+          "line": 273,
+          "text": "if (!KeptClean)"
+        },
+        {
+          "line": 287,
+          "text": "double dirt = Math.Min(1, SurroundingsDirt(settings) + extraAnimals * settings.DirtPerExtraAnimal);"
+        },
+        {
+          "line": 294,
+          "text": "double adaptHours = dirt > filth ? settings.FilthAdaptHours : SelfCleaning && !settings.DustBathing ? settings.SelfCleaningHours : settings.FilthCleanHours;"
+        },
+        {
+          "line": 300,
+          "text": "double SurroundingsDirt(HygieneSettings settings)"
+        },
+        {
+          "line": 345,
+          "text": "return droppings * settings.DirtPerDropping + muckLevels * settings.DirtPerMuckLevel + rotItems * settings.DirtPerRotItem;"
+        },
+        {
+          "line": 365,
+          "text": "if (settings.CrowdingRadius <= 0) return 0;"
+        },
+        {
+          "line": 368,
+          "text": "int others = entity.World.GetEntitiesAround(entity.Pos.XYZ, settings.CrowdingRadius, 2,"
+        },
+        {
+          "line": 371,
+          "text": "return Math.Max(0, others - settings.CrowdingFreeAnimals);"
+        },
+        {
+          "line": 414,
+          "text": "if (settings.MuckChancePerDay <= 0) return;"
+        },
+        {
+          "line": 423,
+          "text": "double chancePerDay = settings.MuckChancePerDay * (1 + extraAnimals * settings.MuckCrowdingBonus);"
+        },
+        {
+          "line": 612,
+          "text": "bool DustBathes(HygieneSettings settings) => SelfCleaning && settings.DustBathing && !KeptClean;"
+        },
+        {
+          "line": 758,
+          "text": "if (KeptClean) return parts.Length == 0 ? \"\" : parts.ToString(0, parts.Length - 2);"
+        }
+      ]
+    },
+    "disease": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/EntityBehaviorLivestockHygiene.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/EntityBehaviorLivestockHygiene.cs",
+      "matches": [
+        {
+          "line": 219,
+          "text": "LivestockUtil.SetRegenBlocked(entity, \"sick\", IsSick);"
+        },
+        {
+          "line": 382,
+          "text": "double chancePerDay = livestockwelfareModSystem.Config?.Dogs.PoopChancePerDay ?? 0;"
+        },
+        {
+          "line": 423,
+          "text": "double chancePerDay = settings.MuckChancePerDay * (1 + extraAnimals * settings.MuckCrowdingBonus);"
+        },
+        {
+          "line": 464,
+          "text": "double chancePerDay = settings.SicknessChancePerDay * (filth * filth + weather * weather);"
+        },
+        {
+          "line": 467,
+          "text": "chancePerDay *= settings.OldAgeSicknessMultiplier;"
+        },
+        {
+          "line": 475,
+          "text": "if (Roll(settings.RecoveryChancePerDay * (1 - Filth) * (1 - WeatherStress), hours))"
+        },
+        {
+          "line": 477,
+          "text": "Recover(settings.ImmunityDays);"
+        },
+        {
+          "line": 481,
+          "text": "LivestockUtil.BlockBreeding(entity);"
+        },
+        {
+          "line": 488,
+          "text": "LivestockUtil.Harm(entity, health, settings.SickDamagePerDay * hours / 24, LivestockUtil.DiseaseDeathCause, $\"disease (filth {Filth:0.00})\");"
+        },
+        {
+          "line": 489,
+          "text": "if (entity.Alive && !IsCollapsed && health.Health <= health.MaxHealth * settings.CollapseHealthFraction)"
+        },
+        {
+          "line": 498,
+          "text": "if (settings.ContagionRadius <= 0 || settings.ContagionChancePerDay <= 0) return;"
+        },
+        {
+          "line": 500,
+          "text": "var others = entity.World.GetEntitiesAround(entity.Pos.XYZ, settings.ContagionRadius, 2, e => e != entity && e.Alive);"
+        },
+        {
+          "line": 505,
+          "text": "if (Roll(settings.ContagionChancePerDay, hours)) hygiene.Infect();"
+        },
+        {
+          "line": 548,
+          "text": "LivestockUtil.SetRegenBlocked(entity, \"sick\", true);"
+        },
+        {
+          "line": 549,
+          "text": "LivestockUtil.BlockBreeding(entity);"
+        },
+        {
+          "line": 557,
+          "text": "LivestockUtil.SetRegenBlocked(entity, \"sick\", false);"
+        }
+      ]
+    },
+    "dust": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/EntityBehaviorLivestockHygiene.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/EntityBehaviorLivestockHygiene.cs",
+      "matches": [
+        {
+          "line": 148,
+          "text": "if (SelfCleaning && entity is EntityAgent agent && Settings is { DustBathing: true })"
+        },
+        {
+          "line": 150,
+          "text": "if (!entity.WatchedAttributes.HasAttribute(LastDustBathAttr)) entity.WatchedAttributes.SetDouble(LastDustBathAttr, entity.World.Calendar.TotalHours);"
+        },
+        {
+          "line": 151,
+          "text": "LivestockUtil.AddAiTask(agent, AiTaskLivestockDustBath.Code, DustBathPriority, walkSpeed, 0.5, 1,"
+        },
+        {
+          "line": 152,
+          "text": "(taskConfig, aiConfig) => new AiTaskLivestockDustBath(agent, taskConfig, aiConfig));"
+        },
+        {
+          "line": 270,
+          "text": "if (DustBathes(settings) && hours >= CatchUpBathHours && WantsDustBath(settings) && FindDustBath(settings, _ => false) != null) DustBathed();"
+        },
+        {
+          "line": 271,
+          "text": "if (DustBathes(settings)) UpdateNoDustBath(settings);"
+        },
+        {
+          "line": 293,
+          "text": "if (DustBathes(settings) && HoursSinceDustBath > settings.UnbathedDays * 24) dirt = Math.Max(dirt, settings.UnbathedFilth);"
+        },
+        {
+          "line": 294,
+          "text": "double adaptHours = dirt > filth ? settings.FilthAdaptHours : SelfCleaning && !settings.DustBathing ? settings.SelfCleaningHours : settings.FilthCleanHours;"
+        },
+        {
+          "line": 590,
+          "text": "// Dust bathing (chickens): see HygieneSettings.DustBathing and AiTaskLivestockDustBath."
+        },
+        {
+          "line": 591,
+          "text": "const string LastDustBathAttr = \"lwLastDustBathHours\";"
+        },
+        {
+          "line": 593,
+          "text": "const string NoDustBathAttr = \"lwNoDustBath\";"
+        },
+        {
+          "line": 596,
+          "text": "const float DustBathPriority = 1.2f;"
+        },
+        {
+          "line": 612,
+          "text": "bool DustBathes(HygieneSettings settings) => SelfCleaning && settings.DustBathing && !KeptClean;"
+        },
+        {
+          "line": 614,
+          "text": "double HoursSinceDustBath => entity.World.Calendar.TotalHours - entity.WatchedAttributes.GetDouble(LastDustBathAttr, entity.World.Calendar.TotalHours);"
+        },
+        {
+          "line": 617,
+          "text": "public bool WantsDustBath(HygieneSettings settings) =>"
+        },
+        {
+          "line": 618,
+          "text": "DustBathes(settings) && (Filth >= settings.DustBathAboveFilth || HoursSinceDustBath >= settings.DustBathEveryHours)"
+        },
+        {
+          "line": 619,
+          "text": "&& entity.World.Calendar.GetDayLightStrength(entity.Pos.AsBlockPos) > 0.5f;"
+        },
+        {
+          "line": 625,
+          "text": "public BlockPos? FindDustBath(HygieneSettings settings, System.Func<BlockPos, bool> isFailed)"
+        },
+        {
+          "line": 627,
+          "text": "int r = settings.DustBathRadius;"
+        },
+        {
+          "line": 630,
+          "text": "bool raining = accessor.GetClimateAt(pos, EnumGetClimateMode.NowValues)?.Rainfall > 0.05f;"
+        },
+        {
+          "line": 637,
+          "text": "if (block.Code == null || !WildcardUtil.Match(settings.DustBathBlockCodes, block.Code.ToString())) return;"
+        },
+        {
+          "line": 639,
+          "text": "if (raining && accessor.GetRainMapHeightAt(x, z) <= y) return;"
+        },
+        {
+          "line": 651,
+          "text": "public void DustBathed()"
+        },
+        {
+          "line": 654,
+          "text": "entity.WatchedAttributes.SetDouble(LastDustBathAttr, entity.World.Calendar.TotalHours);"
+        },
+        {
+          "line": 655,
+          "text": "entity.WatchedAttributes.SetBool(NoDustBathAttr, false);"
+        },
+        {
+          "line": 659,
+          "text": "void UpdateNoDustBath(HygieneSettings settings)"
+        },
+        {
+          "line": 661,
+          "text": "bool none = HoursSinceDustBath > settings.UnbathedDays * 24 && FindDustBath(settings, _ => false) == null;"
+        },
+        {
+          "line": 662,
+          "text": "if (none != entity.WatchedAttributes.GetBool(NoDustBathAttr)) entity.WatchedAttributes.SetBool(NoDustBathAttr, none);"
+        },
+        {
+          "line": 765,
+          "text": "if (entity.WatchedAttributes.GetBool(NoDustBathAttr)) parts.Append(\", \").Append(LivestockUtil.Translate(langCode, \"livestockwelfare:dustbath-none\"));"
+        }
+      ]
+    },
+    "groom": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/CollectibleBehaviorGroom.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/CollectibleBehaviorGroom.cs",
+      "matches": [
+        {
+          "line": 27,
+          "text": "float groomSeconds = 2;"
+        },
+        {
+          "line": 41,
+          "text": "groomSeconds = properties[\"groomSeconds\"].AsFloat(2);"
+        },
+        {
+          "line": 49,
+          "text": "entitySel?.Entity is { Alive: true } e && e.GetBehavior<EntityBehaviorLivestockHygiene>() is { CanBeGroomed: true } hygiene ? hygiene : null;"
+        },
+        {
+          "line": 69,
+          "text": "return secondsUsed < groomSeconds;"
+        },
+        {
+          "line": 79,
+          "text": "if (byEntity.World.Side != EnumAppSide.Server || secondsUsed < groomSeconds - 0.1f) return;"
+        },
+        {
+          "line": 83,
+          "text": "bool groomed = hygiene.Groom(settings.GroomFilthReduction * filthMultiplier);"
+        },
+        {
+          "line": 93,
+          "text": "else if (!creative && byEntity.World.Rand.NextDouble() < settings.GroomItemUseChance)"
+        },
+        {
+          "line": 114,
+          "text": "bool Sneaking(EntityAgent byEntity) => !needsSneak || byEntity.Controls.ShiftKey;"
+        }
+      ]
+    },
+    "weather": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/EntityBehaviorLivestockShelter.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/EntityBehaviorLivestockShelter.cs",
+      "matches": [
+        {
+          "line": 18,
+          "text": "/// the cold. Stress counts towards sickness (see EntityBehaviorLivestockHygiene), stops breeding"
+        },
+        {
+          "line": 27,
+          "text": "const string StressAttr = \"lwWeatherStress\";"
+        },
+        {
+          "line": 62,
+          "text": "double targetStress;"
+        },
+        {
+          "line": 114,
+          "text": "public float Stress => entity.WatchedAttributes.GetFloat(StressAttr);"
+        },
+        {
+          "line": 116,
+          "text": "/// <summary>Stresses the animal at once (e.g. a dog back from a trip); it fades like weather stress, and petting helps.</summary>"
+        },
+        {
+          "line": 117,
+          "text": "public void AddStress(float amount) => entity.WatchedAttributes.SetFloat(StressAttr, Math.Clamp(Stress + amount, 0, 1));"
+        },
+        {
+          "line": 150,
+          "text": "if (Stress > 0) entity.WatchedAttributes.SetFloat(StressAttr, 0);"
+        },
+        {
+          "line": 173,
+          "text": "UpdateStress(settings, hours);"
+        },
+        {
+          "line": 202,
+          "text": "ColdBelowC = tolerance.ColdBelowC + babies.ColdSensitivityC,"
+        },
+        {
+          "line": 203,
+          "text": "HotAboveC = tolerance.HotAboveC - babies.HeatSensitivityC"
+        },
+        {
+          "line": 213,
+          "text": "target += settings.SnowStress * intensity;"
+        },
+        {
+          "line": 218,
+          "text": "target += settings.RainStress * intensity;"
+        },
+        {
+          "line": 222,
+          "text": "if (temperature < tolerance.ColdBelowC && !enclosed)"
+        },
+        {
+          "line": 225,
+          "text": "double cold = (tolerance.ColdBelowC - temperature) * settings.ColdStressPerDegree;"
+        },
+        {
+          "line": 226,
+          "text": "target += roofed ? cold * settings.RoofColdFactor : cold;"
+        },
+        {
+          "line": 231,
+          "text": "if (!roofed && temperature > tolerance.HotAboveC && sunny)"
+        },
+        {
+          "line": 235,
+          "text": "target += (temperature - tolerance.HotAboveC) * settings.HeatStressPerDegree;"
+        },
+        {
+          "line": 238,
+          "text": "bool badWeather = climate.Rainfall > MinPrecipitation || temperature < tolerance.ColdBelowC"
+        },
+        {
+          "line": 239,
+          "text": "|| (temperature > tolerance.HotAboveC && sunny);"
+        },
+        {
+          "line": 245,
+          "text": "if ((conditions & Conditions.Night) != 0 && !roofed && settings.SleepOutsideStress > 0 && LivestockUtil.IsKept(entity)"
+        },
+        {
+          "line": 249,
+          "text": "target += settings.SleepOutsideStress;"
+        },
+        {
+          "line": 252,
+          "text": "targetStress = Math.Min(1, target);"
+        },
+        {
+          "line": 261,
+          "text": "if (!InHotSun || Stress < settings.HeatListlessAboveStress) return;"
+        },
+        {
+          "line": 267,
+          "text": "void UpdateStress(WeatherSettings settings, double hours)"
+        },
+        {
+          "line": 269,
+          "text": "double stress = Stress;"
+        },
+        {
+          "line": 270,
+          "text": "// Moves towards the current weather; after StressAdaptHours about 63% of the way."
+        },
+        {
+          "line": 271,
+          "text": "stress += (targetStress - stress) * (1 - Math.Exp(-hours / settings.StressAdaptHours));"
+        },
+        {
+          "line": 272,
+          "text": "entity.WatchedAttributes.SetFloat(StressAttr, (float)Math.Clamp(stress, 0, 1));"
+        },
+        {
+          "line": 277,
+          "text": "float stress = Stress;"
+        },
+        {
+          "line": 278,
+          "text": "if (stress >= settings.NoBreedingAboveStress) LivestockUtil.BlockBreeding(entity);"
+        },
+        {
+          "line": 281,
+          "text": "bool harmed = stress >= settings.HarmAboveStress && LivestockUtil.IsKept(entity);"
+        },
+        {
+          "line": 288,
+          "text": "LivestockUtil.Harm(entity, health, settings.HarmPerDay * hours / 24, LivestockUtil.ExposureDeathCause, $\"exposure (stress {stress:0.00})\");"
+        },
+        {
+          "line": 306,
+          "text": "if (attrs.HasAttribute(LastPettedAttr) && now - attrs.GetDouble(LastPettedAttr) < settings.PetCooldownHours) return;"
+        },
+        {
+          "line": 309,
+          "text": "attrs.SetFloat(StressAttr, (float)Math.Max(0, Stress - settings.PetStressReduction));"
+        },
+        {
+          "line": 349,
+          "text": "int stressPercent = (int)Math.Round(Stress * 100);"
+        }
+      ]
+    },
+    "thirst": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/EntityBehaviorLivestockThirst.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/EntityBehaviorLivestockThirst.cs",
+      "matches": [
+        {
+          "line": 46,
+          "text": "const float SeekWaterPriority = 1.36f;"
+        },
+        {
+          "line": 54,
+          "text": "LivestockUtil.AddAiTask(agent, AiTaskLivestockSeekWater.Code, SeekWaterPriority, walkSpeed, 0.25, 0.5,"
+        },
+        {
+          "line": 55,
+          "text": "(taskConfig, aiConfig) => new AiTaskLivestockSeekWater(agent, taskConfig, aiConfig));"
+        },
+        {
+          "line": 97,
+          "text": "&& FindDrinkTarget(settings.SeekWaterRadius, _ => false) is { } target)"
+        },
+        {
+          "line": 99,
+          "text": "DrinkFrom(target.Container);"
+        },
+        {
+          "line": 103,
+          "text": "double drinkAbove = settings.WalkToWater ? Math.Max(settings.DrinkAboveThirst, settings.RemoteDrinkAboveThirst) : settings.DrinkAboveThirst;"
+        },
+        {
+          "line": 110,
+          "text": "double rate = settings.ThirstPerDay;"
+        },
+        {
+          "line": 134,
+          "text": "if (water.Container != null) DrinkFrom(water.Container);"
+        },
+        {
+          "line": 138,
+          "text": "public void DrinkFrom(BlockEntityLiquidContainer? container)"
+        },
+        {
+          "line": 157,
+          "text": "slot.TakeOut(taken);"
+        },
+        {
+          "line": 169,
+          "text": "int r = settings.DrinkRadius;"
+        },
+        {
+          "line": 184,
+          "text": "if (IsDrinkableWaterBlock(block) && settings.DrinkFromNaturalWater)"
+        },
+        {
+          "line": 189,
+          "text": "else if (UndrinkableLiquids.Contains(block.LiquidCode) || (block.LiquidCode == \"water\" && !IsDrinkableWaterBlock(block))) sawUndrinkable = true;"
+        },
+        {
+          "line": 236,
+          "text": "if (!settings.DrinkFromNaturalWater || !IsDrinkableWaterBlock(block)) return;"
+        },
+        {
+          "line": 271,
+          "text": "static bool IsDrinkableWaterPortion(AssetLocation code) =>"
+        },
+        {
+          "line": 275,
+          "text": "static bool IsDrinkableWaterBlock(Block block) =>"
+        },
+        {
+          "line": 282,
+          "text": "if (slot.Itemstack?.Collectible?.Code is { } code && IsDrinkableWaterPortion(code) && slot.StackSize > 0) return slot;"
+        },
+        {
+          "line": 293,
+          "text": "if (code.Domain == HydrateOrDiedrate && code.Path.StartsWith(\"waterportion-\") && !IsDrinkableWaterPortion(code)) return true;"
+        },
+        {
+          "line": 312,
+          "text": "return LivestockUtil.Translate(langCode, water.SawUndrinkable ? \"livestockwelfare:water-undrinkable\" : \"livestockwelfare:water-none\", settings.DrinkRadius);"
+        },
+        {
+          "line": 318,
+          "text": "if (thirst >= settings.NoBreedingAboveThirst) LivestockUtil.BlockBreeding(entity);"
+        },
+        {
+          "line": 321,
+          "text": "bool harmed = thirst >= settings.HarmAboveThirst && LivestockUtil.IsKept(entity);"
+        },
+        {
+          "line": 328,
+          "text": "LivestockUtil.Harm(entity, health, settings.HarmPerDay * hours / 24, LivestockUtil.ThirstDeathCause, \"thirst\");"
+        }
+      ]
+    },
+    "babies": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/EntityBehaviorLivestockNursing.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/EntityBehaviorLivestockNursing.cs",
+      "matches": [
+        {
+          "line": 31,
+          "text": "const string NourishedAttr = \"lwNourished\";"
+        },
+        {
+          "line": 35,
+          "text": "const string KnowsTroughAttr = \"lwKnowsTrough\";"
+        },
+        {
+          "line": 53,
+          "text": "const float FullNourished = 0.95f;"
+        },
+        {
+          "line": 82,
+          "text": "tasks.OnShouldExecuteTask += task => task is not AiTaskSeekFoodAndEat || KnowsTrough;"
+        },
+        {
+          "line": 86,
+          "text": "bool KnowsTrough => LivestockUtil.BabySettings == null || entity.WatchedAttributes.GetBool(KnowsTroughAttr);"
+        },
+        {
+          "line": 88,
+          "text": "public float Nourished => entity.WatchedAttributes.GetFloat(NourishedAttr, 1);"
+        },
+        {
+          "line": 133,
+          "text": "double milk = mother == null ? 0 : MilkQuality(mother, settings);"
+        },
+        {
+          "line": 156,
+          "text": "if (withMother >= settings.LearnTroughWithMotherDays * 24) attrs.SetBool(KnowsTroughAttr, true);"
+        },
+        {
+          "line": 158,
+          "text": "UpdateNourishment(settings, hours, mother, milk);"
+        },
+        {
+          "line": 160,
+          "text": "&& LivestockUtil.Roll(entity, settings.SickMotherContagionPerDay, hours))"
+        },
+        {
+          "line": 178,
+          "text": "var female = FindFemale(settings.NursingDistance);"
+        },
+        {
+          "line": 193,
+          "text": "return mother.Pos.SquareDistanceTo(entity.Pos) <= settings.NursingDistance * settings.NursingDistance ? mother : null;"
+        },
+        {
+          "line": 201,
+          "text": "static double MilkQuality(Entity mother, BabySettings settings)"
+        },
+        {
+          "line": 207,
+          "text": "if (hygiene?.IsSick == true) milk *= settings.SickMotherMilk;"
+        },
+        {
+          "line": 218,
+          "text": "void UpdateNourishment(BabySettings settings, double hours, Entity? mother, double milk)"
+        },
+        {
+          "line": 220,
+          "text": "double nourished = Nourished;"
+        },
+        {
+          "line": 223,
+          "text": "// Moves towards the milk quality; after NourishAdaptHours about 63% of the way."
+        },
+        {
+          "line": 224,
+          "text": "nourished += (milk - nourished) * (1 - Math.Exp(-hours / settings.NourishAdaptHours));"
+        },
+        {
+          "line": 234,
+          "text": "if (eaten > 0) nourished += eaten * settings.NourishmentPerPortion;"
+        },
+        {
+          "line": 237,
+          "text": "entity.WatchedAttributes.SetFloat(NourishedAttr, (float)Math.Clamp(nourished, 0, 1));"
+        },
+        {
+          "line": 241,
+          "text": "public bool WantsHandFeeding => entity.Alive && State != NursingState.Nursing && Nourished < FullNourished;"
+        },
+        {
+          "line": 244,
+          "text": "public string? HandFeedRefusal =>"
+        },
+        {
+          "line": 247,
+          "text": ": Nourished >= FullNourished ? \"livestockwelfare:handfeed-full\""
+        },
+        {
+          "line": 255,
+          "text": "public bool CanHandFeedWith(ItemStack? stack) =>"
+        },
+        {
+          "line": 264,
+          "text": "public void HandFeed(ItemSlot slot, EntityAgent byEntity)"
+        },
+        {
+          "line": 267,
+          "text": "if (settings == null || !WantsHandFeeding || !CanHandFeedWith(slot.Itemstack)) return;"
+        },
+        {
+          "line": 278,
+          "text": "double litres = Math.Min(container.GetCurrentLitres(slot.Itemstack), settings.HandFeedMilkLitres);"
+        },
+        {
+          "line": 285,
+          "text": "nourishment = settings.HandFeedMilkNourishment * litres / settings.HandFeedMilkLitres;"
+        },
+        {
+          "line": 298,
+          "text": "nourishment = settings.HandFeedFoodNourishment;"
+        },
+        {
+          "line": 303,
+          "text": "float before = Nourished;"
+        },
+        {
+          "line": 304,
+          "text": "attrs.SetFloat(NourishedAttr, (float)Math.Clamp(before + nourishment, 0, 1));"
+        },
+        {
+          "line": 307,
+          "text": "bool knew = attrs.GetBool(KnowsTroughAttr);"
+        },
+        {
+          "line": 308,
+          "text": "if (fed >= settings.HandFeedingsToLearnTrough) attrs.SetBool(KnowsTroughAttr, true);"
+        },
+        {
+          "line": 315,
+          "text": "(int)Math.Round(before * 100), (int)Math.Round(Nourished * 100));"
+        },
+        {
+          "line": 318,
+          "text": "int left = settings.HandFeedingsToLearnTrough - fed;"
+        },
+        {
+          "line": 326,
+          "text": "entity.Code.Path, entity.EntityId, fed, Nourished);"
+        },
+        {
+          "line": 331,
+          "text": "float nourished = Nourished;"
+        },
+        {
+          "line": 334,
+          "text": "if (nourished < settings.SlowGrowthBelow && entity.WatchedAttributes.GetTreeAttribute(VanillaGrowTree) is { } grow)"
+        },
+        {
+          "line": 336,
+          "text": "double delayHours = hours * (1 - nourished / settings.SlowGrowthBelow);"
+        },
+        {
+          "line": 341,
+          "text": "bool harmed = nourished < settings.HarmBelow;"
+        },
+        {
+          "line": 351,
+          "text": "/// <summary>Nursing status for the info text and chat, e.g. \"Nourished: 80% (suckling from its mother)\".</summary>"
+        },
+        {
+          "line": 359,
+          "text": "NursingState.Orphan when !entity.WatchedAttributes.GetBool(KnowsTroughAttr) => \"livestockwelfare:nursing-orphan-handfeed\","
+        },
+        {
+          "line": 363,
+          "text": "return LivestockUtil.Translate(langCode, \"livestockwelfare:nourished-percent\", (int)Math.Round(Nourished * 100))"
+        },
+        {
+          "line": 374,
+          "text": "if (!WantsHandFeeding) return base.GetInteractionHelp(world, es, player, ref handled);"
+        }
+      ]
+    },
+    "handfeed": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/CollectibleBehaviorHandFeed.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/CollectibleBehaviorHandFeed.cs",
+      "matches": [
+        {
+          "line": 10,
+          "text": "/// piglet that cannot suckle feeds it by hand (see EntityBehaviorLivestockNursing.HandFeed). The baby"
+        },
+        {
+          "line": 15,
+          "text": "public class CollectibleBehaviorHandFeed : CollectibleBehavior"
+        },
+        {
+          "line": 19,
+          "text": "const float FeedSeconds = 1.5f;"
+        },
+        {
+          "line": 24,
+          "text": "public CollectibleBehaviorHandFeed(CollectibleObject collObj) : base(collObj) { }"
+        },
+        {
+          "line": 29,
+          "text": "if (!byEntity.Controls.ShiftKey || entitySel?.Entity is not { } entity) return null;"
+        },
+        {
+          "line": 30,
+          "text": "if (entity.GetBehavior<EntityBehaviorLivestockNursing>() is { } nursing)"
+        },
+        {
+          "line": 32,
+          "text": "return nursing.WantsHandFeeding && nursing.CanHandFeedWith(slot.Itemstack) ? entity : null;"
+        },
+        {
+          "line": 39,
+          "text": "entitySel?.Entity is { } entity && (entity.HasBehavior<EntityBehaviorLivestockNursing>() || LivestockTreats.TakesTreats(entity));"
+        },
+        {
+          "line": 45,
+          "text": "if (entity.GetBehavior<EntityBehaviorLivestockNursing>() is { } baby)"
+        },
+        {
+          "line": 47,
+          "text": "return baby.CanHandFeedWith(slot.Itemstack) ? baby.HandFeedRefusal : null;"
+        },
+        {
+          "line": 67,
+          "text": "if (byEntity.Controls.ShiftKey && Refusal(slot, entitySel) is { } reason)"
+        },
+        {
+          "line": 85,
+          "text": "if (!byEntity.Controls.ShiftKey || !HandFed(entitySel))"
+        },
+        {
+          "line": 93,
+          "text": "return secondsUsed < FeedSeconds;"
+        },
+        {
+          "line": 98,
+          "text": "if (!byEntity.Controls.ShiftKey || !HandFed(entitySel)) return;"
+        },
+        {
+          "line": 102,
+          "text": "if (secondsUsed < FeedSeconds - 0.1f) return;"
+        },
+        {
+          "line": 104,
+          "text": "if (entity.GetBehavior<EntityBehaviorLivestockNursing>() is { } nursing) nursing.HandFeed(slot, byEntity);"
+        },
+        {
+          "line": 105,
+          "text": "else LivestockTreats.HandFeed(entity, slot, byEntity);"
+        }
+      ]
+    },
+    "treats": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/LivestockTreats.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/LivestockTreats.cs",
+      "matches": [
+        {
+          "line": 12,
+          "text": "/// Treats (see TreatSettings): which animals follow food and take it from the hand, and the feeding"
+        },
+        {
+          "line": 19,
+          "text": "const string NextTreatAttr = \"lwNextTreatHours\";"
+        },
+        {
+          "line": 24,
+          "text": "public static TreatSettings? Settings =>"
+        },
+        {
+          "line": 28,
+          "text": "/// Server: whether this animal takes treats (TreatSettings.AnimalCodes). Orphaned babies are fed"
+        },
+        {
+          "line": 29,
+          "text": "/// by hand their own way (EntityBehaviorLivestockNursing)."
+        },
+        {
+          "line": 33,
+          "text": "bool takes = Settings is { } settings && Diet(entity) != null && !entity.HasBehavior<EntityBehaviorLivestockNursing>()"
+        },
+        {
+          "line": 34,
+          "text": "&& settings.AnimalCodes.Any(code => WildcardUtil.Match(new AssetLocation(code), entity.Code));"
+        },
+        {
+          "line": 57,
+          "text": "entity.World.Calendar.TotalHours < entity.WatchedAttributes.GetDouble(NextTreatAttr) ? \"livestockwelfare:handfeed-full\" : null;"
+        },
+        {
+          "line": 63,
+          "text": "if (Settings is not { } settings || !TakesTreats(entity) || !Eats(entity, slot.Itemstack) || Refusal(entity) != null) return;"
+        },
+        {
+          "line": 77,
+          "text": "hunger.SetFloat(\"saturation\", hunger.GetFloat(\"saturation\") + 1);"
+        },
+        {
+          "line": 78,
+          "text": "attrs.SetDouble(\"lastMealEatenTotalHours\", now);"
+        },
+        {
+          "line": 80,
+          "text": "attrs.SetDouble(NextTreatAttr, now + Math.Max(settings.HandFeedCooldownHours, 0.05));"
+        }
+      ]
+    },
+    "coop": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/ItemChickenCoop.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/ItemChickenCoop.cs",
+      "matches": [
+        {
+          "line": 22,
+          "text": "// Outside size of the coop itself: Width across the pop hole, Depth away from it. The ramp"
+        },
+        {
+          "line": 23,
+          "text": "// leads up to it from the clicked spot, RampLength blocks in front; the same steps lead up to"
+        },
+        {
+          "line": 25,
+          "text": "public const int Width = 5, Depth = 5, RampLength = 2;"
+        },
+        {
+          "line": 27,
+          "text": "enum Part { Air, Planks, Stairs, Slab, Post, Gate, HenBox }"
+        },
+        {
+          "line": 50,
+          "text": "string? error = TryBuild(api.World, rampFoot, forward, Variant[\"wood\"]);"
+        },
+        {
+          "line": 60,
+          "text": "slot.TakeOut(1);"
+        },
+        {
+          "line": 72,
+          "text": "public static string? TryBuild(IWorldAccessor world, BlockPos rampFoot, Vec3i forward, string wood)"
+        },
+        {
+          "line": 122,
+          "text": "block.Replaceable >= 6000"
+        },
+        {
+          "line": 134,
+          "text": "int half = Width / 2, last = Depth - 1;"
+        },
+        {
+          "line": 136,
+          "text": "layout.Add((rampFoot.AddCopy(forward.X * (d + RampLength) + right.X * w, h, forward.Z * (d + RampLength) + right.Z * w), part, towards));"
+        },
+        {
+          "line": 148,
+          "text": "Add(Depth + 1, 0, 0, Part.Stairs, back);"
+        },
+        {
+          "line": 149,
+          "text": "Add(Depth + 1, 0, 1, Part.Air);"
+        },
+        {
+          "line": 150,
+          "text": "Add(Depth + 1, 0, 2, Part.Air);"
+        },
+        {
+          "line": 151,
+          "text": "Add(Depth, 0, 0, Part.Planks);"
+        },
+        {
+          "line": 152,
+          "text": "Add(Depth, 0, 1, Part.Stairs, back);"
+        },
+        {
+          "line": 153,
+          "text": "Add(Depth, 0, 2, Part.Air);"
+        },
+        {
+          "line": 154,
+          "text": "Add(Depth, 0, 3, Part.Air);"
+        },
+        {
+          "line": 171,
+          "text": ": d == last - 1 && Math.Abs(w) == half - 1 ? Part.HenBox"
+        }
+      ]
+    },
+    "breeding": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/LivestockBreeding.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/LivestockBreeding.cs",
+      "matches": [
+        {
+          "line": 21,
+          "text": "if (!settings.Enabled) return;"
+        },
+        {
+          "line": 35,
+          "text": "Set(multiply, \"portionsEatenForMultiply\", breeding.PortionsToBreed);"
+        },
+        {
+          "line": 36,
+          "text": "Set(multiply, \"pregnancyDays\", breeding.PregnancyDays);"
+        },
+        {
+          "line": 37,
+          "text": "Set(multiply, \"multiplyCooldownDaysMin\", breeding.RestDaysMin);"
+        },
+        {
+          "line": 38,
+          "text": "Set(multiply, \"multiplyCooldownDaysMax\", breeding.RestDaysMax);"
+        },
+        {
+          "line": 42,
+          "text": "if (breeding.GrowUpDays is not { } growUpDays) continue;"
+        },
+        {
+          "line": 48,
+          "text": "double factor = growUpDays * HoursPerDay / longest;"
+        },
+        {
+          "line": 53,
+          "text": "grow.Token[\"hoursToGrow\"] = Math.Max(1, grow[\"hoursToGrow\"].AsDouble(96) * factor);"
+        },
+        {
+          "line": 72,
+          "text": "double hours = grow[\"hoursToGrow\"].AsDouble(96);"
+        }
+      ]
+    },
+    "bedding": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/LivestockBedding.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/LivestockBedding.cs",
+      "matches": [
+        {
+          "line": 12,
+          "text": "/// Straw bedding for breeding (BreedingSettings.RequireBedding): kept animals only get pregnant"
+        },
+        {
+          "line": 29,
+          "text": "const string SoiledCode = \"livestockwelfare:strawbedding-soiled\";"
+        },
+        {
+          "line": 32,
+          "text": "public static BreedingSettings? Settings =>"
+        },
+        {
+          "line": 33,
+          "text": "livestockwelfareModSystem.Config?.Breeding is { RequireBedding: true } settings ? settings : null;"
+        },
+        {
+          "line": 36,
+          "text": "public static bool Applies(Entity entity) =>"
+        },
+        {
+          "line": 37,
+          "text": "Settings != null && entity.HasBehavior<EntityBehaviorLivestockShelter>() && LivestockUtil.IsKept(entity);"
+        },
+        {
+          "line": 53,
+          "text": "/// <summary>Straw bedding, clean or soiled: a mother stays on hers after the birth soiled it.</summary>"
+        },
+        {
+          "line": 104,
+          "text": "harmony.Patch(AccessTools.Method(typeof(EntityBehaviorMultiply), \"TryGetPregnant\"),"
+        },
+        {
+          "line": 105,
+          "text": "prefix: new HarmonyMethod(typeof(LivestockBedding), nameof(TryGetPregnantPrefix)));"
+        },
+        {
+          "line": 106,
+          "text": "harmony.Patch(AccessTools.Method(typeof(EntityBehaviorMultiply), \"GiveBirth\"),"
+        },
+        {
+          "line": 107,
+          "text": "prefix: new HarmonyMethod(typeof(LivestockBedding), nameof(GiveBirthPrefix)));"
+        },
+        {
+          "line": 112,
+          "text": "static bool TryGetPregnantPrefix(EntityBehaviorMultiply __instance, ref bool __result)"
+        },
+        {
+          "line": 115,
+          "text": "if (!Applies(entity) || RecentlyMated(entity)) return true;"
+        },
+        {
+          "line": 121,
+          "text": "static void GiveBirthPrefix(EntityBehaviorMultiply __instance)"
+        },
+        {
+          "line": 132,
+          "text": "var soiled = entity.World.GetBlock(new AssetLocation(SoiledCode));"
+        },
+        {
+          "line": 133,
+          "text": "if (soiled == null) return;"
+        },
+        {
+          "line": 134,
+          "text": "accessor.SetBlock(soiled.Id, pos);"
+        },
+        {
+          "line": 136,
+          "text": "if (Settings is { NewbornDays: > 0 } settings)"
+        },
+        {
+          "line": 139,
+          "text": "attrs.SetDouble(NewbornUntilAttr, entity.World.Calendar.TotalHours + settings.NewbornDays * 24);"
+        },
+        {
+          "line": 144,
+          "text": "entity.World.Logger.Debug(\"[livestockwelfare] {0} #{1} gave birth on the bedding at {2}, now soiled\", entity.Code.Path, entity.EntityId, pos);"
+        }
+      ]
+    },
+    "dogs": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/EntityBehaviorLivestockDog.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/EntityBehaviorLivestockDog.cs",
+      "matches": [
+        {
+          "line": 17,
+          "text": "/// crop eaters off the garden (see AiTaskLivestockDogGuard), and not hunting the player's own"
+        },
+        {
+          "line": 35,
+          "text": "const string FkcAwayKey = \"feralKinshipExpeditionAway\";"
+        },
+        {
+          "line": 36,
+          "text": "const string FkcTripAttr = \"feralKinshipRetainedNativeExpeditionV1\";"
+        },
+        {
+          "line": 37,
+          "text": "static readonly string[] FkcAwayPhases = { \"Leaving\", \"Suspended\", \"Returning\", \"Resuming\" };"
+        },
+        {
+          "line": 73,
+          "text": "static DogSettings? Settings =>"
+        },
+        {
+          "line": 78,
+          "text": "// stay could be cancelled from 1.9 on, so CanGuard is false while one of those is active."
+        },
+        {
+          "line": 79,
+          "text": "const float GuardPriority = 2.2f;"
+        },
+        {
+          "line": 94,
+          "text": "// switch targets on the way, which StopSparedHunts catches."
+        },
+        {
+          "line": 95,
+          "text": "taskManager.OnShouldExecuteTask += task => !HuntsSpared(task);"
+        },
+        {
+          "line": 96,
+          "text": "taskManager.OnExecuteTask += (task, _) => !HuntsSpared(task);"
+        },
+        {
+          "line": 102,
+          "text": "if (settings.PoopChancePerDay > 0)"
+        },
+        {
+          "line": 107,
+          "text": "if (settings.TripAftermath || settings.SleepInBedAtNight)"
+        },
+        {
+          "line": 112,
+          "text": "if (!settings.AnyGuarding) return;"
+        },
+        {
+          "line": 113,
+          "text": "LivestockUtil.AddAiTask(agent, AiTaskLivestockDogGuard.Code, GuardPriority, walkSpeed, 0, 0,"
+        },
+        {
+          "line": 114,
+          "text": "(taskConfig, aiConfig) => new AiTaskLivestockDogGuard(agent, taskConfig, aiConfig), \"run\");"
+        },
+        {
+          "line": 199,
+          "text": "if (Settings is { SleepInBedAtNight: true } settings && settings.IsNight(entity.World.Calendar)) return;"
+        },
+        {
+          "line": 217,
+          "text": "string? phase = entity.WatchedAttributes.GetTreeAttribute(FkcTripAttr)?.GetString(\"phase\");"
+        },
+        {
+          "line": 218,
+          "text": "bool away = entity.WatchedAttributes.GetTreeAttribute(\"domesticationstatus\")?.GetBool(FkcAwayKey) == true"
+        },
+        {
+          "line": 219,
+          "text": "|| (phase != null && Array.IndexOf(FkcAwayPhases, phase) >= 0);"
+        },
+        {
+          "line": 248,
+          "text": "bool HuntsSpared(IAiTask task) =>"
+        },
+        {
+          "line": 249,
+          "text": "task is AiTaskSeekEntity or AiTaskMeleeAttack && task is AiTaskBaseTargetable { TargetEntity: { } target } && Spares(target);"
+        },
+        {
+          "line": 251,
+          "text": "void StopSparedHunts()"
+        },
+        {
+          "line": 257,
+          "text": "if (slots[slot] is { } task && HuntsSpared(task)) taskManager.StopTask(slot);"
+        },
+        {
+          "line": 263,
+          "text": "public bool IsKept => LivestockUtil.IsKept(entity);"
+        },
+        {
+          "line": 273,
+          "text": "return player?.Entity != null && player.Entity.Pos.SquareDistanceTo(pos) <= (double)settings.CompanyRadius * settings.CompanyRadius;"
+        },
+        {
+          "line": 278,
+          "text": "public bool CanGuard"
+        },
+        {
+          "line": 282,
+          "text": "if (baby || Settings is not { } settings || !settings.AnyGuarding || !IsKept || IsLonely) return false;"
+        },
+        {
+          "line": 293,
+          "text": "public bool Spares(Entity target)"
+        },
+        {
+          "line": 295,
+          "text": "if (Settings is not { } settings || !IsKept) return false;"
+        },
+        {
+          "line": 298,
+          "text": "if (target is EntityPlayer) return settings.SparePlayers;"
+        },
+        {
+          "line": 299,
+          "text": "if (LivestockUtil.IsKept(target)) return settings.SpareKeptAnimals;"
+        },
+        {
+          "line": 312,
+          "text": "e.Alive && !LivestockUtil.IsKept(e) && Matches(e, settings.ChaseCodes);"
+        },
+        {
+          "line": 316,
+          "text": "e.Alive && !LivestockUtil.IsKept(e) && Matches(e, settings.GardenPestCodes);"
+        },
+        {
+          "line": 320,
+          "text": "IsChaseTarget(e, settings) || (e.Alive && !LivestockUtil.IsKept(e) && Matches(e, settings.BarkCodes));"
+        },
+        {
+          "line": 340,
+          "text": "if (settings == null || !IsKept)"
+        },
+        {
+          "line": 347,
+          "text": "StopSparedHunts();"
+        },
+        {
+          "line": 367,
+          "text": "double loss = settings.BondLossPerDay * hours / 24 * (HasCompany ? 0.5 : 1);"
+        },
+        {
+          "line": 422,
+          "text": "if (entity.World.Side != EnumAppSide.Server || !entity.Alive || Settings is not { } settings || !IsKept) return;"
+        },
+        {
+          "line": 427,
+          "text": "if (attrs.HasAttribute(LastPettedAttr) && now - attrs.GetDouble(LastPettedAttr) < settings.PetCooldownHours) return;"
+        },
+        {
+          "line": 429,
+          "text": "SetBond(settings, Bond + settings.BondPerPet);"
+        }
+      ]
+    },
+    "safety": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/LivestockUtil.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/LivestockUtil.cs",
+      "matches": [
+        {
+          "line": 30,
+          "text": "public static void BlockBreeding(Entity entity)"
+        },
+        {
+          "line": 36,
+          "text": "if (multiply.GetDouble(\"totalDaysCooldownUntil\") >= blockUntil) return;"
+        },
+        {
+          "line": 38,
+          "text": "multiply.SetDouble(\"totalDaysCooldownUntil\", blockUntil);"
+        },
+        {
+          "line": 43,
+          "text": "public static bool CanKill(string cause)"
+        },
+        {
+          "line": 50,
+          "text": "OldAgeDeathCause => safety.OldAgeCanKill,"
+        },
+        {
+          "line": 51,
+          "text": "DiseaseDeathCause => safety.DiseaseCanKill,"
+        },
+        {
+          "line": 52,
+          "text": "ExposureDeathCause => safety.ExposureCanKill,"
+        },
+        {
+          "line": 53,
+          "text": "ThirstDeathCause => safety.ThirstCanKill,"
+        },
+        {
+          "line": 54,
+          "text": "MalnutritionDeathCause => safety.MalnutritionCanKill,"
+        },
+        {
+          "line": 60,
+          "text": "/// Kept animals were bred by the player (generation at least Hygiene.MuckMinGeneration), placed"
+        },
+        {
+          "line": 65,
+          "text": "public static bool IsKept(Entity entity) =>"
+        },
+        {
+          "line": 66,
+          "text": "entity.WatchedAttributes.GetInt(\"generation\") >= (livestockwelfareModSystem.Config?.Hygiene.MuckMinGeneration ?? 1)"
+        },
+        {
+          "line": 71,
+          "text": "const string PetAiStatusAttr = \"domesticationstatus\";"
+        },
+        {
+          "line": 85,
+          "text": "float floor = CanKill(cause) ? 0 : Math.Min(1, health.Health);"
+        },
+        {
+          "line": 95,
+          "text": "/// (SafetySettings.PauseWhenNoPlayerNearby)."
+        },
+        {
+          "line": 97,
+          "text": "public static bool ShouldSimulate(Entity entity)"
+        },
+        {
+          "line": 100,
+          "text": "if (safety is not { PauseWhenNoPlayerNearby: true }) return true;"
+        },
+        {
+          "line": 104,
+          "text": "return player?.Entity != null && player.Entity.Pos.SquareDistanceTo(pos) <= (double)safety.PlayerRadius * safety.PlayerRadius;"
+        },
+        {
+          "line": 149,
+          "text": "// Several things (sickness, bad weather) can stop an animal's vanilla health regeneration."
+        },
+        {
+          "line": 150,
+          "text": "// Each sets its own reason; regeneration is off while any reason is set. We only write"
+        },
+        {
+          "line": 152,
+          "text": "const string RegenBlockedAttr = \"lwRegenSuppressed\";"
+        },
+        {
+          "line": 153,
+          "text": "const string RegenReasonPrefix = \"lwRegenBlocked-\";"
+        },
+        {
+          "line": 154,
+          "text": "const string VanillaRegenSpeedAttr = \"regenSpeed\";"
+        },
+        {
+          "line": 155,
+          "text": "static readonly string[] RegenReasons = { \"sick\", \"weather\", \"thirst\", \"nursing\" };"
+        },
+        {
+          "line": 157,
+          "text": "public static void SetRegenBlocked(Entity entity, string reason, bool blocked)"
+        },
+        {
+          "line": 159,
+          "text": "entity.WatchedAttributes.SetBool(RegenReasonPrefix + reason, blocked);"
+        },
+        {
+          "line": 160,
+          "text": "ApplyRegen(entity);"
+        },
+        {
+          "line": 163,
+          "text": "/// <summary>Re-applies the regeneration state, e.g. after the animal was loaded.</summary>"
+        },
+        {
+          "line": 164,
+          "text": "public static void ApplyRegen(Entity entity)"
+        },
+        {
+          "line": 167,
+          "text": "foreach (string reason in RegenReasons) blocked |= entity.WatchedAttributes.GetBool(RegenReasonPrefix + reason);"
+        },
+        {
+          "line": 168,
+          "text": "SetRegen(entity, blocked);"
+        },
+        {
+          "line": 172,
+          "text": "/// Turns regeneration back on while the animal is unloaded (reasons are kept), so removing"
+        },
+        {
+          "line": 175,
+          "text": "public static void ReleaseRegen(Entity entity) => SetRegen(entity, false);"
+        },
+        {
+          "line": 177,
+          "text": "static void SetRegen(Entity entity, bool blocked)"
+        },
+        {
+          "line": 180,
+          "text": "if (attrs.GetBool(RegenBlockedAttr) == blocked) return;"
+        },
+        {
+          "line": 181,
+          "text": "attrs.SetFloat(VanillaRegenSpeedAttr, blocked ? 0 : 1);"
+        },
+        {
+          "line": 182,
+          "text": "attrs.SetBool(RegenBlockedAttr, blocked);"
+        }
+      ]
+    },
+    "startup": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/source/livestockwelfare/livestockwelfareModSystem.cs",
+      "kind": "official",
+      "url": "https://github.com/ReginArtDesign/livestockwelfare/blob/c1df75afabbbbb638b87da0255f0a40e65b79785/livestockwelfare/livestockwelfareModSystem.cs",
+      "matches": [
+        {
+          "line": 42,
+          "text": "public override void AssetsFinalize(ICoreAPI api)"
+        },
+        {
+          "line": 51,
+          "text": "MoveHygieneBeforeHealth(api);"
+        },
+        {
+          "line": 52,
+          "text": "LivestockBreeding.Apply(api, LoadConfig(sapi).Breeding);"
+        },
+        {
+          "line": 59,
+          "text": "static void MoveHygieneBeforeHealth(ICoreAPI api)"
+        },
+        {
+          "line": 74,
+          "text": "public override void StartServerSide(ICoreServerAPI api)"
+        },
+        {
+          "line": 76,
+          "text": "LoadConfig(api);"
+        },
+        {
+          "line": 79,
+          "text": "beddingPatches = LivestockBedding.Patch(Mod.Info.ModID + \".bedding\");"
+        },
+        {
+          "line": 82,
+          "text": "// Needed by AssetsFinalize (breeding settings) and StartServerSide; loaded by whichever runs first."
+        },
+        {
+          "line": 83,
+          "text": "LivestockWelfareConfig LoadConfig(ICoreServerAPI api)"
+        },
+        {
+          "line": 106,
+          "text": "static readonly string[] GrownUpKeepsAttrs = { \"lwBirthTotalDays\", \"lwSick\", \"lwImmuneUntilDays\", \"lwWeatherStress\" };"
+        },
+        {
+          "line": 120,
+          "text": "foreach (string attr in GrownUpKeepsAttrs)"
+        }
+      ]
+    },
+    "bh-generation": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/bh-decompiled/betterhusbandry/EntityBehaviorbetterhusbandry.cs",
+      "kind": "decompiled",
+      "url": null,
+      "matches": [
+        {
+          "line": 17,
+          "text": "public float FeedMod"
+        },
+        {
+          "line": 29,
+          "text": "public float InteractMod"
+        },
+        {
+          "line": 79,
+          "text": "public int Bloodline"
+        },
+        {
+          "line": 91,
+          "text": "public Dictionary<string, double> RecentInteractions"
+        },
+        {
+          "line": 123,
+          "text": "handler.AppendLiteral(\"Bloodline Generation: \");"
+        },
+        {
+          "line": 124,
+          "text": "handler.AppendFormatted(Bloodline);"
+        },
+        {
+          "line": 130,
+          "text": "if (InteractMod == num2)"
+        },
+        {
+          "line": 134,
+          "text": "else if ((double)(InteractMod / num2) >= 0.75)"
+        },
+        {
+          "line": 138,
+          "text": "else if ((double)(InteractMod / num2) >= 0.5)"
+        },
+        {
+          "line": 142,
+          "text": "else if ((double)(InteractMod / num2) >= 0.25)"
+        },
+        {
+          "line": 146,
+          "text": "else if (InteractMod / num2 > 0f)"
+        },
+        {
+          "line": 150,
+          "text": "else if ((double)(InteractMod / num2) >= -0.25)"
+        },
+        {
+          "line": 154,
+          "text": "else if ((double)(InteractMod / num2) >= -0.5)"
+        },
+        {
+          "line": 158,
+          "text": "else if ((double)(InteractMod / num2) >= -0.75)"
+        },
+        {
+          "line": 164,
+          "text": "value = ((InteractMod == num) ? \"The animal is terrified of you\" : \"The animal is afraid of you\");"
+        },
+        {
+          "line": 181,
+          "text": "Bloodline = ((TreeAttribute)base.entity.WatchedAttributes).GetInt(\"generation\", 0);"
+        },
+        {
+          "line": 184,
+          "text": "RecomputeEffectiveGeneration();"
+        },
+        {
+          "line": 190,
+          "text": "((TreeAttribute)base.entity.WatchedAttributes).SetInt(\"generation\", Bloodline);"
+        },
+        {
+          "line": 199,
+          "text": "Dictionary<string, double> recentInteractions = RecentInteractions;"
+        },
+        {
+          "line": 201,
+          "text": "RecentInteractions = recentInteractions;"
+        },
+        {
+          "line": 215,
+          "text": "Dictionary<string, double> recentInteractions = RecentInteractions;"
+        },
+        {
+          "line": 231,
+          "text": "if (config.offlineFullProtect || nowHours - value <= (double)((float)config.offlineGraceDays * base.entity.World.Calendar.HoursPerDay))"
+        },
+        {
+          "line": 244,
+          "text": "FeedMod = ApplyFeedAxis(FeedMod, config);"
+        },
+        {
+          "line": 245,
+          "text": "InteractMod = ApplyAxis(InteractMod, LastInteractedHours, LastDecayHours, nowHours, base.entity.World.Calendar.HoursPerDay, config);"
+        },
+        {
+          "line": 247,
+          "text": "RecomputeEffectiveGeneration();"
+        },
+        {
+          "line": 263,
+          "text": "return GameMath.Clamp(num2, cfg.feedFloor, cfg.feedCeiling);"
+        },
+        {
+          "line": 270,
+          "text": "double num3 = (double)cfg.interactGraceDays * hoursPerDay;"
+        },
+        {
+          "line": 271,
+          "text": "double num4 = (double)((TreeAttribute)base.entity.WatchedAttributes).GetInt(\"generation\", 0) * hoursPerDay * (double)cfg.interactgenerationDecayMultiplier;"
+        },
+        {
+          "line": 272,
+          "text": "foreach (KeyValuePair<string, double> recentInteraction in RecentInteractions)"
+        },
+        {
+          "line": 274,
+          "text": "if (nowHours - recentInteraction.Value > (double)((float)cfg.interactMemoryDays * base.entity.World.Calendar.HoursPerDay))"
+        },
+        {
+          "line": 276,
+          "text": "Dictionary<string, double> recentInteractions = RecentInteractions;"
+        },
+        {
+          "line": 278,
+          "text": "RecentInteractions = recentInteractions;"
+        },
+        {
+          "line": 295,
+          "text": "return GameMath.Clamp(num5, cfg.interactFloor, cfg.interactCeiling);"
+        },
+        {
+          "line": 298,
+          "text": "public void RecomputeEffectiveGeneration()"
+        },
+        {
+          "line": 300,
+          "text": "int num = (int)GameMath.Max((float)Bloodline + FeedMod + InteractMod, 0f);"
+        },
+        {
+          "line": 301,
+          "text": "((TreeAttribute)base.entity.WatchedAttributes).SetInt(\"generation\", num);"
+        }
+      ]
+    },
+    "bh-interaction": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/bh-decompiled/betterhusbandry/HarmonyPatches.cs",
+      "kind": "decompiled",
+      "url": null,
+      "matches": [
+        {
+          "line": 9,
+          "text": "public static class HarmonyPatches"
+        },
+        {
+          "line": 11,
+          "text": "[HarmonyPatch(typeof(EntityBehaviorMilkable), \"MilkingComplete\")]"
+        },
+        {
+          "line": 14,
+          "text": "[HarmonyPostfix]"
+        },
+        {
+          "line": 15,
+          "text": "public static void Postfix(ItemSlot slot, Entity byEntity, Entity ___entity)"
+        },
+        {
+          "line": 21,
+          "text": "___entity.GetBehavior<EntityBehaviorbetterhusbandry>()?.RegisterInteract(byEntity.World.Calendar.TotalHours, byEntity);"
+        },
+        {
+          "line": 26,
+          "text": "[HarmonyPatch(typeof(EntityBehaviorPettable), \"OnInteract\")]"
+        },
+        {
+          "line": 29,
+          "text": "[HarmonyPostfix]"
+        },
+        {
+          "line": 30,
+          "text": "public static void Postfix(EntityAgent byEntity, Entity ___entity, float ___petDurationS)"
+        },
+        {
+          "line": 34,
+          "text": "if (byEntity is EntityPlayer && !((double)___petDurationS < 0.6) && (int)___entity.World.Side == 1)"
+        },
+        {
+          "line": 36,
+          "text": "___entity.GetBehavior<EntityBehaviorbetterhusbandry>()?.RegisterInteract(((Entity)byEntity).World.Calendar.TotalHours, (Entity)(object)byEntity);"
+        },
+        {
+          "line": 41,
+          "text": "[HarmonyPatch(typeof(EntityBehaviorMultiply), \"GiveBirth\")]"
+        },
+        {
+          "line": 57,
+          "text": "[HarmonyPostfix]"
+        },
+        {
+          "line": 58,
+          "text": "public static void Postfix(Entity ___entity)"
+        },
+        {
+          "line": 69,
+          "text": "public static void Postfix(ItemSlot slot, Entity byEntity, Entity ___entity)"
+        },
+        {
+          "line": 75,
+          "text": "___entity.GetBehavior<EntityBehaviorbetterhusbandry>()?.RegisterInteract(byEntity.World.Calendar.TotalHours, byEntity);"
+        }
+      ]
+    },
+    "binary-bedding": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/lw-decompiled/livestockwelfare/LivestockBedding.cs",
+      "kind": "decompiled exact LW 0.15.0 DLL",
+      "url": null,
+      "matches": [
+        {
+          "line": 29,
+          "text": "public static BreedingSettings? Settings"
+        },
+        {
+          "line": 33,
+          "text": "BreedingSettings breedingSettings = livestockwelfareModSystem.Config?.Breeding;"
+        },
+        {
+          "line": 34,
+          "text": "if (breedingSettings == null || !breedingSettings.RequireBedding)"
+        },
+        {
+          "line": 38,
+          "text": "return breedingSettings;"
+        },
+        {
+          "line": 44,
+          "text": "if (Settings != null && entity.HasBehavior<EntityBehaviorLivestockShelter>())"
+        },
+        {
+          "line": 46,
+          "text": "return LivestockUtil.IsKept(entity);"
+        },
+        {
+          "line": 57,
+          "text": "BreedingSettings settings = Settings;"
+        },
+        {
+          "line": 194,
+          "text": "if (Settings == null)"
+        },
+        {
+          "line": 212,
+          "text": "BreedingSettings settings = Settings;"
+        }
+      ]
+    },
+    "binary-timing": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/lw-decompiled/livestockwelfare/LivestockBreeding.cs",
+      "kind": "decompiled exact LW 0.15.0 DLL",
+      "url": null,
+      "matches": [
+        {
+          "line": 17,
+          "text": "if (!settings.Enabled)"
+        }
+      ]
+    },
+    "binary-startup": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/lw-decompiled/livestockwelfare/livestockwelfareModSystem.cs",
+      "kind": "decompiled exact LW 0.15.0 DLL",
+      "url": null,
+      "matches": [
+        {
+          "line": 64,
+          "text": "LivestockBreeding.Apply(api, LoadConfig(val).Breeding);"
+        },
+        {
+          "line": 103,
+          "text": "beddingPatches = LivestockBedding.Patch(((ModSystem)this).Mod.Info.ModID + \".bedding\");"
+        }
+      ]
+    },
+    "binary-kept": {
+      "file": "/home/brunette/.hermes/cache/scratch/lw-audit/lw-decompiled/livestockwelfare/LivestockUtil.cs",
+      "kind": "decompiled exact LW 0.15.0 DLL",
+      "url": null,
+      "matches": [
+        {
+          "line": 28,
+          "text": "private const string PetAiStatusAttr = \"domesticationstatus\";"
+        },
+        {
+          "line": 89,
+          "text": "public static bool IsKept(Entity entity)"
+        },
+        {
+          "line": 91,
+          "text": "if (((TreeAttribute)entity.WatchedAttributes).GetInt(\"generation\", 0) < (livestockwelfareModSystem.Config?.Hygiene.MuckMinGeneration ?? 1) && !(((TreeAttribute)entity.Attributes).GetString(\"origin\", (string)null) == \"playerplaced\"))"
+        },
+        {
+          "line": 93,
+          "text": "ITreeAttribute treeAttribute = ((TreeAttribute)entity.WatchedAttributes).GetTreeAttribute(\"domesticationstatus\");"
+        }
+      ]
+    }
+  },
+  "quest_coverage_matrix": [
+    {
+      "id": "baseline",
+      "quest": "Know your herd / read needs",
+      "status": "active",
+      "mechanics": "Age and needs in hover text; sneak + empty-hand right-click reports age/status. Sheep, goats, pigs, chickens and vanilla wolves have direct patches; optional mod species are conditional, not proof of installed animals.",
+      "config": {
+        "OldAgeFraction": 0.75
+      },
+      "evidence": [
+        "age",
+        "startup"
+      ],
+      "better_husbandry": "BH displays bloodline/trust separately and writes effective vanilla generation; do not equate bloodline with age or LW health."
+    },
+    {
+      "id": "clean-pen",
+      "quest": "Keep a clean, uncrowded pen",
+      "status": "active",
+      "mechanics": "Remove Natural Fertilizer droppings, LW muck/dog poop and ground-stored rot. Dirt moves filth toward environmental dirt exponentially; it is not a fixed daily filth increase. Kept adults can deposit muck; chicks/nursed babies are kept clean. IsKept means generation >= Hygiene.MuckMinGeneration (1), origin=playerplaced, or a nonempty Pet AI owner; it is not synonymous with any nearby wild animal.",
+      "config": {
+        "Hygiene.Enabled": true,
+        "DroppingScanRadius": 3,
+        "DirtPerDropping": 0.05,
+        "DirtPerMuckLevel": 0.03,
+        "DirtPerRotItem": 0.01,
+        "MuckChancePerDay": 0.15,
+        "MuckCrowdingBonus": 0.15,
+        "MuckMinGeneration": 1,
+        "CrowdingRadius": 4,
+        "CrowdingFreeAnimals": 6,
+        "DirtPerExtraAnimal": 0.1,
+        "FilthAdaptHours": 24,
+        "FilthCleanHours": 96
+      },
+      "evidence": [
+        "hygiene",
+        "safety",
+        "binary-kept"
+      ],
+      "better_husbandry": "LW IsKept and muck generation checks read vanilla generation, which BH recomputes from bloodline + floating care modifiers summed then truncated to integer; care can change eligibility without a new birth."
+    },
+    {
+      "id": "groom",
+      "quest": "Brush a dirty adult",
+      "status": "active",
+      "mechanics": "Dry grass or grooming brush; hold right-click on groomable adults. Grooming removes 0.25 filth per completed use, not disease directly. Chickens self-clean; nursed babies do not need brushing. Shovels harmless to supported animals (shove instead of damage).",
+      "config": {
+        "GroomFilthReduction": 0.25,
+        "GroomItemUseChance": 0.5,
+        "ShovelsHarmless": true,
+        "SelfCleaningSpecies": [
+          "chicken"
+        ],
+        "drygrass.groomSeconds": 2
+      },
+      "evidence": [
+        "groom",
+        "hygiene"
+      ],
+      "better_husbandry": "LW grooming is not BH RegisterInteract: BH patches petting, milking and optional shearing. Do not promise brushing awards BH trust."
+    },
+    {
+      "id": "disease",
+      "quest": "Recognize, isolate and support a sick animal",
+      "status": "active",
+      "mechanics": "Daily illness probability = .25*(filth² + weatherStress²), doubled when old. Same-species contagion within radius 3. Recovery daily chance = .35*(1-filth)*(1-weatherStress), then 6-day immunity. Sick animals lose normal regeneration and breeding; kept sick animals take damage and may collapse. Cleaning/shelter improve odds, not an instant medicine cure. HarmPerDay/SickDamagePerDay are normalized to 17 reference max-health and scale to the animal max-health, not fixed absolute HP across species.",
+      "config": {
+        "SicknessChancePerDay": 0.25,
+        "OldAgeSicknessMultiplier": 2,
+        "ContagionRadius": 3,
+        "ContagionChancePerDay": 0.1,
+        "RecoveryChancePerDay": 0.35,
+        "ImmunityDays": 6,
+        "SickDamagePerDay": 3,
+        "CollapseHealthFraction": 0.3
+      },
+      "evidence": [
+        "disease",
+        "safety"
+      ],
+      "better_husbandry": "High BH effective generation/trust is not immunity and does not bypass LW sickness, damage or LW breeding cooldown blocks."
+    },
+    {
+      "id": "shelter",
+      "quest": "Provide a roof and a tolerable climate",
+      "status": "active",
+      "mechanics": "Rain/snow, temperature and sleeping outside build stress. Animals seek shelter, may get heat-listless/lose appetite; extreme stress harms kept animals, illness risk rises, breeding can stop. Petting reduces LW weather stress with its own cooldown. HarmPerDay/SickDamagePerDay are normalized to 17 reference max-health and scale to the animal max-health, not fixed absolute HP across species.",
+      "config": {
+        "Weather.Enabled": true,
+        "RainStress": 0.35,
+        "SnowStress": 0.45,
+        "RoofColdFactor": 0.5,
+        "SleepOutsideStress": 0.3,
+        "StressAdaptHours": 12,
+        "NoBreedingAboveStress": 0.5,
+        "HarmAboveStress": 0.8,
+        "HarmPerDay": 2,
+        "SeekShelterRadius": 24,
+        "PetStressReduction": 0.2,
+        "PetCooldownHours": 2
+      },
+      "evidence": [
+        "weather"
+      ],
+      "better_husbandry": "BH petting and LW stress relief coexist but have distinct timers/effects. Food condition and trust do not replace a roof."
+    },
+    {
+      "id": "water",
+      "quest": "Supply reachable clean drinking water",
+      "status": "active",
+      "mechanics": "Walk to fresh natural water or consume water from supported placed containers/waterer. Natural water is free; container volume is consumed. Salt/boiling/tainted water is not universally drinkable. A thirsty animal cannot be fixed just by feeding. HarmPerDay/SickDamagePerDay are normalized to 17 reference max-health and scale to the animal max-health, not fixed absolute HP across species.",
+      "config": {
+        "Thirst.Enabled": true,
+        "ThirstPerDay": 0.8,
+        "WarmAboveC": 20,
+        "HotSunMultiplier": 1.5,
+        "SeekWaterAboveThirst": 0.2,
+        "SeekWaterRadius": 16,
+        "DrinkAboveThirst": 0.25,
+        "RemoteDrinkAboveThirst": 0.6,
+        "DrinkRadius": 6,
+        "NoBreedingAboveThirst": 0.6,
+        "HarmAboveThirst": 0.95,
+        "HarmPerDay": 3,
+        "LitresPerFullDrink": {
+          "sheep": 1,
+          "goat": 1,
+          "pig": 1.5,
+          "chicken": 0.1,
+          "dog": 0.5
+        }
+      },
+      "evidence": [
+        "thirst"
+      ],
+      "better_husbandry": "BH feed-care scoring is not thirst. LW thirst breeding/regen/damage penalties remain active."
+    },
+    {
+      "id": "young",
+      "quest": "Raise young with their mother",
+      "status": "active",
+      "mechanics": "Keep nursing babies near a suitable female. Mother health/stress affects milk; sick mothers can infect young. Nourishment can slow growth or cause harm. Babies learn trough feeding after time with mother; chicks follow a hen rather than needing mammalian milk. HarmPerDay/SickDamagePerDay are normalized to 17 reference max-health and scale to the animal max-health, not fixed absolute HP across species.",
+      "config": {
+        "Babies.Enabled": true,
+        "NursingDistance": 10,
+        "NourishAdaptHours": 6,
+        "HungerPerDay": 0.6,
+        "LearnTroughWithMotherDays": 2,
+        "SickMotherMilk": 0.5,
+        "StressedMotherMilkLoss": 0.5,
+        "SickMotherContagionPerDay": 0.3,
+        "SlowGrowthBelow": 0.5,
+        "HarmBelow": 0.15,
+        "HarmPerDay": 2
+      },
+      "evidence": [
+        "babies"
+      ],
+      "better_husbandry": "Breeding.Enabled=false does NOT disable LW baby nourishment/growth penalties. BH care bonuses are not a replacement for nursing."
+    },
+    {
+      "id": "orphan",
+      "quest": "Hand-feed an orphan / teach the trough",
+      "status": "active",
+      "mechanics": "Use supported milk/food on a nursing baby; three hand-feedings teach trough use. Babies are excluded from ordinary chicken treat setup. Keep orphan care separate from adult feeding.",
+      "config": {
+        "HandFeedingsToLearnTrough": 3,
+        "HandFeedMilkLitres": 0.5,
+        "HandFeedMilkNourishment": 0.35,
+        "HandFeedFoodNourishment": 0.2,
+        "NourishmentPerPortion": 0.25
+      },
+      "evidence": [
+        "babies",
+        "handfeed",
+        "treats"
+      ],
+      "better_husbandry": "No direct BH ownership conflict found; full-pack runtime not tested."
+    },
+    {
+      "id": "dustbath",
+      "quest": "Give chickens dry sand",
+      "status": "active",
+      "mechanics": "Daytime chickens seek dry sand within 10 blocks, with air above and no rain falling on the sand. Bath when filth >= .1 or 20 hours since last bath; 12-second bath resets filth to zero. After 2 unbathed days environmental target is at least .5. Chickens are not brush targets.",
+      "config": {
+        "DustBathing": true,
+        "DustBathBlockCodes": [
+          "game:sand-*",
+          "game:sandwavy-*"
+        ],
+        "DustBathRadius": 10,
+        "DustBathAboveFilth": 0.1,
+        "DustBathEveryHours": 20,
+        "DustBathSeconds": 12,
+        "UnbathedDays": 2,
+        "UnbathedFilth": 0.5,
+        "SelfCleaningHours": 12
+      },
+      "evidence": [
+        "dust",
+        "hygiene"
+      ],
+      "better_husbandry": "A tame/trusting chicken still needs dust-bathing access. SelfCleaningHours is the fallback when DustBathing=false, not the active bath interval."
+    },
+    {
+      "id": "chicken-handling",
+      "quest": "Lead chickens with grain / hand-feed",
+      "status": "active",
+      "mechanics": "Hold food matching the chicken creatureDiet to lure it; hand feeding consumes one item, adds 1 hunger saturation and updates lastMealEatenTotalHours, with one-hour cooldown. Not an all-species LW lure.",
+      "config": {
+        "Treats.Enabled": true,
+        "AnimalCodes": [
+          "game:chicken-*"
+        ],
+        "FollowRadius": 10,
+        "FollowDistance": 1.5,
+        "HandFeedCooldownHours": 1
+      },
+      "evidence": [
+        "treats"
+      ],
+      "better_husbandry": "Treats can contribute to feeding/breeding state and BH last-fed data, but do not call BH RegisterInteract. Do not claim a direct BH trust bonus for each grain."
+    },
+    {
+      "id": "coop",
+      "quest": "Build a weatherproof chicken coop",
+      "status": "active-optional",
+      "mechanics": "LW coop kit places ordinary blocks: raised 5×5 coop, ramps 2 long, two hen boxes, rear gate. Recipe uses eight ingredient cells ×8 planks =64 planks plus two hen boxes. It is a building shortcut, not a new egg machine or required structure; hand-built coops work.",
+      "config": {
+        "Breeding.Enabled": false,
+        "coop.Width": 5,
+        "coop.Depth": 5,
+        "coop.RampLength": 2,
+        "coop.henboxes": 2
+      },
+      "evidence": [
+        "coop",
+        "breeding"
+      ],
+      "better_husbandry": "No BH timer replacement is provided by the coop; egg/breeding conditions remain those of actual entity behaviors."
+    },
+    {
+      "id": "age",
+      "quest": "Plan a replacement generation",
+      "status": "active",
+      "mechanics": "Lifespans randomized in game-calendar years; old at 75% of personal lifespan. Old animals infertile; old-age death enabled. Read age rather than treating effective generation as biological age. Pre-existing/wild adults get an assumed starting age in the first half of life; babies retain birth-age across grow-up. Do not promise historical birth dates for imported adults.",
+      "config": {
+        "OldAgeFraction": 0.75,
+        "OldAnimalsInfertile": true,
+        "DieOfOldAge": true,
+        "lifespan_years": {
+          "sheep": [
+            3,
+            5
+          ],
+          "goat": [
+            4,
+            6
+          ],
+          "pig": [
+            3,
+            4
+          ],
+          "chicken": [
+            2,
+            3
+          ],
+          "dog": [
+            5,
+            7
+          ]
+        }
+      },
+      "evidence": [
+        "age",
+        "safety"
+      ],
+      "better_husbandry": "BH generation changes do not rejuvenate LW birth date or erase old-age infertility."
+    },
+    {
+      "id": "breed",
+      "quest": "Breed healthy animals without inventing LW timings",
+      "status": "retained-base-breeding",
+      "mechanics": "LW runtime rewriting of portions, pregnancy, rest and grow-up timings is disabled. Retained numbers are dormant presets, NOT effective pack breeding rates. LW sickness/age/weather/thirst can still hold breeding cooldown ahead of the current time.",
+      "config": {
+        "Breeding.Enabled": false,
+        "dormant_species_presets": "Full exact values in JSON config; sheep/goat 10 portions,20 pregnancy days,4–11 rest,14 grow; pig 10,25,6–11,7; chicken 4,null,0–3,8.3."
+      },
+      "evidence": [
+        "breeding",
+        "safety",
+        "disease",
+        "binary-timing"
+      ],
+      "better_husbandry": "BH effective generation still participates in base-game generation-dependent behavior; BH does not itself make the dormant LW timing overrides active."
+    },
+    {
+      "id": "bedding",
+      "quest": "Use clean bedding for kept mammal mating",
+      "status": "active-independent-gate",
+      "mechanics": "IMPORTANT: RequireBedding is true and the bedding Settings getter does not test Breeding.Enabled. Kept females with vanilla multiply must mate on clean straw bedding; 15-second mating, search radius16. Birth soils LW bedding and mother/newborn stay there for 1 day. Therefore disabling the timing rewrite does NOT disable bedding requirement.",
+      "config": {
+        "Breeding.Enabled": false,
+        "Breeding.RequireBedding": true,
+        "BeddingRadius": 16,
+        "MatingSeconds": 15,
+        "NewbornDays": 1,
+        "BeddingBlockCodes": [
+          "livestockwelfare:strawbedding-clean"
+        ]
+      },
+      "evidence": [
+        "bedding",
+        "startup",
+        "binary-bedding",
+        "binary-startup"
+      ],
+      "better_husbandry": "BH recomputed vanilla generation can change LW IsKept and therefore whether bedding gate applies. Hens use multiplybase, not this EntityBehaviorMultiply pregnancy gate; do not teach straw bedding as a hen egg requirement."
+    },
+    {
+      "id": "bond",
+      "quest": "Maintain BH care and effective generation",
+      "status": "active-bh",
+      "mechanics": "BH stores bloodline separately; effective vanilla generation = int(max(0, bloodline + feed modifier + interaction modifier)), i.e. truncation after summing, NOT separate rounding. Feed and interaction modifiers each bounded -3..3. Daily good care +.03, decay .2, condition thresholds .95/.75; interaction grace1 day, generation decay multiplier .5, interaction memory30 days. Offline protection early-returns the entire BH daily update when recorded recent interactors are all offline and its protection check passes; it does not suspend LW needs. Feed condition thresholds .95/.75 are actually hardcoded in BH ApplyFeedAxis (retained config happens to match), not read from those threshold config fields.",
+      "config": {
+        "feedFloor": -3,
+        "feedCeiling": 3,
+        "feedGrowthPerDay": 0.03,
+        "feedDecayPerDay": 0.2,
+        "feedGoodWeightThreshold": 0.95,
+        "feedOkWeightThreshold": 0.75,
+        "interactFloor": -3,
+        "interactCeiling": 3,
+        "interactGrowthPerDay": 0.03,
+        "interactDecayPerDay": 0.2,
+        "interactGraceDays": 1,
+        "interactgenerationDecayMultiplier": 0.5,
+        "interactMemoryDays": 30,
+        "offlineFullProtect": true,
+        "offlineGraceDays": 7
+      },
+      "evidence": [
+        "bh-generation",
+        "bh-interaction"
+      ],
+      "better_husbandry": "Pet after at least .6s, milking, optional ShearLib DoShear register BH interactions. Keep bloodline and temporary effective generation explicit."
+    },
+    {
+      "id": "offline",
+      "quest": "Understand ongoing welfare risk",
+      "status": "active-warning",
+      "mechanics": "All six LW lethal permissions are enabled and PauseWhenNoPlayerNearby=false. Do not promise offline invulnerability from BH config. Loaded simulated animals can age, become ill, thirst or starve; individual LW needs cap catch-up, which is not global suspension.",
+      "config": {
+        "AnimalsCanDie": true,
+        "OldAgeCanKill": true,
+        "DiseaseCanKill": true,
+        "ExposureCanKill": true,
+        "ThirstCanKill": true,
+        "MalnutritionCanKill": true,
+        "PauseWhenNoPlayerNearby": false,
+        "PlayerRadius": 64
+      },
+      "evidence": [
+        "safety",
+        "age",
+        "bh-generation"
+      ],
+      "better_husbandry": "BH offlineFullProtect=true does not govern LW safety. PlayerRadius64 is inactive while pause flag is false."
+    },
+    {
+      "id": "dogs",
+      "quest": "Optional raised-wolf welfare and guardianship",
+      "status": "conditional-vanilla-wolves",
+      "mechanics": "Dogs.Enabled=true; kept vanilla wolves get LW dog care. Bond .5 initial,+.1 pet (2h cooldown),-.08/day without company; lonely below .25, loyal above .75; guard herd/garden, bark, help hunts, spare kept animals/players, lure pups. Dog bowls craftable. External companion trips/commands/beds need the actual external provider and are not proven available here.",
+      "config": {
+        "Dogs.Enabled": true,
+        "StartBond": 0.5,
+        "BondPerPet": 0.1,
+        "PetCooldownHours": 2,
+        "BondLossPerDay": 0.08,
+        "CompanyRadius": 8,
+        "LonelyBelowBond": 0.25,
+        "LoyalAboveBond": 0.75,
+        "GuardHerd": true,
+        "GuardRadius": 12,
+        "GuardGarden": true,
+        "Bark": true,
+        "HelpHunt": true,
+        "TripAftermath": true,
+        "BedCodes": [
+          "petai:petnest-*",
+          "feralkinshipcompanions:foxbed-*"
+        ]
+      },
+      "evidence": [
+        "dogs",
+        "safety"
+      ],
+      "better_husbandry": "BH is not Pet AI or Feral Kinship Companions. Those IDs must not be conflated; none of petai, wolftaming, feralkinship, feralkinshipcompanions are enabled in this retained export."
+    }
+  ],
+  "limitations": [
+    "Static source and exact supplied-DLL decompilation, not a launched full-pack server.",
+    "Client export does not prove server-deployed config, world settings, behavior merge success or runtime patch order.",
+    "Genelib present: LW defers dirty-coat replacement if another texture source already owns appearance; absence of visible dirt is not evidence of disabled hygiene.",
+    "Catch Livestock is an independent installed capture provider, not Pet AI/Feral Kinship; its capture controls were not audited in this LW/BH task.",
+    "No hard LW/BH mutual disable, missing companion dependency or automatic BH-driven LW toggle found; this is not blanket runtime compatibility certification."
+  ]
+}

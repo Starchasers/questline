@@ -1,0 +1,343 @@
+{
+  "id": "livestockwelfare-care",
+  "questline": "questline:default",
+  "requiresMod": [
+    "livestockwelfare"
+  ],
+  "quests": [
+    {
+      "id": "lw-read-herd",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-read-herd-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "pos": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "lw-clean-pen",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-clean-pen-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-read-herd"
+      },
+      "pos": [
+        2,
+        0
+      ]
+    },
+    {
+      "id": "lw-shelter",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-shelter-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-read-herd"
+      },
+      "pos": [
+        4,
+        0
+      ]
+    },
+    {
+      "id": "lw-water",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-water-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-shelter"
+      },
+      "pos": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "lw-groom",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-groom-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-clean-pen"
+      },
+      "pos": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "lw-sickness",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-sickness-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-groom"
+      },
+      "pos": [
+        2,
+        2
+      ]
+    },
+    {
+      "id": "lw-dustbath",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-dustbath-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-clean-pen"
+      },
+      "pos": [
+        4,
+        2
+      ]
+    },
+    {
+      "id": "lw-chicken-treat",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-chicken-treat-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-dustbath"
+      },
+      "pos": [
+        6,
+        2
+      ]
+    },
+    {
+      "id": "lw-coop",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-coop-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-dustbath"
+      },
+      "pos": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "lw-bedding",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-bedding-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-water"
+      },
+      "pos": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "lw-healthy-breeding",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-healthy-breeding-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-bedding"
+      },
+      "pos": [
+        4,
+        4
+      ]
+    },
+    {
+      "id": "lw-nursing",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-nursing-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-healthy-breeding"
+      },
+      "pos": [
+        6,
+        4
+      ]
+    },
+    {
+      "id": "lw-orphan",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-orphan-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-nursing"
+      },
+      "pos": [
+        0,
+        6
+      ]
+    },
+    {
+      "id": "lw-age",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-age-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-read-herd"
+      },
+      "pos": [
+        2,
+        6
+      ]
+    },
+    {
+      "id": "lw-safety",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-safety-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-sickness"
+      },
+      "pos": [
+        4,
+        6
+      ]
+    },
+    {
+      "id": "lw-wolf-care",
+      "page": [
+        {
+          "type": "text",
+          "lang": "lw-wolf-care-desc"
+        }
+      ],
+      "tasks": [
+        {
+          "type": "checkbox"
+        }
+      ],
+      "requires": {
+        "quest": "questline:lw-safety"
+      },
+      "pos": [
+        6,
+        6
+      ]
+    }
+  ],
+  "order": 8
+}
