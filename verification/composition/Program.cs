@@ -173,12 +173,12 @@ Test("same-domain working filenames use last ordinal winner regardless of creati
         } finally { if (Directory.Exists(dir)) Directory.Delete(dir, true); }
     }
 });
-Test("all 16 shipped base-to-extension replacements survive shuffled real content composition", () => {
+Test("all 20 shipped base-to-extension replacements survive shuffled real content composition", () => {
     string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
     var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
         .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
         .Select(f => (Domain: new DirectoryInfo(Path.GetDirectoryName(f)).Parent.Parent.Name, Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
-    Check(files.Length == 56, $"expected 56 extracted content files, got {files.Length}");
+    Check(files.Length == 59, $"expected 59 content files (56 extracted + 3 Better Husbandry), got {files.Length}");
     var baseline = Load(files);
     var qualified = files.Select(f => {
         var c = JsonConvert.DeserializeObject<ChapterDef>(f.Json);
@@ -189,7 +189,7 @@ Test("all 16 shipped base-to-extension replacements survive shuffled real conten
     var bases = qualified.Where(c => c.Extends == null).ToDictionary(c => c.Id);
     var replacements = qualified.Where(c => c.Extends != null).SelectMany(c => c.Quests
         .Where(q => bases[c.Extends].Quests.Any(b => b.Id == q.Id))).ToArray();
-    Check(replacements.Length == 16, $"expected 16 intentional replacements, got {replacements.Length}");
+    Check(replacements.Length == 20, $"expected 20 intentional replacements, got {replacements.Length}");
     Check(!baseline.Loader.Problems.Any(p => p.Contains("ambiguous extension")), "shipped content has composition conflicts");
     foreach (var q in replacements) {
         var actual = baseline.Registry.Get(q.Id);
@@ -203,6 +203,52 @@ Test("all 16 shipped base-to-extension replacements survive shuffled real conten
     foreach (int seed in Enumerable.Range(0, 12)) {
         var rng = new Random(seed); var p = files.OrderBy(_ => rng.Next()).ToArray(); var loaded = Load(p);
         Check(snapshot == loaded.Registry.ToJson() + string.Join("\n", loaded.Loader.Problems), "shipped registry/diagnostics changed under seed " + seed);
+    }
+});
+Test("Better Husbandry actual-loader absence/presence/Welfare/Wool matrix preserves saved task contracts", () => {
+    string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
+    var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
+        .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
+        .Select(f => (Domain: "questline", Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
+    // Optional read-only cross-PR verification; CI defaults to only this checkout's content.
+    string extraContent = Environment.GetEnvironmentVariable("QUESTLINE_COMPOSITION_EXTRA_CONTENT");
+    if (!string.IsNullOrWhiteSpace(extraContent)) {
+        var extraFiles = Directory.GetFiles(extraContent, "*.json", SearchOption.AllDirectories)
+            .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
+            .Select(f => (Domain: "questline", Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f)));
+        files = files.Concat(extraFiles).ToArray();
+    }
+    foreach (bool bh in new[] { false, true })
+    foreach (bool welfare in new[] { false, true })
+    foreach (bool wool in new[] { false, true })
+    foreach (bool shearlib in new[] { false, true }) {
+        HashSet<string> missing = [];
+        if (!bh) missing.Add("betterhusbandry");
+        if (!welfare) missing.Add("livestockwelfare");
+        if (!wool) missing.Add("wool");
+        if (!shearlib) missing.Add("shearlib");
+        var actual = Load(files, missingMods: missing);
+        Check((actual.Registry.Get("questline:bh-inspect-bloodline") != null) == bh, "BH presence gate");
+        Check((actual.Registry.Get("questline:bh-welfare-readiness") != null) == (bh && welfare), "Welfare combined gate");
+        Check((actual.Registry.Get("questline:bh-shearing-care") != null) == (bh && wool && shearlib), "Wool/ShearLib combined gate");
+        Check(!actual.Loader.Problems.Any(p => p.Contains("ambiguous extension")), "provider conflict in composition matrix");
+        var original = Load(files.Where(f => !f.Name.StartsWith("betterhusbandry-")), missingMods: missing);
+        foreach (string id in new[] { "make-trough", "make-large-trough", "breed-animals", "milk-animal" }) {
+            var before = original.Registry.Get("questline:" + id);
+            var after = actual.Registry.Get("questline:" + id);
+            Check(JsonConvert.SerializeObject(before.Tasks) == JsonConvert.SerializeObject(after.Tasks), "saved tasks changed: " + id);
+            Check(JsonConvert.SerializeObject(before.Rewards) == JsonConvert.SerializeObject(after.Rewards), "rewards changed: " + id);
+            Check(JsonConvert.SerializeObject(before.Requires) == JsonConvert.SerializeObject(after.Requires), "prerequisite changed: " + id);
+            Check(after.Page.Any(b => b.Lang == "questline:bh-" + id + "-guidance") == bh, "replacement provider gate: " + id);
+        }
+        string snapshot = actual.Registry.ToJson() + string.Join("\n", actual.Loader.Problems);
+        var noWoolContent = Load(files.Where(f => !f.Name.StartsWith("wool-")), missingMods: new HashSet<string>(missing) { "questlinewool" });
+        Check(noWoolContent.Registry.Get("questline:bh-shearing-care") == null, "Wool gameplay without quest content leaves dangling prerequisite");
+        foreach (int seed in Enumerable.Range(0, 4)) {
+            var rng = new Random(seed);
+            var shuffled = Load(files.OrderBy(_ => rng.Next()), missingMods: missing);
+            Check(snapshot == shuffled.Registry.ToJson() + string.Join("\n", shuffled.Loader.Problems), "BH matrix depends on discovery order");
+        }
     }
 });
 Console.WriteLine($"Composition: {passed} passed, {failed} failed");

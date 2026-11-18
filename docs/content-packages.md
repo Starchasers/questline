@@ -17,6 +17,7 @@ Install optional integrations only for gameplay mods you use:
 | Directory | Mod ID | Chapters | Quest records |
 | --- | --- | ---: | ---: |
 | vanilla | questlinevanilla | 25 | 322 |
+| betterhusbandry | questlinebetterhusbandry | 3 | 11 |
 | betterruins | questlinebetterruins | 1 | 22 |
 | bricklayers | questlinebricklayers | 3 | 24 |
 | charcoalkiln | questlinecharcoalkiln | 1 | 6 |
@@ -31,7 +32,7 @@ Install optional integrations only for gameplay mods you use:
 
 Declare `game >= 1.22.0` and `questline >= 0.15.0` in every package. Optional
 packages also depend on `questlinevanilla >= 0.14.0` and their same-named
-gameplay mod. Gameplay-mod minimum versions are `0.0.0`: the mod must be present,
+gameplay mod. Original gameplay-mod minimum versions are `0.0.0`: the mod must be present,
 but this does not assert a specific tested release.
 
 Chef's Tricks and Meals Module also require `expandedfoods` and
@@ -40,6 +41,11 @@ Foods content and quest prerequisites, including `make-breadcrumbs`,
 `crack-egg`, `make-brine`, `make-mixing-bowl`, and `cut-nuggets`. Keep these
 explicit content dependencies so installing gameplay mods alone cannot leave
 dangling references. Original chapter-level `requiresMod` gates are unchanged.
+
+Better Husbandry is a new source-checked integration, not an extracted original. It requires
+`betterhusbandry >= 1.4.0`, with optional chapter gates for Welfare and Wool/ShearLib.
+Its 11 records comprise seven new manual observations and four page-only replacements.
+See the [source/config evidence and quest map](betterhusbandry-evidence.md).
 
 ## Preservation and asset identity
 

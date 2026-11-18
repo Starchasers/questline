@@ -1,0 +1,28 @@
+{
+    "id": "betterhusbandry-wool",
+    "extends": "husbandry",
+    "requiresMod": [
+        "betterhusbandry",
+        "wool",
+        "shearlib",
+        "questlinewool"
+    ],
+    "quests": [
+        {
+            "id": "bh-shearing-care",
+            "pos": [
+                20,
+                2
+            ],
+            "requires": [
+                "bh-interaction-routine",
+                "shear-animal"
+            ],
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ]
+        }
+    ]
+}

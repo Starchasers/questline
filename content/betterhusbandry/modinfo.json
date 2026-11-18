@@ -1,0 +1,16 @@
+{
+    "type": "content",
+    "modid": "questlinebetterhusbandry",
+    "name": "Questline: Better Husbandry",
+    "authors": [
+        "Kuboczoch"
+    ],
+    "description": "A source-checked care journey for Better Husbandry 1.4.0, with optional Welfare and Wool guidance.",
+    "version": "0.1.0",
+    "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "betterhusbandry": "1.4.0"
+    }
+}
