@@ -1,6 +1,6 @@
 {
     "id": "bronze-age",
-    "order": 50,
+    "order": 40,
     "icon": "game:ingot-tinbronze",
     "age": true,
     "quests": [
@@ -8,7 +8,7 @@
             "id": "make-prospecting-pick",
             "pos": [
                 0,
-                3.0
+                0.0
             ],
             "requires": "first-smithing",
             "tasks": [
@@ -26,10 +26,32 @@
             ]
         },
         {
-            "id": "find-tin",
+            "id": "find-lead",
             "pos": [
                 2,
                 0.0
+            ],
+            "requires": "make-prospecting-pick",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:nugget-galena",
+                    "count": 10
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:charcoal",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "id": "find-tin",
+            "pos": [
+                2,
+                1.5
             ],
             "requires": "make-prospecting-pick",
             "tasks": [
@@ -44,129 +66,6 @@
                     "type": "item",
                     "item": "game:charcoal",
                     "count": 8
-                }
-            ]
-        },
-        {
-            "id": "alloy-bronze",
-            "pos": [
-                4,
-                0.0
-            ],
-            "requires": "find-tin",
-            "tasks": [
-                {
-                    "type": "smelt",
-                    "item": "game:ingot-tinbronze"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:charcoal",
-                    "count": 8
-                }
-            ]
-        },
-        {
-            "id": "bronze-anvil",
-            "pos": [
-                6,
-                -3.0
-            ],
-            "requires": "alloy-bronze",
-            "tasks": [
-                {
-                    "type": "smelt",
-                    "item": "game:anvil-*bronze"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:charcoal",
-                    "count": 10
-                }
-            ]
-        },
-        {
-            "id": "bronze-pickaxe",
-            "pos": [
-                6,
-                -1.5
-            ],
-            "requires": "alloy-bronze",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:pickaxe-*bronze"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "smith-bronze",
-            "pos": [
-                6,
-                0.0
-            ],
-            "requires": "alloy-bronze",
-            "shape": "gear",
-            "size": 1.25,
-            "tasks": [
-                {
-                    "type": "smith",
-                    "item": "game:*-tinbronze",
-                    "name": "questline:name-anything-tinbronze"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "choice",
-                    "options": [
-                        {
-                            "type": "item",
-                            "item": "game:charcoal",
-                            "count": 32
-                        },
-                        {
-                            "type": "item",
-                            "item": "game:ingot-tinbronze",
-                            "count": 2
-                        },
-                        {
-                            "type": "item",
-                            "item": "game:gear-rusty",
-                            "count": 8
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "bronze-axe",
-            "pos": [
-                6,
-                1.5
-            ],
-            "requires": "alloy-bronze",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:axe-felling-*bronze"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
                 }
             ]
         },
@@ -204,30 +103,6 @@
                     "type": "obtain",
                     "item": "game:nugget-sphalerite",
                     "count": 20
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "alloy-bismuth-bronze",
-            "pos": [
-                4,
-                3.0
-            ],
-            "requires": [
-                "find-bismuth",
-                "find-zinc"
-            ],
-            "tasks": [
-                {
-                    "type": "smelt",
-                    "item": "game:ingot-bismuthbronze"
                 }
             ],
             "rewards": [
@@ -283,6 +158,51 @@
             ]
         },
         {
+            "id": "alloy-bronze",
+            "pos": [
+                4,
+                1.5
+            ],
+            "requires": "find-tin",
+            "tasks": [
+                {
+                    "type": "smelt",
+                    "item": "game:ingot-tinbronze"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:charcoal",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "id": "alloy-bismuth-bronze",
+            "pos": [
+                4,
+                3.0
+            ],
+            "requires": [
+                "find-bismuth",
+                "find-zinc"
+            ],
+            "tasks": [
+                {
+                    "type": "smelt",
+                    "item": "game:ingot-bismuthbronze"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "alloy-black-bronze",
             "pos": [
                 4,
@@ -296,6 +216,108 @@
                 {
                     "type": "smelt",
                     "item": "game:ingot-blackbronze"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "bronze-anvil",
+            "pos": [
+                6,
+                1.5
+            ],
+            "requires": "alloy-bronze",
+            "tasks": [
+                {
+                    "type": "smelt",
+                    "item": "game:anvil-*bronze"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:charcoal",
+                    "count": 10
+                }
+            ]
+        },
+        {
+            "id": "bronze-pickaxe",
+            "pos": [
+                6,
+                3.0
+            ],
+            "requires": "alloy-bronze",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:pickaxe-*bronze"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "smith-bronze",
+            "pos": [
+                6,
+                4.5
+            ],
+            "requires": "alloy-bronze",
+            "shape": "gear",
+            "size": 1.25,
+            "tasks": [
+                {
+                    "type": "smith",
+                    "item": "game:*-tinbronze",
+                    "name": "questline:name-anything-tinbronze"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:charcoal",
+                            "count": 32
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:ingot-tinbronze",
+                            "count": 2
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 8
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "bronze-axe",
+            "pos": [
+                6,
+                6.0
+            ],
+            "requires": "alloy-bronze",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:axe-felling-*bronze"
                 }
             ],
             "rewards": [

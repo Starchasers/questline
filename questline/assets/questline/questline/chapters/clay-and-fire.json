@@ -30,7 +30,7 @@
             "id": "find-fireclay",
             "pos": [
                 2,
-                9.0
+                0.0
             ],
             "requires": "find-clay",
             "tasks": [
@@ -52,7 +52,7 @@
             "id": "form-bowl",
             "pos": [
                 2,
-                -1.5
+                1.5
             ],
             "requires": "find-clay",
             "tasks": [
@@ -73,7 +73,7 @@
             "id": "form-pot",
             "pos": [
                 2,
-                1.5
+                3.0
             ],
             "requires": "find-clay",
             "tasks": [
@@ -112,31 +112,10 @@
             ]
         },
         {
-            "id": "form-oven",
-            "pos": [
-                4,
-                9.0
-            ],
-            "requires": "find-fireclay",
-            "tasks": [
-                {
-                    "type": "clayform",
-                    "item": "game:clayoven-north"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:firewood",
-                    "count": 8
-                }
-            ]
-        },
-        {
             "id": "fire-pottery",
             "pos": [
                 4,
-                0.0
+                3.0
             ],
             "requires": [
                 "form-bowl",
@@ -179,48 +158,10 @@
             ]
         },
         {
-            "id": "place-oven",
-            "pos": [
-                6,
-                9.0
-            ],
-            "requires": "form-oven",
-            "shape": "gear",
-            "size": 1.25,
-            "tasks": [
-                {
-                    "type": "place",
-                    "block": "game:clayoven-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "choice",
-                    "options": [
-                        {
-                            "type": "item",
-                            "item": "game:firewood",
-                            "count": 24
-                        },
-                        {
-                            "type": "item",
-                            "item": "game:seeds-rye",
-                            "count": 6
-                        },
-                        {
-                            "type": "item",
-                            "item": "game:gear-rusty",
-                            "count": 4
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "id": "make-bricks",
             "pos": [
                 6,
-                -3.0
+                4.5
             ],
             "requires": "fire-pottery",
             "tasks": [
@@ -247,7 +188,7 @@
             "id": "make-jug",
             "pos": [
                 6,
-                -1.5
+                6.0
             ],
             "requires": "fire-pottery",
             "tasks": [
@@ -268,7 +209,7 @@
             "id": "make-watering-can",
             "pos": [
                 6,
-                1.5
+                7.5
             ],
             "requires": "fire-pottery",
             "tasks": [
@@ -282,6 +223,93 @@
                     "type": "item",
                     "item": "game:seeds-turnip",
                     "count": 2
+                }
+            ]
+        },
+        {
+            "id": "make-planter",
+            "pos": [
+                6,
+                9.0
+            ],
+            "requires": "fire-pottery",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:clayplanter-*-fired"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:seeds-cabbage",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "id": "form-crucible",
+            "pos": [
+                6,
+                10.5
+            ],
+            "requires": "fire-pottery",
+            "tasks": [
+                {
+                    "type": "clayform",
+                    "item": "game:crucible-*-raw"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:firewood",
+                    "count": 6
+                }
+            ]
+        },
+        {
+            "id": "form-mold",
+            "pos": [
+                6,
+                12.0
+            ],
+            "requires": "fire-pottery",
+            "tasks": [
+                {
+                    "type": "clayform",
+                    "item": "game:toolmold-*-raw-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:firewood",
+                    "count": 6
+                }
+            ]
+        },
+        {
+            "id": "place-vessel",
+            "pos": [
+                6,
+                13.5
+            ],
+            "requires": [
+                "form-vessel",
+                "fire-pottery"
+            ],
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:storagevessel-*-fired"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
                 }
             ]
         },
@@ -308,55 +336,10 @@
             ]
         },
         {
-            "id": "make-planter",
-            "pos": [
-                6,
-                4.5
-            ],
-            "requires": "fire-pottery",
-            "tasks": [
-                {
-                    "type": "place",
-                    "block": "game:clayplanter-*-fired"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:seeds-cabbage",
-                    "count": 2
-                }
-            ]
-        },
-        {
-            "id": "place-vessel",
-            "pos": [
-                6,
-                6.0
-            ],
-            "requires": [
-                "form-vessel",
-                "fire-pottery"
-            ],
-            "tasks": [
-                {
-                    "type": "place",
-                    "block": "game:storagevessel-*-fired"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
             "id": "make-shingles",
             "pos": [
                 8,
-                -3.0
+                4.5
             ],
             "requires": "make-bricks",
             "tasks": [
@@ -371,6 +354,51 @@
                     "type": "item",
                     "item": "game:gear-rusty",
                     "count": 1
+                }
+            ]
+        },
+        {
+            "id": "fire-metalwork",
+            "pos": [
+                8,
+                12.0
+            ],
+            "requires": [
+                "form-crucible",
+                "form-mold"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:crucible-*-fired"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:charcoal",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "form-ingot-mold",
+            "pos": [
+                10,
+                12.0
+            ],
+            "requires": "fire-metalwork",
+            "tasks": [
+                {
+                    "type": "clayform",
+                    "item": "game:ingotmold-*-raw"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:charcoal",
+                    "count": 4
                 }
             ]
         }

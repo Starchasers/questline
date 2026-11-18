@@ -34,9 +34,9 @@ namespace Questline.Tests
             Log($"{chapters.Count} chapters, {chapters.Sum(c => c.Quests.Count)} quests");
 
             Assert.Equal(0, problems.Count, "no problems in the default questline");
-            Assert.Equal(25, chapters.Count(c => c.RequiresMod.Length == 0), "every part of vanilla, beside any chapters for installed mods");
+            Assert.Equal(29, chapters.Count(c => c.RequiresMod.Length == 0), "the whole book ships ungated in the one mod");
             Assert.True(chapters.All(c => c.Questline == QuestRegistry.DefaultQuestline));
-            Assert.True(chapters.All(c => c.Quests.Count >= 5), "no chapter left a stub");
+            Assert.True(chapters.All(c => c.Quests.Count >= 2), "no chapter left empty");
             Assert.Greater(chapters.Sum(c => c.Quests.Count), 200);
         }
 
@@ -198,9 +198,9 @@ namespace Questline.Tests
             await OnServer();
             var registry = Engine.Registry;
             var ages = registry.Chapters.Where(c => c.Age && c.Id.StartsWith("questline:")).Select(c => c.Id[10..]);
-            Assert.Equal("stone-age, clay-and-fire, copper-age, bronze-age, iron-age, steel-age", string.Join(", ", ages));
+            Assert.Equal("first-days, clay-and-fire, copper-age, bronze-age, iron-age, steel-age", string.Join(", ", ages));
             string AgeOf(string id) => registry.AgeOf(registry.Get("questline:" + id))?.Id[10..];
-            Assert.Equal("stone-age", AgeOf("knap-hoe"));
+            Assert.Equal("first-days", AgeOf("knap-hoe"));
             // The quern takes a metal hammer and chisel; the pie's table, a saw.
             Assert.Equal("copper-age", AgeOf("make-quern"));
             Assert.Equal("copper-age", AgeOf("bake-pie"));

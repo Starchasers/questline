@@ -1,6 +1,6 @@
 {
     "id": "waterways",
-    "order": 85,
+    "order": 530,
     "icon": "game:fishingpole-simple-wood",
     "quests": [
         {
@@ -46,101 +46,10 @@
             ]
         },
         {
-            "id": "bait-pole",
-            "pos": [
-                2,
-                1.5
-            ],
-            "requires": [
-                "make-fishing-pole",
-                "make-wormgrunter"
-            ],
-            "tasks": [
-                {
-                    "type": "craft",
-                    "item": "game:fishingpole-simple-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:fishingbait-redmeat",
-                    "count": 4
-                }
-            ]
-        },
-        {
-            "id": "catch-fish",
-            "pos": [
-                4,
-                1.5
-            ],
-            "requires": "bait-pole",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:fishraw-*",
-                    "count": 3,
-                    "name": "questline:name-any-raw-fish"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:fishingbait-poultry",
-                    "count": 4
-                }
-            ]
-        },
-        {
-            "id": "fillet-fish",
-            "pos": [
-                6,
-                1.5
-            ],
-            "requires": "catch-fish",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:fish-raw",
-                    "count": 4
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "cook-fish",
-            "pos": [
-                8,
-                1.5
-            ],
-            "requires": "fillet-fish",
-            "tasks": [
-                {
-                    "type": "cook",
-                    "item": "game:fish-cooked",
-                    "count": 4
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
             "id": "make-oar",
             "pos": [
                 0,
-                4.5
+                3.0
             ],
             "requires": "make-rope",
             "tasks": [
@@ -161,7 +70,7 @@
             "id": "make-raft",
             "pos": [
                 0,
-                6.0
+                4.5
             ],
             "requires": "make-rope",
             "tasks": [
@@ -179,35 +88,10 @@
             ]
         },
         {
-            "id": "ride-raft",
-            "pos": [
-                2,
-                4.5
-            ],
-            "requires": [
-                "make-oar",
-                "make-raft"
-            ],
-            "tasks": [
-                {
-                    "type": "mount",
-                    "entity": "game:boat-raft-*"
-                }
-            ],
-            "icon": "game:boat-raft-oak",
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
             "id": "make-rollers",
             "pos": [
                 0,
-                7.5
+                6.0
             ],
             "requires": "chop-wood",
             "tasks": [
@@ -229,7 +113,7 @@
             "id": "make-plumb-square",
             "pos": [
                 0,
-                9.0
+                7.5
             ],
             "requires": "make-rope",
             "tasks": [
@@ -248,10 +132,82 @@
             ]
         },
         {
+            "id": "bait-pole",
+            "pos": [
+                2,
+                0.0
+            ],
+            "requires": [
+                "make-fishing-pole",
+                "make-wormgrunter"
+            ],
+            "tasks": [
+                {
+                    "type": "craft",
+                    "item": "game:fishingpole-simple-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:fishingbait-redmeat",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "ride-raft",
+            "pos": [
+                2,
+                3.0
+            ],
+            "requires": [
+                "make-oar",
+                "make-raft"
+            ],
+            "tasks": [
+                {
+                    "type": "mount",
+                    "entity": "game:boat-raft-*"
+                }
+            ],
+            "icon": "game:boat-raft-oak",
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "catch-fish",
+            "pos": [
+                4,
+                0.0
+            ],
+            "requires": "bait-pole",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:fishraw-*",
+                    "count": 3,
+                    "name": "questline:name-any-raw-fish"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:fishingbait-poultry",
+                    "count": 4
+                }
+            ]
+        },
+        {
             "id": "build-sailboat",
             "pos": [
                 4,
-                7.5
+                6.0
             ],
             "shape": "gear",
             "size": 1.25,
@@ -288,6 +244,28 @@
                             "count": 12
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "id": "fillet-fish",
+            "pos": [
+                6,
+                0.0
+            ],
+            "requires": "catch-fish",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:fish-raw",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
                 }
             ]
         },
@@ -344,6 +322,34 @@
                 {
                     "type": "obtain",
                     "item": "game:anchor-stone"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "cook-fish",
+            "pos": [
+                8,
+                0.0
+            ],
+            "requires": "fillet-fish",
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "cook-fish-expandedfoods"
+                }
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:fish-cooked",
+                    "count": 4
                 }
             ],
             "rewards": [

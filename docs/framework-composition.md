@@ -97,8 +97,8 @@ the loader rather than substituting regex assertions. Coverage includes:
 
 - Exhaustive small discovery/conflict permutations and discovery under two cultures.
 - Inactive extensions, stable duplicate diagnostics, editor precedence, and qualified cross-addon links.
-- 12 seeded shuffles of all 49 shipped chapter files.
-- All **16 intentional base-to-one-extension replacements** in the real content, including tasks, prose, and prerequisites.
+- 12 seeded shuffles of all 29 shipped chapter files.
+- The shipped book as a whole: 29 chapters, 415 quests, no extension files.
 
 Game existence/lang lookups use permissive mocks. This verifies composition,
 not a native client/server or full gameplay smoke test.

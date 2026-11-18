@@ -78,7 +78,7 @@ namespace Questline.Tests
         {
             await OnClient();
             Book.ForgetViews();
-            Book.SelectChapter("questline:stone-age");
+            Book.SelectChapter("questline:first-days");
             await VsTestkit.Testing.Gui.WaitFor<GuiDialogQuestBook>();
             await Snap("1-stone-age");
             Book.TryClose();
@@ -89,7 +89,7 @@ namespace Questline.Tests
         {
             await OnClient();
             Book.ForgetViews();
-            Book.SelectChapter("questline:stone-age");
+            Book.SelectChapter("questline:first-days");
             Book.SelectQuest("questline:make-spear");
             await VsTestkit.Testing.Gui.WaitFor<GuiDialogQuestBook>();
             await Snap("2-quest");
@@ -173,7 +173,7 @@ namespace Questline.Tests
             if (!Engine.Registry.Quests.ContainsKey("questline:make-mixing-bowl")) { Log("Expanded Foods isn't installed"); return; }
             await OnClient();
             Book.ForgetViews();
-            Book.SelectChapter("questline:kitchen");
+            Book.SelectChapter("questline:cooking");
             Book.SelectQuest("questline:make-mixing-bowl");
             await VsTestkit.Testing.Gui.WaitFor<GuiDialogQuestBook>();
             await Snap("8-expanded-foods");

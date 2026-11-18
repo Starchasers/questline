@@ -1,45 +1,30 @@
 {
     "id": "mechanical-power",
-    "order": 55,
+    "order": 150,
     "icon": "game:windmillrotor-wood-north",
     "quests": [
         {
-            "id": "tap-resin",
+            "id": "make-sails",
             "pos": [
                 0,
                 0.0
             ],
-            "requires": "chop-wood",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:resin",
-                    "count": 4
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "make-sails",
-            "pos": [
-                6,
-                -1.5
-            ],
             "requires": [
                 "make-linen",
-                "make-boards"
+                "make-boards",
+                "make-needle"
             ],
             "tasks": [
                 {
                     "type": "obtain",
                     "item": "game:sail",
                     "count": 4
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-sails-tailorsdelight"
                 }
             ],
             "rewards": [
@@ -54,7 +39,7 @@
             "id": "smith-pulverizer-metal",
             "pos": [
                 0,
-                4.5
+                1.5
             ],
             "requires": "smith-bronze",
             "tasks": [
@@ -80,7 +65,7 @@
             "id": "form-helve-mold",
             "pos": [
                 0,
-                7.5
+                3.0
             ],
             "requires": [
                 "form-mold",
@@ -103,8 +88,8 @@
         {
             "id": "make-rotor",
             "pos": [
-                2,
-                -1.5
+                0,
+                4.5
             ],
             "requires": [
                 "tap-resin",
@@ -127,8 +112,8 @@
         {
             "id": "make-axle",
             "pos": [
-                2,
-                0.0
+                0,
+                6.0
             ],
             "requires": "melt-fat",
             "tasks": [
@@ -149,8 +134,8 @@
         {
             "id": "make-gears",
             "pos": [
-                2,
-                1.5
+                0,
+                7.5
             ],
             "requires": [
                 "tap-resin",
@@ -176,7 +161,7 @@
             "id": "cast-helve-head",
             "pos": [
                 2,
-                7.5
+                3.0
             ],
             "requires": "form-helve-mold",
             "tasks": [
@@ -194,60 +179,9 @@
             ]
         },
         {
-            "id": "build-windmill",
-            "pos": [
-                4,
-                -1.5
-            ],
-            "requires": "make-rotor",
-            "tasks": [
-                {
-                    "type": "place",
-                    "block": "game:windmillrotor-wood-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "connect-power",
-            "pos": [
-                6,
-                0.0
-            ],
-            "requires": [
-                "build-windmill",
-                "make-axle",
-                "make-gears"
-            ],
-            "tasks": [
-                {
-                    "type": "place",
-                    "block": "game:woodenaxle-*",
-                    "count": 4
-                },
-                {
-                    "type": "place",
-                    "block": "game:angledgears-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
             "id": "make-pulverizer-parts",
             "pos": [
-                4,
+                2,
                 4.5
             ],
             "requires": [
@@ -274,10 +208,31 @@
             ]
         },
         {
+            "id": "build-windmill",
+            "pos": [
+                2,
+                6.0
+            ],
+            "requires": "make-rotor",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:windmillrotor-wood-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "make-helve",
             "pos": [
                 4,
-                7.5
+                3.0
             ],
             "requires": "cast-helve-head",
             "tasks": [
@@ -295,16 +250,25 @@
             ]
         },
         {
-            "id": "build-grinding-wheel",
+            "id": "connect-power",
             "pos": [
-                8,
-                -1.5
+                4,
+                6.0
             ],
-            "requires": "connect-power",
+            "requires": [
+                "build-windmill",
+                "make-axle",
+                "make-gears"
+            ],
             "tasks": [
                 {
                     "type": "place",
-                    "block": "game:grindingwheel-*"
+                    "block": "game:woodenaxle-*",
+                    "count": 4
+                },
+                {
+                    "type": "place",
+                    "block": "game:angledgears-*"
                 }
             ],
             "rewards": [
@@ -318,8 +282,8 @@
         {
             "id": "power-quern",
             "pos": [
-                8,
-                0.0
+                6,
+                3.0
             ],
             "requires": [
                 "connect-power",
@@ -340,56 +304,10 @@
             ]
         },
         {
-            "id": "build-large-gear",
-            "pos": [
-                8,
-                1.5
-            ],
-            "requires": "connect-power",
-            "tasks": [
-                {
-                    "type": "place",
-                    "block": "game:largegear3"
-                }
-            ],
-            "icon": "game:largegearsection-wood",
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "make-pulverizer",
-            "pos": [
-                8,
-                3.0
-            ],
-            "requires": [
-                "connect-power",
-                "make-pulverizer-parts"
-            ],
-            "tasks": [
-                {
-                    "type": "place",
-                    "block": "game:pulverizerframe-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
             "id": "build-helve-hammer",
             "pos": [
-                8,
-                7.5
+                6,
+                4.5
             ],
             "requires": [
                 "make-helve",
@@ -431,19 +349,64 @@
             ]
         },
         {
-            "id": "crush-quartz",
+            "id": "make-pulverizer",
             "pos": [
-                10,
-                3.0
+                6,
+                6.0
             ],
-            "requires": "make-pulverizer",
+            "requires": [
+                "connect-power",
+                "make-pulverizer-parts"
+            ],
             "tasks": [
                 {
-                    "type": "obtain",
-                    "item": "game:crushed-quartz",
-                    "count": 4
+                    "type": "place",
+                    "block": "game:pulverizerframe-*"
                 }
             ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "build-grinding-wheel",
+            "pos": [
+                6,
+                7.5
+            ],
+            "requires": "connect-power",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:grindingwheel-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "build-large-gear",
+            "pos": [
+                6,
+                9.0
+            ],
+            "requires": "connect-power",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:largegear3"
+                }
+            ],
+            "icon": "game:largegearsection-wood",
             "rewards": [
                 {
                     "type": "item",

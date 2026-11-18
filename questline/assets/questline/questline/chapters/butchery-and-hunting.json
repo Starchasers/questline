@@ -1,0 +1,97 @@
+{
+    "id": "butchery-and-hunting",
+    "order": 250,
+    "icon": "game:poultry-cooked",
+    "quests": [
+        {
+            "id": "make-cleaver",
+            "pos": [
+                0,
+                0.0
+            ],
+            "requires": "first-smithing",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:cleaver-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "first-hunt",
+            "pos": [
+                0,
+                1.5
+            ],
+            "requires": "make-spear",
+            "tasks": [
+                {
+                    "type": "kill",
+                    "entity": "game:chicken-*"
+                }
+            ],
+            "icon": "game:spear-generic-flint",
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:drygrass",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "melt-fat",
+            "pos": [
+                2,
+                1.5
+            ],
+            "requires": [
+                "first-hunt",
+                "cook-meal"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:fat-rendered",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "get-hide",
+            "pos": [
+                2,
+                3.0
+            ],
+            "requires": "first-hunt",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:hide-raw-*",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        }
+    ]
+}

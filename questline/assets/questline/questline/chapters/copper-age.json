@@ -1,6 +1,6 @@
 {
     "id": "copper-age",
-    "order": 40,
+    "order": 30,
     "icon": "game:ingot-copper",
     "age": true,
     "quests": [
@@ -8,7 +8,7 @@
             "id": "make-pan",
             "pos": [
                 0,
-                -1.5
+                0.0
             ],
             "requires": "make-knife",
             "tasks": [
@@ -29,7 +29,7 @@
             "id": "make-charcoal",
             "pos": [
                 0,
-                0.0
+                1.5
             ],
             "requires": "chop-wood",
             "tasks": [
@@ -51,7 +51,7 @@
             "id": "find-copper",
             "pos": [
                 0,
-                1.5
+                3.0
             ],
             "requires": "fire-pottery",
             "tasks": [
@@ -70,52 +70,10 @@
             ]
         },
         {
-            "id": "form-crucible",
-            "pos": [
-                0,
-                3.0
-            ],
-            "requires": "fire-pottery",
-            "tasks": [
-                {
-                    "type": "clayform",
-                    "item": "game:crucible-*-raw"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:firewood",
-                    "count": 6
-                }
-            ]
-        },
-        {
-            "id": "form-mold",
-            "pos": [
-                0,
-                4.5
-            ],
-            "requires": "fire-pottery",
-            "tasks": [
-                {
-                    "type": "clayform",
-                    "item": "game:toolmold-*-raw-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:firewood",
-                    "count": 6
-                }
-            ]
-        },
-        {
             "id": "make-tongs",
             "pos": [
                 0,
-                6.0
+                4.5
             ],
             "requires": "make-rope",
             "tasks": [
@@ -133,33 +91,9 @@
             ]
         },
         {
-            "id": "fire-metalwork",
-            "pos": [
-                2,
-                3.0
-            ],
-            "requires": [
-                "form-crucible",
-                "form-mold"
-            ],
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:crucible-*-fired"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:charcoal",
-                    "count": 4
-                }
-            ]
-        },
-        {
             "id": "cast-tool",
             "pos": [
-                4,
+                2,
                 3.0
             ],
             "requires": [
@@ -184,31 +118,10 @@
             ]
         },
         {
-            "id": "form-ingot-mold",
-            "pos": [
-                4,
-                6.0
-            ],
-            "requires": "fire-metalwork",
-            "tasks": [
-                {
-                    "type": "clayform",
-                    "item": "game:ingotmold-*-raw"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:charcoal",
-                    "count": 4
-                }
-            ]
-        },
-        {
             "id": "make-pickaxe",
             "pos": [
-                6,
-                0.0
+                4,
+                3.0
             ],
             "requires": "cast-tool",
             "tasks": [
@@ -228,8 +141,8 @@
         {
             "id": "cast-axe",
             "pos": [
-                6,
-                1.5
+                4,
+                4.5
             ],
             "requires": "cast-tool",
             "tasks": [
@@ -249,8 +162,8 @@
         {
             "id": "make-hammer",
             "pos": [
-                6,
-                4.5
+                4,
+                6.0
             ],
             "requires": "cast-tool",
             "tasks": [
@@ -270,8 +183,8 @@
         {
             "id": "cast-ingot",
             "pos": [
-                6,
-                6.0
+                4,
+                7.5
             ],
             "requires": [
                 "form-ingot-mold",
@@ -292,10 +205,31 @@
             ]
         },
         {
+            "id": "make-shovel",
+            "pos": [
+                4,
+                9.0
+            ],
+            "requires": "cast-tool",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:shovel-copper"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "build-forge",
             "pos": [
-                8,
-                0.0
+                6,
+                3.0
             ],
             "requires": "make-pickaxe",
             "tasks": [
@@ -315,8 +249,8 @@
         {
             "id": "cast-anvil",
             "pos": [
-                8,
-                6.0
+                6,
+                7.5
             ],
             "requires": "cast-ingot",
             "tasks": [
@@ -336,8 +270,8 @@
         {
             "id": "first-smithing",
             "pos": [
-                10,
-                3.0
+                8,
+                6.0
             ],
             "requires": [
                 "build-forge",
@@ -377,10 +311,52 @@
             ]
         },
         {
+            "id": "make-nails",
+            "pos": [
+                10,
+                6.0
+            ],
+            "requires": "first-smithing",
+            "tasks": [
+                {
+                    "type": "smith",
+                    "item": "game:metalnailsandstrips-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-chisel",
+            "pos": [
+                10,
+                7.5
+            ],
+            "requires": "first-smithing",
+            "tasks": [
+                {
+                    "type": "smith",
+                    "item": "game:chisel-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "make-saw",
             "pos": [
-                12,
-                0.0
+                10,
+                9.0
             ],
             "requires": "first-smithing",
             "tasks": [
@@ -400,8 +376,8 @@
         {
             "id": "smith-knife",
             "pos": [
-                12,
-                1.5
+                10,
+                10.5
             ],
             "requires": "first-smithing",
             "tasks": [
@@ -421,8 +397,8 @@
         {
             "id": "make-scythe",
             "pos": [
-                12,
-                4.5
+                10,
+                12.0
             ],
             "requires": "first-smithing",
             "tasks": [
@@ -440,16 +416,19 @@
             ]
         },
         {
-            "id": "make-shovel",
+            "id": "build-chest",
             "pos": [
-                6,
-                -1.5
+                12,
+                6.0
             ],
-            "requires": "cast-tool",
+            "requires": [
+                "make-boards",
+                "make-nails"
+            ],
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:shovel-copper"
+                    "item": "game:chest-*"
                 }
             ],
             "rewards": [

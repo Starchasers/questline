@@ -1,0 +1,702 @@
+{
+    "id": "materials-and-ceramics",
+    "order": 130,
+    "icon": "game:glass-plain",
+    "quests": [
+        {
+            "id": "grind-lime",
+            "pos": [
+                0,
+                0.0
+            ],
+            "requires": "make-quern",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:lime",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "crush-quartz",
+            "pos": [
+                0,
+                1.5
+            ],
+            "requires": "make-pulverizer",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:crushed-quartz",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "crush-alum",
+            "pos": [
+                0,
+                3.0
+            ],
+            "requires": "make-pulverizer",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:crushed-alum"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "cut-small-bricks",
+            "pos": [
+                0,
+                4.5
+            ],
+            "requires": "lay-stone-bricks",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:smallstonebrick-*",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "form-clay-tiles",
+            "pos": [
+                0,
+                6.0
+            ],
+            "requires": "fire-pottery",
+            "tasks": [
+                {
+                    "type": "clayform",
+                    "item": "bricklayers:clayrawtile-raw-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:firewood",
+                    "count": 6
+                }
+            ]
+        },
+        {
+            "id": "gather-porcelain-powders",
+            "pos": [
+                0,
+                7.5
+            ],
+            "requires": [
+                "make-pulverizer",
+                "make-quern"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "em:powdered-ore-boneash",
+                    "count": 12
+                },
+                {
+                    "type": "obtain",
+                    "item": "em:powdered-stone-granite",
+                    "count": 8
+                },
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:powdered-ceramic-light",
+                    "count": 7
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "burn-quicklime",
+            "pos": [
+                2,
+                0.0
+            ],
+            "requires": "grind-lime",
+            "tasks": [
+                {
+                    "type": "cook",
+                    "item": "game:quicklime",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:firewood",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "id": "grind-quartz-powder",
+            "pos": [
+                2,
+                1.5
+            ],
+            "requires": [
+                "crush-quartz",
+                "make-quern"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "em:powdered-ore-quartz",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:lime",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "lay-small-bricks",
+            "pos": [
+                2,
+                4.5
+            ],
+            "requires": "cut-small-bricks",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:smallstonebricks-*",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:mortar",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "id": "fire-clay-tiles",
+            "pos": [
+                2,
+                6.0
+            ],
+            "requires": "form-clay-tiles",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:clayrawtile-burnt-*",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "mix-porcelain",
+            "pos": [
+                2,
+                7.5
+            ],
+            "requires": "gather-porcelain-powders",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:clay-white"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:firewood",
+                    "count": 12
+                }
+            ]
+        },
+        {
+            "id": "slake-lime",
+            "pos": [
+                4,
+                0.0
+            ],
+            "requires": [
+                "burn-quicklime",
+                "make-barrel"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:slakedlimeportion",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-plaster",
+            "pos": [
+                4,
+                1.5
+            ],
+            "requires": "burn-quicklime",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:plaster-*",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "mix-frit",
+            "pos": [
+                4,
+                3.0
+            ],
+            "requires": [
+                "grind-quartz-powder",
+                "grind-lime"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:frit-mix-*",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:charcoal",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "id": "mix-glazing-base",
+            "pos": [
+                4,
+                4.5
+            ],
+            "requires": [
+                "grind-quartz-powder",
+                "make-barrel"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:glazingbase-clear",
+                    "count": 6
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:clay-blue",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "id": "fire-porcelain",
+            "pos": [
+                4,
+                7.5
+            ],
+            "requires": "mix-porcelain",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:porcelainbowl-burnt-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "mix-mortar",
+            "pos": [
+                6,
+                0.0
+            ],
+            "requires": "slake-lime",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:mortar",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "bake-frit",
+            "pos": [
+                6,
+                3.0
+            ],
+            "requires": "mix-frit",
+            "tasks": [
+                {
+                    "type": "cook",
+                    "item": "bricklayers:frit-baked-*",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "mix-tile-cement",
+            "pos": [
+                8,
+                0.0
+            ],
+            "requires": "mix-mortar",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:cement-tile",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "grind-frit",
+            "pos": [
+                8,
+                3.0
+            ],
+            "requires": "bake-frit",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:frit-ground-*",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:ore-quartz",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "id": "lay-stone-tiles",
+            "pos": [
+                10,
+                0.0
+            ],
+            "requires": "mix-tile-cement",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:stonetiles-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:lime",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "lay-clay-tiles",
+            "pos": [
+                10,
+                3.0
+            ],
+            "requires": [
+                "mix-tile-cement",
+                "fire-clay-tiles"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:claytiles-*",
+                    "name": "questline:name-any-clay-tiles"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-colored-glass",
+            "pos": [
+                10,
+                4.5
+            ],
+            "requires": [
+                "grind-frit",
+                "build-bloomery"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:glassbatch-plain-*",
+                    "count": 8
+                },
+                {
+                    "type": "smelt",
+                    "item": "game:@glass-(green|blue|violet|red|yellow|brown|pink)",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "mix-glazing",
+            "pos": [
+                10,
+                6.0
+            ],
+            "requires": [
+                "mix-glazing-base",
+                "grind-frit"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:glazing-clear-*",
+                    "count": 6
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-polishing-set",
+            "pos": [
+                12,
+                0.0
+            ],
+            "requires": [
+                "lay-stone-tiles",
+                "make-leather"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:polishingset-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "glaze-bowl",
+            "pos": [
+                12,
+                6.0
+            ],
+            "requires": "mix-glazing",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:glazedbowl-burnt-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "polish-tiles",
+            "pos": [
+                14,
+                0.0
+            ],
+            "requires": "make-polishing-set",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:stonerawtileshiny-*",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "glaze-bricks",
+            "pos": [
+                14,
+                3.0
+            ],
+            "requires": [
+                "glaze-bowl",
+                "mix-mortar"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:glazedbricks-*",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "glaze-planter",
+            "pos": [
+                14,
+                6.0
+            ],
+            "requires": [
+                "glaze-bowl",
+                "make-planter"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "bricklayers:glazedplanter-burnt-*"
+                }
+            ],
+            "shape": "gear",
+            "size": 1.25,
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:charcoal",
+                            "count": 32
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:ore-quartz",
+                            "count": 16
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 8
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

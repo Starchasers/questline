@@ -173,32 +173,19 @@ Test("same-domain working filenames use last ordinal winner regardless of creati
         } finally { if (Directory.Exists(dir)) Directory.Delete(dir, true); }
     }
 });
-Test("all 16 shipped base-to-extension replacements survive shuffled real content composition", () => {
+Test("the shipped single-mod book loads whole and is stable under shuffled discovery", () => {
     string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
     var files = Directory.GetFiles(Path.Combine(root, "questline", "assets"), "*.json", SearchOption.AllDirectories)
         .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
         .Select(f => (Domain: new DirectoryInfo(Path.GetDirectoryName(f)).Parent.Parent.Name, Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
-    Check(files.Length == 49, $"expected 49 shipped chapter files, got {files.Length}");
+    Check(files.Length == 29, $"expected 29 shipped chapter files, got {files.Length}");
     var baseline = Load(files);
-    var qualified = files.Select(f => {
-        var c = JsonConvert.DeserializeObject<ChapterDef>(f.Json);
-        typeof(QuestLoader).GetMethod("Qualify", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(baseline.Loader, [c, f.Domain, f.Name]);
-        if (c.Extends != null && !c.Extends.Contains(':')) c.Extends = f.Domain + ":" + c.Extends;
-        return c;
-    }).ToArray();
-    var bases = qualified.Where(c => c.Extends == null).ToDictionary(c => c.Id);
-    var replacements = qualified.Where(c => c.Extends != null).SelectMany(c => c.Quests
-        .Where(q => bases[c.Extends].Quests.Any(b => b.Id == q.Id))).ToArray();
-    Check(replacements.Length == 16, $"expected 16 intentional replacements, got {replacements.Length}");
+    var chapters = files.Select(f => JsonConvert.DeserializeObject<ChapterDef>(f.Json)).ToArray();
+    Check(chapters.All(c => c.Extends == null), "the single book ships no extension files");
+    Check(baseline.Registry.Chapters.Count == 29, $"expected 29 chapters, got {baseline.Registry.Chapters.Count}");
+    int quests = baseline.Registry.Chapters.Sum(c => c.Quests.Count);
+    Check(quests == 415, $"expected 415 quests, got {quests}");
     Check(!baseline.Loader.Problems.Any(p => p.Contains("ambiguous extension")), "shipped content has composition conflicts");
-    foreach (var q in replacements) {
-        var actual = baseline.Registry.Get(q.Id);
-        Check(actual != null, "lost shipped replacement " + q.Id);
-        // Payout normalization belongs to a separate contract; compare teaching mechanics here.
-        Check(JsonConvert.SerializeObject(actual.Tasks) == JsonConvert.SerializeObject(q.Tasks), "replacement mechanics changed: " + q.Id);
-        Check(JsonConvert.SerializeObject(actual.Page) == JsonConvert.SerializeObject(q.Page), "replacement prose changed: " + q.Id);
-        Check(JsonConvert.SerializeObject(actual.Requires) == JsonConvert.SerializeObject(q.Requires), "replacement prerequisites changed: " + q.Id);
-    }
     string snapshot = baseline.Registry.ToJson() + string.Join("\n", baseline.Loader.Problems);
     foreach (int seed in Enumerable.Range(0, 12)) {
         var rng = new Random(seed); var p = files.OrderBy(_ => rng.Next()).ToArray(); var loaded = Load(p);

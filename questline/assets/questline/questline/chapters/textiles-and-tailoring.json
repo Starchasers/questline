@@ -1,0 +1,564 @@
+{
+    "id": "textiles-and-tailoring",
+    "order": 410,
+    "icon": "game:flaxtwine",
+    "quests": [
+        {
+            "id": "spin-twine",
+            "pos": [
+                0,
+                0.0
+            ],
+            "requires": "grow-flax",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:flaxtwine",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:flaxfibers",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "make-woad-dye",
+            "pos": [
+                0,
+                1.5
+            ],
+            "requires": "make-barrel",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:dye-woad",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-yellow-dye",
+            "pos": [
+                0,
+                3.0
+            ],
+            "requires": "make-barrel",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:dye-yellow",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-pelt",
+            "pos": [
+                0,
+                4.5
+            ],
+            "requires": "melt-fat",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:hide-pelt-*",
+                    "count": 3
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "knap-awl",
+            "pos": [
+                0,
+                6.0
+            ],
+            "requires": "knap-knife",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "tailorsdelight:awl-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:bone",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "id": "wash-fleece",
+            "pos": [
+                0,
+                7.5
+            ],
+            "requires": [
+                "shear-animal",
+                "make-limewater"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "wool:fibers-*",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:lime",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "id": "make-linen",
+            "pos": [
+                2,
+                0.0
+            ],
+            "requires": "spin-twine",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:linen-*",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "dye-thread",
+            "pos": [
+                2,
+                1.5
+            ],
+            "requires": "make-woad-dye",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "tailorsdelight:twine-blue",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:flaxtwine",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "dress-warm",
+            "pos": [
+                2,
+                4.5
+            ],
+            "requires": "make-pelt",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:clothes-*fur*",
+                    "name": "questline:name-any-fur-clothing"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-needle",
+            "pos": [
+                2,
+                6.0
+            ],
+            "requires": "knap-awl",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "tailorsdelight:needle-*",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:flaxtwine",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "spin-wool",
+            "pos": [
+                2,
+                7.5
+            ],
+            "requires": "wash-fleece",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "wool:twine-wool-*",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-cloth",
+            "pos": [
+                4,
+                0.0
+            ],
+            "requires": "make-linen",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:cloth-plain",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "checkered-cloth",
+            "pos": [
+                4,
+                1.5
+            ],
+            "requires": "dye-thread",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "tailorsdelight:checkeredcloth-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-sewing-kit",
+            "pos": [
+                4,
+                3.0
+            ],
+            "requires": [
+                "spin-twine",
+                "make-needle"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:sewingkit"
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-sewing-kit-tailorsdelight"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:flaxtwine",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "weave-wool",
+            "pos": [
+                4,
+                7.5
+            ],
+            "requires": "spin-wool",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "wool:cloth-wool-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:stick",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "make-kneedles",
+            "pos": [
+                4,
+                9.0
+            ],
+            "requires": "spin-wool",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "wool:kneedle-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "sew-shirt",
+            "pos": [
+                6,
+                0.0
+            ],
+            "requires": "make-cloth",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:clothes-upperbody-*",
+                    "name": "questline:name-any-shirt"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "sew-pants",
+            "pos": [
+                6,
+                1.5
+            ],
+            "requires": "make-cloth",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:clothes-lowerbody-*",
+                    "name": "questline:name-any-trousers"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "mordant-cloth",
+            "pos": [
+                6,
+                3.0
+            ],
+            "requires": [
+                "crush-alum",
+                "make-cloth"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:cloth-mordant"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "dye-woad",
+            "pos": [
+                6,
+                4.5
+            ],
+            "requires": [
+                "make-woad-dye",
+                "make-cloth"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:cloth-blue"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "dye-wool",
+            "pos": [
+                6,
+                6.0
+            ],
+            "requires": [
+                "weave-wool",
+                "make-woad-dye"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "wool:cloth-wool-blue"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "knit-sweater",
+            "pos": [
+                6,
+                9.0
+            ],
+            "requires": [
+                "make-kneedles",
+                "spin-wool"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "wool:clothes-upperbodyover-sweater-*"
+                }
+            ],
+            "shape": "gear",
+            "size": 1.25,
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:firewood",
+                            "count": 32
+                        },
+                        {
+                            "type": "item",
+                            "item": "wool:twine-wool-plain",
+                            "count": 8
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 5
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "dye-cloth",
+            "pos": [
+                8,
+                3.0
+            ],
+            "requires": [
+                "mordant-cloth",
+                "make-yellow-dye"
+            ],
+            "shape": "gear",
+            "size": 1.25,
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:cloth-yellow"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:flaxtwine",
+                            "count": 12
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:seeds-flax",
+                            "count": 8
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 6
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

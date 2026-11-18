@@ -1,0 +1,51 @@
+{
+    "id": "overland-travel",
+    "order": 520,
+    "icon": "game:gear-temporal",
+    "quests": [
+        {
+            "id": "mine-stone",
+            "pos": [
+                0,
+                0.0
+            ],
+            "requires": "make-pickaxe",
+            "tasks": [
+                {
+                    "type": "break",
+                    "block": "game:rock-*",
+                    "count": 32
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "find-limestone",
+            "pos": [
+                2,
+                0.0
+            ],
+            "requires": "mine-stone",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:stone-limestone",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        }
+    ]
+}

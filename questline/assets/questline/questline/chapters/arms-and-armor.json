@@ -1,13 +1,13 @@
 {
     "id": "arms-and-armor",
-    "order": 90,
+    "order": 430,
     "icon": "game:bow-simple",
     "quests": [
         {
             "id": "smith-falx",
             "pos": [
                 0,
-                -1.5
+                0.0
             ],
             "requires": "first-smithing",
             "tasks": [
@@ -28,7 +28,7 @@
             "id": "knap-arrowheads",
             "pos": [
                 0,
-                0.0
+                1.5
             ],
             "requires": "gather-flint",
             "tasks": [
@@ -50,7 +50,7 @@
             "id": "make-bow",
             "pos": [
                 0,
-                1.5
+                3.0
             ],
             "requires": "make-rope",
             "tasks": [
@@ -69,10 +69,139 @@
             ]
         },
         {
+            "id": "make-sling",
+            "pos": [
+                0,
+                4.5
+            ],
+            "requires": "make-rope",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:sling"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-crude-shield",
+            "pos": [
+                0,
+                6.0
+            ],
+            "requires": "gather-sticks",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:shield-crude"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-improvised-armor",
+            "pos": [
+                0,
+                7.5
+            ],
+            "requires": [
+                "make-rope",
+                "make-knife"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:armor-body-improvised-wood"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-jerkin",
+            "pos": [
+                0,
+                9.0
+            ],
+            "requires": [
+                "make-leather",
+                "leather-strips",
+                "knap-awl",
+                "dye-thread"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:armor-body-jerkin-leather"
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-jerkin-tailorsdelight"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-gambeson",
+            "pos": [
+                0,
+                10.5
+            ],
+            "requires": [
+                "make-linen",
+                "make-buttons",
+                "strong-tannin"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:armor-body-sewn-linen"
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-gambeson-tailorsdelight"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "make-arrows",
             "pos": [
                 2,
-                0.0
+                3.0
             ],
             "requires": [
                 "knap-arrowheads",
@@ -98,7 +227,7 @@
             "id": "make-bowstave",
             "pos": [
                 2,
-                1.5
+                4.5
             ],
             "requires": [
                 "make-bow",
@@ -119,76 +248,10 @@
             ]
         },
         {
-            "id": "make-longbow",
-            "pos": [
-                4,
-                1.5
-            ],
-            "requires": [
-                "make-bowstave",
-                "make-leather"
-            ],
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:bow-long"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "make-sling",
-            "pos": [
-                0,
-                3.0
-            ],
-            "requires": "make-rope",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:sling"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "make-crude-shield",
-            "pos": [
-                0,
-                4.5
-            ],
-            "requires": "gather-sticks",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:shield-crude"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
             "id": "make-round-shield",
             "pos": [
                 2,
-                4.5
+                6.0
             ],
             "requires": [
                 "make-crude-shield",
@@ -210,34 +273,10 @@
             ]
         },
         {
-            "id": "make-improvised-armor",
-            "pos": [
-                0,
-                6.0
-            ],
-            "requires": [
-                "make-rope",
-                "make-knife"
-            ],
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:armor-body-improvised-wood"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
             "id": "make-wood-lamellar",
             "pos": [
                 2,
-                6.0
+                7.5
             ],
             "requires": [
                 "make-improvised-armor",
@@ -258,61 +297,22 @@
             ]
         },
         {
-            "id": "make-copper-lamellar",
-            "pos": [
-                4,
-                6.0
-            ],
-            "requires": [
-                "make-wood-lamellar",
-                "cast-tool"
-            ],
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:armor-body-lamellar-copper"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "make-jerkin",
-            "pos": [
-                0,
-                7.5
-            ],
-            "requires": "make-leather",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:armor-body-jerkin-leather"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
             "id": "make-leather-armor",
             "pos": [
                 2,
-                7.5
+                9.0
             ],
             "requires": "make-jerkin",
             "tasks": [
                 {
                     "type": "obtain",
                     "item": "game:armor-body-sewn-leather"
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-leather-armor-tailorsdelight"
                 }
             ],
             "rewards": [
@@ -327,7 +327,7 @@
             "id": "make-brigandine",
             "pos": [
                 2,
-                9.0
+                10.5
             ],
             "requires": [
                 "make-jerkin",
@@ -348,10 +348,65 @@
             ]
         },
         {
+            "id": "make-longbow",
+            "pos": [
+                4,
+                4.5
+            ],
+            "requires": [
+                "make-bowstave",
+                "make-leather",
+                "leather-strips"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:bow-long"
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-longbow-tailorsdelight"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-copper-lamellar",
+            "pos": [
+                4,
+                7.5
+            ],
+            "requires": [
+                "make-wood-lamellar",
+                "cast-tool"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:armor-body-lamellar-copper"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "make-chain-armor",
             "pos": [
                 4,
-                9.0
+                10.5
             ],
             "requires": "make-brigandine",
             "tasks": [
@@ -372,7 +427,7 @@
             "id": "make-scale-armor",
             "pos": [
                 6,
-                9.0
+                10.5
             ],
             "requires": "make-chain-armor",
             "tasks": [
@@ -393,7 +448,7 @@
             "id": "make-plate-armor",
             "pos": [
                 8,
-                9.0
+                10.5
             ],
             "requires": "make-scale-armor",
             "tasks": [
@@ -414,7 +469,7 @@
             "id": "make-steel-plate",
             "pos": [
                 10,
-                9.0
+                10.5
             ],
             "shape": "gear",
             "size": 1.25,
@@ -448,27 +503,6 @@
                             "count": 15
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "id": "make-gambeson",
-            "pos": [
-                0,
-                10.5
-            ],
-            "requires": "make-linen",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:armor-body-sewn-linen"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
                 }
             ]
         }
