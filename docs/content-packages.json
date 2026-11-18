@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "upstream": "9a2fd4e2b2e24046de08c7a86aff335294558939",
+  "frameworkPath": "questline",
+  "assetDomain": "questline",
+  "chapterPath": "assets/questline/questline/chapters",
+  "sharedTranslations": "questline/assets/questline/lang",
+  "packages": [
+    {
+      "key": "betterruins",
+      "path": "content/betterruins",
+      "modid": "questlinebetterruins",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "betterruins": "0.0.0"
+      },
+      "chapters": [
+        "betterruins-ruins.json"
+      ]
+    },
+    {
+      "key": "bricklayers",
+      "path": "content/bricklayers",
+      "modid": "questlinebricklayers",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "bricklayers": "0.0.0"
+      },
+      "chapters": [
+        "bricklayers-building.json",
+        "bricklayers-clay-and-fire.json",
+        "bricklayers-glass-and-kilns.json"
+      ]
+    },
+    {
+      "key": "charcoalkiln",
+      "path": "content/charcoalkiln",
+      "modid": "questlinecharcoalkiln",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "charcoalkiln": "0.0.0"
+      },
+      "chapters": [
+        "charcoalkiln-copper-age.json"
+      ]
+    },
+    {
+      "key": "efchefstricks",
+      "path": "content/efchefstricks",
+      "modid": "questlineefchefstricks",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "efchefstricks": "0.0.0",
+        "expandedfoods": "0.0.0",
+        "questlineexpandedfoods": "0.14.0"
+      },
+      "chapters": [
+        "efchefstricks-baking.json",
+        "efchefstricks-farming.json",
+        "efchefstricks-preservation.json"
+      ]
+    },
+    {
+      "key": "efmealsmodule",
+      "path": "content/efmealsmodule",
+      "modid": "questlineefmealsmodule",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "efmealsmodule": "0.0.0",
+        "expandedfoods": "0.0.0",
+        "questlineexpandedfoods": "0.14.0"
+      },
+      "chapters": [
+        "efmealsmodule-kitchen.json"
+      ]
+    },
+    {
+      "key": "expandedfoods",
+      "path": "content/expandedfoods",
+      "modid": "questlineexpandedfoods",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "expandedfoods": "0.0.0"
+      },
+      "chapters": [
+        "expandedfoods-baking.json",
+        "expandedfoods-brewing.json",
+        "expandedfoods-cheesemaking.json",
+        "expandedfoods-farming.json",
+        "expandedfoods-kitchen.json",
+        "expandedfoods-preservation.json",
+        "expandedfoods-stone-age.json",
+        "expandedfoods-waterways.json"
+      ]
+    },
+    {
+      "key": "fromgoldencombs",
+      "path": "content/fromgoldencombs",
+      "modid": "questlinefromgoldencombs",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "fromgoldencombs": "0.0.0"
+      },
+      "chapters": [
+        "fromgoldencombs-beekeeping.json"
+      ]
+    },
+    {
+      "key": "hexsmech",
+      "path": "content/hexsmech",
+      "modid": "questlinehexsmech",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "hexsmech": "0.0.0"
+      },
+      "chapters": [
+        "hexsmech-industry.json",
+        "hexsmech-mechanical-power.json"
+      ]
+    },
+    {
+      "key": "seafarer",
+      "path": "content/seafarer",
+      "modid": "questlineseafarer",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "seafarer": "0.0.0"
+      },
+      "chapters": [
+        "seafarer-provisions.json",
+        "seafarer-waterways.json",
+        "seafarer-wider-world.json"
+      ]
+    },
+    {
+      "key": "tailorsdelight",
+      "path": "content/tailorsdelight",
+      "modid": "questlinetailorsdelight",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "tailorsdelight": "0.0.0"
+      },
+      "chapters": [
+        "tailorsdelight-arms-and-armor.json",
+        "tailorsdelight-leatherwork.json",
+        "tailorsdelight-mechanical-power.json",
+        "tailorsdelight-riding.json",
+        "tailorsdelight-textiles.json"
+      ]
+    },
+    {
+      "key": "vanilla",
+      "path": "content/vanilla",
+      "modid": "questlinevanilla",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0"
+      },
+      "chapters": [
+        "arms-and-armor.json",
+        "baking.json",
+        "beekeeping.json",
+        "brewing.json",
+        "bronze-age.json",
+        "building.json",
+        "cheesemaking.json",
+        "clay-and-fire.json",
+        "copper-age.json",
+        "farming.json",
+        "glass-and-kilns.json",
+        "husbandry.json",
+        "iron-age.json",
+        "kitchen.json",
+        "leatherwork.json",
+        "mechanical-power.json",
+        "orchards.json",
+        "preservation.json",
+        "riding.json",
+        "steel-age.json",
+        "stone-age.json",
+        "textiles.json",
+        "waterways.json",
+        "wider-world.json",
+        "winter.json"
+      ]
+    },
+    {
+      "key": "wool",
+      "path": "content/wool",
+      "modid": "questlinewool",
+      "dependencies": {
+        "game": "1.22.0",
+        "questline": "0.15.0",
+        "questlinevanilla": "0.14.0",
+        "wool": "0.0.0"
+      },
+      "chapters": [
+        "wool-husbandry.json",
+        "wool-textiles.json",
+        "wool-winter.json"
+      ]
+    }
+  ]
+}

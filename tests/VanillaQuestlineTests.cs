@@ -166,32 +166,26 @@ namespace Questline.Tests
             }
         }
 
-        /// <summary>
-        /// Rusty gears are a reward now and then, not the default one; the server's GearRewards
-        /// scales every gear a quest gives, choices included, and at 0 leaves the rest standing.
-        /// </summary>
+        /// <summary>Ordinary quests and milestones expose only one tiny cookie, not resource choices.</summary>
         [VsTest(TimeoutMs = 30000)]
-        public async Task GearRewardsAreSparingAndScale()
+        public async Task QuestAndMilestoneRewardsAreOnlyCookies()
         {
             await OnServer();
-            QuestRegistry Copy() => QuestRegistry.FromJson(Engine.Registry.ToJson());
-            static int Gears(QuestRegistry r) => r.Quests.Values.Where(q => q.Id.StartsWith("questline:"))
-                .SelectMany(q => q.Rewards.SelectMany(x => x.Type == "choice" ? x.Options : [x]))
-                .Where(x => x.Item == QuestEngine.GearItem).Sum(x => x.Count);
-            var quests = Engine.Registry.Quests.Values.Where(q => q.Id.StartsWith("questline:") && q.Shape != NodeShape.Gear).ToList();
-            var generous = quests.Where(q => q.Rewards.Any(r => r.Item == QuestEngine.GearItem && r.Count > 1)).ToList();
-            foreach (var q in generous) Log("more than one gear: " + q.Id);
-            Assert.Equal(0, generous.Count, "an ordinary quest gives a gear at most");
-
-            int usual = Gears(Copy());
-            var doubled = Copy();
-            doubled.ScaleRewards(QuestEngine.GearItem, 2);
-            Assert.Equal(usual * 2, Gears(doubled));
-            var none = Copy();
-            none.ScaleRewards(QuestEngine.GearItem, 0);
-            Assert.Equal(0, Gears(none));
-            Assert.True(none.Quests.Values.Where(q => q.Id.StartsWith("questline:") && q.Shape == NodeShape.Gear).All(q => q.Rewards.Any(r => r.Type == "choice")), "milestones keep their other choices");
-            Log($"{usual} gears in the questline's rewards");
+            var rewarded = Engine.Registry.Quests.Values
+                .Where(q => q.Id.StartsWith("questline:") && q.Rewards.Count > 0).ToList();
+            Assert.True(rewarded.Count > 0, "content addon supplies rewarded quests");
+            Assert.True(rewarded.Any(q => q.Shape == NodeShape.Gear), "milestones included");
+            foreach (var quest in rewarded)
+            {
+                Assert.Equal(1, quest.Rewards.Count, quest.Id);
+                var reward = quest.Rewards.Single();
+                Assert.Equal("item", reward.Type, quest.Id);
+                Assert.Equal(RewardPolicy.CookieCode, reward.Item, quest.Id);
+                Assert.Equal(1, reward.Count, quest.Id);
+            }
+            string before = Engine.Registry.ToJson();
+            foreach (double multiplier in new[] { 0d, 0.5, 100 })
+                Assert.Equal(before, Engine.Registry.WithRewards(new QuestlineConfig { GearRewards = multiplier }).ToJson(), "legacy multiplier cannot restore resources or change cookie quantity");
         }
 
         /// <summary>

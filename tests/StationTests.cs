@@ -33,8 +33,8 @@ namespace Questline.Tests
         static FieldInfo Field(System.Type type, string name) => type.GetField(name, Any);
         static MethodInfo Method(System.Type type, string name) => type.GetMethod(name, Any);
 
-        /// <summary>The methods StationPatches patches: three more of Toolsmith's when it's installed.</summary>
-        public static int StationPatchCount(ICoreAPI api) => 10 + (api.ModLoader.IsModEnabled("toolsmith") ? 3 : 0) + StationPatches.IgniteTargets().Count();
+        /// <summary>Core station methods only; optional adapters have separate Harmony owners and tests.</summary>
+        public static int StationPatchCount(ICoreAPI api) => 10 + StationPatches.IgniteTargets().Count();
 
         static int Progress(string type) => Engine.ProgressOf(Me.PlayerUID).Find("qltest:station-" + type)?.Tasks[0] ?? 0;
 

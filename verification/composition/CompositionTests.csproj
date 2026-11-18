@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <VINTAGE_STORY Condition="'$(VINTAGE_STORY)' == ''">$(HOME)/.cairn/games/1.22.7</VINTAGE_STORY>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../questline/questline.csproj" />
+    <Reference Include="$(VINTAGE_STORY)/*.dll" />
+    <Reference Include="$(VINTAGE_STORY)/Lib/*.dll" />
+    <Reference Include="$(VINTAGE_STORY)/Mods/*.dll" />
+  </ItemGroup>
+</Project>

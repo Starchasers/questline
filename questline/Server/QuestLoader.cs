@@ -39,8 +39,13 @@ public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = n
         var active = registry.Questlines.Select(q => q.Id).ToHashSet();
 
         var chapters = new List<ChapterDef>();
-        var extensions = new List<ChapterDef>();
-        foreach (var (domain, name, json) in facts.Chapters())
+        var extensions = new List<(ChapterDef Chapter, string Source)>();
+        // Asset manager enumeration (and filesystem creation order) is not a composition contract.
+        // Keep records inside each file in their authored order; sort only discovery boundaries.
+        foreach (var (domain, name, json) in facts.Chapters()
+            .OrderBy(a => a.Domain, StringComparer.Ordinal)
+            .ThenBy(a => a.Name, StringComparer.Ordinal)
+            .ThenBy(a => a.Json, StringComparer.Ordinal))
         {
             string where = $"{domain}:questline/chapters/{name}.json";
             ChapterDef chapter;
@@ -58,7 +63,7 @@ public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = n
             if (chapter.Extends != null)
             {
                 chapter.Extends = Requirement.QualifyId(chapter.Extends, domain);
-                extensions.Add(chapter);
+                extensions.Add((chapter, where));
                 continue;
             }
             if (chapters.Any(c => c.Id == chapter.Id))
@@ -87,8 +92,8 @@ public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = n
 
         // Extensions join their chapter after the editor's copies are in, so an edited chapter
         // keeps its mods' quests; the editor itself sees only the chapter's own file.
-        var replaced = new HashSet<string>();
-        foreach (var extension in extensions)
+        var applicable = new List<(ChapterDef Extension, ChapterDef Target, string Source)>();
+        foreach (var (extension, source) in extensions)
         {
             if (!extension.RequiresMod.All(facts.IsModLoaded)) continue;
             var target = registry.Chapters.FirstOrDefault(c => c.Id == extension.Extends);
@@ -98,17 +103,40 @@ public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = n
                 Problem($"{extension.Id}: extends {extension.Extends}, which no questline has");
                 continue;
             }
-            // A quest with the id of one already in the chapter replaces it: how a mod that
-            // changes a mechanic rewrites the base quest teaching it.
+            applicable.Add((extension, target, source));
+        }
+
+        // Decide conflicts before mutating any target: neither discovery order nor a later
+        // extension may silently choose a mechanic. Scope by target chapter AND qualified id.
+        var ambiguous = applicable
+            .SelectMany(a => a.Extension.Quests.Select(q => (Target: a.Target.Id, Quest: q.Id, a.Source)))
+            .GroupBy(a => (a.Target, a.Quest))
+            .Where(g => g.Count() > 1)
+            .OrderBy(g => g.Key.Target, StringComparer.Ordinal)
+            .ThenBy(g => g.Key.Quest, StringComparer.Ordinal)
+            .ToList();
+        var blocked = ambiguous.Select(g => g.Key).ToHashSet();
+        foreach (var conflict in ambiguous)
+        {
+            bool hasBase = registry.Chapters.First(c => c.Id == conflict.Key.Target).Quests.Any(q => q.Id == conflict.Key.Quest);
+            string sources = string.Join(", ", conflict.Select(c => c.Source).OrderBy(s => s, StringComparer.Ordinal));
+            Problem($"{conflict.Key.Target}: ambiguous extension quest {conflict.Key.Quest} from {sources}; " +
+                (hasBase ? "base quest retained" : "ambiguous added quest disabled") +
+                ". Remove competing records or give additions unique qualified ids; only one extension may supply a quest per target chapter.");
+        }
+
+        foreach (var (extension, target, source) in applicable)
+        {
+            // One extension can replace a base record, in place, or append its own records.
             foreach (var quest in extension.Quests)
             {
+                if (blocked.Contains((target.Id, quest.Id))) continue;
                 int at = target.Quests.FindIndex(q => q.Id == quest.Id);
                 if (at < 0)
                 {
                     target.Quests.Add(quest);
                     continue;
                 }
-                if (!replaced.Add(quest.Id)) Problem($"{extension.Id}: {quest.Id} is replaced by more than one extension; the last one loaded wins");
                 target.Quests[at] = quest;
             }
             target.Art.AddRange(extension.Art);
@@ -138,7 +166,9 @@ public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = n
     List<QuestlineDef> LoadQuestlines()
     {
         var list = new List<QuestlineDef>();
-        foreach (var (domain, json) in facts.Questlines())
+        foreach (var (domain, json) in facts.Questlines()
+            .OrderBy(a => a.Domain, StringComparer.Ordinal)
+            .ThenBy(a => a.Json, StringComparer.Ordinal))
         {
             try
             {
@@ -206,7 +236,7 @@ public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = n
         var list = new List<ChapterDef>();
         if (workingDir == null || !Directory.Exists(workingDir)) return list;
 
-        foreach (var domainDir in Directory.GetDirectories(workingDir))
+        foreach (var domainDir in Directory.GetDirectories(workingDir).OrderBy(d => Path.GetFileName(d), StringComparer.Ordinal))
         {
             string domain = Path.GetFileName(domainDir);
             string langFile = Path.Combine(domainDir, "lang", "en.json");
@@ -227,7 +257,7 @@ public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = n
 
             string chaptersDir = Path.Combine(domainDir, "chapters");
             if (!Directory.Exists(chaptersDir)) continue;
-            foreach (var file in Directory.GetFiles(chaptersDir, "*.json").OrderBy(f => f))
+            foreach (var file in Directory.GetFiles(chaptersDir, "*.json").OrderBy(f => f, StringComparer.Ordinal))
             {
                 try
                 {
@@ -322,7 +352,12 @@ public class QuestLoader(IGameFacts facts, ILogger logger, string workingDir = n
             if (task.Name != null && !facts.HasLang(task.Name)) yield return $"{task.Type} task name {task.Name} has no lang entry";
         }
 
-        foreach (var reward in quest.Rewards)
+        // Reject the entire authored tree before normalization can hide malformed choices.
+        var rewardErrors = RewardPolicy.Errors(quest.Rewards).ToList();
+        foreach (var error in rewardErrors) yield return error;
+        if (rewardErrors.Count > 0) yield break;
+        // Validate effective payouts, not the legacy resource metadata retained in chapter JSON.
+        foreach (var reward in RewardPolicy.Apply(quest.Rewards))
         {
             if (!RewardTypes.Contains(reward.Type ?? "")) yield return $"unknown reward type '{reward.Type}'";
             else if (reward.Type == "choice" && reward.Options.Count == 0) yield return "choice reward has no options";

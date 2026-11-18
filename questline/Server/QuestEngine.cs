@@ -151,16 +151,14 @@ public partial class QuestEngine
         if (uid != null && key != null) Report(uid, "custom", new AssetLocation(key), tree.GetInt("amount", 1));
     }
 
-    /// <summary>The game's currency, which <see cref="QuestlineConfig.GearRewards"/> scales.</summary>
+    /// <summary>Legacy currency identifier retained for source compatibility; the payout policy gives cookies.</summary>
     public const string GearItem = "game:gear-rusty";
 
     /// <summary>Re-reads every chapter and resends definitions and state to everyone online.</summary>
     public void Reload()
     {
         var loader = new QuestLoader(new ServerFacts(api, Structures), api.Logger, Editor?.WorkingDir);
-        Registry = loader.Load();
-        Registry.ScaleRewards(GearItem, Config.GearRewards);
-        if (!Config.ItemRewards) Registry.RemoveItemRewards();
+        Registry = loader.Load().WithRewards(Config);
         Problems = loader.Problems;
         rawChapters = loader.RawChapters;
         edited = loader.Edited;
@@ -629,12 +627,18 @@ public partial class QuestEngine
         string uid = player.PlayerUID;
         var qp = Holder(quest, uid).Find(questId);
         if (qp?.Complete != true) return Refuse(player, $"{questId} isn't complete");
-        var claim = ClaimHolder(quest, uid).GetOrCreate(quest);
-        if (claim.Claimed) return Refuse(player, $"{questId} is already claimed");
+        var claim = ClaimHolder(quest, uid).Find(questId);
+        if (claim?.Claimed == true) return Refuse(player, $"{questId} is already claimed");
 
+        var rewardError = RewardPolicy.Errors(quest.Rewards).FirstOrDefault();
+        if (rewardError != null) return Refuse(player, $"{questId}: {rewardError}");
+
+        // Apply the same material-payout boundary as the definitions sent to clients,
+        // even for registries supplied directly by integrations.
+        var rewards = RewardPolicy.Apply(quest.Rewards, Config.ItemRewards);
         var gifts = new List<RewardDef>();
         int choiceIndex = 0;
-        foreach (var reward in quest.Rewards)
+        foreach (var reward in rewards)
         {
             if (reward.Type != "choice")
             {
@@ -645,6 +649,26 @@ public partial class QuestEngine
             choiceIndex++;
             if (pick < 0 || pick >= reward.Options.Count) return Refuse(player, $"{questId}: pick a reward first");
             gifts.Add(reward.Options[pick]);
+        }
+
+        // Resolve every selected payout before hand-ins, claim flags, or stages change.
+        // Never fall back to the authored resource if the cosmetic asset is absent.
+        var stacks = new List<ItemStack>();
+        foreach (var gift in gifts)
+        {
+            switch (gift.Type)
+            {
+                case "stage" when !string.IsNullOrWhiteSpace(gift.Stage):
+                    break;
+                case "item" when Config.ItemRewards && gift.Item == RewardPolicy.CookieCode && gift.Count == 1:
+                    var loc = new AssetLocation(gift.Item);
+                    CollectibleObject collectible = api.World.GetItem(loc) ?? (CollectibleObject)api.World.GetBlock(loc);
+                    if (collectible == null) return Refuse(player, $"{questId}: reward collectible {gift.Item} is unavailable");
+                    stacks.Add(new ItemStack(collectible, 1));
+                    break;
+                default:
+                    return Refuse(player, $"{questId}: unsupported payout '{gift.Type}'");
+            }
         }
 
         // Items to hand in go once per quest: on a shared quest, at the first claim, from
@@ -662,12 +686,11 @@ public partial class QuestEngine
         }
         qp.Consumed = true;
 
+        claim ??= ClaimHolder(quest, uid).GetOrCreate(quest);
         claim.Claimed = true;
-        foreach (var gift in gifts)
-        {
-            if (gift.Type == "stage") SetStage(StageHolder(quest, uid), gift.Stage, Sharers(quest, uid));
-            else Give(player, gift);
-        }
+        foreach (var gift in gifts.Where(g => g.Type == "stage"))
+            SetStage(StageHolder(quest, uid), gift.Stage, Sharers(quest, uid));
+        foreach (var stack in stacks) Give(player, stack);
         Touch(quest, uid);
         FlushSync();
         return null;
@@ -694,13 +717,8 @@ public partial class QuestEngine
         return count;
     }
 
-    void Give(IServerPlayer player, RewardDef reward)
+    void Give(IServerPlayer player, ItemStack stack)
     {
-        var loc = new AssetLocation(reward.Item);
-        CollectibleObject collectible = api.World.GetItem(loc) ?? (CollectibleObject)api.World.GetBlock(loc);
-        if (collectible == null) return;
-
-        var stack = new ItemStack(collectible, reward.Count);
         player.InventoryManager.TryGiveItemstack(stack, true);
         if (stack.StackSize > 0) api.World.SpawnItemEntity(stack, player.Entity.Pos.XYZ);
     }

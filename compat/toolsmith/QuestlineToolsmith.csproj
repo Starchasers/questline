@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>questlinetoolsmith</AssemblyName>
+    <VINTAGE_STORY Condition="'$(VINTAGE_STORY)' == ''">$(HOME)/.cairn/games/1.22.7</VINTAGE_STORY>
+    <OutputPath>bin/$(Configuration)/mod</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="tests/**/*.cs" />
+    <ProjectReference Include="../../questline/questline.csproj" Private="false" />
+    <Reference Include="VintagestoryAPI" HintPath="$(VINTAGE_STORY)/VintagestoryAPI.dll" Private="false" />
+    <Reference Include="0Harmony" HintPath="$(VINTAGE_STORY)/Lib/0Harmony.dll" Private="false" />
+    <Content Include="modinfo.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="LICENSE" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

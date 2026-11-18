@@ -3,3 +3,5 @@ obj/
 Releases/
 screenshots/
 tests/fixtures/Toolsmith/
+__pycache__/
+*.pyc
