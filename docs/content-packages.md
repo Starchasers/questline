@@ -1,19 +1,18 @@
 # Separately installable quest content
 
-The framework directory is `questline/`. It no longer owns any chapter files or the
-`default` questline manifest. Content package roots are listed in
-[`content-packages.json`](content-packages.json), the machine-readable packaging
-inventory. Each root contains a `modinfo.json` and `assets/` tree and must be
-packaged separately with those entries at the archive root, not a wrapping
-`content/<name>/` directory. Build-script integration is owned separately.
+Keep the framework in `questline/` and quest content in separate packages. The
+framework no longer owns chapter files or the `default` questline manifest.
+Use [`content-packages.json`](content-packages.json) as the machine-readable
+inventory of content roots. Package each root separately, with its `modinfo.json`
+and `assets/` tree at the archive root—not inside `content/<name>/`.
+Build-script integration has separate ownership.
 
 ## Installation and dependencies
 
-Install the Questline framework (`questline`, minimum `0.15.0`). For the original
-vanilla progression also install `content/vanilla` (`questlinevanilla`, minimum
-`0.14.0`). Framework-only installations intentionally have no default questline.
-Install only the integrations whose gameplay mods you use. The current inventory
-contains nine content packages: vanilla and eight optional integrations.
+Install the Questline framework (`questline`, minimum `0.15.0`). Add
+`content/vanilla` (`questlinevanilla`, minimum `0.14.0`) for the original vanilla
+progression. Framework-only installations have no default questline by design.
+The current inventory contains nine content packages: vanilla and eight optional integrations. Install optional integrations only for gameplay mods you use:
 
 | Directory | Mod ID | Chapters | Quest records |
 | --- | --- | ---: | ---: |
@@ -27,34 +26,33 @@ contains nine content packages: vanilla and eight optional integrations.
 | tailorsdelight | questlinetailorsdelight | 5 | 21 |
 | wool | questlinewool | 3 | 8 |
 
-Every package explicitly depends on `game >= 1.22.0` and `questline >= 0.15.0`.
-Every optional package also depends on `questlinevanilla >= 0.14.0` and its
-same-named gameplay mod. Gameplay mod minimum versions use `0.0.0`: presence is
-required, but no specific tested gameplay-mod release is asserted here.
+Declare `game >= 1.22.0` and `questline >= 0.15.0` in every package. Optional
+packages also depend on `questlinevanilla >= 0.14.0` and their same-named
+gameplay mod. Gameplay-mod minimum versions are `0.0.0`: the mod must be present,
+but this does not assert a specific tested release.
 
-Chef's Tricks and Meals Module additionally require both `expandedfoods` and
-`questlineexpandedfoods >= 0.14.0`: their original quests reference Expanded
-Foods content and quest prerequisites (for example `make-breadcrumbs`,
-`crack-egg`, `make-brine`, `make-mixing-bowl`, and `cut-nuggets`). Explicit
-content dependencies prevent these references dangling when only the gameplay
-mods are installed. Original chapter-level `requiresMod` gates remain untouched.
+Chef's Tricks and Meals Module also require `expandedfoods` and
+`questlineexpandedfoods >= 0.14.0`. Their original quests reference Expanded
+Foods content and quest prerequisites, including `make-breadcrumbs`,
+`crack-egg`, `make-brine`, `make-mixing-bowl`, and `cut-nuggets`. Keep these
+explicit content dependencies so installing gameplay mods alone cannot leave
+dangling references. Original chapter-level `requiresMod` gates are unchanged.
 
 ## Preservation and asset identity
 
-The 51 retained original chapter JSON blobs are preserved byte-for-byte from upstream
-`9a2fd4e2b2e24046de08c7a86aff335294558939`. Each package retains the internal
-`assets/questline/questline/chapters/<original-name>.json` path. **The unique
-package Mod ID is not the asset domain**: changing `questline` in these asset
-paths changes the loader's qualification of chapter IDs, quest IDs, page keys,
-extension targets and prerequisites, and breaks saved progression identity.
+The 51 retained original chapter JSON blobs were moved byte-for-byte from upstream
+`9a2fd4e2b2e24046de08c7a86aff335294558939`. Keep each package's internal path:
+`assets/questline/questline/chapters/<original-name>.json`. **The unique package
+Mod ID is not the asset domain.** Changing `questline` in these paths changes
+how the loader qualifies chapter IDs, quest IDs, page keys, extension targets
+and prerequisites, breaking saved progression identity.
 
-The original `assets/questline/questline/questline.json` is likewise unchanged
-and belongs only to vanilla. Optional packages must not duplicate that manifest.
-There are 469 quest records, 520 task records and 453 distinct quest IDs. The
-16 duplicate IDs are intentional extension replacement records, not accidental
-copies to remove. The loader joins extensions into their original chapters and
-replaces matching IDs; none of those records, fields, dependencies, rewards,
-page links, or strings were rewritten during extraction.
+Keep the unchanged original `assets/questline/questline/questline.json` in
+vanilla only. Do not duplicate that manifest in optional packages. The retained content contains 469 quest records, 520 task records and 453 distinct quest IDs.
+The 16 duplicate IDs are intentional extension replacement records; do not
+remove them as accidental copies. The loader joins extensions into their
+original chapters and replaces matching IDs. Extraction rewrote none of these
+records, fields, dependencies, rewards, page links, or strings.
 
 Better Ruins, Charcoal Kiln and Seafarer packages were removed after the original
 extraction. This removes their five chapter files from the shipped inventory,
@@ -69,13 +67,14 @@ copies separately and use a clean output directory to check the current package 
 Retained translations remain in core at `questline/assets/questline/lang/`.
 The 150 keys exclusively owned by the removed integrations (chapter/quest text,
 provider labels and Better Ruins structure names) are removed from all 34 locales;
-every other inherited key/value is preserved. Content packages are therefore not
-self-contained localization owners: installing only the framework still loads
-quest text for other uninstalled packages, and updating content text may require
-a coordinated core update. This initial limitation avoids concurrent edits.
-A later localization
-split must assign each key exactly one owner while retaining its `questline:`
-domain and cross-package links; do not copy whole language files into every pack.
+every other inherited key/value is preserved. Content packages do not own
+self-contained localization: framework-only installs still load text for other
+uninstalled packages, and content-text updates may need a coordinated core update.
+This initial limitation avoids concurrent edits.
+
+For a later localization split, assign each key exactly one owner. Retain its
+`questline:` domain and cross-package links. Do not copy whole language files
+into every pack.
 
 ## Offline verification
 
@@ -85,16 +84,14 @@ Run from the repository root:
 python -m unittest discover -s tests -p test_content_extraction.py -v
 ```
 
-The tests use actual `git show <upstream>:<path>` blobs, not a regenerated
-snapshot. The upstream commit must remain available locally (fetch it in shallow
-checkouts). Checks must account explicitly for the three removed packages rather
-than requiring their restoration. They verify retained relocation, exact bytes, original paths,
+Keep the upstream commit available locally; fetch it in shallow checkouts.
+The tests read actual `git show <upstream>:<path>` blobs, not a regenerated
+snapshot. They explicitly account for the three removed packages, and check retained relocation, exact bytes, original paths,
 package counts and IDs, explicit dependency closure, manifest ownership,
 translation preservation, totals, and extension/replacement identity.
 
-Historical TDD baseline before extraction: 5 tests ran, with 3 failures and 1 error
-(expected missing content/manifest and chapters still in core); translation
-preservation already passed. After the original 56-chapter extraction all 5 passed
-(532 quest records, 589 tasks, 516 distinct IDs). This is historical evidence,
-not a post-removal test result. These are structural
-tests, not a claim of a native game installation or integration smoke test.
+Historical extraction evidence: the TDD baseline ran 5 tests, with 3 failures
+and 1 error. Missing content/manifest and chapters still in core caused the
+expected failures; translation preservation already passed. After extraction,
+all 5 passed. These recorded structural results are not a new test run or proof
+of a native game installation or integration smoke test.
