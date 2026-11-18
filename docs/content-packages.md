@@ -17,9 +17,20 @@ six age chapters from `first-days` to `steel-age`, then workshop, land, kitchen,
 world chapters. No chapter is gated on a mod and none `extends` another: the former
 integration files are merged in, with their sixteen replacement quests applied in place.
 
-Every quest record is upstream's: ID, tasks, prerequisites, rewards and page text are
-unchanged. Only its position on the canvas and the chapter it sits in differ. Positions are
-generated: prerequisites inside a chapter sit to the left, columns 2 apart, rows 1.5 apart.
+Quest records are upstream's unless `tests/questbook-changes.json` lists them: that ledger
+names the quests written for the modpack (`new`) and the upstream quests changed for it
+(`rewritten`). Every other quest keeps its upstream ID, tasks, prerequisites, rewards and
+page text; only its position on the canvas and its chapter differ.
+
+Rewritten quests keep their ID and title. Their new wording is a `page` block with its own
+language key (`<id>-page`), because upstream's translated keys are never edited.
+
+## Authoring tools
+
+- `python3 tools/questbook/layout.py [chapter …]` regenerates positions from prerequisites:
+  in-chapter prerequisites sit to the left, columns 2 apart, rows 1.5 apart.
+- `python3 tools/questbook/addlang.py texts.json` writes English text for new keys into
+  every locale file. The questbook is maintained in English only.
 
 ## Removed integrations
 
@@ -43,7 +54,9 @@ longer shown.
 
 - no `content/` directory exists and the default questline is upstream's;
 - all 415 upstream quests of the kept integrations ship exactly once, each identical to its
-  upstream record (replacements applied) apart from `pos`;
+  upstream record (replacements applied) apart from `pos`, unless the ledger lists it as
+  rewritten; quests listed as new are the only additions;
+- new quests and every page block and task name have English text;
 - the 29 chapters are plain (`id`, `order`, `icon`, `age`, `quests`), have a title, distinct
   orders, no two quests in one cell, and prerequisites to the left;
 - every prerequisite resolves to a shipped quest;

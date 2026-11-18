@@ -184,7 +184,7 @@ Test("the shipped single-mod book loads whole and is stable under shuffled disco
     Check(chapters.All(c => c.Extends == null), "the single book ships no extension files");
     Check(baseline.Registry.Chapters.Count == 29, $"expected 29 chapters, got {baseline.Registry.Chapters.Count}");
     int quests = baseline.Registry.Chapters.Sum(c => c.Quests.Count);
-    Check(quests == 415, $"expected 415 quests, got {quests}");
+    Check(quests == 423, $"expected 423 quests, got {quests}");
     Check(!baseline.Loader.Problems.Any(p => p.Contains("ambiguous extension")), "shipped content has composition conflicts");
     string snapshot = baseline.Registry.ToJson() + string.Join("\n", baseline.Loader.Problems);
     foreach (int seed in Enumerable.Range(0, 12)) {

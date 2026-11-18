@@ -134,6 +134,14 @@
                     "item": "game:seeds-carrot",
                     "count": 2
                 }
+            ],
+            "shape": "gear",
+            "size": 1.5,
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "fire-pottery-page"
+                }
             ]
         },
         {

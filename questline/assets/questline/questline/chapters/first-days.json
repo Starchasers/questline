@@ -55,9 +55,9 @@
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:fruit-*",
+                    "item": "game:@(fruit|mushroom)-.*",
                     "count": 8,
-                    "name": "questline:name-any-fruit"
+                    "name": "questline:name-fruit-or-mushroom"
                 }
             ],
             "rewards": [
@@ -65,6 +65,12 @@
                     "type": "item",
                     "item": "game:gear-rusty",
                     "count": 1
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "forage-page"
                 }
             ]
         },
@@ -182,6 +188,12 @@
                     "item": "game:stick",
                     "count": 4
                 }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-axe-page"
+                }
             ]
         },
         {
@@ -205,6 +217,12 @@
                     "type": "item",
                     "item": "game:gear-rusty",
                     "count": 1
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-knife-page"
                 }
             ]
         },
@@ -234,32 +252,74 @@
             ]
         },
         {
-            "id": "chop-wood",
-            "pos": [
-                6,
-                0.0
-            ],
-            "requires": "make-axe",
+            "id": "pack-dirt",
+            "requires": "knap-shovel",
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:firewood",
-                    "count": 8
+                    "item": "game:packeddirt",
+                    "count": 12
                 }
             ],
             "rewards": [
                 {
                     "type": "item",
-                    "item": "game:flint",
-                    "count": 2
+                    "item": "questline:questcookie",
+                    "count": 1
                 }
+            ],
+            "pos": [
+                4,
+                4.5
+            ]
+        },
+        {
+            "id": "place-chopping-block",
+            "requires": "make-axe",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "immersivewoodworking:choppingblock"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "questline:questcookie",
+                    "count": 1
+                }
+            ],
+            "pos": [
+                6,
+                0.0
+            ]
+        },
+        {
+            "id": "fell-tree",
+            "requires": "make-axe",
+            "icon": "game:log-placed-oak-ud",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "questline:questcookie",
+                    "count": 1
+                }
+            ],
+            "pos": [
+                6,
+                1.5
             ]
         },
         {
             "id": "make-club",
             "pos": [
                 6,
-                1.5
+                3.0
             ],
             "requires": [
                 "make-axe",
@@ -283,7 +343,7 @@
             "id": "cut-grass",
             "pos": [
                 6,
-                3.0
+                4.5
             ],
             "requires": "make-knife",
             "tasks": [
@@ -299,13 +359,19 @@
                     "item": "game:stick",
                     "count": 4
                 }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "cut-grass-page"
+                }
             ]
         },
         {
             "id": "gather-reeds",
             "pos": [
                 6,
-                4.5
+                6.0
             ],
             "requires": "make-knife",
             "tasks": [
@@ -327,7 +393,7 @@
             "id": "make-rope",
             "pos": [
                 6,
-                6.0
+                7.5
             ],
             "requires": "make-knife",
             "tasks": [
@@ -345,10 +411,82 @@
             ]
         },
         {
+            "id": "knap-whetstone",
+            "requires": "make-knife",
+            "icon": "toolsmith:whetstone-granite",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "toolsmith:whetstone-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "questline:questcookie",
+                    "count": 1
+                }
+            ],
+            "pos": [
+                6,
+                9.0
+            ]
+        },
+        {
+            "id": "mow-green-grass",
+            "requires": "make-knife",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "artofgrowing:grass",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "questline:questcookie",
+                    "count": 1
+                }
+            ],
+            "pos": [
+                6,
+                10.5
+            ]
+        },
+        {
+            "id": "chop-wood",
+            "pos": [
+                8,
+                0.0
+            ],
+            "requires": "place-chopping-block",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:firewood",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:flint",
+                    "count": 2
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "chop-wood-page"
+                }
+            ]
+        },
+        {
             "id": "make-firestarter",
             "pos": [
                 8,
-                3.0
+                4.5
             ],
             "requires": "cut-grass",
             "tasks": [
@@ -369,7 +507,7 @@
             "id": "hay-bed",
             "pos": [
                 8,
-                4.5
+                6.0
             ],
             "requires": "cut-grass",
             "tasks": [
@@ -390,7 +528,7 @@
             "id": "make-basket",
             "pos": [
                 8,
-                6.0
+                7.5
             ],
             "requires": "gather-reeds",
             "tasks": [
@@ -408,46 +546,66 @@
             ]
         },
         {
-            "id": "make-fire",
-            "pos": [
-                10,
-                1.5
-            ],
-            "requires": [
-                "chop-wood",
-                "make-firestarter"
-            ],
+            "id": "dry-fresh-grass",
+            "requires": "mow-green-grass",
+            "icon": "game:drygrass",
             "tasks": [
                 {
-                    "type": "ignite",
-                    "block": "game:firepit-*"
+                    "type": "checkbox"
                 }
             ],
-            "icon": "game:firepit-lit",
             "rewards": [
                 {
                     "type": "item",
-                    "item": "game:firewood",
-                    "count": 4
+                    "item": "questline:questcookie",
+                    "count": 1
                 }
+            ],
+            "pos": [
+                8,
+                10.5
+            ]
+        },
+        {
+            "id": "build-firepit",
+            "requires": [
+                "chop-wood",
+                "cut-grass"
+            ],
+            "icon": "game:firepit-cold",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "questline:questcookie",
+                    "count": 1
+                }
+            ],
+            "pos": [
+                10,
+                3.0
             ]
         },
         {
             "id": "build-shelter",
             "pos": [
                 10,
-                4.5
+                6.0
             ],
             "requires": [
                 "hay-bed",
-                "knap-shovel"
+                "pack-dirt"
             ],
             "shape": "gear",
             "size": 1.25,
             "tasks": [
                 {
                     "type": "place",
-                    "block": "game:cob-*",
+                    "block": "game:packeddirt",
                     "count": 20
                 }
             ],
@@ -472,13 +630,77 @@
                         }
                     ]
                 }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "build-shelter-page"
+                }
+            ]
+        },
+        {
+            "id": "make-fire",
+            "pos": [
+                12,
+                3.0
+            ],
+            "requires": [
+                "build-firepit",
+                "make-firestarter"
+            ],
+            "tasks": [
+                {
+                    "type": "ignite",
+                    "block": "*:firepit-*"
+                }
+            ],
+            "icon": "game:firepit-lit",
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:firewood",
+                    "count": 4
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-fire-page"
+                }
+            ]
+        },
+        {
+            "id": "build-cellar",
+            "pos": [
+                12,
+                6.0
+            ],
+            "requires": "build-shelter",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ],
+            "icon": "game:storagevessel-blue-fired",
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "build-cellar-page"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "questline:questcookie",
+                    "count": 1
+                }
             ]
         },
         {
             "id": "make-torch",
             "pos": [
-                12,
-                1.5
+                14,
+                3.0
             ],
             "requires": "make-fire",
             "tasks": [
@@ -494,13 +716,40 @@
                     "item": "game:firewood",
                     "count": 4
                 }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-torch-page"
+                }
+            ]
+        },
+        {
+            "id": "roast-on-stick",
+            "requires": "make-fire",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "stickroast:roastingstick"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "questline:questcookie",
+                    "count": 1
+                }
+            ],
+            "pos": [
+                14,
+                4.5
             ]
         },
         {
             "id": "cook-roots",
             "pos": [
-                12,
-                3.0
+                14,
+                6.0
             ],
             "requires": [
                 "gather-reeds",
