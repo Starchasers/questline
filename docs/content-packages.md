@@ -9,17 +9,17 @@ chapter.
 | Path | Holds |
 |---|---|
 | `questline/assets/questline/questline/questline.json` | The default questline (`questline:default`). |
-| `questline/assets/questline/questline/chapters/*.json` | All 49 chapter files. |
+| `questline/assets/questline/questline/chapters/*.json` | The 29 chapter files, one per chapter. |
 | `questline/assets/questline/lang/*.json` | Titles, descriptions and page text for every quest. |
 
-Chapter files keep their upstream names and bytes:
+Chapters are grouped for the target modpack (see [the chapter plan](questbook/chapter-plan.md)):
+six age chapters from `first-days` to `steel-age`, then workshop, land, kitchen, craft and
+world chapters. No chapter is gated on a mod and none `extends` another: the former
+integration files are merged in, with their sixteen replacement quests applied in place.
 
-- 25 base chapters (`stone-age.json`, `kitchen.json`, …).
-- 24 integration files named `<modid>-<chapter>.json` for Bricklayers, Expanded
-  Foods, Chef's Tricks, Meals Module, From Golden Combs, Tailor's Delight and Wool.
-  They still `extends` a base chapter and keep their `requiresMod` gate, so they
-  stay inactive when the gameplay mod is absent. Sixteen of their quests replace a
-  base quest in place and keep its saved ID.
+Every quest record is upstream's: ID, tasks, prerequisites, rewards and page text are
+unchanged. Only its position on the canvas and the chapter it sits in differ. Positions are
+generated: prerequisites inside a chapter sit to the left, columns 2 apart, rows 1.5 apart.
 
 ## Removed integrations
 
@@ -33,21 +33,20 @@ Version 0.15.0 shipped the same chapters as twelve separate content mods
 (`questlinevanilla`, `questline<provider>`). Remove those ZIPs when installing
 0.16.0: loading them beside the single mod supplies every chapter twice.
 
-All chapters keep the `questline` asset domain, chapter IDs and quest IDs, so saved
-progress carries over. Progress on quests from the four removed integrations is no
+All quests keep the `questline` asset domain and their IDs, so saved progress carries
+over; progress is stored per quest, not per chapter. Progress on quests from the four removed integrations is no
 longer shown.
 
 ## Checks
 
 `tests/test_content_extraction.py` verifies offline that:
 
-- no `content/` directory or content manifest exists, and only `questline` and the
-  Toolsmith adapter are packaged;
-- every shipped chapter is byte-identical to its upstream blob, and exactly the four
-  unused integrations are missing;
-- no shipped quest requires a quest that only a removed integration defined;
-- totals are 49 files, 431 quest records, 464 tasks, 415 distinct IDs and 16
-  in-place replacements;
+- no `content/` directory exists and the default questline is upstream's;
+- all 415 upstream quests of the kept integrations ship exactly once, each identical to its
+  upstream record (replacements applied) apart from `pos`;
+- the 29 chapters are plain (`id`, `order`, `icon`, `age`, `quests`), have a title, distinct
+  orders, no two quests in one cell, and prerequisites to the left;
+- every prerequisite resolves to a shipped quest;
 - upstream translation keys are unchanged.
 
 The composition and reward harnesses read the same chapter folder.

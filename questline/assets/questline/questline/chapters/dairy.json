@@ -1,36 +1,20 @@
 {
-    "id": "expandedfoods-farming",
-    "extends": "farming",
-    "requiresMod": [
-        "expandedfoods"
-    ],
-    "art": [
-        {
-            "type": "text",
-            "pos": [
-                1,
-                6.0
-            ],
-            "text": "addon-expandedfoods",
-            "scale": 0.9,
-            "color": "#c8a46e"
-        }
-    ],
+    "id": "dairy",
+    "order": 330,
+    "icon": "game:cheese-cheddar-4slice",
     "quests": [
         {
-            "id": "press-oil",
+            "id": "collect-milk",
             "pos": [
                 0,
-                7.5
+                0.0
             ],
-            "requires": [
-                "grow-flax",
-                "make-fruit-press"
-            ],
+            "requires": "milk-animal",
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "expandedfoods:foodoilportion-*"
+                    "item": "game:milkportion",
+                    "count": 10
                 }
             ],
             "rewards": [
@@ -42,42 +26,44 @@
             ]
         },
         {
-            "id": "grow-soybeans",
+            "id": "curdle-milk",
             "pos": [
                 2,
-                7.5
-            ],
-            "requires": "gather-seeds",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:legume-soybean",
-                    "count": 8
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "soak-soybeans",
-            "pos": [
-                4,
-                7.5
+                0.0
             ],
             "requires": [
-                "grow-soybeans",
+                "collect-milk",
+                "pickle-vegetables",
                 "make-barrel"
             ],
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "expandedfoods:soyprep-soaked",
-                    "count": 8
+                    "item": "game:curdledmilkportion"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:salt",
+                    "count": 3
+                }
+            ]
+        },
+        {
+            "id": "pasteurize-milk",
+            "pos": [
+                2,
+                1.5
+            ],
+            "requires": [
+                "collect-milk",
+                "roast-meat"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:pasteurizedmilkportion"
                 }
             ],
             "rewards": [
@@ -89,20 +75,81 @@
             ]
         },
         {
-            "id": "grind-soybeans",
+            "id": "make-cottage-cheese",
+            "pos": [
+                4,
+                0.0
+            ],
+            "requires": [
+                "curdle-milk",
+                "find-salt"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:cottagecheeseportion"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:salt",
+                    "count": 5
+                }
+            ]
+        },
+        {
+            "id": "make-yogurt-starter",
+            "pos": [
+                4,
+                1.5
+            ],
+            "requires": "curdle-milk",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:yogurt-starter"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "press-cheese",
+            "pos": [
+                6,
+                0.0
+            ],
+            "requires": [
+                "make-cottage-cheese",
+                "make-linen"
+            ],
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ],
+            "icon": "game:rawcheese-salted"
+        },
+        {
+            "id": "wax-cheese",
             "pos": [
                 8,
-                7.5
+                0.0
             ],
             "requires": [
-                "soak-soybeans",
-                "make-quern"
+                "press-cheese",
+                "collect-beeswax"
             ],
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "expandedfoods:soyprep-powdered",
-                    "count": 8
+                    "item": "game:cheese-waxedcheddar-*"
                 }
             ],
             "rewards": [
@@ -114,54 +161,31 @@
             ]
         },
         {
-            "id": "culture-soybeans",
+            "id": "age-cheddar",
             "pos": [
-                10,
-                7.5
+                8,
+                1.5
             ],
-            "requires": "grind-soybeans",
+            "requires": [
+                "press-cheese",
+                "make-shelf"
+            ],
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "expandedfoods:soyprep-cultured",
-                    "count": 8
+                    "item": "game:cheese-cheddar-*"
                 }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "brew-soy-sauce",
-            "pos": [
-                12,
-                7.5
-            ],
-            "requires": [
-                "culture-soybeans",
-                "make-brine",
-                "make-fruit-press"
             ],
             "shape": "gear",
             "size": 1.25,
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "expandedfoods:soysauce"
-                }
-            ],
             "rewards": [
                 {
                     "type": "choice",
                     "options": [
                         {
                             "type": "item",
-                            "item": "game:seeds-soybean",
-                            "count": 8
+                            "item": "game:salt",
+                            "count": 12
                         },
                         {
                             "type": "item",
@@ -171,27 +195,23 @@
                         {
                             "type": "item",
                             "item": "game:gear-rusty",
-                            "count": 6
+                            "count": 8
                         }
                     ]
                 }
             ]
         },
         {
-            "id": "make-soy-milk",
+            "id": "age-blue-cheese",
             "pos": [
                 10,
-                9.0
+                1.5
             ],
-            "requires": [
-                "grind-soybeans",
-                "make-fruit-press",
-                "roast-meat"
-            ],
+            "requires": "age-cheddar",
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "expandedfoods:soymilk-edible"
+                    "item": "game:cheese-blue-*"
                 }
             ],
             "rewards": [

@@ -1,23 +1,20 @@
 {
-    "id": "expandedfoods-baking",
-    "extends": "baking",
-    "requiresMod": [
-        "expandedfoods"
-    ],
+    "id": "traders",
+    "order": 540,
+    "icon": "game:gear-temporal",
     "quests": [
         {
-            "id": "roast-grain",
+            "id": "find-rusty-gears",
             "pos": [
-                6,
-                -1.5
+                0,
+                0.0
             ],
-            "requires": "bake-bread",
+            "requires": "make-torch",
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "expandedfoods:roastedgrain-*",
-                    "count": 4,
-                    "unchecked": true
+                    "item": "game:gear-rusty",
+                    "count": 5
                 }
             ],
             "rewards": [
@@ -29,17 +26,17 @@
             ]
         },
         {
-            "id": "make-breadcrumbs",
+            "id": "visit-trader",
             "pos": [
-                6,
-                1.5
+                2,
+                0.0
             ],
-            "requires": "bake-bread",
+            "requires": "find-rusty-gears",
             "tasks": [
                 {
-                    "type": "obtain",
-                    "item": "expandedfoods:breadcrumbs-*",
-                    "count": 4
+                    "type": "trade",
+                    "item": "*:*",
+                    "name": "questline:name-anything"
                 }
             ],
             "rewards": [

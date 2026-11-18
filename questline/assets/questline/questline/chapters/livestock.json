@@ -1,6 +1,6 @@
 {
-    "id": "husbandry",
-    "order": 51,
+    "id": "livestock",
+    "order": 230,
     "icon": "game:egg-chicken-raw",
     "quests": [
         {
@@ -49,14 +49,81 @@
         {
             "id": "make-bucket",
             "pos": [
-                4,
-                1.5
+                0,
+                3.0
             ],
             "requires": "make-boards",
             "tasks": [
                 {
                     "type": "obtain",
                     "item": "game:woodbucket"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-basket-trap",
+            "pos": [
+                0,
+                4.5
+            ],
+            "requires": "make-knife",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:baskettrap-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:fruit-blueberry",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "make-crate-trap",
+            "pos": [
+                0,
+                6.0
+            ],
+            "requires": [
+                "make-boards",
+                "smith-bronze"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:trapcrate-wood"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-crumb-feed",
+            "pos": [
+                0,
+                7.5
+            ],
+            "requires": "make-breadcrumbs",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "efchefstricks:breadcrumbfeed",
+                    "count": 4
                 }
             ],
             "rewards": [
@@ -89,6 +156,27 @@
             ]
         },
         {
+            "id": "make-henbox",
+            "pos": [
+                2,
+                3.0
+            ],
+            "requires": "make-trough",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:henbox*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:drygrass",
+                    "count": 12
+                }
+            ]
+        },
+        {
             "id": "breed-animals",
             "pos": [
                 4,
@@ -106,10 +194,54 @@
             "icon": "game:egg-chicken-raw"
         },
         {
-            "id": "milk-animal",
+            "id": "collect-eggs",
+            "pos": [
+                4,
+                3.0
+            ],
+            "requires": "make-henbox",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:egg-chicken-raw",
+                    "count": 6
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "shear-animal",
             "pos": [
                 6,
                 0.0
+            ],
+            "requires": "breed-animals",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "wool:fleece-*",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "milk-animal",
+            "pos": [
+                6,
+                1.5
             ],
             "requires": [
                 "breed-animals",
@@ -147,129 +279,19 @@
             ]
         },
         {
-            "id": "make-henbox",
+            "id": "make-shears",
             "pos": [
-                2,
-                4.5
-            ],
-            "requires": "make-trough",
-            "tasks": [
-                {
-                    "type": "place",
-                    "block": "game:henbox*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:drygrass",
-                    "count": 12
-                }
-            ]
-        },
-        {
-            "id": "collect-eggs",
-            "pos": [
-                4,
-                4.5
-            ],
-            "requires": "make-henbox",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:egg-chicken-raw",
-                    "count": 6
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "make-basket-trap",
-            "pos": [
-                0,
-                6.0
-            ],
-            "requires": "make-knife",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:baskettrap-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:fruit-blueberry",
-                    "count": 4
-                }
-            ]
-        },
-        {
-            "id": "make-crate-trap",
-            "pos": [
-                0,
-                7.5
+                8,
+                0.0
             ],
             "requires": [
-                "make-boards",
-                "smith-bronze"
+                "shear-animal",
+                "first-smithing"
             ],
             "tasks": [
                 {
-                    "type": "obtain",
-                    "item": "game:trapcrate-wood"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "melt-fat",
-            "pos": [
-                0,
-                9.0
-            ],
-            "requires": [
-                "first-hunt",
-                "cook-meal"
-            ],
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:fat-rendered",
-                    "count": 4
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "make-cleaver",
-            "pos": [
-                0,
-                10.5
-            ],
-            "requires": "first-smithing",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:cleaver-*"
+                    "type": "smith",
+                    "item": "game:shears-*"
                 }
             ],
             "rewards": [

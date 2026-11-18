@@ -1,35 +1,13 @@
 {
     "id": "leatherwork",
-    "order": 53,
+    "order": 420,
     "icon": "game:leather-normal-plain",
     "quests": [
-        {
-            "id": "get-hide",
-            "pos": [
-                0,
-                0.0
-            ],
-            "requires": "first-hunt",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:hide-raw-*",
-                    "count": 2
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
         {
             "id": "make-limewater",
             "pos": [
                 0,
-                1.5
+                0.0
             ],
             "requires": [
                 "grind-lime",
@@ -54,7 +32,7 @@
             "id": "weak-tannin",
             "pos": [
                 0,
-                3.0
+                1.5
             ],
             "requires": "make-barrel",
             "tasks": [
@@ -75,8 +53,8 @@
         {
             "id": "salt-hide",
             "pos": [
-                2,
-                -1.5
+                0,
+                3.0
             ],
             "requires": [
                 "get-hide",
@@ -92,6 +70,97 @@
                 {
                     "type": "item",
                     "item": "game:hide-raw-small",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "oil-hide",
+            "pos": [
+                0,
+                4.5
+            ],
+            "requires": "get-hide",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:hide-oiled-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:fat",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "id": "make-buttons",
+            "pos": [
+                0,
+                6.0
+            ],
+            "requires": "knap-awl",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "tailorsdelight:buttons-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:bone",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "id": "smith-awl",
+            "pos": [
+                0,
+                7.5
+            ],
+            "requires": [
+                "first-smithing",
+                "knap-awl"
+            ],
+            "tasks": [
+                {
+                    "type": "smith",
+                    "item": "tailorsdelight:awlthorn-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "cast-buttons",
+            "pos": [
+                0,
+                9.0
+            ],
+            "requires": "cast-tool",
+            "tasks": [
+                {
+                    "type": "clayform",
+                    "item": "tailorsdelight:mold-raw-buttons"
+                },
+                {
+                    "type": "smelt",
+                    "item": "tailorsdelight:buttons-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
                     "count": 1
                 }
             ]
@@ -124,7 +193,7 @@
             "id": "strong-tannin",
             "pos": [
                 2,
-                3.0
+                1.5
             ],
             "requires": "weak-tannin",
             "tasks": [
@@ -132,6 +201,27 @@
                     "type": "obtain",
                     "item": "game:strongtanninportion",
                     "count": 10
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "cure-pelt",
+            "pos": [
+                2,
+                4.5
+            ],
+            "requires": "oil-hide",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:hide-pelt-*"
                 }
             ],
             "rewards": [
@@ -164,10 +254,32 @@
             ]
         },
         {
+            "id": "fur-hat",
+            "pos": [
+                4,
+                4.5
+            ],
+            "requires": "cure-pelt",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:clothes-head-furhat*",
+                    "name": "questline:name-any-fur-hat"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "prepare-hide",
             "pos": [
                 6,
-                1.5
+                0.0
             ],
             "requires": [
                 "scrape-hide",
@@ -191,7 +303,7 @@
             "id": "make-leather",
             "pos": [
                 8,
-                1.5
+                0.0
             ],
             "requires": [
                 "prepare-hide",
@@ -230,31 +342,10 @@
             ]
         },
         {
-            "id": "make-backpack",
-            "pos": [
-                10,
-                0.0
-            ],
-            "requires": "make-leather",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:backpack-normal"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
             "id": "leather-boots",
             "pos": [
                 10,
-                3.0
+                0.0
             ],
             "requires": "make-leather",
             "tasks": [
@@ -272,37 +363,16 @@
             ]
         },
         {
-            "id": "oil-hide",
+            "id": "leather-strips",
             "pos": [
-                2,
-                6.0
+                10,
+                1.5
             ],
-            "requires": "get-hide",
+            "requires": "make-leather",
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:hide-oiled-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:fat",
-                    "count": 2
-                }
-            ]
-        },
-        {
-            "id": "cure-pelt",
-            "pos": [
-                4,
-                6.0
-            ],
-            "requires": "oil-hide",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:hide-pelt-*"
+                    "item": "tailorsdelight:leatherstrips-plain"
                 }
             ],
             "rewards": [
@@ -314,17 +384,16 @@
             ]
         },
         {
-            "id": "fur-hat",
+            "id": "dark-leather",
             "pos": [
-                6,
-                6.0
+                10,
+                3.0
             ],
-            "requires": "cure-pelt",
+            "requires": "make-leather",
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:clothes-head-furhat*",
-                    "name": "questline:name-any-fur-hat"
+                    "item": "tailorsdelight:leather-darkbrown"
                 }
             ],
             "rewards": [

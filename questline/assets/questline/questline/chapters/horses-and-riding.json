@@ -1,6 +1,6 @@
 {
-    "id": "riding",
-    "order": 86,
+    "id": "horses-and-riding",
+    "order": 240,
     "icon": "game:hoovedwearables-middleback-saddle1",
     "quests": [
         {
@@ -28,8 +28,8 @@
         {
             "id": "trap-elk-calf",
             "pos": [
-                4,
-                0.0
+                0,
+                1.5
             ],
             "requires": "make-crate-trap",
             "tasks": [
@@ -43,16 +43,24 @@
             "id": "make-saddle",
             "pos": [
                 2,
-                3.0
+                0.0
             ],
             "requires": [
                 "smith-nails",
-                "make-leather"
+                "make-leather",
+                "knap-awl",
+                "strong-tannin"
             ],
             "tasks": [
                 {
                     "type": "obtain",
                     "item": "game:hoovedwearables-middleback-saddle1"
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-saddle-tailorsdelight"
                 }
             ],
             "rewards": [
@@ -67,13 +75,22 @@
             "id": "make-bridle",
             "pos": [
                 4,
-                3.0
+                0.0
             ],
-            "requires": "make-saddle",
+            "requires": [
+                "make-saddle",
+                "leather-strips"
+            ],
             "tasks": [
                 {
                     "type": "obtain",
                     "item": "game:hoovedwearables-head-bridle*"
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-bridle-tailorsdelight"
                 }
             ],
             "rewards": [
@@ -87,7 +104,7 @@
         {
             "id": "break-in-elk",
             "pos": [
-                6,
+                4,
                 1.5
             ],
             "requires": [
@@ -112,8 +129,8 @@
         {
             "id": "ride-elk",
             "pos": [
-                8,
-                1.5
+                6,
+                0.0
             ],
             "shape": "gear",
             "size": 1.25,
@@ -154,7 +171,7 @@
         {
             "id": "make-saddlebags",
             "pos": [
-                10,
+                8,
                 0.0
             ],
             "requires": "ride-elk",
@@ -162,6 +179,12 @@
                 {
                     "type": "obtain",
                     "item": "game:hoovedwearables-lowerbackside-saddlebags1"
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-saddlebags-tailorsdelight"
                 }
             ],
             "rewards": [
@@ -175,7 +198,7 @@
         {
             "id": "make-bone-flute",
             "pos": [
-                10,
+                8,
                 1.5
             ],
             "requires": "ride-elk",
@@ -196,14 +219,23 @@
         {
             "id": "make-pillion",
             "pos": [
-                10,
+                8,
                 3.0
             ],
-            "requires": "ride-elk",
+            "requires": [
+                "ride-elk",
+                "leather-strips"
+            ],
             "tasks": [
                 {
                     "type": "obtain",
                     "item": "game:hoovedwearables-lowerbackside-pillion-leather"
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-pillion-tailorsdelight"
                 }
             ],
             "rewards": [

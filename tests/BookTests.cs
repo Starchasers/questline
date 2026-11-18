@@ -78,7 +78,7 @@ namespace Questline.Tests
             Assert.Greater(topics, 1, "a Topics heading after the ages");
             Assert.True(rows.Skip(1).Take(topics - 1).All(r => chapters[r.Id].Age), "only ages above it");
             Assert.True(rows.Skip(topics + 1).All(r => !r.Heading && !chapters[r.Id].Age), "the rest below");
-            Assert.Equal("qltest:basics, questline:stone-age, questline:clay-and-fire", string.Join(", ", rows.Skip(1).Take(3).Select(r => r.Id)));
+            Assert.Equal("qltest:basics, questline:first-days, questline:clay-and-fire", string.Join(", ", rows.Skip(1).Take(3).Select(r => r.Id)));
             Log(await Shot.Take("questline-rail-ages.png"));
             Book.TryClose();
         }
@@ -345,7 +345,7 @@ namespace Questline.Tests
             await Frames.Wait(20);
             Log(await Shot.Take("questline-screen-nothing-selected.png"));
 
-            foreach (string chapter in new[] { "questline:stone-age", "questline:copper-age" })
+            foreach (string chapter in new[] { "questline:first-days", "questline:copper-age" })
             {
                 Book.ForgetViews();
                 Book.SelectChapter(chapter);
@@ -741,7 +741,7 @@ namespace Questline.Tests
         public async Task KitchenAndBakingScreens()
         {
             await OnClient();
-            foreach (string chapter in new[] { "questline:kitchen", "questline:baking" })
+            foreach (string chapter in new[] { "questline:cooking", "questline:baking" })
             {
                 Book.ForgetViews();
                 Book.SelectChapter(chapter);
@@ -777,7 +777,7 @@ namespace Questline.Tests
                         Book.TryClose();
                         await Frames.Wait(5);
                         Book.ForgetViews();
-                        Book.SelectChapter("questline:stone-age");
+                        Book.SelectChapter("questline:first-days");
                         Book.SelectQuest("questline:make-firestarter");
                         await VsTestkit.Testing.Gui.WaitFor<GuiDialogQuestBook>();
                         await Frames.Wait(30);

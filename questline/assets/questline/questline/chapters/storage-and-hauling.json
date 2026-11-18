@@ -1,0 +1,82 @@
+{
+    "id": "storage-and-hauling",
+    "order": 160,
+    "icon": "game:plank-oak",
+    "quests": [
+        {
+            "id": "make-backpack",
+            "pos": [
+                0,
+                0.0
+            ],
+            "requires": [
+                "make-leather",
+                "leather-strips",
+                "make-buttons"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:backpack-normal"
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-backpack-tailorsdelight"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "ground-storage",
+            "pos": [
+                0,
+                1.5
+            ],
+            "requires": "chop-wood",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ],
+            "icon": "game:firewood"
+        },
+        {
+            "id": "make-sack",
+            "pos": [
+                0,
+                3.0
+            ],
+            "requires": [
+                "make-linen",
+                "make-sewing-kit"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:linensack"
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-sack-tailorsdelight"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        }
+    ]
+}

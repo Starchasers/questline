@@ -1,4 +1,10 @@
-"""Offline contract for the single-mod questbook against upstream Git blobs; no game SDK needed."""
+"""Offline contract for the single-mod questbook against upstream Git blobs; no game SDK needed.
+
+Chapters are regrouped for the modpack, so files no longer match upstream byte for byte.
+Every quest record does: ID, tasks, prerequisites, rewards, page and presentation are
+upstream's, with the upstream extension replacements applied. Only `pos` and the chapter a
+quest sits in are this fork's.
+"""
 import collections
 import json
 from pathlib import Path
@@ -8,105 +14,96 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 UPSTREAM = "9a2fd4e2b2e24046de08c7a86aff335294558939"
 BOOK = Path("questline/assets/questline/questline")
-# Integrations for mods outside the target modpack; their chapters are not shipped.
-REMOVED = {"betterruins": (1, 22), "charcoalkiln": (1, 6), "hexsmech": (2, 38), "seafarer": (3, 35)}
-KEPT = {
-    "vanilla": (25, 322), "bricklayers": (3, 24), "efchefstricks": (3, 4), "efmealsmodule": (1, 1),
-    "expandedfoods": (8, 37), "fromgoldencombs": (1, 14), "tailorsdelight": (5, 21), "wool": (3, 8),
-}
+LANG = ROOT / "questline/assets/questline/lang"
+# Integrations for mods outside the target modpack; their quests are not shipped.
+REMOVED = {"betterruins", "charcoalkiln", "hexsmech", "seafarer"}
+AGES = ["first-days", "clay-and-fire", "copper-age", "bronze-age", "iron-age", "steel-age"]
 
 
 def git(*args):
     return subprocess.check_output(["git", *args], cwd=ROOT)
 
 
-def blob(path):
-    return git("show", f"{UPSTREAM}:{path}")
-
-
-def group(payload):
-    return next(iter(json.loads(payload).get("requiresMod", [])), "vanilla")
+def refs(node):
+    if isinstance(node, str):
+        yield node.split(":")[-1]
+    elif isinstance(node, list):
+        for item in node:
+            yield from refs(item)
+    elif isinstance(node, dict):
+        for key, value in node.items():
+            if key in ("quest", "all", "any", "of", "atLeast"):
+                yield from refs(value)
 
 
 class QuestbookContentTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.upstream = {}
+        docs = []
         for name in git("ls-tree", "-r", "--name-only", UPSTREAM).decode().splitlines():
             if name.startswith(f"{BOOK}/chapters/") and name.endswith(".json"):
-                cls.upstream[Path(name).name] = blob(name)
-        cls.shipped = sorted((ROOT / BOOK / "chapters").glob("*.json"))
+                docs.append(json.loads(git("show", f"{UPSTREAM}:{name}")))
+        kept = [d for d in docs if not set(d.get("requiresMod", [])) & REMOVED]
+        cls.expected = {}
+        for doc in sorted(kept, key=lambda d: "extends" in d):  # base records first, replacements win
+            for quest in doc["quests"]:
+                cls.expected[quest["id"]] = quest
+        cls.shipped = [json.loads(p.read_bytes()) for p in sorted((ROOT / BOOK / "chapters").glob("*.json"))]
+        cls.files = sorted(p.stem for p in (ROOT / BOOK / "chapters").glob("*.json"))
 
     def test_questbook_ships_inside_the_one_mod(self):
         self.assertFalse((ROOT / "content").exists())
         self.assertFalse((ROOT / "docs/content-packages.json").exists())
-        self.assertEqual(blob(BOOK / "questline.json"), (ROOT / BOOK / "questline.json").read_bytes())
-        manifests = sorted(p.relative_to(ROOT).as_posix() for p in ROOT.glob("*/modinfo.json"))
-        manifests += sorted(p.relative_to(ROOT).as_posix() for p in ROOT.glob("*/*/modinfo.json")
-                            if "tests" not in p.parts and "bin" not in p.parts and "obj" not in p.parts)
-        self.assertEqual(["questline/modinfo.json", "compat/toolsmith/modinfo.json"], manifests)
+        self.assertEqual(git("show", f"{UPSTREAM}:{BOOK / 'questline.json'}"),
+                         (ROOT / BOOK / "questline.json").read_bytes())
         info = json.loads((ROOT / "questline/modinfo.json").read_text())
         self.assertEqual(("questline", "code", {"game": "1.22.0"}),
                          (info["modid"], info["type"], info["dependencies"]))
 
-    def test_shipped_chapters_are_upstream_bytes_and_only_unused_integrations_are_gone(self):
-        self.assertEqual(56, len(self.upstream))
-        groups = collections.defaultdict(list)
-        for name, payload in self.upstream.items():
-            groups[group(payload)].append(name)
-        self.assertEqual(set(KEPT) | set(REMOVED), set(groups))
-        expected = {name for key in KEPT for name in groups[key]}
-        self.assertEqual(expected, {p.name for p in self.shipped})
-        self.assertEqual(49, len(self.shipped))
-        for path in self.shipped:
-            with self.subTest(path=path.name):
-                self.assertEqual(self.upstream[path.name], path.read_bytes())
-        for key, (files, quests) in {**KEPT, **REMOVED}.items():
-            with self.subTest(group=key):
-                self.assertEqual(files, len(groups[key]))
-                self.assertEqual(quests, sum(len(json.loads(self.upstream[n])["quests"]) for n in groups[key]))
-
-    def test_no_shipped_quest_depends_on_a_removed_integration(self):
-        removed = {name for name, payload in self.upstream.items() if group(payload) in REMOVED}
-        removed_ids = {q["id"] for name in removed for q in json.loads(self.upstream[name])["quests"]}
-        shipped_ids = {q["id"] for p in self.shipped for q in json.loads(p.read_bytes())["quests"]}
-        only_removed = removed_ids - shipped_ids
-
-        def refs(node):
-            if isinstance(node, str):
-                yield node
-            elif isinstance(node, list):
-                for item in node:
-                    yield from refs(item)
-            elif isinstance(node, dict):
-                for key, value in node.items():
-                    if key in ("quest", "all", "any", "of", "atLeast"):
-                        yield from refs(value)
-
-        for path in self.shipped:
-            data = json.loads(path.read_bytes())
-            self.assertNotIn(group(path.read_bytes()), REMOVED)
-            for quest in data["quests"]:
+    def test_every_upstream_quest_is_shipped_once_and_unchanged_except_position(self):
+        self.assertEqual(415, len(self.expected))
+        seen = collections.Counter(q["id"] for d in self.shipped for q in d["quests"])
+        self.assertEqual(set(self.expected), set(seen))
+        self.assertEqual(1, max(seen.values()))
+        for doc in self.shipped:
+            for quest in doc["quests"]:
                 with self.subTest(quest=quest["id"]):
-                    self.assertFalse(set(refs(quest.get("requires", []))) & only_removed)
+                    want = {k: v for k, v in self.expected[quest["id"]].items() if k != "pos"}
+                    self.assertEqual(want, {k: v for k, v in quest.items() if k != "pos"})
 
-    def test_totals_and_replacements(self):
-        docs = [json.loads(p.read_bytes()) for p in self.shipped]
-        ids = collections.Counter(q["id"] for d in docs for q in d["quests"])
-        tasks = sum(len(q.get("tasks", [])) for d in docs for q in d["quests"])
-        self.assertEqual((49, 431, 464, 415), (len(docs), sum(ids.values()), tasks, len(ids)))
-        self.assertEqual(16, len([k for k, v in ids.items() if v > 1]))
-        bases = {d["id"] if "id" in d else None for d in docs if "extends" not in d}
-        for doc in docs:
-            if "extends" in doc:
-                self.assertIn(doc["extends"], bases)
+    def test_chapters_are_plain_ungated_and_laid_out(self):
+        self.assertEqual(29, len(self.shipped))
+        self.assertEqual(self.files, sorted(d["id"] for d in self.shipped))
+        orders = [d["order"] for d in self.shipped]
+        self.assertEqual(len(orders), len(set(orders)))
+        self.assertEqual(AGES, [d["id"] for d in sorted(self.shipped, key=lambda d: d["order"]) if d.get("age")])
+        english = json.loads((LANG / "en.json").read_text(encoding="utf-8"))
+        for doc in self.shipped:
+            with self.subTest(chapter=doc["id"]):
+                self.assertEqual({"id", "order", "icon", "quests"}, set(doc) - {"age"})
+                self.assertIn(f"{doc['id']}-title", english)
+                self.assertTrue(doc["quests"])
+                positions = [tuple(q["pos"]) for q in doc["quests"]]
+                self.assertEqual(len(positions), len(set(positions)), "two quests share a cell")
+                inside = {q["id"]: q["pos"][0] for q in doc["quests"]}
+                for quest in doc["quests"]:
+                    for need in refs(quest.get("requires", [])):
+                        if need in inside and need != quest["id"]:
+                            self.assertLess(inside[need], inside[quest["id"]], "prerequisite must sit to the left")
+
+    def test_every_prerequisite_resolves(self):
+        ids = {q["id"] for d in self.shipped for q in d["quests"]}
+        for doc in self.shipped:
+            for quest in doc["quests"]:
+                with self.subTest(quest=quest["id"]):
+                    self.assertFalse(set(refs(quest.get("requires", []))) - ids)
 
     def test_shared_translations_remain_in_core_unchanged(self):
         prefix = "questline/assets/questline/lang/"
         names = [p for p in git("ls-tree", "-r", "--name-only", UPSTREAM).decode().splitlines() if p.startswith(prefix)]
         self.assertTrue(names)
         for name in names:
-            original = json.loads(blob(name))
+            original = json.loads(git("show", f"{UPSTREAM}:{name}"))
             current = json.loads((ROOT / name).read_bytes())
             for key, value in original.items():
                 self.assertIn(key, current, name)

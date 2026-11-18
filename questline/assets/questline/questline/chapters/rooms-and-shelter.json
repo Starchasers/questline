@@ -1,35 +1,13 @@
 {
-    "id": "building",
-    "order": 42,
-    "icon": "game:plank-oak",
+    "id": "rooms-and-shelter",
+    "order": 140,
+    "icon": "game:firewood",
     "quests": [
-        {
-            "id": "make-boards",
-            "pos": [
-                0,
-                0.0
-            ],
-            "requires": "make-saw",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:plank-*",
-                    "count": 16
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
         {
             "id": "make-door",
             "pos": [
-                2,
-                -3.0
+                0,
+                0.0
             ],
             "requires": "make-boards",
             "tasks": [
@@ -49,8 +27,8 @@
         {
             "id": "make-ladder",
             "pos": [
-                2,
-                -1.5
+                0,
+                1.5
             ],
             "requires": "make-boards",
             "tasks": [
@@ -70,8 +48,8 @@
         {
             "id": "build-fence",
             "pos": [
-                2,
-                1.5
+                0,
+                3.0
             ],
             "requires": "make-boards",
             "tasks": [
@@ -98,8 +76,8 @@
         {
             "id": "make-roof",
             "pos": [
-                2,
-                3.0
+                0,
+                4.5
             ],
             "requires": "make-boards",
             "tasks": [
@@ -118,97 +96,10 @@
             ]
         },
         {
-            "id": "make-nails",
-            "pos": [
-                0,
-                4.5
-            ],
-            "requires": "first-smithing",
-            "tasks": [
-                {
-                    "type": "smith",
-                    "item": "game:metalnailsandstrips-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "build-chest",
-            "pos": [
-                2,
-                4.5
-            ],
-            "requires": [
-                "make-boards",
-                "make-nails"
-            ],
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:chest-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "make-oil-lamp",
+            "id": "cut-stone-bricks",
             "pos": [
                 0,
                 6.0
-            ],
-            "requires": "fire-pottery",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:oillamp-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:fat",
-                    "count": 2
-                }
-            ]
-        },
-        {
-            "id": "make-chisel",
-            "pos": [
-                0,
-                7.5
-            ],
-            "requires": "first-smithing",
-            "tasks": [
-                {
-                    "type": "smith",
-                    "item": "game:chisel-*"
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "cut-stone-bricks",
-            "pos": [
-                2,
-                7.5
             ],
             "requires": "make-chisel",
             "tasks": [
@@ -227,86 +118,59 @@
             ]
         },
         {
-            "id": "grind-lime",
+            "id": "make-table",
+            "pos": [
+                0,
+                7.5
+            ],
+            "requires": "make-boards",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:table-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "build-greenhouse",
             "pos": [
                 0,
                 9.0
             ],
-            "requires": "make-quern",
+            "requires": "make-glass",
             "tasks": [
                 {
-                    "type": "obtain",
-                    "item": "game:lime",
-                    "count": 8
+                    "type": "place",
+                    "block": "game:glass-*",
+                    "count": 12
                 }
             ],
             "rewards": [
                 {
                     "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
+                    "item": "game:seeds-bellpepper",
+                    "count": 3
                 }
             ]
         },
         {
-            "id": "burn-quicklime",
+            "id": "make-shelf",
             "pos": [
-                2,
-                9.0
-            ],
-            "requires": "grind-lime",
-            "tasks": [
-                {
-                    "type": "cook",
-                    "item": "game:quicklime",
-                    "count": 8
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:firewood",
-                    "count": 8
-                }
-            ]
-        },
-        {
-            "id": "slake-lime",
-            "pos": [
-                4,
-                9.0
-            ],
-            "requires": [
-                "burn-quicklime",
-                "make-barrel"
-            ],
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:slakedlimeportion",
-                    "count": 4
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
-            "id": "make-plaster",
-            "pos": [
-                4,
+                0,
                 10.5
             ],
-            "requires": "burn-quicklime",
+            "requires": "make-boards",
             "tasks": [
                 {
-                    "type": "obtain",
-                    "item": "game:plaster-*",
-                    "count": 4
+                    "type": "place",
+                    "block": "game:shelf-*"
                 }
             ],
             "rewards": [
@@ -318,32 +182,46 @@
             ]
         },
         {
-            "id": "mix-mortar",
+            "id": "build-cellar",
             "pos": [
-                6,
-                9.0
+                0,
+                12.0
             ],
-            "requires": "slake-lime",
+            "requires": "place-vessel",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ],
+            "icon": "game:storagevessel-blue-fired"
+        },
+        {
+            "id": "make-mudbricks",
+            "pos": [
+                0,
+                13.5
+            ],
+            "requires": "make-bricks",
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:mortar",
-                    "count": 4
+                    "item": "bricklayers:mudbrick-*",
+                    "count": 8
                 }
             ],
             "rewards": [
                 {
                     "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
+                    "item": "game:drygrass",
+                    "count": 8
                 }
             ]
         },
         {
             "id": "lay-stone-bricks",
             "pos": [
-                8,
-                7.5
+                2,
+                6.0
             ],
             "requires": [
                 "cut-stone-bricks",
@@ -382,16 +260,99 @@
             ]
         },
         {
-            "id": "make-barrel",
+            "id": "greenhouse-bonus",
             "pos": [
                 2,
-                6.0
+                9.0
             ],
-            "requires": "make-boards",
+            "requires": "build-greenhouse",
+            "shape": "gear",
+            "size": 1.25,
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ],
+            "icon": "game:glass-plain",
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:seeds-pineapple",
+                            "count": 3
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:seeds-peanut",
+                            "count": 4
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 6
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "stock-cellar",
+            "pos": [
+                2,
+                12.0
+            ],
+            "requires": [
+                "seal-crock",
+                "make-shelf",
+                "build-cellar"
+            ],
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:crock-*-fired",
+                    "count": 4
+                }
+            ],
+            "shape": "gear",
+            "size": 1.25,
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:salt",
+                            "count": 12
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:fat",
+                            "count": 6
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 6
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "cellar-food",
+            "pos": [
+                2,
+                13.5
+            ],
+            "requires": "build-cellar",
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:barrel"
+                    "item": "game:vegetable-*",
+                    "count": 16,
+                    "name": "questline:name-any-vegetable"
                 }
             ],
             "rewards": [
@@ -403,16 +364,17 @@
             ]
         },
         {
-            "id": "make-table",
+            "id": "lay-mudbricks",
             "pos": [
                 2,
-                0.0
+                15.0
             ],
-            "requires": "make-boards",
+            "requires": "make-mudbricks",
             "tasks": [
                 {
                     "type": "obtain",
-                    "item": "game:table-*"
+                    "item": "bricklayers:mudbricks-*",
+                    "count": 2
                 }
             ],
             "rewards": [

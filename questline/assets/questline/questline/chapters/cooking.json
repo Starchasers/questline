@@ -1,21 +1,7 @@
 {
-    "id": "expandedfoods-kitchen",
-    "extends": "kitchen",
-    "requiresMod": [
-        "expandedfoods"
-    ],
-    "art": [
-        {
-            "type": "text",
-            "pos": [
-                1,
-                -7.5
-            ],
-            "text": "addon-expandedfoods",
-            "scale": 0.9,
-            "color": "#c8a46e"
-        }
-    ],
+    "id": "cooking",
+    "order": 310,
+    "icon": "game:poultry-cooked",
     "quests": [
         {
             "id": "roast-meat",
@@ -54,10 +40,32 @@
             ]
         },
         {
+            "id": "serve-meal",
+            "pos": [
+                0,
+                1.5
+            ],
+            "requires": "cook-meal",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:bowl-*-meal",
+                    "name": "questline:name-any-bowl-meal"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:redmeat-raw",
+                    "count": 2
+                }
+            ]
+        },
+        {
             "id": "crack-egg",
             "pos": [
                 0,
-                -1.5
+                3.0
             ],
             "requires": "collect-eggs",
             "tasks": [
@@ -79,7 +87,7 @@
             "id": "tap-tree",
             "pos": [
                 0,
-                -6.0
+                4.5
             ],
             "requires": "first-smithing",
             "tasks": [
@@ -105,7 +113,7 @@
             "id": "make-mixing-bowl",
             "pos": [
                 2,
-                -1.5
+                0.0
             ],
             "requires": "roast-meat",
             "tasks": [
@@ -126,7 +134,7 @@
             "id": "cut-nuggets",
             "pos": [
                 2,
-                -3.0
+                1.5
             ],
             "requires": "roast-meat",
             "tasks": [
@@ -148,7 +156,7 @@
             "id": "render-lard",
             "pos": [
                 2,
-                -4.5
+                3.0
             ],
             "requires": [
                 "roast-meat",
@@ -170,10 +178,95 @@
             ]
         },
         {
+            "id": "cook-stew",
+            "pos": [
+                2,
+                4.5
+            ],
+            "requires": [
+                "serve-meal",
+                "roast-meat"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:poultry-raw",
+                    "count": 2
+                },
+                {
+                    "type": "cook",
+                    "item": "game:claypot-*-cooked",
+                    "name": "questline:name-any-pot-meal"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:seeds-onion",
+                    "count": 3
+                }
+            ]
+        },
+        {
+            "id": "cook-soup",
+            "pos": [
+                2,
+                6.0
+            ],
+            "requires": "serve-meal",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:vegetable-*",
+                    "count": 3,
+                    "name": "questline:name-any-vegetable"
+                },
+                {
+                    "type": "cook",
+                    "item": "game:claypot-*-cooked",
+                    "name": "questline:name-any-pot-meal"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:seeds-parsnip",
+                    "count": 3
+                }
+            ]
+        },
+        {
+            "id": "cook-porridge",
+            "pos": [
+                2,
+                7.5
+            ],
+            "requires": "serve-meal",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:grain-*",
+                    "count": 4
+                },
+                {
+                    "type": "cook",
+                    "item": "game:claypot-*-cooked",
+                    "name": "questline:name-any-pot-meal"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:redmeat-raw",
+                    "count": 2
+                }
+            ]
+        },
+        {
             "id": "boil-tree-syrup",
             "pos": [
                 2,
-                -6.0
+                9.0
             ],
             "requires": "tap-tree",
             "tasks": [
@@ -192,10 +285,26 @@
             ]
         },
         {
+            "id": "mix-salad",
+            "pos": [
+                4,
+                0.0
+            ],
+            "requires": [
+                "make-mixing-bowl",
+                "cut-nuggets"
+            ],
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ]
+        },
+        {
             "id": "knead-pasta",
             "pos": [
                 4,
-                -3.0
+                1.5
             ],
             "requires": [
                 "make-mixing-bowl",
@@ -221,7 +330,7 @@
             "id": "knead-sausage",
             "pos": [
                 4,
-                -4.5
+                3.0
             ],
             "requires": [
                 "make-mixing-bowl",
@@ -248,7 +357,7 @@
             "id": "cast-cauldron",
             "pos": [
                 4,
-                -6.0
+                9.0
             ],
             "requires": [
                 "boil-tree-syrup",
@@ -276,7 +385,7 @@
             "id": "power-mixing-bowl",
             "pos": [
                 6,
-                -3.0
+                3.0
             ],
             "requires": [
                 "knead-pasta",

@@ -1,0 +1,93 @@
+{
+    "id": "home-and-decor",
+    "order": 550,
+    "icon": "game:glass-plain",
+    "quests": [
+        {
+            "id": "make-candle",
+            "pos": [
+                0,
+                0.0
+            ],
+            "requires": "collect-beeswax",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:candle",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:candle",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "id": "make-oil-lamp",
+            "pos": [
+                0,
+                1.5
+            ],
+            "requires": "fire-pottery",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:oillamp-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:fat",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "id": "make-lantern",
+            "pos": [
+                0,
+                3.0
+            ],
+            "requires": "find-quartz",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:lantern-*",
+                    "name": "questline:name-any-lantern"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-flowerpot",
+            "pos": [
+                0,
+                4.5
+            ],
+            "requires": "fire-pottery",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:flowerpot-*-fired"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,658 @@
+{
+    "id": "orchards-and-bees",
+    "order": 220,
+    "icon": "game:honeycomb",
+    "quests": [
+        {
+            "id": "raid-wild-hive",
+            "pos": [
+                0,
+                0.0
+            ],
+            "requires": "forage",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:honeycomb",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:cattailtops",
+                    "count": 6
+                }
+            ]
+        },
+        {
+            "id": "make-skep",
+            "pos": [
+                0,
+                1.5
+            ],
+            "requires": [
+                "find-clay",
+                "make-knife"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:skep-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:cattailtops",
+                    "count": 6
+                }
+            ]
+        },
+        {
+            "id": "plant-flowers",
+            "pos": [
+                0,
+                3.0
+            ],
+            "requires": "forage",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:flower-*",
+                    "count": 6,
+                    "name": "questline:name-any-flower"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "take-bush-cutting",
+            "pos": [
+                0,
+                4.5
+            ],
+            "requires": "make-knife",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:fruitingbushcutting-*",
+                    "name": "questline:name-any-bush-cutting"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "take-tree-cutting",
+            "pos": [
+                0,
+                6.0
+            ],
+            "requires": "make-axe",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:fruittree-cutting"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "form-clay-hive",
+            "pos": [
+                0,
+                7.5
+            ],
+            "requires": "fire-pottery",
+            "tasks": [
+                {
+                    "type": "clayform",
+                    "item": "fromgoldencombs:ceramicbroodpot-*-raw"
+                },
+                {
+                    "type": "clayform",
+                    "item": "fromgoldencombs:hivetop-*-raw"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:firewood",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "id": "populate-skep",
+            "pos": [
+                2,
+                3.0
+            ],
+            "requires": [
+                "make-skep",
+                "plant-flowers"
+            ],
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:skep-*-populated-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "plant-bush-cutting",
+            "pos": [
+                2,
+                4.5
+            ],
+            "requires": "take-bush-cutting",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:fruitingbushcutting-*",
+                    "name": "questline:name-any-bush-cutting"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:fruit-blueberry",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "id": "plant-tree-cutting",
+            "pos": [
+                2,
+                6.0
+            ],
+            "requires": "take-tree-cutting",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:fruittree-cutting"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "fire-clay-hive",
+            "pos": [
+                2,
+                7.5
+            ],
+            "requires": "form-clay-hive",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "fromgoldencombs:ceramicbroodpot-*-notop"
+                },
+                {
+                    "type": "obtain",
+                    "item": "fromgoldencombs:hivetop-*-fired"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "harvest-honey",
+            "pos": [
+                4,
+                3.0
+            ],
+            "requires": "populate-skep",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:honeycomb",
+                    "count": 6
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "expand-apiary",
+            "pos": [
+                4,
+                4.5
+            ],
+            "requires": "populate-skep",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:skep-*",
+                    "count": 3
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "expand-apiary-fromgoldencombs"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "set-clay-hive",
+            "pos": [
+                4,
+                6.0
+            ],
+            "requires": [
+                "fire-clay-hive",
+                "populate-skep"
+            ],
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "fromgoldencombs:ceramicbroodpot-*-notop"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "graft-cutting",
+            "pos": [
+                4,
+                7.5
+            ],
+            "requires": "plant-tree-cutting",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:fruittree-cutting",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:fruit-redapple",
+                    "count": 6
+                }
+            ]
+        },
+        {
+            "id": "squeeze-honey",
+            "pos": [
+                6,
+                1.5
+            ],
+            "requires": {
+                "any": [
+                    "raid-wild-hive",
+                    "harvest-honey"
+                ]
+            },
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:honeyportion"
+                }
+            ],
+            "shape": "gear",
+            "size": 1.25,
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:fruit-redapple",
+                            "count": 10
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:cattailtops",
+                            "count": 12
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 5
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "collect-beeswax",
+            "pos": [
+                6,
+                3.0
+            ],
+            "requires": {
+                "any": [
+                    "raid-wild-hive",
+                    "harvest-honey"
+                ]
+            },
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:beeswax",
+                    "count": 6
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "harvest-clay-hive",
+            "pos": [
+                6,
+                6.0
+            ],
+            "requires": "set-clay-hive",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "fromgoldencombs:hivetop-*-harvestable"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:beeswax",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "wax-boards",
+            "pos": [
+                8,
+                6.0
+            ],
+            "requires": [
+                "harvest-clay-hive",
+                "make-boards"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "fromgoldencombs:langstrothside-*",
+                    "count": 16
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-frame-rack",
+            "pos": [
+                10,
+                6.0
+            ],
+            "requires": [
+                "wax-boards",
+                "make-hammer"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "fromgoldencombs:framerack-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:stick",
+                    "count": 12
+                }
+            ]
+        },
+        {
+            "id": "make-hive-supers",
+            "pos": [
+                10,
+                7.5
+            ],
+            "requires": [
+                "wax-boards",
+                "make-hammer"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "fromgoldencombs:langstrothsuper-*",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-hive-base",
+            "pos": [
+                10,
+                9.0
+            ],
+            "requires": [
+                "wax-boards",
+                "make-hammer"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "fromgoldencombs:langstrothbase-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "wax-linen",
+            "pos": [
+                10,
+                10.5
+            ],
+            "requires": [
+                "wax-boards",
+                "make-linen"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:linen-waxed-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-brood-box",
+            "pos": [
+                12,
+                7.5
+            ],
+            "requires": "make-hive-supers",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "fromgoldencombs:langstrothbroodtop-*"
+                },
+                {
+                    "type": "obtain",
+                    "item": "fromgoldencombs:langstrothbrood-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "cut-liners",
+            "pos": [
+                12,
+                10.5
+            ],
+            "requires": "wax-linen",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "fromgoldencombs:frameliner",
+                    "count": 5
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:resin",
+                    "count": 3
+                }
+            ]
+        },
+        {
+            "id": "make-bee-frames",
+            "pos": [
+                14,
+                9.0
+            ],
+            "requires": [
+                "make-frame-rack",
+                "cut-liners"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "fromgoldencombs:beeframe-*-empty",
+                    "count": 5
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "assemble-langstroth",
+            "pos": [
+                16,
+                9.0
+            ],
+            "requires": [
+                "make-brood-box",
+                "make-hive-base",
+                "make-bee-frames"
+            ],
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ],
+            "shape": "gear",
+            "size": 1.25,
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:beeswax",
+                            "count": 10
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:honeycomb",
+                            "count": 10
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 6
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

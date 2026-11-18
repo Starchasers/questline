@@ -1,21 +1,24 @@
 {
     "id": "steel-age",
-    "order": 70,
+    "order": 60,
     "icon": "game:ingot-steel",
     "age": true,
     "quests": [
         {
-            "id": "lay-furnace-floor",
+            "id": "mold-refractory",
             "pos": [
                 0,
                 0.0
             ],
-            "requires": "lay-refractory",
+            "requires": [
+                "crush-quartz",
+                "find-fireclay"
+            ],
             "tasks": [
                 {
-                    "type": "place",
-                    "block": "game:refractorybrickgrating-good-*",
-                    "count": 6
+                    "type": "obtain",
+                    "item": "game:refractorybrick-raw-*",
+                    "count": 12
                 }
             ],
             "rewards": [
@@ -91,9 +94,78 @@
             ]
         },
         {
-            "id": "wall-furnace",
+            "id": "fire-refractory",
             "pos": [
                 2,
+                0.0
+            ],
+            "requires": "mold-refractory",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:refractorybrick-fired-*",
+                    "count": 12
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "lay-refractory",
+            "pos": [
+                4,
+                0.0
+            ],
+            "requires": [
+                "fire-refractory",
+                "lay-fireclay-bricks"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:refractorybricks-good-*",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "lay-furnace-floor",
+            "pos": [
+                6,
+                0.0
+            ],
+            "requires": "lay-refractory",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:refractorybrickgrating-good-*",
+                    "count": 6
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "wall-furnace",
+            "pos": [
+                8,
                 1.5
             ],
             "requires": [
@@ -123,8 +195,8 @@
         {
             "id": "blister-steel",
             "pos": [
-                4,
-                1.5
+                10,
+                3.0
             ],
             "requires": [
                 "wall-furnace",
@@ -147,8 +219,8 @@
         {
             "id": "forge-steel",
             "pos": [
-                6,
-                1.5
+                12,
+                3.0
             ],
             "requires": "blister-steel",
             "tasks": [
@@ -185,8 +257,8 @@
         {
             "id": "smith-steel",
             "pos": [
-                8,
-                1.5
+                14,
+                3.0
             ],
             "requires": "forge-steel",
             "tasks": [
@@ -207,8 +279,8 @@
         {
             "id": "make-steel-tools",
             "pos": [
-                10,
-                0.0
+                16,
+                3.0
             ],
             "requires": "smith-steel",
             "tasks": [
@@ -232,8 +304,8 @@
         {
             "id": "coat-steel-head",
             "pos": [
-                10,
-                1.5
+                16,
+                4.5
             ],
             "requires": "smith-steel",
             "tasks": [
@@ -254,8 +326,8 @@
         {
             "id": "make-steel-anvil",
             "pos": [
-                10,
-                3.0
+                16,
+                6.0
             ],
             "requires": "smith-steel",
             "tasks": [

@@ -1,14 +1,35 @@
 {
     "id": "iron-age",
-    "order": 60,
+    "order": 50,
     "icon": "game:ingot-iron",
     "age": true,
     "quests": [
         {
+            "id": "make-kiln-door",
+            "pos": [
+                0,
+                0.0
+            ],
+            "requires": "lay-refractory",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:doorkiln-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "build-bellows",
             "pos": [
-                6,
-                0.0
+                0,
+                1.5
             ],
             "requires": "make-leather",
             "tasks": [
@@ -28,8 +49,8 @@
         {
             "id": "find-iron",
             "pos": [
-                4,
-                1.5
+                0,
+                3.0
             ],
             "requires": "smith-bronze",
             "tasks": [
@@ -50,8 +71,8 @@
         {
             "id": "find-borax",
             "pos": [
-                12,
-                7.5
+                0,
+                4.5
             ],
             "requires": "make-quern",
             "tasks": [
@@ -72,7 +93,7 @@
         {
             "id": "find-meteorite",
             "pos": [
-                14,
+                0,
                 6.0
             ],
             "requires": "smith-bronze",
@@ -94,8 +115,8 @@
         {
             "id": "fire-fireclay-bricks",
             "pos": [
-                2,
-                3.0
+                0,
+                7.5
             ],
             "requires": "find-fireclay",
             "tasks": [
@@ -114,10 +135,35 @@
             ]
         },
         {
+            "id": "lay-fireclay-bricks",
+            "pos": [
+                2,
+                7.5
+            ],
+            "requires": [
+                "fire-fireclay-bricks",
+                "mix-mortar"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:claybricks-good-fire",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "build-bloomery",
             "pos": [
-                4,
-                3.0
+                2,
+                9.0
             ],
             "requires": "fire-fireclay-bricks",
             "tasks": [
@@ -137,8 +183,8 @@
         {
             "id": "make-bloom",
             "pos": [
-                6,
-                1.5
+                4,
+                6.0
             ],
             "requires": [
                 "find-iron",
@@ -159,10 +205,57 @@
             ]
         },
         {
+            "id": "make-gratings",
+            "pos": [
+                4,
+                7.5
+            ],
+            "requires": [
+                "fire-refractory",
+                "lay-fireclay-bricks"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:refractorybrickgrating-good-*",
+                    "count": 9
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "find-quartz",
+            "pos": [
+                4,
+                9.0
+            ],
+            "requires": "build-bloomery",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:ore-quartz",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:charcoal",
+                    "count": 8
+                }
+            ]
+        },
+        {
             "id": "refine-bloom",
             "pos": [
-                8,
-                1.5
+                6,
+                3.0
             ],
             "requires": [
                 "make-bloom",
@@ -183,10 +276,32 @@
             ]
         },
         {
+            "id": "make-glass",
+            "pos": [
+                6,
+                9.0
+            ],
+            "requires": "find-quartz",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:glass-*",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:charcoal",
+                    "count": 12
+                }
+            ]
+        },
+        {
             "id": "smith-iron",
             "pos": [
-                10,
-                1.5
+                8,
+                3.0
             ],
             "requires": "refine-bloom",
             "tasks": [
@@ -205,10 +320,53 @@
             ]
         },
         {
+            "id": "make-panes",
+            "pos": [
+                8,
+                9.0
+            ],
+            "requires": "make-glass",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:glasspane-leaded-*",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "smith-hatch",
+            "pos": [
+                10,
+                3.0
+            ],
+            "requires": "smith-iron",
+            "tasks": [
+                {
+                    "type": "smith",
+                    "item": "game:cokeovendoor-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "smith-tongs",
             "pos": [
-                12,
-                0.0
+                10,
+                4.5
             ],
             "requires": "smith-iron",
             "tasks": [
@@ -228,8 +386,8 @@
         {
             "id": "coat-head",
             "pos": [
-                12,
-                3.0
+                10,
+                6.0
             ],
             "requires": "smith-iron",
             "tasks": [
@@ -250,8 +408,8 @@
         {
             "id": "smith-anvil-parts",
             "pos": [
-                12,
-                4.5
+                10,
+                7.5
             ],
             "requires": "smith-iron",
             "tasks": [
@@ -275,8 +433,8 @@
         {
             "id": "build-waterwheel",
             "pos": [
-                14,
-                0.0
+                10,
+                9.0
             ],
             "requires": [
                 "smith-iron",
@@ -299,8 +457,8 @@
         {
             "id": "build-metal-windmill",
             "pos": [
-                14,
-                1.5
+                10,
+                10.5
             ],
             "requires": [
                 "smith-iron",
@@ -321,10 +479,64 @@
             ]
         },
         {
+            "id": "build-kiln",
+            "pos": [
+                12,
+                3.0
+            ],
+            "requires": [
+                "make-kiln-door",
+                "make-gratings",
+                "smith-hatch"
+            ],
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:doorkiln-*"
+                },
+                {
+                    "type": "place",
+                    "block": "game:refractorybrickgrating-good-*",
+                    "count": 9
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:firewood",
+                    "count": 32
+                }
+            ]
+        },
+        {
+            "id": "build-coke-oven",
+            "pos": [
+                12,
+                6.0
+            ],
+            "requires": [
+                "lay-fireclay-bricks",
+                "smith-hatch"
+            ],
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:cokeovendoor-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:ore-bituminouscoal",
+                    "count": 8
+                }
+            ]
+        },
+        {
             "id": "quench-head",
             "pos": [
-                14,
-                3.0
+                12,
+                7.5
             ],
             "requires": "coat-head",
             "tasks": [
@@ -337,8 +549,8 @@
         {
             "id": "fuse-anvil",
             "pos": [
-                14,
-                4.5
+                12,
+                9.0
             ],
             "requires": [
                 "smith-anvil-parts",
@@ -376,10 +588,70 @@
             ]
         },
         {
+            "id": "fire-kiln",
+            "pos": [
+                14,
+                3.0
+            ],
+            "requires": "build-kiln",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ],
+            "shape": "gear",
+            "size": 1.25,
+            "icon": "game:doorkiln-tier1",
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:firewood",
+                            "count": 48
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:charcoal",
+                            "count": 32
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 10
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "make-coke",
+            "pos": [
+                14,
+                6.0
+            ],
+            "requires": "build-coke-oven",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:coke",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "smith-meteoric",
             "pos": [
-                16,
-                6.0
+                14,
+                7.5
             ],
             "requires": [
                 "fuse-anvil",

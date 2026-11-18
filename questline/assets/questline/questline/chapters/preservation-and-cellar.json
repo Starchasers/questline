@@ -1,0 +1,526 @@
+{
+    "id": "preservation-and-cellar",
+    "order": 340,
+    "icon": "game:salt",
+    "quests": [
+        {
+            "id": "find-salt",
+            "pos": [
+                0,
+                0.0
+            ],
+            "requires": "make-quern",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:salt",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:redmeat-raw",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "form-crock",
+            "pos": [
+                0,
+                1.5
+            ],
+            "requires": "form-bowl",
+            "tasks": [
+                {
+                    "type": "clayform",
+                    "item": "game:crock-*-raw"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:firewood",
+                    "count": 6
+                }
+            ]
+        },
+        {
+            "id": "stock-firewood",
+            "pos": [
+                0,
+                3.0
+            ],
+            "requires": "make-fire",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:firewood",
+                    "count": 64
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:drygrass",
+                    "count": 16
+                }
+            ]
+        },
+        {
+            "id": "stock-grain",
+            "pos": [
+                0,
+                4.5
+            ],
+            "requires": [
+                "harvest-grain",
+                "place-vessel"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:grain-*",
+                    "count": 64
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "build-meat-rack",
+            "pos": [
+                0,
+                6.0
+            ],
+            "requires": [
+                "first-smithing",
+                "make-boards"
+            ],
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "aculinaryartillery:meathooks-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "cure-meat",
+            "pos": [
+                2,
+                0.0
+            ],
+            "requires": [
+                "find-salt",
+                "make-barrel"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:*-cured",
+                    "count": 4,
+                    "name": "questline:name-any-cured-meat"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:salt",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "make-brine",
+            "pos": [
+                2,
+                1.5
+            ],
+            "requires": [
+                "find-salt",
+                "make-barrel"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:brineportion",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:seeds-cabbage",
+                    "count": 3
+                }
+            ]
+        },
+        {
+            "id": "make-hardtack",
+            "pos": [
+                2,
+                3.0
+            ],
+            "requires": [
+                "find-salt",
+                "grind-flour"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:hardtack-*-raw",
+                    "count": 4
+                },
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:hardtack-*-bake1",
+                    "count": 4,
+                    "unchecked": true
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:firewood",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "id": "fire-crock",
+            "pos": [
+                2,
+                4.5
+            ],
+            "requires": "form-crock",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:crock-*-fired"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:fat",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "id": "dry-age-meat",
+            "pos": [
+                2,
+                6.0
+            ],
+            "requires": "build-meat-rack",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:agedmeat-*-normal",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "water-glass-eggs",
+            "pos": [
+                4,
+                0.0
+            ],
+            "requires": [
+                "cure-meat",
+                "slake-lime",
+                "collect-eggs"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:limeegg-chicken",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "ferment-fish",
+            "pos": [
+                4,
+                1.5
+            ],
+            "requires": [
+                "cure-meat",
+                "fillet-fish"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:fermentedfish-slop"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:salt",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "pickle-vegetables",
+            "pos": [
+                4,
+                3.0
+            ],
+            "requires": "make-brine",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:pickledvegetable-*",
+                    "count": 4,
+                    "name": "questline:name-any-pickled-vegetable"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "crystallize-salt",
+            "pos": [
+                4,
+                4.5
+            ],
+            "requires": "make-brine",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "efchefstricks:saltcrystal-damp"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "brew-soy-sauce",
+            "pos": [
+                4,
+                6.0
+            ],
+            "requires": [
+                "culture-soybeans",
+                "make-brine",
+                "make-fruit-press"
+            ],
+            "shape": "gear",
+            "size": 1.25,
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:soysauce"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:seeds-soybean",
+                            "count": 8
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:firewood",
+                            "count": 32
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 6
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "seal-crock",
+            "pos": [
+                4,
+                7.5
+            ],
+            "requires": {
+                "all": [
+                    "fire-crock",
+                    "cook-meal",
+                    {
+                        "any": [
+                            "melt-fat",
+                            "collect-beeswax"
+                        ]
+                    }
+                ]
+            },
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ],
+            "icon": "game:crock-blue-fired"
+        },
+        {
+            "id": "press-fish-sauce",
+            "pos": [
+                6,
+                1.5
+            ],
+            "requires": [
+                "ferment-fish",
+                "make-fruit-press"
+            ],
+            "shape": "gear",
+            "size": 1.25,
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:fishsauce",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:salt",
+                            "count": 12
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:firewood",
+                            "count": 32
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 6
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "winter-larder",
+            "pos": [
+                6,
+                3.0
+            ],
+            "requires": [
+                "stock-firewood",
+                "stock-grain",
+                "cellar-food",
+                "dress-warm",
+                "cure-meat",
+                "pickle-vegetables"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:*-cured",
+                    "count": 8,
+                    "name": "questline:name-any-cured-meat"
+                },
+                {
+                    "type": "obtain",
+                    "item": "game:pickledvegetable-*",
+                    "count": 8,
+                    "name": "questline:name-any-pickled-vegetable"
+                }
+            ],
+            "shape": "gear",
+            "size": 1.25,
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:firewood",
+                            "count": 48
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:redmeat-cured",
+                            "count": 8
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 8
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "dry-salt-crystal",
+            "pos": [
+                6,
+                4.5
+            ],
+            "requires": [
+                "crystallize-salt",
+                "make-quern"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "efchefstricks:saltcrystal-dry"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        }
+    ]
+}

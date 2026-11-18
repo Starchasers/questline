@@ -1,6 +1,6 @@
 {
-    "id": "farming",
-    "order": 30,
+    "id": "fields-and-harvest",
+    "order": 210,
     "icon": "game:grain-spelt",
     "quests": [
         {
@@ -28,7 +28,7 @@
             "id": "gather-seeds",
             "pos": [
                 0,
-                3.0
+                1.5
             ],
             "requires": "make-knife",
             "tasks": [
@@ -49,8 +49,8 @@
         {
             "id": "make-compost",
             "pos": [
-                8,
-                1.5
+                0,
+                3.0
             ],
             "requires": "make-barrel",
             "tasks": [
@@ -58,6 +58,30 @@
                     "type": "obtain",
                     "item": "game:compost",
                     "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "wash-eggshells",
+            "pos": [
+                0,
+                4.5
+            ],
+            "requires": [
+                "crack-egg",
+                "make-barrel"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "efchefstricks:washedeggshell"
                 }
             ],
             "rewards": [
@@ -90,10 +114,32 @@
             ]
         },
         {
+            "id": "grow-soybeans",
+            "pos": [
+                2,
+                1.5
+            ],
+            "requires": "gather-seeds",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:legume-soybean",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "harvest-grain",
             "pos": [
                 4,
-                1.5
+                0.0
             ],
             "requires": [
                 "make-hoe",
@@ -111,6 +157,31 @@
                     "type": "item",
                     "item": "game:seeds-flax",
                     "count": 4
+                }
+            ]
+        },
+        {
+            "id": "soak-soybeans",
+            "pos": [
+                4,
+                1.5
+            ],
+            "requires": [
+                "grow-soybeans",
+                "make-barrel"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:soyprep-soaked",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
                 }
             ]
         },
@@ -141,7 +212,7 @@
             "id": "make-quern",
             "pos": [
                 6,
-                3.0
+                1.5
             ],
             "requires": [
                 "harvest-grain",
@@ -165,7 +236,7 @@
             "id": "grow-pumpkin",
             "pos": [
                 6,
-                4.5
+                3.0
             ],
             "requires": "harvest-grain",
             "tasks": [
@@ -187,32 +258,10 @@
             ]
         },
         {
-            "id": "grind-bonemeal",
-            "pos": [
-                8,
-                4.5
-            ],
-            "requires": "make-quern",
-            "tasks": [
-                {
-                    "type": "obtain",
-                    "item": "game:bonemeal",
-                    "count": 4
-                }
-            ],
-            "rewards": [
-                {
-                    "type": "item",
-                    "item": "game:gear-rusty",
-                    "count": 1
-                }
-            ]
-        },
-        {
             "id": "gather-saltpeter",
             "pos": [
                 6,
-                6.0
+                4.5
             ],
             "requires": "harvest-grain",
             "tasks": [
@@ -231,10 +280,103 @@
             ]
         },
         {
+            "id": "grow-flax",
+            "pos": [
+                6,
+                6.0
+            ],
+            "requires": "harvest-grain",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:flaxfibers",
+                    "count": 16
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:seeds-flax",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "id": "grind-bonemeal",
+            "pos": [
+                8,
+                1.5
+            ],
+            "requires": "make-quern",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:bonemeal",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "grind-soybeans",
+            "pos": [
+                8,
+                3.0
+            ],
+            "requires": [
+                "soak-soybeans",
+                "make-quern"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:soyprep-powdered",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "press-oil",
+            "pos": [
+                8,
+                6.0
+            ],
+            "requires": [
+                "grow-flax",
+                "make-fruit-press"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:foodoilportion-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
             "id": "full-harvest",
             "pos": [
                 10,
-                0.0
+                3.0
             ],
             "requires": [
                 "grow-vegetables",
@@ -278,6 +420,53 @@
                             "count": 6
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "id": "culture-soybeans",
+            "pos": [
+                10,
+                4.5
+            ],
+            "requires": "grind-soybeans",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:soyprep-cultured",
+                    "count": 8
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-soy-milk",
+            "pos": [
+                10,
+                6.0
+            ],
+            "requires": [
+                "grind-soybeans",
+                "make-fruit-press",
+                "roast-meat"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:soymilk-edible"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
                 }
             ]
         }

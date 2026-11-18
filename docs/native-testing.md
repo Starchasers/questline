@@ -5,7 +5,7 @@ Stage the modular fork's content explicitly. Historical upstream `CLAUDE.md` com
 ## Stage required packages
 
 - Install the single `questline` mod; it carries every chapter. No separate content packages exist.
-- Chapters that integrate a gameplay mod keep their `requiresMod` gate, so install that gameplay mod (and its prerequisites) to see them, for example Expanded Foods for its screenshots.
+- No chapter is gated on a mod. Quests that target a gameplay mod are disabled by the loader when that mod is absent, so install the full modpack for native runs.
 - For Toolsmith native tests, build/install `compat/toolsmith`, core and Toolsmith. With the inspected VsTestkit runner, pass `--mods <checkout>/compat/toolsmith/bin/Release` for the adapter output—not `--mod`, which uses a different output convention.
 
 ## Screenshots and acceptance limits

@@ -1,6 +1,6 @@
 {
     "id": "baking",
-    "order": 44,
+    "order": 320,
     "icon": "game:pie-perfect",
     "quests": [
         {
@@ -15,6 +15,27 @@
                     "type": "obtain",
                     "item": "game:flour-*",
                     "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:firewood",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "id": "form-oven",
+            "pos": [
+                0,
+                1.5
+            ],
+            "requires": "find-fireclay",
+            "tasks": [
+                {
+                    "type": "clayform",
+                    "item": "game:clayoven-north"
                 }
             ],
             "rewards": [
@@ -47,6 +68,44 @@
                     "type": "item",
                     "item": "game:firewood",
                     "count": 6
+                }
+            ]
+        },
+        {
+            "id": "place-oven",
+            "pos": [
+                2,
+                1.5
+            ],
+            "requires": "form-oven",
+            "shape": "gear",
+            "size": 1.25,
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:clayoven-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:firewood",
+                            "count": 24
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:seeds-rye",
+                            "count": 6
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 4
+                        }
+                    ]
                 }
             ]
         },
@@ -88,6 +147,51 @@
                 {
                     "type": "obtain",
                     "item": "game:pie-perfect"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "roast-grain",
+            "pos": [
+                6,
+                1.5
+            ],
+            "requires": "bake-bread",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:roastedgrain-*",
+                    "count": 4,
+                    "unchecked": true
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-breadcrumbs",
+            "pos": [
+                6,
+                3.0
+            ],
+            "requires": "bake-bread",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "expandedfoods:breadcrumbs-*",
+                    "count": 4
                 }
             ],
             "rewards": [

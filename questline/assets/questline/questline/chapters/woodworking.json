@@ -1,0 +1,94 @@
+{
+    "id": "woodworking",
+    "order": 120,
+    "icon": "game:plank-oak",
+    "quests": [
+        {
+            "id": "gather-resin",
+            "pos": [
+                0,
+                0.0
+            ],
+            "requires": "chop-wood",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:resin",
+                    "count": 2
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-boards",
+            "pos": [
+                0,
+                1.5
+            ],
+            "requires": "make-saw",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:plank-*",
+                    "count": 16
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "tap-resin",
+            "pos": [
+                0,
+                3.0
+            ],
+            "requires": "chop-wood",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:resin",
+                    "count": 4
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "id": "make-barrel",
+            "pos": [
+                2,
+                1.5
+            ],
+            "requires": "make-boards",
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:barrel"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ]
+        }
+    ]
+}
