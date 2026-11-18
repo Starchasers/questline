@@ -9,7 +9,7 @@ namespace questline.Server;
 /// <summary>
 /// The structures worldgen places, by the codes visit tasks use: a structure's code in the
 /// worldgen config that places it, with that file's domain (game:tobiascave,
-/// betterruins:largeforlornhopetower).
+/// example:watchtower).
 ///
 /// The game records each structure it places in its map region, under a code of its own making:
 /// "&lt;schematic&gt;/&lt;structure&gt;" for ruins and each building of a village (GenStructures), "&lt;structure&gt;:&lt;schematic&gt;" for story

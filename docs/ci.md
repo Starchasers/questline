@@ -43,14 +43,16 @@ dotnet run --project compat/toolsmith/tests/AdapterChecks.csproj -c Release -p:V
 ```
 
 CI additionally compares ZIP names and checksum entries to every owned package's
-`modinfo.json`, requiring exactly **14**: framework, 12 content packs, and optional
+`modinfo.json`, requiring exactly **11**: framework, nine content packs (vanilla
+plus eight optional integrations), and optional
 Toolsmith adapter. The core and adapter compile against real game assemblies;
 content packs are independently validated and packaged. No build-only fixture,
 game assembly, or external provider is shipped.
 
 Use a clean output directory for local package-set verification. The packager
 intentionally preserves unrelated output files, so an old core ZIP in `Releases`
-will correctly fail CI's exact-set check. A local alternative is
+or a removed Better Ruins, Charcoal Kiln or Seafarer ZIP will correctly fail CI's
+exact-set check. A local alternative is
 `sh ./build.sh --output /path/to/new-output-directory` and verifying that directory.
 
 Bash pipelines preserve failing test exit statuses (`pipefail`); logs are uploaded
@@ -61,7 +63,7 @@ after a failure. A failed check is not evidence that those later suites ran.
 
 Successful runs upload two artifacts, retained for 14 days:
 
-- **questline-packages**: all 14 individually installable ZIPs and `SHA256SUMS`.
+- **questline-packages**: all 11 individually installable ZIPs and `SHA256SUMS`.
 - **questline-test-results**: text logs for each executed suite, build/checksum
   output, source commit, server archive checksum, and toolchain versions. Logs are
   not fabricated JUnit/TRX reports: the executable suites use their own assertions
@@ -81,8 +83,8 @@ framework manifest version must equal the tag without the leading `v`; content
 and adapter packages retain their own manifest versions.
 
 The publisher downloads the verified artifacts from its own workflow run (no
-rebuild), rechecks all 14 ZIP checksums, attests every ZIP, then attaches all 14
-ZIPs and `SHA256SUMS` to the GitHub release. The publisher reads back all 15
+rebuild), rechecks all 11 ZIP checksums, attests every ZIP, then attaches all 11
+ZIPs and `SHA256SUMS` to the GitHub release. The publisher reads back all 12
 release assets, downloads them again, and checks their hashes against the verified
 checksum file. Notes include checksums and recorded build inputs. It refuses to overwrite an existing release rather than replacing
 assets silently. The trusted tag publisher checks out metadata only; it does not
@@ -95,6 +97,12 @@ upstream release commit SHAs. No `pull_request_target` or privileged workflow-ru
 consumer executes PR code.
 
 ## Remote setup and remaining acceptance
+
+The 11-ZIP set is the current post-removal acceptance target, not evidence of a
+new hosted run. Earlier 14-ZIP build and packaging results describe the historical
+inventory; see [packaging verification](packaging-verification.md). Package removal
+does not clean `ModConfig/questline/working/` copies, saved progress or installed
+old mod ZIPs, and output cleanup is deliberately not automatic.
 
 - Enable GitHub Actions and allow the pinned official `actions/*` actions under
   repository/organization policy. Fork pull requests may need maintainer approval.

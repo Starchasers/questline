@@ -1,5 +1,48 @@
 # Packaging verification
 
+The original extraction and hardening execution snapshots later in this document
+are historical. The post-removal checkpoint below is a separate local run.
+
+## Current package target
+
+The current clean-output target is **11 artifacts**: framework, nine content
+packages (vanilla plus eight optional integrations), and the Toolsmith adapter.
+The retained content contains 51 chapter files, 469 quest records, 520 tasks and
+453 distinct quest IDs, including 16 intentional replacement IDs. Retained chapter
+assets remain byte-for-byte unchanged; generic structure discovery/visit tasks
+are not removed.
+
+The three removed quest ZIPs listed in the historical snapshot below must not
+appear in a new verified package set. The packager does not clean stale output;
+use a new output directory and validate the exact ZIP/checksum set. Package removal
+also does not clean existing `ModConfig/questline/working/` editor copies, saved
+progress or installed old mod ZIPs.
+
+## Post-removal local verification
+
+Using the CI-matching .NET SDK 10.0.100 and Vintage Story 1.22.7 server SDK:
+
+- RED before production removal: content suite **6 tests, 5 failures**; packaging
+  suite **33 tests, 1 failure** (the inventory regression found 14 instead of 11).
+- GREEN: packaging **33 passed**, content removal/preservation **6 passed**,
+  translation consistency **1,197 English keys, zero errors across 34 locales**
+  (31 existing English-text warnings), Toolsmith source **3 passed**,
+  real-loader composition **12 passed**, headless rewards **21 passed**,
+  synthetic Toolsmith adapter **23 runtime checks passed**.
+- Both owned code packages built successfully, and the actual packager produced
+  **11 ZIPs / 113 entries**, with 51 exact-source-byte chapter assets. Independently
+  checked exact package membership, SHA256SUMS, licenses, CRC, asset and DLL bytes.
+  A repeat packaging pass with identical assemblies produced identical ZIP bytes.
+- All 51 retained chapters and the vanilla book manifest match immutable upstream
+  blobs byte-for-byte. All nonremoved inherited locale values are preserved;
+  150 exclusively removed-provider keys are absent from each of the 34 locales.
+
+These are offline checks and builds, not a native VsTestkit/client/world run.
+The generic native structure-mapping regression remains, without requiring the
+removed Better Ruins chapter; it was not executed in this offline checkpoint.
+
+## Historical execution environment
+
 Executed locally against the external .NET SDK at
 `/home/brunette/.hermes/cache/scratch/woodworking-tutorial/dotnet/dotnet`
 (version supplied for this task: 10.0.404), with `VINTAGE_STORY` pointing to the
@@ -32,7 +75,7 @@ Repeated the complete real build/package entry point twice. The resulting
 opened each advertised ZIP and checked checksum, manifest, expected DLL membership,
 MIT LICENSE bytes, sorted unique names, CRC, fixed timestamp and mode.
 
-Current snapshot: **14 artifacts** in `Releases/`:
+Historical pre-removal snapshot: **14 artifacts** in `Releases/`:
 
 - `questline_0.15.0.zip`
 - `questlinevanilla_0.14.0.zip`

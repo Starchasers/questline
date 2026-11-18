@@ -5,13 +5,17 @@ This repository derives from dizzyd/questline v0.14.0 under the MIT license. The
 ## Fork layout and verification
 
 - Framework: `questline/`, version 0.15.0; no bundled quest chapters.
-- Questbooks: `content/vanilla/` and eleven optional mod content packages. Install vanilla content for the original shared book, then only the integrations you need.
+- Questbooks: `content/vanilla/` and eight optional mod content packages. Install vanilla content for the original shared book, then only the integrations you need.
 - Optional executable adapters: `compat/toolsmith/`.
 - Approved scope: [fork contract](docs/fork-contract.md).
 - Installation, dependencies and unchanged-content guarantees: [content packages](docs/content-packages.md).
 - Build/package commands and deterministic archive policy: [build and packaging](docs/build-packaging.md).
 - Shared translations currently remain in the framework; independent localization ownership is not yet implemented.
 - Native game/client/server acceptance is pending. Compilation, offline checks and synthetic Harmony tests do not establish in-world compatibility. Do not treat intermediate archives as a validated release.
+
+The current package set is **11 artifacts**: framework, nine content packages (vanilla plus eight optional integrations), and the Toolsmith adapter. The retained content contains **51 chapter files, 469 quest records, 520 tasks and 453 distinct quest IDs**, including 16 intentional replacement IDs.
+
+Better Ruins, Charcoal Kiln and Seafarer quest packages are no longer shipped. Their removal does not clean existing `ModConfig/questline/working/` editor copies, saved progress, installed old package ZIPs, or old build output. Review those separately; do not delete unrelated progress or working content. Remaining chapter assets retain their original bytes and IDs, and generic structure discovery/visit tasks remain supported.
 
 The upstream overview below describes inherited capabilities; fork-specific behavior and release gates are defined by the documents above.
 
@@ -39,8 +43,8 @@ Every phase of the roadmap, minus the VS Quest importer:
   keeps craft only where crafting changes a thing without changing what it is (a clay-coated head,
   a baited pole). A task that takes many things names what they share ("any clay"), or carries a
   `name` lang key that says it ("any fruit"). A visit names the structure by its code in the
-  worldgen config, with that file's domain (`game:trader-*`,
-  `betterruins:largeforlornhopetower`), and its place by the lang entry `<domain>:structure-<code>`;
+  worldgen config, with that file's domain (for example `game:trader-*`),
+  and its place by the lang entry `<domain>:structure-<code>`;
   a village counts each of its buildings. `/questline structures` names whatever you are standing
   in, and a `discovered` gate sees places visited
 - Rewards: material payouts become a tiny Quest Cookie; bundled rewarded quests each give one.
@@ -92,10 +96,9 @@ Every phase of the roadmap, minus the VS Quest importer:
   through steel, mechanical power, kilns, farming, husbandry, beekeeping, cheese, brewing,
   textiles and leather, boats, riding, arms and armor. It links every one of the game's own
   guides, teaches the mechanics and never the story
-- Quests for popular mods, melded into the base chapters when the mod is installed: Expanded
-  Foods (with A Culinary Artillery and its modules), Hex's Mech, Seafarer, Bricklayers, Charcoal
-  Kiln, Wool, Tailor's Delight, From Golden Combs and Better Ruins (its ruins, hidden places and the
-  far story locations its maps lead to). 194 quests in all; a chapter file can
+- Quests for popular mods, melded into the base chapters when their content packages and gameplay
+  mods are installed: Expanded Foods, EF Chef's Tricks, EF Meals Module, Hex's Mech,
+  Bricklayers, Wool, Tailor's Delight and From Golden Combs. 147 optional quest records in all; a chapter file can
   `extend` a base chapter and replace a base quest whose mechanic the mod changes
 - A goal planner: "Plan how to make this" on an item page works it back through the recipe
   graph to what the player carries. `RevealLevel` in `ModConfig/questline.json` caps what it

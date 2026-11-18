@@ -7,7 +7,7 @@ Baseline: dizzyd/questline commit `9a2fd4e2b2e24046de08c7a86aff335294558939` (v0
 ## Approved requirements
 
 1. One repository containing the framework, independently installable vanilla quest content, independently installable optional mod questbooks, and optional executable provider adapters.
-2. Preserve original chapter files, quest prose, tasks, IDs, dependencies, pages, links, positions and intentional replacement definitions. Existing quests must retain their behavior except the approved reward substitution.
+2. Preserve retained original chapter files byte-for-byte, including quest prose, tasks, IDs, dependencies, pages, links, positions and intentional replacement definitions. Better Ruins, Charcoal Kiln and Seafarer quest packages are explicitly removed; remaining quests must retain their behavior except the approved reward substitution.
 3. Original request to remove all quest rewards was superseded by explicit user approval: retain claiming functionality and replace item/resource payouts with a custom tiny edible Quest Cookie.
 4. Cookie design: quest-only acquisition, tiny satiety, no buffs/healing, no recipes or downstream crafting/cooking/planting/processing/fuel/feed uses supplied by this project. Avoid spoilage into useful materials. Do not claim immunity to arbitrary external mod recipes; inspect the actual enabled modpack for wildcard interactions before release.
 5. Preserve stage progression, hand-in consumption, shared claims and one-time claim safeguards. Do not silently change stages or task completion into rewards.
@@ -16,7 +16,11 @@ Baseline: dizzyd/questline commit `9a2fd4e2b2e24046de08c7a86aff335294558939` (v0
 
 ## Structural baseline
 
-56 chapter files, 532 source quest records, 589 tasks, 516 distinct quest IDs, including 16 intentional replacement IDs. Packages: vanilla, Better Ruins, Bricklayers, Charcoal Kiln, EF Chef's Tricks, EF Meals Module, Expanded Foods, From Golden Combs, Hex's Machinery, Seafarer, Tailor's Delight and Wool. Toolsmith requires a separate executable adapter.
+Current retained inventory: 51 chapter files, 469 source quest records, 520 tasks, 453 distinct quest IDs, including 16 intentional replacement IDs. Nine content packages: vanilla, Bricklayers, EF Chef's Tricks, EF Meals Module, Expanded Foods, From Golden Combs, Hex's Machinery, Tailor's Delight and Wool. With the framework and separate executable Toolsmith adapter, this is 11 artifacts.
+
+Historical extraction baseline before removing Better Ruins, Charcoal Kiln and Seafarer: 56 chapter files, 532 source quest records, 589 tasks and 516 distinct quest IDs, including the same 16 intentional replacement IDs. Historical verification of that set does not establish post-removal verification.
+
+Removal is a shipped-inventory change, not a migration or cleanup of existing `ModConfig/questline/working/` editor copies, saved progress, installed old packages or stale output archives. Generic structure discovery/visit support and third-party addon mechanisms remain intact.
 
 ## Architecture boundaries
 

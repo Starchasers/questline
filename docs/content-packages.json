@@ -7,20 +7,6 @@
   "sharedTranslations": "questline/assets/questline/lang",
   "packages": [
     {
-      "key": "betterruins",
-      "path": "content/betterruins",
-      "modid": "questlinebetterruins",
-      "dependencies": {
-        "game": "1.22.0",
-        "questline": "0.15.0",
-        "questlinevanilla": "0.14.0",
-        "betterruins": "0.0.0"
-      },
-      "chapters": [
-        "betterruins-ruins.json"
-      ]
-    },
-    {
       "key": "bricklayers",
       "path": "content/bricklayers",
       "modid": "questlinebricklayers",
@@ -34,20 +20,6 @@
         "bricklayers-building.json",
         "bricklayers-clay-and-fire.json",
         "bricklayers-glass-and-kilns.json"
-      ]
-    },
-    {
-      "key": "charcoalkiln",
-      "path": "content/charcoalkiln",
-      "modid": "questlinecharcoalkiln",
-      "dependencies": {
-        "game": "1.22.0",
-        "questline": "0.15.0",
-        "questlinevanilla": "0.14.0",
-        "charcoalkiln": "0.0.0"
-      },
-      "chapters": [
-        "charcoalkiln-copper-age.json"
       ]
     },
     {
@@ -132,22 +104,6 @@
       "chapters": [
         "hexsmech-industry.json",
         "hexsmech-mechanical-power.json"
-      ]
-    },
-    {
-      "key": "seafarer",
-      "path": "content/seafarer",
-      "modid": "questlineseafarer",
-      "dependencies": {
-        "game": "1.22.0",
-        "questline": "0.15.0",
-        "questlinevanilla": "0.14.0",
-        "seafarer": "0.0.0"
-      },
-      "chapters": [
-        "seafarer-provisions.json",
-        "seafarer-waterways.json",
-        "seafarer-wider-world.json"
       ]
     },
     {
