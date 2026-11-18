@@ -1,0 +1,40 @@
+{
+  "id": "immersivewoodworking-building",
+  "extends": "building",
+  "requiresMod": [
+    "immersivewoodworking"
+  ],
+  "quests": [
+    {
+      "id": "make-boards",
+      "pos": [
+        0,
+        0.0
+      ],
+      "requires": [
+        "iw-rip-planks"
+      ],
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:plank-*",
+          "count": 16
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "iw-make-boards-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "icon": "game:plank-oak"
+    }
+  ]
+}

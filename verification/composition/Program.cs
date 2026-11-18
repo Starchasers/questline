@@ -176,7 +176,7 @@ Test("same-domain working filenames use last ordinal winner regardless of creati
 Test("all 16 shipped base-to-extension replacements survive shuffled real content composition", () => {
     string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
     var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
-        .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
+        .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/") && !f.Replace('\\', '/').Contains("/content/immersivewoodworking/"))
         .Select(f => (Domain: new DirectoryInfo(Path.GetDirectoryName(f)).Parent.Parent.Name, Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
     Check(files.Length == 56, $"expected 56 extracted content files, got {files.Length}");
     var baseline = Load(files);
@@ -203,6 +203,33 @@ Test("all 16 shipped base-to-extension replacements survive shuffled real conten
     foreach (int seed in Enumerable.Range(0, 12)) {
         var rng = new Random(seed); var p = files.OrderBy(_ => rng.Next()).ToArray(); var loaded = Load(p);
         Check(snapshot == loaded.Registry.ToJson() + string.Join("\n", loaded.Loader.Problems), "shipped registry/diagnostics changed under seed " + seed);
+    }
+});
+Test("Immersive Woodworking real content is gated, deterministic and cookie-only", () => {
+    string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
+    var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
+        .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
+        .Select(f => (Domain: "questline", Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
+    Check(files.Length == 60, "expected original 56 plus four new contributions");
+    var active = Load(files);
+    Check(!active.Loader.Problems.Any(p => p.Contains("ambiguous extension")), string.Join("; ", active.Loader.Problems));
+    Check(active.Registry.Get("questline:iw-workshop") != null, "workshop not loaded");
+    foreach (string id in new[] { "weak-tannin", "strong-tannin" }) {
+        var q = active.Registry.Get("questline:" + id);
+        Check(q.Tasks.Single().Type == "checkbox", "tannin must be explicit manual confirmation");
+        Check(q.Page.Single().Lang == "questline:iw-" + id + "-desc", "addon teaching page missing");
+    }
+    foreach (var id in new[] { "iw-workshop", "chop-wood", "make-boards", "weak-tannin", "strong-tannin" }) {
+        var rewards = active.Registry.Get("questline:" + id).Rewards;
+        Check(rewards.Count == 1 && rewards[0].Item == RewardPolicy.CookieCode && rewards[0].Count == 1, "missing cookie or resource payout: " + id);
+    }
+    var inactive = Load(files, missingMods: ["immersivewoodworking"]);
+    Check(inactive.Registry.Get("questline:iw-workshop") == null, "missing mod did not hide workshop");
+    Check(inactive.Registry.Get("questline:weak-tannin").Tasks.Single().Type == "obtain", "disabled addon changed original tanning");
+    string snapshot = active.Registry.ToJson() + string.Join("\n", active.Loader.Problems);
+    foreach (int seed in Enumerable.Range(0, 12)) {
+        var rng = new Random(seed); var loaded = Load(files.OrderBy(_ => rng.Next()));
+        Check(snapshot == loaded.Registry.ToJson() + string.Join("\n", loaded.Loader.Problems), "woodworking composition changed with enumeration");
     }
 });
 Console.WriteLine($"Composition: {passed} passed, {failed} failed");
