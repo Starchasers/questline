@@ -1,54 +1,54 @@
 # Phase 1 findings
 
-What the rendering spike measured and what the 1.22 source says about the design doc's open
-questions. Source paths are relative to the workspace root; checked against the 1.22.0 trees
-and run on game 1.22.6.
+Historical findings from the rendering spike and investigation of the design doc's open
+questions, followed by later-phase results. Source paths are relative to the workspace root.
+Sources were checked against the 1.22.0 trees; runtime measurements used game 1.22.6.
 
-## Rendering spike: both gates pass
+## Rendering spike: both gates passed
 
 `tests/BookSpikeTests.cs`, client tier on vsclient.home (GTX 1060):
 
-| Gate | Result |
+| Gate | Recorded result |
 |---|---|
-| 500-node tree pans and zooms smoothly | 15 s tour across the whole tree, zoom 0.2–2.3: frame 16.3 ms avg, 16.7 ms p95 (vsync-bound, 60 fps). The canvas's own share: 1.3 ms avg, 4.4 ms p95, 9.8 ms max over 921 frames |
-| A handbook page renders inside the book without patches | The copper anvil's vanilla page (61 rich-text components, recipe slideshows and links) composes in the book's Reference tab; item links navigate inside the book and Back returns |
+| 500-node tree pans and zooms smoothly | 15 s tour across the whole tree, zoom 0.2–2.3: frame 16.3 ms avg, 16.7 ms p95 (vsync-bound, 60 fps). Canvas alone: 1.3 ms avg, 4.4 ms p95, 9.8 ms max over 921 frames |
+| A handbook page renders inside the book without patches | The copper anvil's vanilla page (61 rich-text components, recipe slideshows and links) composed in the book's Reference tab; item links navigated inside the book and Back returned |
 
-How the canvas does it (`questline/Client/GuiElementQuestCanvas.cs`): edges and node frames are
-two meshes in canvas units, drawn with the engine's GUI shader, so pan and zoom only change the
-model-view matrix. Item icons (`RenderItemstackToGui`) and labels are drawn per node, for the
-nodes in view only. Labels are cached text textures, made at most 8 per frame.
+`questline/Client/GuiElementQuestCanvas.cs` drew edges and node frames as two meshes in canvas
+units with the engine's GUI shader. Pan and zoom changed only the model-view matrix.
+Per-node drawing covered only visible item icons (`RenderItemstackToGui`) and labels.
+Labels used cached text textures, generated at most 8 per frame.
 
-The canvas's worst frames come from label generation on first zoom-in. Dummy titles are long
-item names and overlap at zoom 1; real quest titles will need a width limit or show-on-hover.
+First-zoom label generation caused the worst canvas frames. Long dummy item-name titles
+overlapped at zoom 1; real quest titles needed a width limit or show-on-hover.
 
 ## Hosting the handbook (Reference tab)
 
-No Harmony needed for item pages:
+Item pages needed no Harmony patches:
 
-- `new GuiHandbookItemStackPage(capi, stack).ComposePage(composer, bounds, allStacks, openDetailPageFor)`
-  is public. `allStacks` is `ObjectCacheUtil.TryGet<ItemStack[]>(capi, "handbookallstacks")`, set
-  at `LevelFinalize` (`VSSurvivalMod/Systems/Handbook/SurvivalHandbook.cs:74`).
-- Our `openDetailPageFor` receives every item-icon click in the page, so navigation stays in the book.
-- Pages are cheap to construct; `GetHandbookInfo` does the recipe scan at compose time, per page.
-- Guide pages: re-parse `GuiHandbookTextPage.Text` with `VtmlUtil.Richtextify`; never reuse its
-  cached components, which a disposed rich-text element disposes.
-- The full page list (guides included) is reachable by subscribing to
-  `ModSystemSurvivalHandbook.OnInitCustomPages`, which hands over the handbook's own list.
-- H is the hotkey `"handbook"`; `capi.Input.SetHotKeyHandler("handbook", ...)` reroutes it. The
-  `handbook://` link protocol is `capi.LinkProtocols["handbook"]`, also replaceable.
+- Call the public `new GuiHandbookItemStackPage(capi, stack).ComposePage(composer, bounds, allStacks, openDetailPageFor)`.
+  Retrieve `allStacks` with `ObjectCacheUtil.TryGet<ItemStack[]>(capi, "handbookallstacks")`;
+  the handbook sets it at `LevelFinalize` (`VSSurvivalMod/Systems/Handbook/SurvivalHandbook.cs:74`).
+- Route item-icon clicks through `openDetailPageFor` to keep navigation inside the book.
+- Construct pages as needed: construction is cheap; `GetHandbookInfo` scans recipes per page at compose time.
+- Re-parse guide-page `GuiHandbookTextPage.Text` with `VtmlUtil.Richtextify`. Do not reuse cached
+  components: disposing a rich-text element disposes them.
+- Subscribe to `ModSystemSurvivalHandbook.OnInitCustomPages` for the handbook's full page list,
+  including guides.
+- Reroute H with `capi.Input.SetHotKeyHandler("handbook", ...)`; its hotkey is `"handbook"`.
+  Replace `capi.LinkProtocols["handbook"]` to reroute `handbook://` links.
 
-**The recipe graph is not free.** "Created by" and "used in" exist only as rich-text components;
-no per-item recipe structure is kept (`CollectibleBehaviorHandbookTextAndExtraInfo`, the
-`add*Info` methods). The lookups underneath are public (`World.GridRecipes`,
-`FastSearchRecipesByIngredient`, `GetSmithingRecipes()` etc.), so the graph needs its own scan
-over the same sources. That moves planner and validator work earlier than phase 4 assumed.
+**Build the recipe graph separately.** "Created by" and "used in" existed only as rich-text
+components; no per-item recipe structure was retained (`CollectibleBehaviorHandbookTextAndExtraInfo`,
+its `add*Info` methods). The underlying public lookups (`World.GridRecipes`,
+`FastSearchRecipesByIngredient`, `GetSmithingRecipes()` etc.) supported a separate scan of the
+same sources. This brought planner and validator work forward from phase 4.
 
 ## Crafting hooks (phase 2's cost)
 
-The engine pushes three event-bus events with no Harmony needed:
-`"onitemcrafted"`, `"onitemknapped"`, `"onitemclayformed"`. Payload: a tree with `itemstack` and
-`byentityid`. Subscribe with `sapi.Event.RegisterEventBusListener`; vanilla's tutorial system does
-(`VSSurvivalMod/Systems/Handbook/Tutorial/ModSystemTutorial.cs:81`).
+Three engine event-bus events needed no Harmony:
+`"onitemcrafted"`, `"onitemknapped"`, `"onitemclayformed"`. Each carried a tree with `itemstack`
+and `byentityid`. Subscribe through `sapi.Event.RegisterEventBusListener`, as vanilla's tutorial
+system did (`VSSurvivalMod/Systems/Handbook/Tutorial/ModSystemTutorial.cs:81`).
 
 | Station | Hook | Gap |
 |---|---|---|
@@ -61,106 +61,109 @@ The engine pushes three event-bus events with no Harmony needed:
 | Bloomery | Harmony: `BlockEntityBloomery.OnBlockBroken` | Its inventory is `internal` |
 | Barrel | Harmony: remember the sealer from `OnReceivedClientPacket`, credit on unseal | No player at completion |
 
-So the doc's "one patch per station" holds for anvil, molds, heat stations and barrel, and the
-three events cover the rest except for the gaps above, which need a patch each as well.
-`CollectibleObject.OnCreatedByCrafting` and `MatchesGridRecipe` fire on preview, not on take, and
-can't credit anyone.
+The design doc's "one patch per station" estimate held for anvil, molds, heat stations and
+barrel. The three events covered the rest, except that each listed event gap also needed a
+patch. `CollectibleObject.OnCreatedByCrafting` and `MatchesGridRecipe` fired on preview, not
+on take, so neither could credit a player.
 
-## Phase 2: what the station patches found
+## Phase 2: station-patch findings
 
-Every station is now patched (`questline/Server/StationPatches.cs`), and the event-bus
-listeners are gone: the grid patch counts every shift-click batch, and the knapping and
-clay-forming patches cover the cases their events skip.
+All stations were patched in `questline/Server/StationPatches.cs`; event-bus listeners were
+removed. The grid patch counted every shift-click batch. Knapping and clay-forming patches
+covered outputs omitted by their events.
 
-The game's internals differ between 1.22 point releases: `InventoryCraftingGrid.ConsumeIngredients`
-returns the recipe it consumed in 1.22.7 and `void` in 1.22.6. A postfix reading `__result`
-failed to attach on 1.22.6 and, under `PatchAll`, took the whole mod down. Patches now attach
-one by one, and the grid patch reads the public `MatchingRecipe` field in a prefix instead.
+Point-release internals differed: `InventoryCraftingGrid.ConsumeIngredients` returned the
+consumed recipe in 1.22.7 but `void` in 1.22.6. A postfix reading `__result` failed to attach
+on 1.22.6; under `PatchAll`, this took down the entire mod. The fix attached patches individually
+and read the public `MatchingRecipe` field in a grid prefix instead.
 
-Gate result, two processes on vsclient.home (game 1.22.6): the dedicated server holds all
-8 patched methods, the client process none, and a smithing finish on the server reaches the
-client's book as progress.
+Recorded gate result: two processes on vsclient.home, game 1.22.6. The dedicated server held
+all 8 patched methods; the client process held none. A server-side smithing finish reached
+the client's book as progress.
 
-## Phase 4: the recipe graph and the handbook
+## Phase 4: recipe graph and handbook
 
-**The graph is built, not read.** 1.22 gives every recipe registry a common shape
-(`RecipeBase.RecipeIngredients` and `RecipeOutput`, with `IRecipeIngredientBase.SatisfiesAsIngredient`
-for wildcards and tags), which covers grid, smithing, knapping, clay forming and barrel recipes.
-Cooking pot recipes and alloys are their own classes. Everything else the handbook shows under
-"Created by" is an item property, found by walking every collectible the way
-`CollectibleBehaviorHandbookTextAndExtraInfo.addCreatedByInfo` does: combustible (smelt, cook,
-bake, fire), grinding, crushing, ore → nugget, transitions, juiceable, squeezable, distillation,
-carburizing, beehive kiln, ground-stored processing, block drops, creature drops and the
-harvestable behaviour's butchering drops. Vanilla 1.22.6: 20,622 edges in 366 ms.
+**Build from registries and item properties.** In 1.22, `RecipeBase.RecipeIngredients` and
+`RecipeOutput` provided a common registry shape; `IRecipeIngredientBase.SatisfiesAsIngredient`
+handled wildcards and tags. This covered grid, smithing, knapping, clay forming and barrel
+recipes. Cooking pot recipes and alloys used separate classes.
 
-Not yet in it: panning, charcoal pits, bloomery blooms (the graph has ore → ingot by heat, not
-ore → bloom → ingot), quern and pulveriser chains beyond the item properties, trader stock, and
-anything found only by world generation. The client's graph matches the server's for every
-recipe kind; drops weren't compared.
+Other handbook "Created by" entries came from collectible properties. The graph walked every
+collectible, following `CollectibleBehaviorHandbookTextAndExtraInfo.addCreatedByInfo`: combustible
+(smelt, cook, bake, fire), grinding, crushing, ore → nugget, transitions, juiceable, squeezable,
+distillation, carburizing, beehive kiln, ground-stored processing, block drops, creature drops
+and the harvestable behaviour's butchering drops. Vanilla 1.22.6 produced 20,622 edges in 366 ms.
 
-**Hosting the handbook, for real.** Guide pages come from `config/handbook` assets plus the list
-`ModSystemSurvivalHandbook.OnInitCustomPages` hands over. A plain `GuiHandbookTextPage` is
-re-read from its `Text`; its subclasses (tutorial pages, meal recipe pages, mods') compose
-themselves under the key "richtext" exactly as item pages do, so they're hosted the same way and
-anything to go on top is prepended to that rich text's components before composing.
+Still absent at this phase: panning, charcoal pits, bloomery blooms (the graph had ore → ingot
+by heat, not ore → bloom → ingot), quern and pulveriser chains beyond item properties, trader
+stock, and world-generation-only sources. Client and server graphs matched for every recipe
+kind; drops were not compared.
 
-The H keys (`handbook`, `selectionhandbook`) and the `handbook`/`handbooksearch` link protocols
-are replaced at `LevelFinalize`, after the handbook set them; `HotKey.Handler` and
-`capi.LinkProtocols` hand back the originals, so the takeover turns off without a restart.
+**Host guide pages by their page type.** Guides came from `config/handbook` assets and the list
+supplied by `ModSystemSurvivalHandbook.OnInitCustomPages`. Plain `GuiHandbookTextPage` content
+was re-read from `Text`. Subclasses (tutorial pages, meal recipe pages, mods') composed themselves
+under "richtext", like item pages, and were hosted the same way. Extra content was prepended
+to that rich text's components before composing.
 
-## Phase 5: the planner, the checks and the default questline
+The takeover replaced H keys (`handbook`, `selectionhandbook`) and link protocols
+`handbook`/`handbooksearch` at `LevelFinalize`, after the handbook registered them.
+`HotKey.Handler` and `capi.LinkProtocols` exposed the originals, allowing takeover to be disabled
+without a restart.
 
-**The validator found real gaps in the graph the first time it ran on real content.** Meals
-were outputs no item matched (now a cooking-pot recipe makes the cooked pot), and casting took
-only ingots, so a quest asking for an ingot after one casting copper looked out of order (now
-casting takes anything that melts into the metal). Both were the graph's fault, not the
-questline's. Loot vessels (through `Block.GetDropsForHandbook`) and trader stock are in the graph,
-so loot-only items aren't flagged as unobtainable.
+## Phase 5: planner, checks and default questline
 
-**Loot is not a plan.** The first planner preferred "find it" to any recipe with missing
-inputs, and since vessels can hold flint axes, it told the player to find an axe. It now uses a
-recipe whenever there is one, and puts loot vessels last among places to look.
+**Fix graph gaps exposed by content validation.** The validator's first real-content run found
+meal outputs that matched no item and casting inputs restricted to ingots. The latter made a
+quest for an ingot appear out of order after a quest casting copper. The fixes made cooking-pot
+recipes produce the cooked pot and casting accept anything that melts into the metal. Both
+faults were in the graph, not the questline. Loot vessels (via `Block.GetDropsForHandbook`) and
+trader stock were included so loot-only items were not flagged as unobtainable.
 
-**Obtainability needs a worklist.** Re-scanning every unfinished edge each pass, with wildcard
-matching inside, didn't finish in ten minutes on 21,000 edges; a worklist keyed by code, with
-each wildcard matched once, takes well under a second.
+**Prefer recipes over loot.** The first planner chose "find it" over recipes with missing
+inputs. Since vessels could contain flint axes, it told players to find an axe. The revised
+planner used a recipe whenever available and ranked loot vessels last among places to look.
 
-**Labels must scale with the tree.** At a fitted zoom below 1 the fixed-size labels of a real
-chapter overlapped; scaled with the zoom they keep to the gaps, and the opening view never goes
-below the zoom (0.75) where scaled text is still readable.
+**Use a worklist for obtainability.** Re-scanning every unfinished edge on each pass, including
+wildcard matching, failed to finish in ten minutes on 21,000 edges. A code-keyed worklist that
+matched each wildcard once took well under a second.
+
+**Scale labels with zoom.** Fixed-size labels overlapped in a real chapter fitted below zoom 1.
+Scaling labels kept them within the gaps. Opening zoom was capped at a minimum of 0.75, where
+scaled text remained readable.
 
 ## All of vanilla
 
-**The guides are the coverage map.** Vanilla's handbook has 32 guides (`config/handbook`);
-assigning each to a chapter, and testing that every one is linked from a quest, turned "all of
-vanilla" into something checkable. 24 chapters, 322 quests.
+**Use guides as the coverage map.** Assigning vanilla's 32 handbook guides (`config/handbook`)
+to chapters, then testing that each was linked from a quest, made "all of vanilla" checkable:
+24 chapters, 322 quests.
 
-**Writing it found more graph gaps.** Water was reachable only from slush in a barrel, so every
-barrel recipe that needs water looked impossible until filling a bucket from a water block
-became an edge (`fill`). Charcoal pits, coke ovens, panning, milking and picking up worms were
-added the same way. Casting had offered iron and steel anvils; only metals no hotter than the
-hottest fuel burns are cast now.
+**Add missing acquisition paths.** Water was reachable only through slush in a barrel, making
+water-dependent barrel recipes appear impossible. A `fill` edge for filling a bucket from a
+water block fixed this. Charcoal pits, coke ovens, panning, milking and picking up worms gained
+edges in the same way. Casting had offered iron and steel anvils; it was restricted to metals
+no hotter than the hottest fuel burns.
 
-**New tasks it needed:** `mount` (rafts, sailboats, elk), `trade` (a patch on the trader's
-sale), and liquids in a carried bucket counting by the litre for `obtain`. A claim still takes
-back only whole stacks, never the liquid.
+**Add task types and liquid counting.** `mount` covered rafts, sailboats and elk; `trade` patched
+the trader's sale. `obtain` counted carried-bucket liquids by the litre. Claims still took back
+only whole stacks, never liquid.
 
-**What still can't be credited:** taming progress, catching something in a trap, chiseling, a
-prospecting reading, fertilizing and watering, quenching, kiln firing, welding an anvil, and
-which meal a pot holds. Each is a checkbox or folded into a neighbouring quest's text.
+**Keep unsupported credit explicit.** Taming progress, trap catches, chiseling, prospecting
+readings, fertilizing and watering, quenching, kiln firing, welding an anvil, and the meal held
+in a pot could not be credited. Each became a checkbox or text in a neighbouring quest.
 
 ## Addons for other mods
 
-**Melding needs extension and replacement.** A mod's quests belong beside the base quests they
-build on, so a chapter file can `extend` a base chapter; and a mod that changes a mechanic makes
-the base quest teaching it wrong (with Expanded Foods a firepit chars meat, so "Roast some meat"
-can't be done as written), so an extension can replace a base quest of the same id. Of the
-pack's mods, Expanded Foods broke two base quests outright and Tailor's Delight changed the
-recipes behind twelve more without breaking them; only reading the mods' patches found those.
+**Support both extension and replacement.** A chapter file could `extend` a base chapter to put
+mod quests beside the base quests they built on. An extension could also replace a base quest
+with the same id when a mod changed the mechanic being taught. Expanded Foods made a firepit
+char meat, breaking "Roast some meat" as written. Across the pack, Expanded Foods broke two
+base quests outright; Tailor's Delight changed recipes behind twelve more without breaking
+them. Reading the mods' patches was what exposed these changes.
 
-**Run the base checks with the mods in first.** The modded snapshot found the broken base
-quests before anyone wrote an addon quest.
+**Run base checks with mods loaded before writing addons.** The modded snapshot exposed broken
+base quests before any addon quest was written.
 
-**Mods' own machines are invisible to the graph,** so their outputs read as "nothing makes
-this". Authors turned real tasks into checkboxes to get past that; `"unchecked": true` turned
-them back. Teaching the graph builder each mod's recipe type would be better, mod by mod.
+**Account for graph-invisible machines.** Mods' own machines were invisible to the graph, so
+their outputs appeared as "nothing makes this". Authors had converted real tasks to checkboxes
+to bypass this; `"unchecked": true` restored those tasks. Teaching the graph builder each mod's
+recipe type remained the better solution, mod by mod.
