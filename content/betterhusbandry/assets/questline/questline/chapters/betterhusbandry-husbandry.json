@@ -1,0 +1,214 @@
+{
+    "id": "betterhusbandry-husbandry",
+    "extends": "husbandry",
+    "requiresMod": [
+        "betterhusbandry"
+    ],
+    "quests": [
+        {
+            "id": "bh-inspect-bloodline",
+            "pos": [
+                14,
+                0
+            ],
+            "requires": "build-pen",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ]
+        },
+        {
+            "id": "bh-feed-condition",
+            "pos": [
+                16,
+                0
+            ],
+            "requires": "bh-inspect-bloodline",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ]
+        },
+        {
+            "id": "bh-interaction-routine",
+            "pos": [
+                18,
+                0
+            ],
+            "requires": "bh-feed-condition",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ]
+        },
+        {
+            "id": "bh-observe-care-change",
+            "pos": [
+                20,
+                0
+            ],
+            "requires": "bh-interaction-routine",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ]
+        },
+        {
+            "id": "bh-offline-plan",
+            "pos": [
+                18,
+                2
+            ],
+            "requires": "bh-interaction-routine",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ]
+        },
+        {
+            "id": "make-trough",
+            "pos": [
+                0,
+                1.5
+            ],
+            "requires": "make-boards",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:trough-*-small-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-trough-desc"
+                },
+                {
+                    "type": "text",
+                    "lang": "bh-make-trough-guidance"
+                }
+            ]
+        },
+        {
+            "id": "make-large-trough",
+            "pos": [
+                2,
+                1.5
+            ],
+            "requires": "make-trough",
+            "tasks": [
+                {
+                    "type": "place",
+                    "block": "game:trough-*-large-*"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "game:gear-rusty",
+                    "count": 1
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "make-large-trough-desc"
+                },
+                {
+                    "type": "text",
+                    "lang": "bh-make-large-trough-guidance"
+                }
+            ]
+        },
+        {
+            "id": "breed-animals",
+            "pos": [
+                4,
+                0.0
+            ],
+            "requires": [
+                "build-pen",
+                "make-large-trough"
+            ],
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ],
+            "icon": "game:egg-chicken-raw",
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "breed-animals-desc"
+                },
+                {
+                    "type": "text",
+                    "lang": "bh-breed-animals-guidance"
+                }
+            ]
+        },
+        {
+            "id": "milk-animal",
+            "pos": [
+                6,
+                0.0
+            ],
+            "requires": [
+                "breed-animals",
+                "make-bucket"
+            ],
+            "tasks": [
+                {
+                    "type": "obtain",
+                    "item": "game:milkportion"
+                }
+            ],
+            "shape": "gear",
+            "size": 1.25,
+            "rewards": [
+                {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "type": "item",
+                            "item": "game:redmeat-raw",
+                            "count": 6
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:fat",
+                            "count": 4
+                        },
+                        {
+                            "type": "item",
+                            "item": "game:gear-rusty",
+                            "count": 5
+                        }
+                    ]
+                }
+            ],
+            "page": [
+                {
+                    "type": "text",
+                    "lang": "milk-animal-desc"
+                },
+                {
+                    "type": "text",
+                    "lang": "bh-milk-animal-guidance"
+                }
+            ]
+        }
+    ]
+}

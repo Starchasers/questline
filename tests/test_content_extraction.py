@@ -6,6 +6,10 @@ import subprocess
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
+
+def original_chapters():
+    return [p for p in (ROOT / "content").glob("*/assets/questline/questline/chapters/*.json")
+            if p.relative_to(ROOT / "content").parts[0] in GROUPS]
 UPSTREAM = "9a2fd4e2b2e24046de08c7a86aff335294558939"
 LEGACY = Path("assets/questline/questline")
 SOURCE = Path("questline") / LEGACY
@@ -37,7 +41,7 @@ class ContentExtractionTests(unittest.TestCase):
         return json.loads((ROOT / "docs/content-packages.json").read_text())
 
     def test_every_chapter_is_moved_once_byte_for_byte(self):
-        actual = list((ROOT / "content").glob("*/assets/questline/questline/chapters/*.json"))
+        actual = original_chapters()
         self.assertEqual(56, len(self.upstream))
         self.assertEqual(set(self.upstream), {p.name for p in actual})
         self.assertEqual(56, len(actual))
@@ -59,7 +63,7 @@ class ContentExtractionTests(unittest.TestCase):
     def test_package_metadata_and_explicit_dependency_closure(self):
         manifest = self.manifest()
         self.assertEqual(UPSTREAM, manifest["upstream"])
-        packages = manifest["packages"]
+        packages = [p for p in manifest["packages"] if p["key"] in GROUPS]
         self.assertEqual(set(GROUPS), {p["key"] for p in packages})
         self.assertEqual(12, len(packages))
         ids = set()
@@ -95,7 +99,7 @@ class ContentExtractionTests(unittest.TestCase):
             extensions = sorted((d["id"], d["extends"]) for d in docs if "extends" in d)
             return (len(docs), sum(ids.values()), tasks, len(ids)), replacements, extensions
         expected = signature(self.upstream.values())
-        actual = signature(p.read_bytes() for p in (ROOT / "content").glob("*/assets/questline/questline/chapters/*.json"))
+        actual = signature(p.read_bytes() for p in original_chapters())
         self.assertEqual((56, 532, 589, 516), expected[0])
         self.assertEqual(expected, actual)
         self.assertEqual(16, len(actual[1]))

@@ -1,0 +1,23 @@
+{
+    "id": "betterhusbandry-welfare",
+    "extends": "husbandry",
+    "requiresMod": [
+        "betterhusbandry",
+        "livestockwelfare"
+    ],
+    "quests": [
+        {
+            "id": "bh-welfare-readiness",
+            "pos": [
+                22,
+                0
+            ],
+            "requires": "bh-observe-care-change",
+            "tasks": [
+                {
+                    "type": "checkbox"
+                }
+            ]
+        }
+    ]
+}

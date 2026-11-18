@@ -32,6 +32,7 @@ server directory and put `dotnet` on `PATH`:
 ```sh
 python3 -m unittest discover -s tools/packaging -v
 python3 -m unittest discover -s tests -p 'test_content_extraction.py' -v
+python3 -m unittest discover -s tests -p 'test_betterhusbandry.py' -v
 python3 tools/lang/check.py
 python3 compat/toolsmith/tests/regression.py
 sh ./build.sh
@@ -42,7 +43,7 @@ dotnet run --project compat/toolsmith/tests/AdapterChecks.csproj -c Release -p:V
 ```
 
 CI also compares ZIP names and checksum entries with every owned package's
-`modinfo.json`. It requires exactly **14** packages: the framework, 12 content packs,
+`modinfo.json`. It requires exactly **15** packages: the framework, 13 content packs,
 and optional Toolsmith adapter. Core and adapter compile against real game
 assemblies; content packs are validated and packaged independently. Packages ship
 no build-only fixtures, game assemblies, or external providers.
@@ -60,7 +61,7 @@ skipped. Do not treat a failed check as evidence that later suites ran.
 
 Download these two artifacts after a successful run; retention is 14 days:
 
-- **questline-packages**: all 14 individually installable ZIPs and `SHA256SUMS`.
+- **questline-packages**: all 15 individually installable ZIPs and `SHA256SUMS`.
 - **questline-test-results**: text logs for each executed suite, build/checksum
   output, source commit, server archive checksum, and toolchain versions. These
   are not fabricated JUnit/TRX reports; executable suites use their own assertions
@@ -70,6 +71,12 @@ Extract GitHub's **outer ZIP wrapper** once, then install only the selected
 **inner mod ZIPs**. Do not install the wrapper or unpack mod ZIPs into one combined
 mod. From the extracted package artifact directory, check integrity with
 `sha256sum --check SHA256SUMS`.
+
+Better Husbandry contracts include source-checked care/offline caveats, page-only saved-ID
+preservation, and real-loader absent/present combinations for Better Husbandry, Welfare,
+Wool and ShearLib (16 combinations, four shuffled discovery seeds each). These are
+content-composition checks, not real-provider Harmony/native gameplay tests. New text
+uses explicit English fallback across all locales; existing translations stay intact.
 
 ## Release behavior and permissions
 
