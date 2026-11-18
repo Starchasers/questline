@@ -16,6 +16,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="../../questline/QuestlineConfig.cs" Link="Shared/QuestlineConfig.cs" />
         <Compile Include="../../questline/Model/*.cs" Link="Shared/Model/%(Filename).cs" />
         <Compile Include="../../questline/Graph/RecipeGraph.cs" Link="Shared/Graph/RecipeGraph.cs" />
         <Compile Include="../../questline/Server/QuestLoader.cs" Link="Shared/Server/QuestLoader.cs" />

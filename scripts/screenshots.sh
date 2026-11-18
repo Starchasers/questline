@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Takes the ModDB screenshots: runs the Gallery tests on the test box at a desktop size and
-# copies the PNGs back into screenshots/moddb/. The Expanded Foods shot needs the addon mods, so it
-# runs a second time with ~/questline-addon-mods.
+# copies the PNGs back into screenshots/moddb/. Both runs need the vanilla questbook;
+# the second also stages the Expanded Foods questbook and loads ~/questline-addon-mods.
+# That directory must contain Expanded Foods and its gameplay dependencies, not an old
+# Questline build or duplicate questbooks. Other optional questbooks are not needed here.
 #
 #   bash scripts/screenshots.sh [user@host] [--force]
 #
@@ -31,11 +33,20 @@ if [ "${clients:-0}" != "0" ] && [ "$force" = "0" ]; then
     exit 1
 fi
 
-(cd "$vstestkit" && bash scripts/sync-linux.sh "$host" --mod "$repo/questline")
+# sync-linux.sh copies the project's parent tree, including content/, to mods/<repo-name>.
+# Pin the slot: a checkout named questline-framework must still use vstestkit-questline.
+(cd "$vstestkit" && bash scripts/sync-linux.sh "$host" --slot questline --mod "$repo/questline")
+printf -v remote_repo '%q' "mods/$(basename "$repo")"
 
 # The testkit's client window is 960x600; this slot's copy is resized for the pictures (the
 # next sync puts it back).
-run='cd vstestkit-questline
+run='set -e
+    cd vstestkit-questline
+    repo='$remote_repo'
+    stage="$PWD/run/questline-gallery-content"
+    mkdir -p "$stage/base" "$stage/expandedfoods"
+    rsync -a --delete "$repo/content/vanilla/" "$stage/base/questlinevanilla/"
+    rsync -a --delete "$repo/content/expandedfoods/" "$stage/expandedfoods/questlineexpandedfoods/"
     sed -i -e "s/\"screenWidth\": [0-9]*/\"screenWidth\": '$width'/" -e "s/\"screenHeight\": [0-9]*/\"screenHeight\": '$height'/" templates/clientsettings.json
     export VSTK_SCREEN_WIDTH='$width' VSTK_SCREEN_HEIGHT='$height
 
@@ -43,8 +54,10 @@ run='cd vstestkit-questline
 status=0
 ssh "$host" "rm -f ~/.cairn/games/*/questline-gallery-*.png
     $run
-    bash scripts/run.sh mods/questline/tests --mod mods/questline/questline --client --filter Gallery
-    bash scripts/run.sh mods/questline/tests --mod mods/questline/questline --mods \"\$HOME/questline-addon-mods\" --client --filter ExpandedFoodsKitchen" || status=$?
+    status=0
+    bash scripts/run.sh \"\$repo/tests\" --mod \"\$repo/questline\" --mods \"\$stage/base\" --client --filter Gallery || status=\$?
+    bash scripts/run.sh \"\$repo/tests\" --mod \"\$repo/questline\" --mods \"\$stage/base\" --mods \"\$stage/expandedfoods\" --mods \"\$HOME/questline-addon-mods\" --client --filter ExpandedFoodsKitchen || status=\$?
+    exit \$status" || status=$?
 
 mkdir -p "$out"
 rm -f "$out"/questline-gallery-*.png
