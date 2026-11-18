@@ -42,9 +42,9 @@ dotnet run --project compat/toolsmith/tests/AdapterChecks.csproj -c Release -p:V
 ```
 
 CI also compares ZIP names and checksum entries with every owned package's
-`modinfo.json`. It requires exactly **14** packages: the framework, 12 content packs,
-and optional Toolsmith adapter. Core and adapter compile against real game
-assemblies; content packs are validated and packaged independently. Packages ship
+`modinfo.json`. It requires exactly **2** packages: the `questline` mod (framework and questbook)
+and the optional Toolsmith adapter. Both compile against real game
+assemblies. Packages ship
 no build-only fixtures, game assemblies, or external providers.
 
 Use a clean output directory for local package-set verification. The packager
@@ -60,7 +60,7 @@ skipped. Do not treat a failed check as evidence that later suites ran.
 
 Download these two artifacts after a successful run; retention is 14 days:
 
-- **questline-packages**: all 14 individually installable ZIPs and `SHA256SUMS`.
+- **questline-packages**: both installable ZIPs and `SHA256SUMS`.
 - **questline-test-results**: text logs for each executed suite, build/checksum
   output, source commit, server archive checksum, and toolchain versions. These
   are not fabricated JUnit/TRX reports; executable suites use their own assertions
@@ -80,8 +80,8 @@ manifest version to the tag without its leading `v`; content and adapter package
 keep their own manifest versions.
 
 The publisher downloads verified artifacts from its own workflow run without
-rebuilding. It rechecks all 14 ZIP checksums, attests every ZIP, and attaches all
-14 ZIPs plus `SHA256SUMS` to the GitHub release. It then reads back all 15 release
+rebuilding. It rechecks both ZIP checksums, attests every ZIP, and attaches
+both ZIPs plus `SHA256SUMS` to the GitHub release. It then reads back all 3 release
 assets, downloads them again, and checks their hashes against the verified checksum
 file. Release notes include checksums and recorded build inputs. The publisher
 refuses to overwrite an existing release; it never silently replaces assets.

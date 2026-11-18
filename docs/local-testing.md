@@ -6,8 +6,8 @@
 
 1. Close the game/server. Use a copied world with matching client/server mod sets.
 2. Remove upstream Questline's ZIP/folder. Both versions use `questline`; never install them together.
-3. Install `questline_0.15.0.zip` and `questlinevanilla_0.14.0.zip` in Mods. Keep individual mod ZIPs intact.
-4. Add `questline<provider>_0.14.0.zip` only for installed gameplay mods. These packages contain quests, not the gameplay mods. Check [content dependencies](content-packages.md); Chef's Tricks and Meals Module need both the Expanded Foods questbook and gameplay mod.
+3. Install `questline_0.16.0.zip` in Mods. It contains the whole questbook.
+4. Remove any earlier `questlinevanilla_*.zip` and `questline<provider>_*.zip` content packages; loading them beside 0.16.0 duplicates every chapter. See [questbook content](content-packages.md).
 5. Add server-side `questlinetoolsmith_0.1.0.zip` only when using Toolsmith.
 6. Start the copied world. Inspect startup logs for missing dependencies, asset collisions, disabled quests and Harmony errors before playing.
 

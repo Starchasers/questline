@@ -61,8 +61,8 @@ jobs:
           path: test-results
       - name: Recheck downloaded checksums
         run: |
-          test "$(find Releases -maxdepth 1 -name '*.zip' -type f | wc -l)" -eq 14
-          test "$(wc -l < Releases/SHA256SUMS)" -eq 14
+          test "$(find Releases -maxdepth 1 -name '*.zip' -type f | wc -l)" -eq 2
+          test "$(wc -l < Releases/SHA256SUMS)" -eq 2
           (cd Releases && sha256sum --check SHA256SUMS)
       - name: Attest all package provenance
         uses: actions/attest-build-provenance@8beda2b7ed98355c0e97c0a63bec38ae472e66c4 # v4
@@ -75,8 +75,8 @@ jobs:
           notes=$(mktemp)
           {
             printf 'Built by GitHub Actions from `%s`.\n\n' "$GITHUB_SHA"
-            printf 'Includes the framework, 12 independent content packs, and optional Toolsmith adapter.\n'
-            printf 'Install only the packages you need; preserve the individual ZIPs.\n\n'
+            printf 'Includes the questline mod (framework and questbook) and the optional Toolsmith adapter.\n'
+            printf 'Remove earlier questlinevanilla and questline<provider> content ZIPs before installing.\n\n'
             printf '### Build inputs\n\n```text\n'
             cat test-results/build-environment.txt
             printf '```\n\n### SHA-256 checksums\n\n```text\n'

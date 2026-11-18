@@ -175,10 +175,10 @@ Test("same-domain working filenames use last ordinal winner regardless of creati
 });
 Test("all 16 shipped base-to-extension replacements survive shuffled real content composition", () => {
     string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
-    var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
+    var files = Directory.GetFiles(Path.Combine(root, "questline", "assets"), "*.json", SearchOption.AllDirectories)
         .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
         .Select(f => (Domain: new DirectoryInfo(Path.GetDirectoryName(f)).Parent.Parent.Name, Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
-    Check(files.Length == 56, $"expected 56 extracted content files, got {files.Length}");
+    Check(files.Length == 49, $"expected 49 shipped chapter files, got {files.Length}");
     var baseline = Load(files);
     var qualified = files.Select(f => {
         var c = JsonConvert.DeserializeObject<ChapterDef>(f.Json);

@@ -9,8 +9,8 @@ Runtime contracts and test traps, moved from the inherited `CLAUDE.md`. Read [AG
 - `questline/Graph/`: recipe edges, JSON serialization and in-game graph building.
 - `questline/Network/`: channel `questline`; register messages in identical order on both sides.
 - `questline/Client/`: client registry, book tabs/editor, canvas, chapter rail and HUD. `BookStyle`/`BookLayout` own shared typography, colors and sizing.
-- `content/vanilla/assets/questline/questline/chapters/`: default chapters, moved out of core. `VanillaQuestlineTests` checks reachability, guide links, problems and layout.
-- `content/*`: optional definitions. Chapters may `extends` a base chapter or stand alone; `requiresMod` gates loading. Matching quest IDs replace base records; page blocks use keys such as `<id>-<modid>`.
+- `questline/assets/questline/questline/chapters/`: every chapter, shipped in the one mod. `VanillaQuestlineTests` checks reachability, guide links, problems and layout.
+- Integration chapter files (`<modid>-<chapter>.json`) still `extends` a base chapter and keep `requiresMod`. Matching quest IDs replace base records; page blocks use keys such as `<id>-<modid>`.
 - `compat/toolsmith/`: optional executable provider adapter; no Toolsmith hooks in core.
 - `tools/packcheck/`: offline loader/checks against `/questline snapshot`; `PACKCHECK` excludes the game graph builder.
 - `tests/`: VsTestkit suites. `tests/fixtures/Mods/qltest` is owned, committed test content, not a downloaded dependency.
