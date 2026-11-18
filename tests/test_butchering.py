@@ -26,6 +26,19 @@ class ButcheringTests(unittest.TestCase):
             self.assertEqual('game:knife-generic-flint', q['icon'])
         self.assertEqual(len(quests), len({tuple(q['pos']) for q in quests.values()}))
 
+    def test_ci_and_release_count_every_owned_package(self):
+        manifests = [ROOT / 'questline/modinfo.json']
+        manifests += sorted((ROOT / 'content').glob('*/modinfo.json'))
+        manifests += sorted((ROOT / 'compat').glob('*/modinfo.json'))
+        package_count = len(manifests)
+        self.assertEqual(15, package_count)
+        ci = (ROOT / '.github/workflows/ci.yml').read_text()
+        release = (ROOT / '.github/workflows/release.yml').read_text()
+        self.assertIn(f'len(manifests) == len(expected) == {package_count}', ci)
+        self.assertIn(f"-type f | wc -l)\" -eq {package_count}", release)
+        self.assertIn(f'wc -l < Releases/SHA256SUMS)\" -eq {package_count}', release)
+        self.assertIn(f"len(release['assets']) == {package_count + 1}", release)
+
     def test_only_hunt_is_replaced_and_localization_is_owned(self):
         docs = [json.loads(p.read_text()) for p in CHAPTERS.glob('*.json')]
         vanilla = {q['id']: q for p in (ROOT / 'content/vanilla/assets/questline/questline/chapters').glob('*.json') for q in json.loads(p.read_text())['quests']}

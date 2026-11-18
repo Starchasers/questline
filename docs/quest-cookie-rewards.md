@@ -2,19 +2,29 @@
 
 ## Shipped behavior
 
-- `questline:questcookie` is the only material payout produced by this fork's quest claim path, including milestone quests and authored resource-choice rewards. Each shipping quest that previously paid resources now pays **one** cookie. Rewardless quests stay rewardless.
-- `RewardPolicy.Apply` is the shared policy. Reload projects a detached registry before sending definitions to clients; claim applies the same boundary again. Before normalization, the loader, projection and claim enforce an explicit, case-sensitive `item`/`stage`/`choice` allowlist over the entire authored reward tree. Stages must be nonblank; choices must have options and cannot contain nested choices (the claim protocol supports only top-level picks). Invalid trees are rejected even when `ItemRewards` is false, rather than normalized into apparently valid payouts. Legacy material metadata is not payout authority; only the effective cookie collectible must exist.
-- Claim resolves every selected cookie collectible before consuming hand-ins, creating/marking a claim record, or granting stages. A missing cookie refuses the claim and permits retry after the asset is restored; it never falls back to the authored item. Dispatch accepts only a normalized one-cookie item or a validated stage.
-- Bundles of item rewards and item-only choices collapse to one cookie. Stage grants are retained. Stage-bearing choices remain choices, with their material options changed to cookies. In third-party mixed stage/material reward trees, there can be one cookie per material-bearing list/selected branch, not an unconditional one-cookie cap across arbitrary stage choices.
-- `ItemRewards: false` remains an explicit item-reward opt-out; stage grants are retained. Legacy `GearRewards` is kept for configuration/source compatibility but does not scale, suppress, or restore cookie payouts. Reload after changing reward configuration.
-- Existing task counts, consumption flags, completed/claimed state, personal/server/party claim ownership, quest IDs and links are not reset or migrated. Already-claimed quests are not reopened. Existing resources in inventories are not confiscated or converted.
-- Original chapter JSON and prose remain authored metadata, not payout authority. The editor can still show/edit authored rewards, but those resources cannot bypass this policy. The book's player-facing reward slots use the effective server definitions.
+- Pay material rewards only as `questline:questcookie` through this fork's quest claim path, including milestone quests and authored resource-choice rewards. Each shipping quest that previously paid resources now pays **one** cookie. Leave rewardless quests rewardless.
+- Apply the shared `RewardPolicy.Apply` policy at both boundaries: reload projects a detached registry before sending client definitions; claim applies the policy again. Before normalization, loader, projection and claim enforce an explicit, case-sensitive `item`/`stage`/`choice` allowlist across the entire authored reward tree. Require nonblank stages and at least one option per choice. Reject nested choices: the claim protocol supports only top-level picks. Reject invalid trees even with `ItemRewards` false; do not normalize them into apparently valid payouts. Legacy material metadata cannot authorize payouts. Only the effective cookie collectible must exist.
+- Resolve every selected cookie collectible before consuming hand-ins, creating/marking a claim record, or granting stages. Refuse a claim when the cookie is missing; allow retry after restoring the asset, never fallback to the authored item. Dispatch only a normalized one-cookie item or a validated stage.
+- Collapse item bundles and item-only choices to one cookie. Retain stage grants. Keep stage-bearing choices as choices, replacing material options with cookies. Third-party mixed stage/material trees can pay one cookie per material-bearing list/selected branch; there is no unconditional one-cookie cap across arbitrary stage choices.
+- Use `ItemRewards: false` to opt out of item rewards while retaining stages. Keep legacy `GearRewards` for configuration/source compatibility only: it cannot scale, suppress, or restore cookie payouts. Reload after reward-configuration changes.
+- Preserve task counts, consumption flags, completed/claimed state, personal/server/party claim ownership, quest IDs and links without reset or migration. Do not reopen claimed quests or confiscate/convert existing inventory resources.
+- Treat original chapter JSON and prose as authored metadata, not payout authority. The editor can still show/edit authored rewards, but those resources cannot bypass the policy. Player-facing book reward slots use effective server definitions.
 
 ## Item and artwork
 
-The cookie uses the engine's plain `Item` class, with satiety **10**, food category `NoNutrition`, and health **0**. It has no custom behaviors, attributes, food/feed tags, fuel properties, planting properties, transition/perish rules, or processing/baking/smelting definitions. In particular it does not spoil into rot and therefore supplies no cookie-to-rot-to-compost pathway. There are no cookie crafting recipes, cooking ingredients or transformation outputs supplied by this framework or its content packages. Ordinary eating is its intended functional use; normal engine hunger timing is not an added custom buff.
+Use the engine's plain `Item` class for the cookie: satiety **10**, food category
+`NoNutrition`, health **0**. The item has no custom behaviors, attributes,
+food/feed tags, fuel properties, planting properties, transition/perish rules,
+or processing/baking/smelting definitions. It cannot spoil into rot, so it
+supplies no cookie-to-rot-to-compost pathway. Neither the framework nor its
+content packages supply cookie crafting recipes, cooking ingredients, or
+transformation outputs. Ordinary eating is the intended functional use; normal
+engine hunger timing is not an added custom buff.
 
-`textures/item/questcookie.png` is original hand-authored pixel art generated by `verification/rewards/generate_texture.py`, without third-party image inputs. It is distributed under this repository's MIT license. Regenerate it with:
+Regenerate `textures/item/questcookie.png` with the command below. This original,
+hand-authored pixel art comes from `verification/rewards/generate_texture.py`,
+uses no third-party image inputs, and is distributed under the repository's
+MIT license.
 
 ```sh
 python verification/rewards/generate_texture.py
@@ -22,22 +32,56 @@ python verification/rewards/generate_texture.py
 
 ## Scope of the no-other-use guarantee
 
-The guarantee covers **definitions and payout code supplied here**, not arbitrary code or recipes installed by other mods. An external recipe with a broad namespace/code wildcard (for example `*:*`), an explicit `questline:questcookie` reference, a generic "any edible" cooking rule, a feed rule, or an asset patch can deliberately make this item eligible for another use. Absence of fuel/feed/processing properties and the isolated code prevent ordinary property-driven paths; they cannot prohibit unrelated mods from matching an item by code or inventing new rules.
+Limit the guarantee to **definitions and payout code supplied here**. Other mods
+can make the cookie eligible for another use through a broad namespace/code
+wildcard recipe (for example `*:*`), an explicit `questline:questcookie` reference,
+a generic "any edible" cooking rule, a feed rule, or an asset patch. The isolated
+code and absence of fuel/feed/processing properties prevent ordinary
+property-driven paths; they cannot stop unrelated mods from matching the item
+by code or adding rules.
 
-Do not describe the cookie as universally uncraftable/unprocessable in every modpack. Verifying that stronger claim requires checking the **actual loaded and expanded recipe/cooking/feed/processing registries**, including wildcard matches and patches, then native interactions in the target game/modpack. This change does not patch third-party recipes or globally override their matching rules. No such native/modpack certification was performed here.
+Do not claim the cookie is universally uncraftable/unprocessable in every
+modpack. To verify that stronger claim, inspect the **actual loaded and expanded
+recipe/cooking/feed/processing registries**, including wildcard matches and
+patches, then test native interactions in the target game/modpack. This change
+neither patches third-party recipes nor globally overrides their matching rules.
+No native/modpack certification was performed here.
 
 ## Verification and limits
 
-Run the dependency-free headless regression executable with the installed .NET 10 SDK and game SDK assemblies:
+Run the dependency-free headless regression executable with the installed
+.NET 10 SDK and game SDK assemblies:
 
 ```sh
 VINTAGE_STORY=/path/to/vintage-story dotnet run --project verification/rewards/RewardTests.csproj
 ```
 
-The executable references production framework code. It checks all **521** shipping rewarded quest records (including **39** milestone records), material-choice/bundle collapse, source nonmutation, non-reward quest fields, serialized client definitions, idempotence, configuration, persisted progress, and the item asset contract. It executes the real `QuestEngine.Claim` against interface doubles for incomplete/repeated claims, successful and missing hand-ins, personal/server/party ownership, shared consume-once, stage rewards, stage-bearing choices, unknown/custom/null/case-mismatched reward rejection with items enabled and disabled, nested-choice rejection without exceptions or mutation, missing-cookie refusal/retry without fallback, and inventory-overflow dispatch. A literal legacy progress JSON fixture runs through real `LoadProgress`, claim, `SaveProgress`, registry reprojection and `LoadProgress` again; completed/claimed/consumed flags, stages and history survive with no payout replay. Registry reprojection is injected by reflection in this fixture; it does not execute native asset reload. The item nutrition JSON is deserialized with the real game API type.
+The executable references production framework code. It checks:
 
-The headless player double uses the SDK's `MonoMod.Utils` access-check attribute because this game SDK has an inaccessible abstract `IPlayer` method; no installed SDK files are modified. The doubles are not a running game.
+- All **521** shipping rewarded quest records, including **39** milestone records.
+- Material-choice/bundle collapse, source nonmutation, non-reward quest fields, serialized client definitions, idempotence, configuration, persisted progress, and the item asset contract.
+- Real `QuestEngine.Claim` execution against interface doubles: incomplete/repeated claims; successful and missing hand-ins; personal/server/party ownership; shared consume-once; stage rewards; stage-bearing choices; unknown/custom/null/case-mismatched reward rejection with items enabled and disabled; nested-choice rejection without exceptions or mutation; missing-cookie refusal/retry without fallback; and inventory-overflow dispatch.
+- A literal legacy progress JSON fixture through real `LoadProgress`, claim, `SaveProgress`, registry reprojection, then `LoadProgress` again. Completed/claimed/consumed flags, stages and history survive without payout replay. This fixture injects registry reprojection by reflection; it does not execute native asset reload.
+- Item nutrition JSON deserialization with the real game API type.
 
-Initial behavioral RED (after extracting the old scaling/filtering behavior into the testable registry projection, before changing that behavior): **3 passed, 6 failed**. Failures included original rusty-gear payout surviving, milestone bundles still containing three payouts, legacy scaling removing payouts, original resources surviving serialization, shipping resources surviving, and the missing cookie asset. Initial policy GREEN was **15 passed, 0 failed**. Reward-review behavioral RED reproduced three defects (unknown reward accepted, nested-choice null-item exception, missing cookie accepted) plus a hand-in fixture initialization issue: **15 passed, 4 failed**. After fixing the fixture's SDK dirty-slot callback seam and the production validation/preflight bugs, and adding overflow/legacy-save cases, final GREEN is **21 passed, 0 failed**. Additional commands returned `Composition: 12 passed, 0 failed`, `23 runtime checks passed` for the Toolsmith adapter, and a Release framework build with **0 warnings, 0 errors**.
+The headless player double uses the SDK's `MonoMod.Utils` access-check attribute
+to handle an inaccessible abstract `IPlayer` method in this game SDK. It modifies
+no installed SDK files. These doubles are not a running game.
 
-These checks do **not** demonstrate in-game item loading, rendered UI appearance, eating/satiety execution, native inventory overflow, native recipe exclusion, or multiplayer delivery. VsTestkit was unavailable; native validation remains outstanding. `dotnet build tests/questline.tests.csproj -c Release --no-restore` failed with missing `VsTestkit.Runtime`/`VsTestkit` references (**1 warning, 402 errors**); this is not a native test run. The directly affected EngineTests and VanillaQuestlineTests payout/choice expectations were updated to cookies, but those native suites were not executed.
+Historical results below record earlier verification, not new runs:
+
+- Initial behavioral RED: **3 passed, 6 failed**, after extracting old scaling/filtering into the testable registry projection but before changing behavior. Failures included original rusty-gear payout surviving, milestone bundles retaining three payouts, legacy scaling removing payouts, original resources surviving serialization, shipping resources surviving, and the missing cookie asset.
+- Initial policy GREEN: **15 passed, 0 failed**.
+- Reward-review behavioral RED: **15 passed, 4 failed**. It reproduced unknown reward acceptance, a nested-choice null-item exception, and missing-cookie acceptance, plus a hand-in fixture initialization issue.
+- Final GREEN: **21 passed, 0 failed**, after fixing the fixture's SDK dirty-slot callback seam and production validation/preflight bugs, then adding overflow/legacy-save cases.
+- Additional recorded commands: `Composition: 12 passed, 0 failed`; `23 runtime checks passed` for the Toolsmith adapter; Release framework build with **0 warnings, 0 errors**.
+
+Do **not** read these checks as proof of in-game item loading, rendered UI
+appearance, eating/satiety execution, native inventory overflow, native recipe
+exclusion, or multiplayer delivery. VsTestkit was unavailable; native validation
+remains outstanding. The recorded
+`dotnet build tests/questline.tests.csproj -c Release --no-restore` attempt failed
+on missing `VsTestkit.Runtime`/`VsTestkit` references (**1 warning, 402 errors**).
+That was not a native test run. The directly affected EngineTests and
+VanillaQuestlineTests payout/choice expectations were updated to cookies, but
+those native suites were not executed.
