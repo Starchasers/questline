@@ -5,12 +5,16 @@ A modular quest framework for Vintage Story, derived from dizzyd/questline v0.14
 ## Fork layout and verification
 
 - **Framework:** `questline/`, version 0.15.0. Ships no quest chapters.
-- **Questbooks:** `content/vanilla/` plus eleven optional mod content packages. Install vanilla for the original shared book; add only the integrations you use.
+- **Questbooks:** `content/vanilla/` plus eight optional mod content packages. Install vanilla for the original shared book; add only the integrations you use.
 - **Executable adapters:** `compat/toolsmith/`, optional and separate from quest content.
 - **Rewards:** original material payouts become Quest Cookies; stage grants and claiming remain supported.
 - **Translations:** shared text still lives in the framework. Independent localization ownership is not implemented.
 
 Native game/client/server acceptance is pending. Compilation, offline checks and synthetic Harmony tests do not prove in-world compatibility. Intermediate archives are **not validated releases**.
+
+The current package set is **11 artifacts**: framework, nine content packages (vanilla plus eight optional integrations), and the Toolsmith adapter. The retained content contains **51 chapter files, 469 quest records, 520 tasks and 453 distinct quest IDs**, including 16 intentional replacement IDs.
+
+Better Ruins, Charcoal Kiln and Seafarer quest packages are no longer shipped. Their removal does not clean existing `ModConfig/questline/working/` editor copies, saved progress, installed old package ZIPs, or old build output. Review those separately; do not delete unrelated progress or working content. Remaining chapter assets retain their original bytes and IDs, and generic structure discovery/visit tasks remain supported.
 
 ## Developer guides
 
@@ -37,7 +41,7 @@ The features below are inherited capabilities, not proof of native acceptance fo
 - Load chapters from any mod's `assets/<domain>/questline/chapters/`; merge and validate them at load. Disable and report a broken quest, not its whole chapter.
 - Express `requires` as a tree of `all`, `any`, `atLeast`, quest IDs and mod gates. In `ModConfig/questline.json`, `Locking` defaults to `"open"`: prerequisites suggest an order but every quest can start immediately. `"strict"` locks quests until their required quests are done. Both modes still enforce mod, stage and discovery gates.
 - With the vanilla questbook installed, get 322 quests in 25 chapters: knapping through steel, mechanical power, kilns, farming, husbandry, beekeeping, cheese, brewing, textiles, leather, boats, riding, arms and armor. It links every vanilla guide and teaches mechanics, not story.
-- Optional questbooks add 194 quests for Expanded Foods (with A Culinary Artillery and its modules), Hex's Mech, Seafarer, Bricklayers, Charcoal Kiln, Wool, Tailor's Delight, From Golden Combs and Better Ruins, including its ruins, hidden places and far story locations reached through maps. Install both the gameplay mod and its questbook. Chapter files can `extend` a base chapter and replace a quest whose mechanic changes.
+- Optional questbooks add 147 quest records for Expanded Foods (with A Culinary Artillery and its modules), Hex's Mech, Bricklayers, Wool, Tailor's Delight and From Golden Combs. Install both the gameplay mod and its questbook. Chapter files can `extend` a base chapter and replace a quest whose mechanic changes.
 - Chapters marked `"age": true` label quests elsewhere with the age reached through their prerequisites. The default questline uses stone, clay and fire, copper, bronze, iron and steel; a chapter's late branch carries that age's icon.
 - Quest modes support personal progress, pooled party progress with one claim per member, and pooled server progress. Server quests can use `"claim": "first"`. Create parties in the Party tab; disable them with `"Parties": false`.
 
@@ -46,7 +50,7 @@ The features below are inherited capabilities, not proof of native acceptance fo
 - Track obtain, kill, mount (rafts, boats, elk), place, break, ignite, craft, knap, clayform, smith, cook, smelt, trade, visit, custom and checkbox tasks.
 - Obtain counts liquids in carried buckets by the litre. Ignite covers firepits, forges, kilns and torches with any ignition source. Craft counts every shift-click batch; Toolsmith's in-hand and workbench outputs require the optional adapter. Cook tracks firepit output; smelt tracks molds and bloomeries; trade tracks trader purchases.
 - Default quests usually require obtaining an item, so alternate production methods such as spindles and workbenches count. Craft tasks remain where crafting changes an item without changing its identity, such as a clay-coated head or baited pole. Multi-item tasks name their shared category ("any clay") or use a `name` language key ("any fruit").
-- Visit counts standing inside a worldgen structure, once per structure. Use its worldgen code and that config file's domain (`game:trader-*`, `betterruins:largeforlornhopetower`); its place name uses `<domain>:structure-<code>`. Villages count each building. `/questline structures` lists structures at the player's position; `discovered` gates use visited places.
+- Visit counts standing inside a worldgen structure, once per structure. Use its worldgen code and that config file's domain (for example `game:trader-*`); its place name uses `<domain>:structure-<code>`. Villages count each building. `/questline structures` lists structures at the player's position; `discovered` gates use visited places.
 - Material payouts become a tiny Quest Cookie; each bundled quest with an original material reward gives one. Stage grants, claim ownership and hand-in consumption remain supported. `GearRewards` stays for configuration compatibility but cannot multiply cookies. `"ItemRewards": false` disables material payouts while retaining stages. See [policy and verification limits](docs/quest-cookie-rewards.md).
 - `CreditEarlierWork` in `ModConfig/questline.json` credits work recorded since Questline was installed when a quest unlocks. The game supplies no earlier history. For older worlds, `/questline catchup [player]` completes only quests satisfied by items carried in the hotbar/backpack. It assumes no preceding quests, skips server quests and quests still gated by a mod, stage or discovery, and leaves rewards unclaimed in the book.
 - Other mods can use `QuestlineApi` for custom tasks, stages and completion events, or the event bus without a Questline reference.

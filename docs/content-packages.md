@@ -12,20 +12,17 @@ Build-script integration has separate ownership.
 Install the Questline framework (`questline`, minimum `0.15.0`). Add
 `content/vanilla` (`questlinevanilla`, minimum `0.14.0`) for the original vanilla
 progression. Framework-only installations have no default questline by design.
-Install optional integrations only for gameplay mods you use:
+The current inventory contains nine content packages: vanilla and eight optional integrations. Install optional integrations only for gameplay mods you use:
 
 | Directory | Mod ID | Chapters | Quest records |
 | --- | --- | ---: | ---: |
 | vanilla | questlinevanilla | 25 | 322 |
-| betterruins | questlinebetterruins | 1 | 22 |
 | bricklayers | questlinebricklayers | 3 | 24 |
-| charcoalkiln | questlinecharcoalkiln | 1 | 6 |
 | efchefstricks | questlineefchefstricks | 3 | 4 |
 | efmealsmodule | questlineefmealsmodule | 1 | 1 |
 | expandedfoods | questlineexpandedfoods | 8 | 37 |
 | fromgoldencombs | questlinefromgoldencombs | 1 | 14 |
 | hexsmech | questlinehexsmech | 2 | 38 |
-| seafarer | questlineseafarer | 3 | 35 |
 | tailorsdelight | questlinetailorsdelight | 5 | 21 |
 | wool | questlinewool | 3 | 8 |
 
@@ -43,7 +40,7 @@ dangling references. Original chapter-level `requiresMod` gates are unchanged.
 
 ## Preservation and asset identity
 
-All 56 original chapter JSON blobs were moved byte-for-byte from upstream
+The 51 retained original chapter JSON blobs were moved byte-for-byte from upstream
 `9a2fd4e2b2e24046de08c7a86aff335294558939`. Keep each package's internal path:
 `assets/questline/questline/chapters/<original-name>.json`. **The unique package
 Mod ID is not the asset domain.** Changing `questline` in these paths changes
@@ -51,21 +48,29 @@ how the loader qualifies chapter IDs, quest IDs, page keys, extension targets
 and prerequisites, breaking saved progression identity.
 
 Keep the unchanged original `assets/questline/questline/questline.json` in
-vanilla only. Do not duplicate that manifest in optional packages. The extraction
-preserved 532 quest records, 589 task records and 516 distinct quest IDs.
+vanilla only. Do not duplicate that manifest in optional packages. The retained content contains 469 quest records, 520 task records and 453 distinct quest IDs.
 The 16 duplicate IDs are intentional extension replacement records; do not
 remove them as accidental copies. The loader joins extensions into their
 original chapters and replaces matching IDs. Extraction rewrote none of these
 records, fields, dependencies, rewards, page links, or strings.
 
+Better Ruins, Charcoal Kiln and Seafarer packages were removed after the original
+extraction. This removes their five chapter files from the shipped inventory,
+not generic structure discovery, visit tasks, or third-party addon support.
+Remaining chapter assets and the vanilla manifest keep their original bytes.
+Removal does not clean existing `ModConfig/questline/working/` editor copies or
+saved progress, uninstall old mod ZIPs, or delete old build output. Review stale
+copies separately and use a clean output directory to check the current package set.
+
 ## Shared translation ownership limitation
 
-Keep the original translations unchanged in core at
-`questline/assets/questline/lang/`, including integration-specific text and
-links. Content packages do not own self-contained localization: framework-only
-installs still load text for uninstalled packages, and content-text updates may
-need a coordinated core update. This deliberate initial limit avoids concurrent
-edits and preserves every original translation.
+Retained translations remain in core at `questline/assets/questline/lang/`.
+The 150 keys exclusively owned by the removed integrations (chapter/quest text,
+provider labels and Better Ruins structure names) are removed from all 34 locales;
+every other inherited key/value is preserved. Content packages do not own
+self-contained localization: framework-only installs still load text for other
+uninstalled packages, and content-text updates may need a coordinated core update.
+This initial limitation avoids concurrent edits.
 
 For a later localization split, assign each key exactly one owner. Retain its
 `questline:` domain and cross-package links. Do not copy whole language files
@@ -81,7 +86,7 @@ python -m unittest discover -s tests -p test_content_extraction.py -v
 
 Keep the upstream commit available locally; fetch it in shallow checkouts.
 The tests read actual `git show <upstream>:<path>` blobs, not a regenerated
-snapshot. They check one-to-one relocation, exact bytes, original paths,
+snapshot. They explicitly account for the three removed packages, and check retained relocation, exact bytes, original paths,
 package counts and IDs, explicit dependency closure, manifest ownership,
 translation preservation, totals, and extension/replacement identity.
 
