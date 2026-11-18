@@ -24,6 +24,10 @@ assert hashlib.sha256(z.read('mods/butchering_1.14.3.zip')).hexdigest()==ledger[
 assets=[]
 for n in b.namelist():
  if n.endswith('.json') and '/patches/' not in n and ('/itemtypes/' in n or '/blocktypes/' in n):assets.append(('butchering',n,b.read(n),'Butchering 1.14.3'))
+for modname,domain in [('armoryfork_1.11.4.zip','armory'),('rusticcookery_1.2.0.zip','rusticcookery')]:
+ a=zipfile.ZipFile(io.BytesIO(z.read('mods/'+modname)))
+ for n in a.namelist():
+  if n.endswith('.json') and '/patches/' not in n and ('/itemtypes/' in n or '/blocktypes/' in n):assets.append((domain,n,a.read(n),modname))
 for filename in ['tool/knife','resource/hide','resource/leather','food/redmeat','food/bushmeat','food/poultry']:
  p=vs/('survival/itemtypes/'+filename+'.json');assets.append(('game',str(p.relative_to(vs)),p.read_bytes(),'Vintage Story 1.22.7'))
 objectives=json.loads((root/'docs/evidence/butchering-objectives.json').read_text())
@@ -34,7 +38,7 @@ for domain,name,raw,provider in assets:
  for g in low.get('variantgroups',[]):
   if 'states' in g:groups.append(g['states'])
   else:
-   nameprop=g['loadFromProperties'];p=vs/('survival/worldproperties/'+nameprop+'.json');rawprop=p.read_bytes();states=[s['code'] for s in json5.loads(rawprop.decode())['variants']];groups.append(states);properties.append({'path':str(p.relative_to(vs)),'sha256':hashlib.sha256(rawprop).hexdigest(),'states':states})
+   nameprop=g['loadFromProperties'].removeprefix('game:');p=vs/('survival/worldproperties/'+nameprop+'.json');rawprop=p.read_bytes();states=[s['code'] for s in json5.loads(rawprop.decode())['variants']];groups.append(states);properties.append({'path':str(p.relative_to(vs)),'sha256':hashlib.sha256(rawprop).hexdigest(),'states':states})
  codes=[domain+':'+base+'-'+'-'.join(s) if s else domain+':'+base for s in itertools.product(*groups)]
  # Respect skip/allow wildcards as authored; these assets have explicit variant states.
  def match(p,c):return re.fullmatch(p[1:] if p.startswith('@') else re.escape(p).replace(r'\*','.*'),c.split(':',1)[1]) is not None

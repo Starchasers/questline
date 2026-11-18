@@ -18,7 +18,7 @@
       "tasks": [
         {
           "type": "obtain",
-          "block": "butchering:butcherhook-*",
+          "block": "butchering:butcherhook-flint-*",
           "count": 1
         }
       ],
@@ -30,7 +30,7 @@
       "tasks": [
         {
           "type": "craft",
-          "block": "butchering:butchertable-*",
+          "block": "butchering:butchertable-primitive-*",
           "count": 1
         }
       ],
@@ -179,6 +179,162 @@
       ],
       "source": "vanilla stone-age/first-hunt chicken kill objective; game poultry asset",
       "proves": "a chicken kill, not carcass processing"
+    },
+    "butchering-javelin": {
+      "icon": "armory:javelin-plain-flint",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "armory:javelin-plain-*",
+          "count": 1
+        }
+      ],
+      "source": "mods/armoryfork_1.11.4.zip!/assets/armory/recipes/knapping/javelinhead.json; recipes/grid/weapons/javelins.json; itemtypes/weapons/javelin.json",
+      "proves": "carried output possession, not its production action"
+    },
+    "butchering-knapped-hook": {
+      "icon": "butchering:hook-flint",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:hook-flint",
+          "count": 1
+        }
+      ],
+      "source": "mods/butchering_1.14.3.zip!/assets/butchering/recipes/knapping/flint-hook.json",
+      "proves": "carried output possession, not its production action"
+    },
+    "butchering-raw-slab": {
+      "icon": "rusticcookery:meatslab-redmeat-raw",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "rusticcookery:meatslab-*-raw",
+          "count": 1
+        }
+      ],
+      "source": "mods/rusticcookery_1.2.0.zip!/RusticCookery.dll: ButcheringCompat.Prefix and SlabSplitter.Split; assets/rusticcookery/itemtypes/meatslab.json",
+      "proves": "carried output possession, not its production action"
+    },
+    "butchering-rustic-rack": {
+      "icon": "rusticcookery:smokerack-east",
+      "tasks": [
+        {
+          "type": "craft",
+          "block": "rusticcookery:smokerack-*",
+          "count": 1
+        }
+      ],
+      "source": "mods/rusticcookery_1.2.0.zip!/assets/rusticcookery/recipes/grid/smokerack.json",
+      "proves": "supported grid output, not placement or processing"
+    },
+    "butchering-smoked-slab": {
+      "icon": "rusticcookery:meatslab-redmeat-smoked",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "rusticcookery:meatslab-*-smoked",
+          "count": 1
+        }
+      ],
+      "source": "mods/rusticcookery_1.2.0.zip!/RusticCookery.dll: BlockEntitySmokeRack.OnSmokeTick/FinishSmoking and ItemMeatSlab.CanSmoke",
+      "proves": "carried output possession, not its production action"
+    },
+    "butchering-blood-sausage": {
+      "icon": "butchering:sausage-bloodsausage-raw",
+      "tasks": [
+        {
+          "type": "craft",
+          "item": "butchering:sausage-bloodsausage-raw",
+          "count": 1
+        }
+      ],
+      "source": "mods/butchering_1.14.3.zip!/assets/butchering/recipes/grid/bloodsausage.json",
+      "proves": "supported grid output, not placement or processing"
+    },
+    "butchering-hide-glue": {
+      "icon": "butchering:glueportion-hide-hot",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:glueportion-hide-*",
+          "count": 1
+        }
+      ],
+      "source": "mods/butchering_1.14.3.zip!/assets/butchering/recipes/cooking/glue.json; itemtypes/liquids/glueportion.json",
+      "proves": "carried output possession, not its production action"
+    },
+    "butchering-sinew-glue": {
+      "icon": "butchering:glueportion-sinew-cold",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:glueportion-sinew-cold",
+          "count": 1
+        }
+      ],
+      "source": "mods/butchering_1.14.3.zip!/assets/butchering/recipes/cooking/glue.json; itemtypes/resource/sinew.json (grindingPropsByType); itemtypes/liquids/glueportion.json",
+      "proves": "carried output possession, not its production action"
+    },
+    "butchering-metal-hook": {
+      "icon": "butchering:hook-copper",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:@hook-(copper|tinbronze|bismuthbronze|blackbronze|iron)",
+          "count": 1
+        }
+      ],
+      "source": "mods/butchering_1.14.3.zip!/assets/butchering/recipes/smithing/onebutcheringhook.json; fourbutcheringhook.json; itemtypes/tool/hook.json",
+      "proves": "carried output possession, not its production action"
+    },
+    "butchering-smoking-rack": {
+      "icon": "butchering:smokingrack-copper-north",
+      "tasks": [
+        {
+          "type": "craft",
+          "block": "butchering:smokingrack-*",
+          "count": 1
+        }
+      ],
+      "source": "mods/butchering_1.14.3.zip!/assets/butchering/recipes/grid/smokingrack.json",
+      "proves": "supported grid output, not placement or processing"
+    },
+    "butchering-simple-table": {
+      "icon": "butchering:butchertable-simple-north",
+      "tasks": [
+        {
+          "type": "craft",
+          "block": "butchering:butchertable-simple-*",
+          "count": 1
+        }
+      ],
+      "source": "mods/butchering_1.14.3.zip!/assets/butchering/recipes/grid/butchertables.json; blocktypes/butchertable.json",
+      "proves": "supported grid output, not placement or processing"
+    },
+    "butchering-advanced-table": {
+      "icon": "butchering:butchertable-advanced-north",
+      "tasks": [
+        {
+          "type": "craft",
+          "block": "butchering:butchertable-advanced-*",
+          "count": 1
+        }
+      ],
+      "source": "mods/butchering_1.14.3.zip!/assets/butchering/recipes/grid/butchertables.json; blocktypes/butchertable.json",
+      "proves": "supported grid output, not placement or processing"
+    },
+    "butchering-prime": {
+      "icon": "butchering:primemeat-raw",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:primemeat-raw",
+          "count": 1
+        }
+      ],
+      "source": "mods/butchering_1.14.3.zip!/assets/butchering/itemtypes/food/primemeat.json; itemtypes/butchercreatures/*",
+      "proves": "carried output possession, not its production action"
     }
   }
 }

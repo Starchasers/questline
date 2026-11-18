@@ -4,7 +4,7 @@ Install framework `questline_0.15.0.zip`, `questlinevanilla_0.14.0.zip`, **Butch
 
 ## Automatic objectives and progression
 
-All fifteen addon definitions have distinct, source-resolved item/block icons. There are **13 obtain objectives, one real grid-craft objective, and the unchanged first-hunt kill objective**; no manual checkboxes remain. Each added milestone still pays one cookie. Saved quest IDs, task-slot counts and unrelated vanilla asset bytes are preserved.
+All 28 addon definitions have distinct, source-resolved item/block icons. There are **21 obtain objectives, six real grid-craft objectives, and the unchanged first-hunt kill objective**; no manual checkboxes remain. There are 27 added quest IDs plus the first-hunt replacement; each definition pays one cookie when active. Saved quest IDs, existing task-slot counts and unrelated vanilla asset bytes are preserved. Armory and Rustic Cookery quests live in separate provider-gated chapter extensions; they cannot block the base route.
 
 ```text
 Vanilla make-knife
@@ -22,6 +22,24 @@ Vanilla make-knife
       -> Obtain dry sinew [butchering-sinew; optional]
       -> Obtain a strong bone [butchering-bones; optional]
       -> Obtain a butchery bag [butchering-bag; optional]
+      -> Obtain prime meat [butchering-prime; optional rare yield]
+      -> Obtain raw slab [butchering-raw-slab; Rustic Cookery only]
+          -> Craft wooden rack [butchering-rustic-rack; Rustic Cookery only]
+              -> Obtain smoked slab [butchering-smoked-slab; Rustic Cookery only]
+      -> Obtain metal hook [butchering-metal-hook]
+          -> Craft Butchering smoking rack [butchering-smoking-rack]
+      -> Craft simple table [butchering-simple-table]
+          -> Craft advanced table [butchering-advanced-table]
+
+butchering-prepare -> Obtain plain javelin [butchering-javelin; Armory only]
+butchering-prepare -> Obtain knapped component [butchering-knapped-hook]
+butchering-skin -> Obtain hide glue [butchering-hide-glue]
+butchering-sinew -> Obtain sinew glue [butchering-sinew-glue]
+butchering-offal -> Grid-craft blood sausage [butchering-blood-sausage]
+
+Navigation only (not prerequisite edges):
+  butchering-process -> questline:melt-fat (existing Husbandry rendered fat)
+  butchering-process/simple-table -> questline:make-cleaver (existing milestone)
 ```
 
 Arrows are actual prerequisites, not a claim that inventory proves the player performed every step. The page still teaches corpse → hook → knife → bleeding → table mechanics. The objective proves only the named output. Raw meat acquired earlier can count, and another player's hide or leather can count. Bled-out corpse ownership proves that item state, not the player's skinning or waiting action. Table crafting is a supported grid-craft event; its credit does not prove placement. First-hunt still proves a chicken kill, not carcass processing.
@@ -32,7 +50,7 @@ Obtain tasks use the existing server tracker and history/latching rules, without
 
 | Previous problem | Current contract |
 |---|---|
-| Every action was a manual checkbox with a generic knife icon | Actual output targets, 15 distinct relevant icons, automatic grid-craft/obtain/kill credit |
+| Every action was a manual checkbox with a generic knife icon | Actual output targets, 28 distinct relevant icons, automatic grid-craft/obtain/kill credit |
 | Titles promised skinning, bleeding, table processing or tanning that ownership cannot establish | Titles/outcomes name the output; instructions retain mechanics and explicitly limit what is proved |
 | A raw-hide gate blocked animals that yield feathers or fur | Raw hide is an optional branch; bleeding depends on corpse retrieval, not raw-hide possession |
 | Blood unlocked after skinning, potentially too late to place the bucket | Blood branch unlocks after table preparation; instructions place the bucket before bleeding finishes |
@@ -41,6 +59,14 @@ Obtain tasks use the existing server tracker and history/latching rules, without
 | Prose mod names without navigation | Clickable native handbook/quest destinations, guarded by provider and surviving destination |
 
 No dressing station/state is invented. Species-dependent offal, sinew, strong bones, raw hides and blood never gate the core meat route. Primitive tools/stations give a stone-age start. A knife skins on the hook; a cleaver is only an optional table upgrade. Oiled hides/pelts are not tanned leather. The table consumes a stone knife and axe in its primitive recipe, so the instructions reserve a second working knife.
+
+## Website Butchery & Hunting coverage
+
+All **17 website candidates C252–C268** are reconciled in the checked-in [coverage ledger](evidence/butchering-website-coverage.json), with each original title/task, destination IDs, evidence and departures. Thirteen new quests fill the feasible gaps; existing corpse/hide/bag/bleeding/preservation quests are reused, not duplicated. Existing rendered-fat and cleaver quests are reached through real native links.
+
+The website is a teaching plan, not authoritative asset data. Its slab “slicing” direction is reversed: Rustic Cookery’s inspected `ButcheringCompat.Prefix` and `SlabSplitter.Split` convert eligible workstation meat yields into whole raw slabs (six pieces in this pinned pack); `SlabSlicing.CreatePiece` consumes a slab into ordinary pieces. `BlockEntitySmokeRack.OnInteract` accepts whole slabs and `FinishSmoking` emits the matching smoked slab. Smoke strength controls progress; full smoke requires 2880 accumulated tick-seconds in the pinned config. No unconditional elapsed-time promise is made. Rustic Cookery’s wooden rack and Butchering’s metal-hook rack are distinct machines.
+
+Tier-specific table objectives deliberately remain grid-craft events because equipped workstations are not observed by obtain tracking. The primitive milestone accepts only primitive tables; the simple/advanced milestones do not shortcut each other. Prime meat, offal and sinew are optional side branches. Blood, hide glue and sinew glue require a whole carried litre for obtain credit; the sausage grid recipe itself needs only 0.2 litres of blood. Wooden bucket reception is documented, not an unverified saucepan or universal 2–4-block hook distance. These are explicit evidenced departures, not omitted plan rows.
 
 ## Native crossmod navigation
 
@@ -58,7 +84,7 @@ Pages use `handbook://<pageCode>` for the two bundled Butchering guides and `han
 
 ## Save compatibility
 
-All fifteen IDs and one task slot per definition remain intact. No aliases, new rewards, consumption or migration grants are added. Existing completed/claimed progress remains saved progress; these edits do not retroactively prove that old manual completions were detected actions. Uncompleted quests now use the existing automatic tracker. A native old-save/load and multiplayer playthrough is still a release gate.
+All fifteen existing IDs and their one task slot per definition remain intact. Thirteen new IDs each add the standard one-cookie reward; there are no aliases, hand-in consumption or migration grants. Existing completed/claimed progress remains saved progress; these edits do not retroactively prove that old manual completions were detected actions. Uncompleted quests now use the existing automatic tracker. A native old-save/load and multiplayer playthrough is still a release gate.
 
 ## Evidence and verification boundary
 
@@ -70,6 +96,6 @@ To reproduce the static asset receipt (requires Python `json5`, plus an independ
 python3 tools/verify_butchering_assets.py --export /path/to/modpack.zip --sdk /path/to/vintage-story
 ```
 
-It verifies the archive and every original source-ledger member hash, expands native variant groups including orientation properties and regex allow/skip filters, resolves all 15 icons and samples all 14 automatic output targets, and compares the checked-in receipt. `--write` explicitly regenerates after inspection. Production-loader tests additionally match the samples with Vintage Story's actual wildcard utility.
+It verifies the archive and every original source-ledger member hash, expands native variant groups including orientation properties and regex allow/skip filters, resolves all 28 icons and samples all 27 automatic output targets, and compares the checked-in receipt. `--write` explicitly regenerates after inspection. Production-loader tests additionally match the samples with Vintage Story's actual wildcard utility.
 
 Offline tests/builds do **not** establish live asset registration, native link clicking, layout, real station/craft attribution, timer behavior, class availability, multiplayer or persistence acceptance. No full-pack/VsTestkit client/server gameplay or rendered GUI run was performed. Human translations remain pending; addon-owned English is the fallback. No proprietary archive or game binaries are committed.

@@ -1,0 +1,246 @@
+{
+  "boundary": "Original website C252-C268, pinned Pszczoly 1.2.0 archive. Static assets, recipes, DLL inspection and production loader tests are not native interaction acceptance. All existing IDs and one task slot per record retained.",
+  "candidates": [
+    {
+      "candidate_id": "C252",
+      "website_title": "Knap a javelin",
+      "website_task": "obtain `armory:javelin-plain-*`",
+      "status": "implemented",
+      "quest_ids": [
+        "butchering-javelin"
+      ],
+      "evidence": [
+        "mods/armoryfork_1.11.4.zip!/assets/armory/recipes/knapping/javelinhead.json; recipes/grid/weapons/javelins.json; itemtypes/weapons/javelin.json"
+      ],
+      "resolution": "Provider is armoryfork but asset domain armory. Obtain is not knapping/weapon-specific kill proof; optional to avoid blocking the preserved chicken hunt."
+    },
+    {
+      "candidate_id": "C253",
+      "website_title": "First hunt",
+      "website_task": "kill",
+      "status": "reused",
+      "quest_ids": [
+        "first-hunt"
+      ],
+      "evidence": [
+        "vanilla stone-age/first-hunt chicken kill objective; game poultry asset"
+      ],
+      "resolution": "Preserved first-hunt saved ID and chicken kill task. No weapon-specific kill detection."
+    },
+    {
+      "candidate_id": "C254",
+      "website_title": "Carry a carcass",
+      "website_task": "obtain `butchering:dead*`",
+      "status": "reused",
+      "quest_ids": [
+        "butchering-retrieve"
+      ],
+      "evidence": [
+        "itemtypes/butchercreatures/hare.json and other butchercreatures: state=dead"
+      ],
+      "resolution": "Only inventory-sized bodies (for example hare) count in scanned carried slots; backpack equipment slots are not observed."
+    },
+    {
+      "candidate_id": "C255",
+      "website_title": "Butchery bag",
+      "website_task": "obtain `butchering:butcherybag-primitive`",
+      "status": "reused",
+      "quest_ids": [
+        "butchering-bag"
+      ],
+      "evidence": [
+        "itemtypes/tool/butcherybag.json"
+      ],
+      "resolution": "Existing bag obtain milestone retained; possession before equipping is needed."
+    },
+    {
+      "candidate_id": "C256",
+      "website_title": "Knap a hook, build a skinning hook",
+      "website_task": "obtain `butchering:butcherhook-flint-north`",
+      "status": "implemented",
+      "quest_ids": [
+        "butchering-knapped-hook",
+        "butchering-hook"
+      ],
+      "evidence": [
+        "mods/butchering_1.14.3.zip!/assets/butchering/recipes/knapping/flint-hook.json",
+        "blocktypes/butcherhook.json; recipes/grid/butcherhook.json"
+      ],
+      "resolution": "New knapped component obtain plus tier-specific existing assembled flint hook. Knapping itself is not detected."
+    },
+    {
+      "candidate_id": "C257",
+      "website_title": "Skin a carcass",
+      "website_task": "obtain hide",
+      "status": "reused",
+      "quest_ids": [
+        "butchering-skin"
+      ],
+      "evidence": [
+        "vanilla leatherwork/get-hide; itemtypes/butchercreatures/* skinning products"
+      ],
+      "resolution": "Existing raw-hide possession task with hooked-carcass teaching; species may not yield hides."
+    },
+    {
+      "candidate_id": "C258",
+      "website_title": "Collect the blood",
+      "website_task": "obtain `butchering:bloodportion`",
+      "status": "evidenced-departure",
+      "quest_ids": [
+        "butchering-blood"
+      ],
+      "evidence": [
+        "itemtypes/liquids/bloodportion.json; BlockEntityButcherHook.cs"
+      ],
+      "resolution": "Whole carried litre required by tracker; 0.2 litre suffices only for sausage recipe. Wooden bucket supported; speculative saucepan and universal 2–4-block hook distance not asserted."
+    },
+    {
+      "candidate_id": "C259",
+      "website_title": "Primitive butcher table",
+      "website_task": "obtain `butchering:butchertable-primitive-north`",
+      "status": "evidenced-departure",
+      "quest_ids": [
+        "butchering-table"
+      ],
+      "evidence": [
+        "blocktypes/butchertable.json"
+      ],
+      "resolution": "Primitive-only grid craft replaces website obtain because table equipment slots are unobserved. Existing ID and task slot preserved."
+    },
+    {
+      "candidate_id": "C260",
+      "website_title": "Butcher a carcass",
+      "website_task": "obtain `butchering:primemeat*`, sinew, offal",
+      "status": "evidenced-departure",
+      "quest_ids": [
+        "butchering-process",
+        "butchering-prime",
+        "butchering-sinew",
+        "butchering-offal"
+      ],
+      "evidence": [
+        "Butchering guide and butchercreatures table outputs; vanilla raw meat assets",
+        "mods/butchering_1.14.3.zip!/assets/butchering/itemtypes/food/primemeat.json; itemtypes/butchercreatures/*",
+        "itemtypes/resource/sinew.json: wet -> dry Cure transition",
+        "itemtypes/resource/offal.json; recipes/barrel/cleanoffal.json"
+      ],
+      "resolution": "Prime, dried sinew and clean offal are optional side outputs, not a mandatory rare/species/class-locked gate. Common meat remains base completion; outputs do not prove workstation action."
+    },
+    {
+      "candidate_id": "C261",
+      "website_title": "Slice a meat slab",
+      "website_task": "obtain `rusticcookery:meatslab-*-raw`",
+      "status": "evidenced-departure",
+      "quest_ids": [
+        "butchering-raw-slab"
+      ],
+      "evidence": [
+        "mods/rusticcookery_1.2.0.zip!/RusticCookery.dll: ButcheringCompat.Prefix and SlabSplitter.Split; assets/rusticcookery/itemtypes/meatslab.json"
+      ],
+      "resolution": "Website title reverses the real operation: whole raw slabs come from eligible butcher yields; slicing consumes a slab into pieces. Obtain raw slab with honest title and teaching."
+    },
+    {
+      "candidate_id": "C262",
+      "website_title": "Smoke rack and smoked slab",
+      "website_task": "obtain `rusticcookery:meatslab-*-smoked` (mod machine)",
+      "status": "implemented",
+      "quest_ids": [
+        "butchering-rustic-rack",
+        "butchering-smoked-slab"
+      ],
+      "evidence": [
+        "mods/rusticcookery_1.2.0.zip!/assets/rusticcookery/recipes/grid/smokerack.json",
+        "mods/rusticcookery_1.2.0.zip!/RusticCookery.dll: BlockEntitySmokeRack.OnSmokeTick/FinishSmoking and ItemMeatSlab.CanSmoke"
+      ],
+      "resolution": "Separate Rustic Cookery wooden rack craft and whole smoked slab obtain; machine transition not directly detected."
+    },
+    {
+      "candidate_id": "C263",
+      "website_title": "Render fat",
+      "website_task": "obtain fat",
+      "status": "reused",
+      "quest_ids": [
+        "melt-fat"
+      ],
+      "evidence": [
+        "content/vanilla/assets/questline/questline/chapters/husbandry.json"
+      ],
+      "resolution": "Reused native clickable link to existing melt-fat; no duplicate quest."
+    },
+    {
+      "candidate_id": "C264",
+      "website_title": "Clean offal, blood sausage",
+      "website_task": "obtain (mod machine)",
+      "status": "implemented",
+      "quest_ids": [
+        "butchering-offal",
+        "butchering-blood-sausage"
+      ],
+      "evidence": [
+        "itemtypes/resource/offal.json; recipes/barrel/cleanoffal.json",
+        "mods/butchering_1.14.3.zip!/assets/butchering/recipes/grid/bloodsausage.json"
+      ],
+      "resolution": "Existing clean offal plus automatic blood-sausage grid output. Recipe is grid crafting, not a separate machine."
+    },
+    {
+      "candidate_id": "C265",
+      "website_title": "Sinew and hide glue",
+      "website_task": "obtain `butchering:glueportion-*`",
+      "status": "implemented",
+      "quest_ids": [
+        "butchering-sinew",
+        "butchering-sinew-glue",
+        "butchering-hide-glue"
+      ],
+      "evidence": [
+        "itemtypes/resource/sinew.json: wet -> dry Cure transition",
+        "mods/butchering_1.14.3.zip!/assets/butchering/recipes/cooking/glue.json; itemtypes/resource/sinew.json (grindingPropsByType); itemtypes/liquids/glueportion.json",
+        "mods/butchering_1.14.3.zip!/assets/butchering/recipes/cooking/glue.json; itemtypes/liquids/glueportion.json"
+      ],
+      "resolution": "Separate one-litre hide/sinew glue obtains and explicit cooking-pot recipes. No cooking-action claim."
+    },
+    {
+      "candidate_id": "C266",
+      "website_title": "Cleaver",
+      "website_task": "obtain",
+      "status": "reused",
+      "quest_ids": [
+        "make-cleaver"
+      ],
+      "evidence": [
+        "content/vanilla/assets/questline/questline/chapters/husbandry.json"
+      ],
+      "resolution": "Reused native clickable link to existing make-cleaver; no duplicate quest."
+    },
+    {
+      "candidate_id": "C267",
+      "website_title": "Metal hooks and smoking rack",
+      "website_task": "obtain `butchering:smokingrack-*`",
+      "status": "implemented",
+      "quest_ids": [
+        "butchering-metal-hook",
+        "butchering-smoking-rack"
+      ],
+      "evidence": [
+        "mods/butchering_1.14.3.zip!/assets/butchering/recipes/smithing/onebutcheringhook.json; fourbutcheringhook.json; itemtypes/tool/hook.json",
+        "mods/butchering_1.14.3.zip!/assets/butchering/recipes/grid/smokingrack.json"
+      ],
+      "resolution": "Metal-only component obtain and Butchering smoking-rack grid craft, distinct from Rustic Cookery machine."
+    },
+    {
+      "candidate_id": "C268",
+      "website_title": "Simple and advanced tables",
+      "website_task": "obtain",
+      "status": "evidenced-departure",
+      "quest_ids": [
+        "butchering-simple-table",
+        "butchering-advanced-table"
+      ],
+      "evidence": [
+        "mods/butchering_1.14.3.zip!/assets/butchering/recipes/grid/butchertables.json; blocktypes/butchertable.json",
+        "mods/butchering_1.14.3.zip!/assets/butchering/recipes/grid/butchertables.json; blocktypes/butchertable.json"
+      ],
+      "resolution": "Two tier-specific grid crafts instead of unobservable equipment obtains; no generic wildcard shortcut."
+    }
+  ]
+}

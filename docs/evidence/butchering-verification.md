@@ -1,6 +1,32 @@
 # Butchering verification receipt
 
-## Automatic-objective correction receipt (supersedes the original manual draft)
+## Website C252–C268 implementation receipt (current)
+
+Implementation base: `f464bfaab2c73f46b7f2ca5f5709950a649bb5ff`. Added thirteen quests and two provider-gated extensions, for **28 definitions / 27 added IDs**, with 21 obtain tasks, six supported grid crafts and the unchanged first-hunt kill. All existing saved quest/task IDs and all unrelated chapter bytes are preserved. No manual checkbox or duplicate fat/cleaver milestone was added. Every website candidate is reconciled in [the coverage ledger](butchering-website-coverage.json); this section supersedes the older counts below.
+
+**RED → GREEN:** before content edits, `python3 -m unittest discover -s tests -p test_butchering_website.py -v` failed for thirteen missing quests and missing coverage ledger. The production C# test also failed the new 27-ID addition count before implementation. During verification the provider matrix caught that quest-level `requiresMod` is not supported; the final implementation uses gated chapter extensions and passes all eight Butchering/Armory/Rustic Cookery combinations in both file orders. Native wildcard positive/negative cases cover every output and distinguish table tiers, metal from flint hook, and raw from smoked slab. All loaded prerequisites and conditional links are checked, including cycle detection. The canonical historical extraction corpus stays unchanged.
+
+Exact commands executed in this worktree (set `SDK=/home/brunette/.hermes/cache/scratch/questline-ci-game` and `DN=/home/brunette/.hermes/cache/scratch/questline-ci-dotnet/dotnet`):
+
+```sh
+python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s tools/packaging -v
+python3 tools/lang/check.py
+python3 compat/toolsmith/tests/regression.py
+VINTAGE_STORY="$SDK" "$DN" run --project verification/composition --configuration Release -- .
+VINTAGE_STORY="$SDK" "$DN" run --project verification/rewards --configuration Release -- .
+python3 tools/verify_butchering_assets.py --export /home/brunette/.hermes/game-context/vintage-story/1571480359365771304/prizC/modpack.zip --sdk "$SDK"
+VINTAGE_STORY="$SDK" DOTNET="$DN" sh ./build.sh --configuration Release --output /home/brunette/.hermes/cache/scratch/questline-pr4-website-build
+git diff --check
+```
+
+Results: **14 Python content tests; 32 packaging tests; 3 Toolsmith regressions; 15 production composition tests; 21 production reward tests (549 rewarded definitions); zero localization errors** (existing Chef’s Tricks warnings only). Source verification resolves **28 exact icons and 27 automatic output examples**, with original archive/member SHA-256s plus pinned Armory/Rustic Cookery assets, recipes, DLLs and configuration. Release framework/adapter builds return zero warnings/errors and produce all **15 packages**. A separate read-only reviewer inspected the diff, original recipes, provider gates and liquid tracking; no actionable finding. A final evidence check corrected the sinew grinding source citation to the actual `grindingPropsByType` item property, not a nonexistent quern recipe file.
+
+Source mechanics boundary: Rustic Cookery DLL inspection establishes `ButcheringCompat.Prefix` / `SlabSplitter.Split` create slabs from eligible workstation yields; `SlabSlicing.CreatePiece` reverses slabs into meat pieces; `BlockEntitySmokeRack.OnInteract`, `OnSmokeTick` and `FinishSmoking` require whole raw slabs and adequate smoke. Original pinned `rusticcookery.json` sets slab size 6 and full-smoke duration 2880 accumulated tick-seconds. These facts are static evidence, not a running machine acceptance test. The historical srMi9 upload remains unavailable; inspected Pszczoly 1.2.0 is not claimed to be that exact upload or the current live server pack.
+
+**Still not run:** native GUI render/link clicking, actual full-pack station and craft attribution playthrough, old-save/multiplayer interaction checks. English fallback keys are complete; human translations remain pending. Parent must publish the revised graph showing optional Armory/Rustic branches, separate smoking machines, table upgrades, glue/sausage and rare-prime side branches. No push, PR edit, merge or website publication was performed here.
+
+## Automatic-objective correction receipt (historical; superseded above)
 
 Base revision: `0db35ff20a85cb60f4915800aba9d6dae3f53815`. Corrected all 15 addon definitions: 15 distinct source-resolved icons, 13 obtain tasks, one supported table grid-craft task, and the unchanged first-hunt kill task. No manual checkboxes, new rewards/consumption, saved-ID changes or vanilla asset edits. See [current journey and critique](../butchering.md), [objective ledger](butchering-objectives.json) and [source asset receipt](butchering-assets.json).
 

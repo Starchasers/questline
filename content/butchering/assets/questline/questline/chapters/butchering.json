@@ -29,6 +29,16 @@
         {
           "type": "text",
           "lang": "butchering-native-guides"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-prepare-link-butchering-javelin",
+          "requiresQuest": [
+            "questline:butchering-javelin"
+          ],
+          "requiresMod": [
+            "armoryfork"
+          ]
         }
       ],
       "rewards": [
@@ -50,7 +60,7 @@
       "tasks": [
         {
           "type": "obtain",
-          "block": "butchering:butcherhook-*",
+          "block": "butchering:butcherhook-flint-*",
           "count": 1
         }
       ],
@@ -79,7 +89,7 @@
       "tasks": [
         {
           "type": "craft",
-          "block": "butchering:butchertable-*",
+          "block": "butchering:butchertable-primitive-*",
           "count": 1
         }
       ],
@@ -145,6 +155,13 @@
         {
           "type": "text",
           "lang": "butchering-skin-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-skin-link-butchering-hide-glue",
+          "requiresQuest": [
+            "questline:butchering-hide-glue"
+          ]
         }
       ],
       "rewards": [
@@ -203,6 +220,37 @@
         {
           "type": "text",
           "lang": "butchering-process-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-process-link-melt-fat",
+          "requiresQuest": [
+            "questline:melt-fat"
+          ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-process-link-make-cleaver",
+          "requiresQuest": [
+            "questline:make-cleaver"
+          ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-process-link-butchering-raw-slab",
+          "requiresQuest": [
+            "questline:butchering-raw-slab"
+          ],
+          "requiresMod": [
+            "rusticcookery"
+          ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-process-link-butchering-prime",
+          "requiresQuest": [
+            "questline:butchering-prime"
+          ]
         }
       ],
       "rewards": [
@@ -284,6 +332,16 @@
             "questline:crystallize-salt",
             "questline:dry-salt-crystal"
           ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-preserve-link-butchering-smoked-slab",
+          "requiresQuest": [
+            "questline:butchering-smoked-slab"
+          ],
+          "requiresMod": [
+            "rusticcookery"
+          ]
         }
       ],
       "rewards": [
@@ -323,6 +381,13 @@
           "requiresQuest": [
             "questline:knead-sausage"
           ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-offal-link-butchering-blood-sausage",
+          "requiresQuest": [
+            "questline:butchering-blood-sausage"
+          ]
         }
       ],
       "rewards": [
@@ -352,6 +417,13 @@
         {
           "type": "text",
           "lang": "butchering-sinew-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-sinew-link-butchering-sinew-glue",
+          "requiresQuest": [
+            "questline:butchering-sinew-glue"
+          ]
         }
       ],
       "rewards": [
@@ -424,6 +496,281 @@
           "requiresQuest": [
             "questline:make-cleaver"
           ]
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-knapped-hook",
+      "pos": [
+        -2,
+        1
+      ],
+      "requires": "butchering-prepare",
+      "icon": "butchering:hook-flint",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:hook-flint",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-knapped-hook-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-knapped-hook-link-butchering-hook",
+          "requiresQuest": [
+            "questline:butchering-hook"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-blood-sausage",
+      "pos": [
+        6,
+        12
+      ],
+      "requires": "butchering-offal",
+      "icon": "butchering:sausage-bloodsausage-raw",
+      "tasks": [
+        {
+          "type": "craft",
+          "item": "butchering:sausage-bloodsausage-raw",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-blood-sausage-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-hide-glue",
+      "pos": [
+        -3,
+        5.5
+      ],
+      "requires": "butchering-skin",
+      "icon": "butchering:glueportion-hide-hot",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:glueportion-hide-*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-hide-glue-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-sinew-glue",
+      "pos": [
+        9,
+        10.5
+      ],
+      "requires": "butchering-sinew",
+      "icon": "butchering:glueportion-sinew-cold",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:glueportion-sinew-cold",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-sinew-glue-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-metal-hook",
+      "pos": [
+        0,
+        12
+      ],
+      "requires": "butchering-process",
+      "icon": "butchering:hook-copper",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:@hook-(copper|tinbronze|bismuthbronze|blackbronze|iron)",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-metal-hook-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-smoking-rack",
+      "pos": [
+        0,
+        13.5
+      ],
+      "requires": "butchering-metal-hook",
+      "icon": "butchering:smokingrack-copper-north",
+      "tasks": [
+        {
+          "type": "craft",
+          "block": "butchering:smokingrack-*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-smoking-rack-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-simple-table",
+      "pos": [
+        3,
+        12
+      ],
+      "requires": "butchering-process",
+      "icon": "butchering:butchertable-simple-north",
+      "tasks": [
+        {
+          "type": "craft",
+          "block": "butchering:butchertable-simple-*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-simple-table-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-simple-table-link-make-cleaver",
+          "requiresQuest": [
+            "questline:make-cleaver"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-advanced-table",
+      "pos": [
+        3,
+        13.5
+      ],
+      "requires": "butchering-simple-table",
+      "icon": "butchering:butchertable-advanced-north",
+      "tasks": [
+        {
+          "type": "craft",
+          "block": "butchering:butchertable-advanced-*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-advanced-table-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-prime",
+      "pos": [
+        9,
+        9
+      ],
+      "requires": "butchering-process",
+      "icon": "butchering:primemeat-raw",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:primemeat-raw",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-prime-desc"
         }
       ],
       "rewards": [

@@ -1,0 +1,39 @@
+{
+  "id": "butchering-armoryfork",
+  "extends": "questline:butchering",
+  "requiresMod": [
+    "butchering",
+    "armoryfork"
+  ],
+  "quests": [
+    {
+      "id": "butchering-javelin",
+      "pos": [
+        -4,
+        0
+      ],
+      "requires": "butchering-prepare",
+      "icon": "armory:javelin-plain-flint",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "armory:javelin-plain-*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-javelin-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

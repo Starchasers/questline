@@ -14,10 +14,10 @@ def records():
 
 
 class Corrections(unittest.TestCase):
-    def test_all_fifteen_have_semantic_icons_and_automatic_tasks(self):
+    def test_all_definitions_have_semantic_icons_and_automatic_tasks(self):
         quests = records()
-        self.assertEqual(15, len(quests))
-        self.assertEqual(15, len({q['id'] for q in quests}))
+        self.assertEqual(28, len(quests))
+        self.assertEqual(28, len({q['id'] for q in quests}))
         self.assertGreaterEqual(len({q['icon'] for q in quests}), 13)
         for q in quests:
             self.assertTrue(q['icon'])
