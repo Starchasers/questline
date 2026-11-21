@@ -11,7 +11,7 @@ class ButcheringTests(unittest.TestCase):
     def test_journey_and_action_semantics(self):
         chapter = json.loads((CHAPTERS / 'butchering.json').read_text())
         quests = {q['id']: q for q in chapter['quests']}
-        spine = ['butchering-prepare', 'butchering-hook', 'butchering-table', 'butchering-retrieve', 'butchering-bleed', 'butchering-process']
+        spine = ['butchering-table', 'butchering-prepare', 'butchering-knapped-hook', 'butchering-hook', 'butchering-retrieve', 'butchering-bleed', 'butchering-process']
         for a, b in zip(spine, spine[1:]):
             self.assertEqual(a, quests[b]['requires'])
         for q in quests.values():

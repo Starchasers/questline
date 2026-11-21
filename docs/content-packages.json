@@ -33,7 +33,6 @@
         "butchering": "1.14.3"
       },
       "chapters": [
-        "butchering-armoryfork.json",
         "butchering-leatherwork.json",
         "butchering-rusticcookery.json",
         "butchering-stone-age.json",

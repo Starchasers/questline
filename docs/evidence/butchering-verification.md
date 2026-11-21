@@ -1,5 +1,17 @@
 # Butchering verification receipt
 
+## Player journey 0.15.0 (supersedes earlier inventories)
+
+Removed `butchering-javelin` and its Armory extension, rewrote every description for players, replaced imperative/disclaimer titles with plain nouns, and made the knapped flint component a prerequisite of the primitive skinning hook. The primitive table is now the first Butchering node. Upgrade rows run rightward in order and never feed back into the processing trunk: tables, hook components and floor skinning stations; ceiling variants are terminal alternatives. Copper requires first smithing, bronze any supported alloy, and iron iron smithing. Bronze variants are alternatives, not three mandatory redundant stations. Independent outputs no longer form an offal → sinew → prime chain. Hide pages link directly into native Leatherworking.
+
+Current content: **four chapter assets, 35 definitions / 34 added IDs, 35 exact icons and 34 automatic output targets** (28 obtain tasks, six grid-craft tasks, one retained first-hunt kill). Addon version is **0.15.0**; framework remains 0.15.0, Vanilla dependency 0.14.0, Butchering minimum 1.14.3. Twelve ZIP packages remain independently installable.
+
+Fresh local execution: **21 Python content tests, 33 packaging tests, three Toolsmith source regressions; 15 production composition tests, 21 reward tests exercising 493 rewarded definitions, and 23 synthetic runtime adapter checks all passed**. Both Release builds had zero warnings/errors. Localization: zero errors, pre-existing Chef's Tricks English warnings only. Used official Vintage Story 1.22.7 SDK assets and .NET SDK 10.0.404. New player-journey regressions failed before content changes. Asset receipt was regenerated, then independently compared with no changes; every original source-ledger hash was checked. Native wildcard checks accept all three bronze alternatives and reject neighboring tiers.
+
+Rate evidence reproduced from `attributes.butcheringEfficiencyByType` in the provider's `butchertable.json`, `butcherhook.json` and `butcherhookceiling.json`: primitive 0.8, copper/bronze 1.0, iron 1.2. Retained `ButcheringConfigV3.json` has table and rack multipliers 1.0. The checked-in asset receipt now records both station and configured multipliers; regression tests compare all station descriptions to those values. Hook item states are flint, copper, tinbronze, bismuthbronze, blackbronze and iron; no steel or flint ceiling variants exist. Four-hook ingot smithing is enabled; one-hook nugget smithing is disabled. Components do not have independent drop rates, ceiling mounting does not improve rates, and skinning/table rates apply to distinct reward sets rather than multiplying together.
+
+No full-pack/native rendered GUI or station gameplay run was performed. Authored coordinates, ordered dependency rows and optional destinations are checked structurally and by the production loader, not accepted as a rendered-layout or gameplay proof. Historical receipts below retain their original counts and limitations. Hosted CI must independently verify the pushed revision.
+
 ## Integration-removal conflict reconciliation
 
 Merged main's removal of Better Ruins, Charcoal Kiln and Seafarer while retaining all five Butchering chapters, its owned English text, provider gates and production-loader checks. Current inventory is 12 ZIPs: framework, ten content packs and Toolsmith adapter; release assets also include `SHA256SUMS` (13 assets). Earlier 15-package receipts below describe historical inventories, not this merge.

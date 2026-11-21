@@ -9,8 +9,8 @@
     {
       "id": "butchering-raw-slab",
       "pos": [
-        -3,
-        10.5
+        -12,
+        13.5
       ],
       "requires": "butchering-process",
       "icon": "rusticcookery:meatslab-redmeat-raw",
@@ -38,8 +38,8 @@
     {
       "id": "butchering-rustic-rack",
       "pos": [
-        -3,
-        12
+        -12,
+        15
       ],
       "requires": "butchering-raw-slab",
       "icon": "rusticcookery:smokerack-east",
@@ -67,8 +67,8 @@
     {
       "id": "butchering-smoked-slab",
       "pos": [
-        -3,
-        13.5
+        -12,
+        17
       ],
       "requires": "butchering-rustic-rack",
       "icon": "rusticcookery:meatslab-redmeat-smoked",

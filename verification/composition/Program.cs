@@ -202,7 +202,7 @@ Test("all 17 shipped base-to-extension replacements survive shuffled real conten
     var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
         .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
         .Select(f => (Domain: new DirectoryInfo(Path.GetDirectoryName(f)).Parent.Parent.Name, Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
-    Check(files.Length == 56, $"expected 51 retained plus 5 Butchering content files, got {files.Length}");
+    Check(files.Length == 55, $"expected 51 retained plus 4 Butchering content files, got {files.Length}");
     var baseline = Load(files);
     var qualified = files.Select(f => {
         var c = JsonConvert.DeserializeObject<ChapterDef>(f.Json);
@@ -239,7 +239,7 @@ Test("Butchering present/absent keeps vanilla progression and optional output br
     var absent = Load(files, missingMods: ["butchering"]);
     Check(present.Registry.Get("questline:butchering-process") != null, "journey missing with mod present");
     Check(absent.Registry.Get("questline:butchering-process") == null, "journey leaked with mod absent");
-    Check(present.Registry.Quests.Count - absent.Registry.Quests.Count == 27, "expected exactly twenty-seven added quest IDs including website branches");
+    Check(present.Registry.Quests.Count - absent.Registry.Quests.Count == 34, "expected exactly thirty-four added quest IDs including all hook tiers");
     Check(present.Registry.Get("questline:first-hunt").Tasks.Single().Type == "kill", "hunt task changed");
     Check(absent.Registry.Get("questline:first-hunt").Page.Count == 0, "replacement leaked into absent mode");
     foreach (string id in new[] { "get-hide", "make-leather", "make-cleaver" })
@@ -260,7 +260,7 @@ Test("shipped Butchering navigation and native wildcard targets survive composit
     foreach (var order in new[] { files, files.Reverse().ToArray() }) {
         var (registry, loader) = Load(order, missingMods: missing.ToHashSet());
         bool butcher = !missing.Contains("butchering");
-        Check((registry.Get("questline:butchering-javelin") != null) == (butcher && !missing.Contains("armoryfork")), "Armory quest gating");
+        Check(registry.Get("questline:butchering-javelin") == null, "removed javelin quest returned");
         foreach (string id in new[] { "raw-slab", "rustic-rack", "smoked-slab" })
             Check((registry.Get("questline:butchering-" + id) != null) == (butcher && !missing.Contains("rusticcookery")), "Rustic Cookery quest gating: " + id);
         var done = new HashSet<string>();
@@ -297,10 +297,27 @@ Test("shipped Butchering navigation and native wildcard targets survive composit
         ("simple-table", "butchering:butchertable-primitive-north"),
         ("advanced-table", "butchering:butchertable-simple-north"),
         ("metal-hook", "butchering:hook-flint"),
+        ("metal-hook", "butchering:hook-iron"),
+        ("bronze-component", "butchering:hook-copper"),
+        ("iron-component", "butchering:hook-tinbronze"),
+        ("copper-skinning-hook", "butchering:butcherhook-flint-north"),
+        ("bronze-skinning-hook", "butchering:butcherhook-iron-north"),
+        ("iron-skinning-hook", "butchering:butcherhook-copper-north"),
+        ("copper-ceiling-hook", "butchering:butcherhook-copper-north"),
+        ("bronze-ceiling-hook", "butchering:butcherhookceiling-iron-north"),
+        ("iron-ceiling-hook", "butchering:butcherhookceiling-tinbronze-north"),
         ("raw-slab", "rusticcookery:meatslab-redmeat-smoked"),
         ("smoked-slab", "rusticcookery:meatslab-redmeat-raw") }) {
         var task = present.Get("questline:butchering-" + id).Tasks.Single();
         Check(!Vintagestory.API.Util.WildcardUtil.Match(new AssetLocation(task.Target), new AssetLocation(wrong)), "tier/state wildcard accepts wrong output: " + id);
+    }
+    foreach (string metal in new[] { "tinbronze", "bismuthbronze", "blackbronze" })
+    foreach (var (id, code) in new[] {
+        ("bronze-component", "butchering:hook-" + metal),
+        ("bronze-skinning-hook", "butchering:butcherhook-" + metal + "-north"),
+        ("bronze-ceiling-hook", "butchering:butcherhookceiling-" + metal + "-north") }) {
+        var task = present.Get("questline:butchering-" + id).Tasks.Single();
+        Check(Vintagestory.API.Util.WildcardUtil.Match(new AssetLocation(task.Target), new AssetLocation(code)), "valid bronze alternative rejected: " + code);
     }
     foreach (var prop in (Newtonsoft.Json.Linq.JObject)examples["taskExamples"]) {
         var task = present.Get("questline:" + prop.Key).Tasks.Single();

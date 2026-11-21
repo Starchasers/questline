@@ -18,7 +18,7 @@ The current inventory contains ten content packages: vanilla and nine optional i
 | --- | --- | ---: | ---: |
 | vanilla | questlinevanilla | 25 | 322 |
 | bricklayers | questlinebricklayers | 3 | 24 |
-| butchering | questlinebutchering | 5 | 28 |
+| butchering | questlinebutchering | 4 | 35 |
 | efchefstricks | questlineefchefstricks | 3 | 4 |
 | efmealsmodule | questlineefmealsmodule | 1 | 1 |
 | expandedfoods | questlineexpandedfoods | 8 | 37 |
@@ -100,4 +100,4 @@ of a native game installation or integration smoke test.
 
 ## Authored Butchering addon
 
-Install `questlinebutchering_0.14.0.zip` alongside framework, vanilla and Butchering >= 1.14.3. Its five files add twenty-seven quests and replace only `first-hunt` in place, retaining its kill task and saved ID. Other vanilla assets remain byte-identical. It owns only new English localization keys; other languages use the game's English fallback (not native-reviewed translations). This is separate from the historical extraction totals above. See [journey and evidence](butchering.md).
+Install `questlinebutchering_0.15.0.zip` alongside framework, vanilla and Butchering >= 1.14.3. Its four files add thirty-four quests and replace only `first-hunt` in place, retaining its kill task and saved ID. Other vanilla assets remain byte-identical. It owns only new English localization keys; other languages use the game's English fallback (not native-reviewed translations). This is separate from the historical extraction totals above. See [journey and evidence](butchering.md).

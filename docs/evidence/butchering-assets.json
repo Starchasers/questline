@@ -2,40 +2,6 @@
   "boundary": "Static variant expansion, not native game asset/handbook registration. Reproduce against hash-pinned export and official 1.22.7 SDK assets; JSON5 parser used for native asset syntax.",
   "archiveSha256": "239c31aef93c0960bfb87c8d5e8a2dd0add2d4287ce18836ca36abdefbf4ac9d",
   "icons": {
-    "armory:javelin-plain-flint": {
-      "provider": "armoryfork_1.11.4.zip",
-      "asset": "assets/armory/itemtypes/weapons/javelin.json",
-      "sha256": "8342f688bece04198ead444032a4bf6fd39e5cdb470fbc134abbe5094b104647",
-      "baseCode": "javelin",
-      "variantGroups": [
-        {
-          "code": "type",
-          "states": [
-            "plain"
-          ]
-        },
-        {
-          "code": "material",
-          "states": [
-            "chert",
-            "granite",
-            "andesite",
-            "basalt",
-            "obsidian",
-            "peridotite",
-            "flint",
-            "copper",
-            "tinbronze",
-            "bismuthbronze",
-            "blackbronze",
-            "iron",
-            "meteoriciron",
-            "steel"
-          ]
-        }
-      ],
-      "worldProperties": []
-    },
     "butchering:bloodportion": {
       "provider": "Butchering 1.14.3",
       "asset": "assets/butchering/itemtypes/liquids/bloodportion.json",
@@ -43,6 +9,41 @@
       "baseCode": "bloodportion",
       "variantGroups": [],
       "worldProperties": []
+    },
+    "butchering:butcherhook-copper-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "baseCode": "butcherhook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
     },
     "butchering:butcherhook-flint-north": {
       "provider": "Butchering 1.14.3",
@@ -59,6 +60,178 @@
             "blackbronze",
             "iron",
             "flint"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherhook-iron-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "baseCode": "butcherhook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherhook-tinbronze-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "baseCode": "butcherhook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherhookceiling-copper-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "baseCode": "butcherhookceiling",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherhookceiling-iron-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "baseCode": "butcherhookceiling",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherhookceiling-tinbronze-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "baseCode": "butcherhookceiling",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron"
           ]
         },
         {
@@ -352,6 +525,46 @@
       "worldProperties": []
     },
     "butchering:hook-flint": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
+      "baseCode": "hook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:hook-iron": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
+      "baseCode": "hook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:hook-tinbronze": {
       "provider": "Butchering 1.14.3",
       "asset": "assets/butchering/itemtypes/tool/hook.json",
       "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
@@ -765,6 +978,36 @@
       "sha256": "7b1ecdd10c777b91906a0158088348f09c73ab243fa0f0379c0eaaf5afa64974",
       "kind": "item"
     },
+    "butchering-bronze-ceiling-hook": {
+      "code": "butchering:butcherhookceiling-tinbronze-north",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "kind": "block"
+    },
+    "butchering-bronze-component": {
+      "code": "butchering:hook-tinbronze",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
+      "kind": "item"
+    },
+    "butchering-bronze-skinning-hook": {
+      "code": "butchering:butcherhook-tinbronze-north",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "kind": "block"
+    },
+    "butchering-copper-ceiling-hook": {
+      "code": "butchering:butcherhookceiling-copper-north",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "kind": "block"
+    },
+    "butchering-copper-skinning-hook": {
+      "code": "butchering:butcherhook-copper-north",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "kind": "block"
+    },
     "butchering-hide-glue": {
       "code": "butchering:glueportion-hide-cold",
       "asset": "assets/butchering/itemtypes/liquids/glueportion.json",
@@ -777,11 +1020,23 @@
       "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
       "kind": "block"
     },
-    "butchering-javelin": {
-      "code": "armory:javelin-plain-chert",
-      "asset": "assets/armory/itemtypes/weapons/javelin.json",
-      "sha256": "8342f688bece04198ead444032a4bf6fd39e5cdb470fbc134abbe5094b104647",
+    "butchering-iron-ceiling-hook": {
+      "code": "butchering:butcherhookceiling-iron-north",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "kind": "block"
+    },
+    "butchering-iron-component": {
+      "code": "butchering:hook-iron",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
       "kind": "item"
+    },
+    "butchering-iron-skinning-hook": {
+      "code": "butchering:butcherhook-iron-north",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "kind": "block"
     },
     "butchering-knapped-hook": {
       "code": "butchering:hook-flint",
@@ -895,5 +1150,25 @@
   "guides": {
     "assets/butchering/config/handbook/01_butcheringguide.json": "butcheringguide",
     "assets/butchering/config/handbook/02_butcheringinfo.json": "butcheringinfo"
+  },
+  "stationDropMultipliers": {
+    "butcherhook-bismuthbronze-*": 1,
+    "butcherhook-blackbronze-*": 1,
+    "butcherhook-copper-*": 1,
+    "butcherhook-flint-*": 0.8,
+    "butcherhook-iron-*": 1.2,
+    "butcherhook-tinbronze-*": 1,
+    "butcherhookceiling-bismuthbronze-*": 1,
+    "butcherhookceiling-blackbronze-*": 1,
+    "butcherhookceiling-copper-*": 1,
+    "butcherhookceiling-iron-*": 1.2,
+    "butcherhookceiling-tinbronze-*": 1,
+    "butchertable-advanced-*": 1.2,
+    "butchertable-primitive-*": 0.8,
+    "butchertable-simple-*": 1
+  },
+  "configuredStationMultipliers": {
+    "butcheringTableLootMultiplier": 1.0,
+    "SkinningRackLootMultiplier": 1.0
   }
 }

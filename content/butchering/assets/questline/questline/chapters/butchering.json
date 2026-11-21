@@ -10,9 +10,9 @@
       "id": "butchering-prepare",
       "pos": [
         0,
-        0
+        1.5
       ],
-      "requires": "make-knife",
+      "requires": "butchering-table",
       "icon": "game:knife-generic-flint",
       "tasks": [
         {
@@ -29,16 +29,6 @@
         {
           "type": "text",
           "lang": "butchering-native-guides"
-        },
-        {
-          "type": "text",
-          "lang": "butchering-prepare-link-butchering-javelin",
-          "requiresQuest": [
-            "questline:butchering-javelin"
-          ],
-          "requiresMod": [
-            "armoryfork"
-          ]
         }
       ],
       "rewards": [
@@ -53,9 +43,9 @@
       "id": "butchering-hook",
       "pos": [
         0,
-        1.5
+        4.5
       ],
-      "requires": "butchering-prepare",
+      "requires": "butchering-knapped-hook",
       "icon": "butchering:butcherhook-flint-north",
       "tasks": [
         {
@@ -82,9 +72,9 @@
       "id": "butchering-table",
       "pos": [
         0,
-        3
+        0
       ],
-      "requires": "butchering-hook",
+      "requires": "make-knife",
       "icon": "butchering:butchertable-primitive-north",
       "tasks": [
         {
@@ -111,9 +101,9 @@
       "id": "butchering-retrieve",
       "pos": [
         0,
-        4.5
+        7.5
       ],
-      "requires": "butchering-table",
+      "requires": "butchering-hook",
       "icon": "butchering:deadhare-male-european-1-dead",
       "tasks": [
         {
@@ -139,8 +129,8 @@
     {
       "id": "butchering-skin",
       "pos": [
-        -2,
-        4
+        -3,
+        9
       ],
       "requires": "butchering-retrieve",
       "icon": "game:hide-raw-small",
@@ -162,6 +152,20 @@
           "requiresQuest": [
             "questline:butchering-hide-glue"
           ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-leather-links",
+          "requiresQuest": [
+            "questline:get-hide",
+            "questline:soak-hide",
+            "questline:scrape-hide",
+            "questline:prepare-hide",
+            "questline:make-leather",
+            "questline:weak-tannin",
+            "questline:strong-tannin",
+            "questline:make-limewater"
+          ]
         }
       ],
       "rewards": [
@@ -176,7 +180,7 @@
       "id": "butchering-bleed",
       "pos": [
         0,
-        7.5
+        10.5
       ],
       "requires": "butchering-retrieve",
       "icon": "butchering:deadhare-male-european-1-bledout",
@@ -205,7 +209,7 @@
       "id": "butchering-process",
       "pos": [
         0,
-        9
+        12
       ],
       "requires": "butchering-bleed",
       "icon": "game:redmeat-raw",
@@ -264,8 +268,8 @@
     {
       "id": "butchering-blood",
       "pos": [
-        3,
-        6
+        -3,
+        1.5
       ],
       "requires": "butchering-table",
       "icon": "butchering:bloodportion",
@@ -293,8 +297,8 @@
     {
       "id": "butchering-preserve",
       "pos": [
-        0,
-        10.5
+        6,
+        15
       ],
       "requires": "butchering-process",
       "icon": "butchering:smoked-none-redmeat",
@@ -355,8 +359,8 @@
     {
       "id": "butchering-offal",
       "pos": [
-        3,
-        9
+        -9,
+        15
       ],
       "requires": "butchering-process",
       "icon": "butchering:offal-clean",
@@ -401,8 +405,8 @@
     {
       "id": "butchering-sinew",
       "pos": [
-        6,
-        9
+        -6,
+        15
       ],
       "requires": "butchering-process",
       "icon": "butchering:sinew-dry",
@@ -437,8 +441,8 @@
     {
       "id": "butchering-bones",
       "pos": [
-        3,
-        10.5
+        -3,
+        15
       ],
       "requires": "butchering-process",
       "icon": "butchering:strongbone",
@@ -473,8 +477,8 @@
     {
       "id": "butchering-bag",
       "pos": [
-        6,
-        10.5
+        0,
+        15
       ],
       "requires": "butchering-process",
       "icon": "butchering:butcherybag-primitive",
@@ -509,8 +513,8 @@
     {
       "id": "butchering-knapped-hook",
       "pos": [
-        -2,
-        1
+        0,
+        3
       ],
       "requires": "butchering-prepare",
       "icon": "butchering:hook-flint",
@@ -545,8 +549,8 @@
     {
       "id": "butchering-blood-sausage",
       "pos": [
-        6,
-        12
+        -9,
+        17
       ],
       "requires": "butchering-offal",
       "icon": "butchering:sausage-bloodsausage-raw",
@@ -574,8 +578,8 @@
     {
       "id": "butchering-hide-glue",
       "pos": [
-        -3,
-        5.5
+        -6,
+        9
       ],
       "requires": "butchering-skin",
       "icon": "butchering:glueportion-hide-hot",
@@ -603,8 +607,8 @@
     {
       "id": "butchering-sinew-glue",
       "pos": [
-        9,
-        10.5
+        -6,
+        17
       ],
       "requires": "butchering-sinew",
       "icon": "butchering:glueportion-sinew-cold",
@@ -632,15 +636,18 @@
     {
       "id": "butchering-metal-hook",
       "pos": [
-        0,
-        12
+        3,
+        3
       ],
-      "requires": "butchering-process",
+      "requires": [
+        "butchering-knapped-hook",
+        "first-smithing"
+      ],
       "icon": "butchering:hook-copper",
       "tasks": [
         {
           "type": "obtain",
-          "item": "butchering:@hook-(copper|tinbronze|bismuthbronze|blackbronze|iron)",
+          "item": "butchering:hook-copper",
           "count": 1
         }
       ],
@@ -648,6 +655,13 @@
         {
           "type": "text",
           "lang": "butchering-metal-hook-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-copper-age-links",
+          "requiresQuest": [
+            "questline:first-smithing"
+          ]
         }
       ],
       "rewards": [
@@ -661,10 +675,13 @@
     {
       "id": "butchering-smoking-rack",
       "pos": [
-        0,
+        6,
         13.5
       ],
-      "requires": "butchering-metal-hook",
+      "requires": [
+        "butchering-process",
+        "first-smithing"
+      ],
       "icon": "butchering:smokingrack-copper-north",
       "tasks": [
         {
@@ -691,9 +708,12 @@
       "id": "butchering-simple-table",
       "pos": [
         3,
-        12
+        0
       ],
-      "requires": "butchering-process",
+      "requires": [
+        "butchering-table",
+        "first-smithing"
+      ],
       "icon": "butchering:butchertable-simple-north",
       "tasks": [
         {
@@ -713,6 +733,13 @@
           "requiresQuest": [
             "questline:make-cleaver"
           ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-copper-age-links",
+          "requiresQuest": [
+            "questline:first-smithing"
+          ]
         }
       ],
       "rewards": [
@@ -726,10 +753,13 @@
     {
       "id": "butchering-advanced-table",
       "pos": [
-        3,
-        13.5
+        6,
+        0
       ],
-      "requires": "butchering-simple-table",
+      "requires": [
+        "butchering-simple-table",
+        "smith-iron"
+      ],
       "icon": "butchering:butchertable-advanced-north",
       "tasks": [
         {
@@ -742,6 +772,13 @@
         {
           "type": "text",
           "lang": "butchering-advanced-table-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-iron-age-links",
+          "requiresQuest": [
+            "questline:smith-iron"
+          ]
         }
       ],
       "rewards": [
@@ -755,8 +792,8 @@
     {
       "id": "butchering-prime",
       "pos": [
-        9,
-        9
+        3,
+        15
       ],
       "requires": "butchering-process",
       "icon": "butchering:primemeat-raw",
@@ -771,6 +808,345 @@
         {
           "type": "text",
           "lang": "butchering-prime-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-bronze-component",
+      "pos": [
+        6,
+        3
+      ],
+      "requires": [
+        "butchering-metal-hook",
+        {
+          "any": [
+            "alloy-bronze",
+            "alloy-bismuth-bronze",
+            "alloy-black-bronze"
+          ]
+        }
+      ],
+      "icon": "butchering:hook-tinbronze",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:@hook-(tinbronze|bismuthbronze|blackbronze)",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-bronze-component-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-bronze-age-links",
+          "requiresQuest": [
+            "questline:alloy-bronze",
+            "questline:alloy-bismuth-bronze",
+            "questline:alloy-black-bronze"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-iron-component",
+      "pos": [
+        9,
+        3
+      ],
+      "requires": [
+        "butchering-bronze-component",
+        "smith-iron"
+      ],
+      "icon": "butchering:hook-iron",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:hook-iron",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-iron-component-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-iron-age-links",
+          "requiresQuest": [
+            "questline:smith-iron"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-copper-skinning-hook",
+      "pos": [
+        3,
+        4.5
+      ],
+      "requires": [
+        "butchering-hook",
+        "butchering-metal-hook",
+        "first-smithing"
+      ],
+      "icon": "butchering:butcherhook-copper-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:butcherhook-copper-*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-copper-skinning-hook-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-copper-age-links",
+          "requiresQuest": [
+            "questline:first-smithing"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-copper-ceiling-hook",
+      "pos": [
+        3,
+        6
+      ],
+      "requires": [
+        "butchering-copper-skinning-hook",
+        "first-smithing"
+      ],
+      "icon": "butchering:butcherhookceiling-copper-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:butcherhookceiling-copper-*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-copper-ceiling-hook-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-copper-age-links",
+          "requiresQuest": [
+            "questline:first-smithing"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-bronze-skinning-hook",
+      "pos": [
+        6,
+        4.5
+      ],
+      "requires": [
+        "butchering-copper-skinning-hook",
+        "butchering-bronze-component",
+        {
+          "any": [
+            "alloy-bronze",
+            "alloy-bismuth-bronze",
+            "alloy-black-bronze"
+          ]
+        }
+      ],
+      "icon": "butchering:butcherhook-tinbronze-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:@butcherhook-(tinbronze|bismuthbronze|blackbronze)-.*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-bronze-skinning-hook-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-bronze-age-links",
+          "requiresQuest": [
+            "questline:alloy-bronze",
+            "questline:alloy-bismuth-bronze",
+            "questline:alloy-black-bronze"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-bronze-ceiling-hook",
+      "pos": [
+        6,
+        6
+      ],
+      "requires": [
+        "butchering-bronze-skinning-hook",
+        {
+          "any": [
+            "alloy-bronze",
+            "alloy-bismuth-bronze",
+            "alloy-black-bronze"
+          ]
+        }
+      ],
+      "icon": "butchering:butcherhookceiling-tinbronze-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:@butcherhookceiling-(tinbronze|bismuthbronze|blackbronze)-.*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-bronze-ceiling-hook-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-bronze-age-links",
+          "requiresQuest": [
+            "questline:alloy-bronze",
+            "questline:alloy-bismuth-bronze",
+            "questline:alloy-black-bronze"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-iron-skinning-hook",
+      "pos": [
+        9,
+        4.5
+      ],
+      "requires": [
+        "butchering-bronze-skinning-hook",
+        "butchering-iron-component",
+        "smith-iron"
+      ],
+      "icon": "butchering:butcherhook-iron-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:butcherhook-iron-*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-iron-skinning-hook-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-iron-age-links",
+          "requiresQuest": [
+            "questline:smith-iron"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-iron-ceiling-hook",
+      "pos": [
+        9,
+        6
+      ],
+      "requires": [
+        "butchering-iron-skinning-hook",
+        "smith-iron"
+      ],
+      "icon": "butchering:butcherhookceiling-iron-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:butcherhookceiling-iron-*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-iron-ceiling-hook-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-iron-age-links",
+          "requiresQuest": [
+            "questline:smith-iron"
+          ]
         }
       ],
       "rewards": [

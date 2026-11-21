@@ -1,6 +1,65 @@
 {
   "evidence": "Pinned Pszczoly 1.2.0 export and Butchering 1.14.3; archive hashes in butchering-sources.json. Asset identity is static evidence, not native acceptance.",
   "quests": {
+    "butchering-leather": {
+      "icon": "game:leather-normal-plain",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:leather-*",
+          "count": 1
+        }
+      ],
+      "source": "vanilla leatherwork/make-leather and existing game leather assets",
+      "proves": "finished leather, not an oiled pelt or proof of tanning"
+    },
+    "first-hunt": {
+      "icon": "game:poultry-raw",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "game:chicken-*"
+        }
+      ],
+      "source": "vanilla stone-age/first-hunt chicken kill objective; game poultry asset",
+      "proves": "a chicken kill, not carcass processing"
+    },
+    "butchering-raw-slab": {
+      "icon": "rusticcookery:meatslab-redmeat-raw",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "rusticcookery:meatslab-*-raw",
+          "count": 1
+        }
+      ],
+      "source": "mods/rusticcookery_1.2.0.zip!/RusticCookery.dll: ButcheringCompat.Prefix and SlabSplitter.Split; assets/rusticcookery/itemtypes/meatslab.json",
+      "proves": "carried output possession, not its production action"
+    },
+    "butchering-rustic-rack": {
+      "icon": "rusticcookery:smokerack-east",
+      "tasks": [
+        {
+          "type": "craft",
+          "block": "rusticcookery:smokerack-*",
+          "count": 1
+        }
+      ],
+      "source": "mods/rusticcookery_1.2.0.zip!/assets/rusticcookery/recipes/grid/smokerack.json",
+      "proves": "supported grid output, not placement or processing"
+    },
+    "butchering-smoked-slab": {
+      "icon": "rusticcookery:meatslab-redmeat-smoked",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "rusticcookery:meatslab-*-smoked",
+          "count": 1
+        }
+      ],
+      "source": "mods/rusticcookery_1.2.0.zip!/RusticCookery.dll: BlockEntitySmokeRack.OnSmokeTick/FinishSmoking and ItemMeatSlab.CanSmoke",
+      "proves": "carried output possession, not its production action"
+    },
     "butchering-prepare": {
       "icon": "game:knife-generic-flint",
       "tasks": [
@@ -157,41 +216,6 @@
       "source": "itemtypes/tool/butcherybag.json",
       "proves": "an unequipped butchery bag carried in hotbar/backpack inventory"
     },
-    "butchering-leather": {
-      "icon": "game:leather-normal-plain",
-      "tasks": [
-        {
-          "type": "obtain",
-          "item": "game:leather-*",
-          "count": 1
-        }
-      ],
-      "source": "vanilla leatherwork/make-leather and existing game leather assets",
-      "proves": "finished leather, not an oiled pelt or proof of tanning"
-    },
-    "first-hunt": {
-      "icon": "game:poultry-raw",
-      "tasks": [
-        {
-          "type": "kill",
-          "entity": "game:chicken-*"
-        }
-      ],
-      "source": "vanilla stone-age/first-hunt chicken kill objective; game poultry asset",
-      "proves": "a chicken kill, not carcass processing"
-    },
-    "butchering-javelin": {
-      "icon": "armory:javelin-plain-flint",
-      "tasks": [
-        {
-          "type": "obtain",
-          "item": "armory:javelin-plain-*",
-          "count": 1
-        }
-      ],
-      "source": "mods/armoryfork_1.11.4.zip!/assets/armory/recipes/knapping/javelinhead.json; recipes/grid/weapons/javelins.json; itemtypes/weapons/javelin.json",
-      "proves": "carried output possession, not its production action"
-    },
     "butchering-knapped-hook": {
       "icon": "butchering:hook-flint",
       "tasks": [
@@ -202,42 +226,6 @@
         }
       ],
       "source": "mods/butchering_1.14.3.zip!/assets/butchering/recipes/knapping/flint-hook.json",
-      "proves": "carried output possession, not its production action"
-    },
-    "butchering-raw-slab": {
-      "icon": "rusticcookery:meatslab-redmeat-raw",
-      "tasks": [
-        {
-          "type": "obtain",
-          "item": "rusticcookery:meatslab-*-raw",
-          "count": 1
-        }
-      ],
-      "source": "mods/rusticcookery_1.2.0.zip!/RusticCookery.dll: ButcheringCompat.Prefix and SlabSplitter.Split; assets/rusticcookery/itemtypes/meatslab.json",
-      "proves": "carried output possession, not its production action"
-    },
-    "butchering-rustic-rack": {
-      "icon": "rusticcookery:smokerack-east",
-      "tasks": [
-        {
-          "type": "craft",
-          "block": "rusticcookery:smokerack-*",
-          "count": 1
-        }
-      ],
-      "source": "mods/rusticcookery_1.2.0.zip!/assets/rusticcookery/recipes/grid/smokerack.json",
-      "proves": "supported grid output, not placement or processing"
-    },
-    "butchering-smoked-slab": {
-      "icon": "rusticcookery:meatslab-redmeat-smoked",
-      "tasks": [
-        {
-          "type": "obtain",
-          "item": "rusticcookery:meatslab-*-smoked",
-          "count": 1
-        }
-      ],
-      "source": "mods/rusticcookery_1.2.0.zip!/RusticCookery.dll: BlockEntitySmokeRack.OnSmokeTick/FinishSmoking and ItemMeatSlab.CanSmoke",
       "proves": "carried output possession, not its production action"
     },
     "butchering-blood-sausage": {
@@ -281,11 +269,11 @@
       "tasks": [
         {
           "type": "obtain",
-          "item": "butchering:@hook-(copper|tinbronze|bismuthbronze|blackbronze|iron)",
+          "item": "butchering:hook-copper",
           "count": 1
         }
       ],
-      "source": "mods/butchering_1.14.3.zip!/assets/butchering/recipes/smithing/onebutcheringhook.json; fourbutcheringhook.json; itemtypes/tool/hook.json",
+      "source": "assets/butchering/itemtypes/tool/hook.json; recipes/smithing/fourbutcheringhook.json (ingot recipe enabled; onebutcheringhook disabled without SmithingPlus)",
       "proves": "carried output possession, not its production action"
     },
     "butchering-smoking-rack": {
@@ -335,6 +323,102 @@
       ],
       "source": "mods/butchering_1.14.3.zip!/assets/butchering/itemtypes/food/primemeat.json; itemtypes/butchercreatures/*",
       "proves": "carried output possession, not its production action"
+    },
+    "butchering-bronze-component": {
+      "icon": "butchering:hook-tinbronze",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:@hook-(tinbronze|bismuthbronze|blackbronze)",
+          "count": 1
+        }
+      ],
+      "source": "assets/butchering/itemtypes/tool/hook.json; recipes/smithing/fourbutcheringhook.json (ingot recipe enabled; onebutcheringhook disabled without SmithingPlus)",
+      "proves": "carried station/component output possession, not personal production or placement"
+    },
+    "butchering-iron-component": {
+      "icon": "butchering:hook-iron",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "butchering:hook-iron",
+          "count": 1
+        }
+      ],
+      "source": "assets/butchering/itemtypes/tool/hook.json; recipes/smithing/fourbutcheringhook.json (ingot recipe enabled; onebutcheringhook disabled without SmithingPlus)",
+      "proves": "carried station/component output possession, not personal production or placement"
+    },
+    "butchering-copper-skinning-hook": {
+      "icon": "butchering:butcherhook-copper-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:butcherhook-copper-*",
+          "count": 1
+        }
+      ],
+      "source": "assets/butchering/blocktypes/butcherhook.json; blocktypes/butcherhookceiling.json; recipes/grid/butcherhook.json; 80% flint, 100% copper/bronze, 120% iron",
+      "proves": "carried station/component output possession, not personal production or placement"
+    },
+    "butchering-copper-ceiling-hook": {
+      "icon": "butchering:butcherhookceiling-copper-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:butcherhookceiling-copper-*",
+          "count": 1
+        }
+      ],
+      "source": "assets/butchering/blocktypes/butcherhook.json; blocktypes/butcherhookceiling.json; recipes/grid/butcherhook.json; 80% flint, 100% copper/bronze, 120% iron",
+      "proves": "carried station/component output possession, not personal production or placement"
+    },
+    "butchering-bronze-skinning-hook": {
+      "icon": "butchering:butcherhook-tinbronze-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:@butcherhook-(tinbronze|bismuthbronze|blackbronze)-.*",
+          "count": 1
+        }
+      ],
+      "source": "assets/butchering/blocktypes/butcherhook.json; blocktypes/butcherhookceiling.json; recipes/grid/butcherhook.json; 80% flint, 100% copper/bronze, 120% iron",
+      "proves": "carried station/component output possession, not personal production or placement"
+    },
+    "butchering-bronze-ceiling-hook": {
+      "icon": "butchering:butcherhookceiling-tinbronze-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:@butcherhookceiling-(tinbronze|bismuthbronze|blackbronze)-.*",
+          "count": 1
+        }
+      ],
+      "source": "assets/butchering/blocktypes/butcherhook.json; blocktypes/butcherhookceiling.json; recipes/grid/butcherhook.json; 80% flint, 100% copper/bronze, 120% iron",
+      "proves": "carried station/component output possession, not personal production or placement"
+    },
+    "butchering-iron-skinning-hook": {
+      "icon": "butchering:butcherhook-iron-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:butcherhook-iron-*",
+          "count": 1
+        }
+      ],
+      "source": "assets/butchering/blocktypes/butcherhook.json; blocktypes/butcherhookceiling.json; recipes/grid/butcherhook.json; 80% flint, 100% copper/bronze, 120% iron",
+      "proves": "carried station/component output possession, not personal production or placement"
+    },
+    "butchering-iron-ceiling-hook": {
+      "icon": "butchering:butcherhookceiling-iron-north",
+      "tasks": [
+        {
+          "type": "obtain",
+          "block": "butchering:butcherhookceiling-iron-*",
+          "count": 1
+        }
+      ],
+      "source": "assets/butchering/blocktypes/butcherhook.json; blocktypes/butcherhookceiling.json; recipes/grid/butcherhook.json; 80% flint, 100% copper/bronze, 120% iron",
+      "proves": "carried station/component output possession, not personal production or placement"
     }
   }
 }

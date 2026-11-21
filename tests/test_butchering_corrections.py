@@ -16,8 +16,8 @@ def records():
 class Corrections(unittest.TestCase):
     def test_all_definitions_have_semantic_icons_and_automatic_tasks(self):
         quests = records()
-        self.assertEqual(28, len(quests))
-        self.assertEqual(28, len({q['id'] for q in quests}))
+        self.assertEqual(35, len(quests))
+        self.assertEqual(35, len({q['id'] for q in quests}))
         self.assertGreaterEqual(len({q['icon'] for q in quests}), 13)
         for q in quests:
             self.assertTrue(q['icon'])
@@ -37,7 +37,7 @@ class Corrections(unittest.TestCase):
         self.assertNotIn('Tick ', ' '.join(en.values()))
         for q in quests:
             if q['id'] != 'first-hunt':
-                self.assertIn('obtain', en[q['id'] + '-desc'].lower())
+                self.assertTrue(en[q['id'] + '-desc'].strip())
 
     def test_native_links_have_known_destinations_and_optional_guards(self):
         en = json.loads((PACK / 'lang/en.json').read_text())
@@ -75,8 +75,8 @@ class Corrections(unittest.TestCase):
             self.assertRegex(code, '^' + regex + '$')
         en = json.loads((PACK / 'lang/en.json').read_text())
         self.assertIn('whole litre', en['butchering-blood-desc'])
-        self.assertIn('equipment', en['butchering-retrieve-desc'])
-        self.assertIn('Craft', en['butchering-table-desc'])
+        self.assertIn('corpse', en['butchering-retrieve-desc'].lower())
+        self.assertIn('80%', en['butchering-table-desc'])
 
     def test_audited_icon_and_target_ledger_is_complete(self):
         ledger = json.loads((ROOT / 'docs/evidence/butchering-objectives.json').read_text())

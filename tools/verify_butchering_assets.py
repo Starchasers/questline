@@ -55,7 +55,11 @@ for domain,name,raw,provider in assets:
 assert icons==set(results),('UNRESOLVED ICONS',icons-set(results))
 assert set(examples)==set(objectives['quests'])-{'first-hunt'},('UNRESOLVED TASKS',set(objectives['quests'])-set(examples))
 assert all(examples[id]['kind']==('block' if 'block' in q['tasks'][0] else 'item') for id,q in objectives['quests'].items() if id!='first-hunt')
-receipt={'boundary':'Static variant expansion, not native game asset/handbook registration. Reproduce against hash-pinned export and official 1.22.7 SDK assets; JSON5 parser used for native asset syntax.','archiveSha256':ledger['sha256'],'icons':dict(sorted(results.items())),'taskExamples':dict(sorted(examples.items())),'guides':{n:json5.loads(b.read(n).decode())['pageCode'] for n in b.namelist() if '/config/handbook/' in n and n.endswith('.json')}}
+rates={}
+for station in ('butchertable','butcherhook','butcherhookceiling'):
+ rates.update(json5.loads(b.read('assets/butchering/blocktypes/'+station+'.json').decode())['attributes']['butcheringEfficiencyByType'])
+config=json5.loads(z.read('config/ModConfig/ButcheringConfigV3.json').decode())
+receipt={'boundary':'Static variant expansion, not native game asset/handbook registration. Reproduce against hash-pinned export and official 1.22.7 SDK assets; JSON5 parser used for native asset syntax.','archiveSha256':ledger['sha256'],'icons':dict(sorted(results.items())),'taskExamples':dict(sorted(examples.items())),'guides':{n:json5.loads(b.read(n).decode())['pageCode'] for n in b.namelist() if '/config/handbook/' in n and n.endswith('.json')},'stationDropMultipliers':dict(sorted(rates.items())),'configuredStationMultipliers':{k:config[k] for k in ('butcheringTableLootMultiplier','SkinningRackLootMultiplier')}}
 output=root/'docs/evidence/butchering-assets.json'
 if args.write:output.write_text(json.dumps(receipt,indent=2)+'\n')
 else:assert json.loads(output.read_text())==receipt, 'Stale source evidence: inspect before regenerating with --write'

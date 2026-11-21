@@ -6,7 +6,7 @@
     "Kuboczoch"
   ],
   "description": "Source-backed Butchering journey with automatic output objectives, item icons and conditional native crossmod navigation. Possession is not processing-action proof.",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "dependencies": {
     "game": "1.22.0",
     "questline": "0.15.0",

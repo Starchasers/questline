@@ -1,18 +1,16 @@
 {
-  "boundary": "Original website C252-C268, pinned Pszczoly 1.2.0 archive. Static assets, recipes, DLL inspection and production loader tests are not native interaction acceptance. All existing IDs and one task slot per record retained.",
+  "boundary": "Original website C252-C268 reconciled with the requested 0.15.0 player journey. Javelin deliberately removed; tier variants expanded. Static evidence and loader checks are not native interaction acceptance.",
   "candidates": [
     {
       "candidate_id": "C252",
       "website_title": "Knap a javelin",
       "website_task": "obtain `armory:javelin-plain-*`",
-      "status": "implemented",
-      "quest_ids": [
-        "butchering-javelin"
-      ],
+      "status": "removed-by-request",
+      "quest_ids": [],
       "evidence": [
         "mods/armoryfork_1.11.4.zip!/assets/armory/recipes/knapping/javelinhead.json; recipes/grid/weapons/javelins.json; itemtypes/weapons/javelin.json"
       ],
-      "resolution": "Provider is armoryfork but asset domain armory. Obtain is not knapping/weapon-specific kill proof; optional to avoid blocking the preserved chicken hunt."
+      "resolution": "Hunting javelin quest removed by explicit user request; vanilla first hunt remains unchanged."
     },
     {
       "candidate_id": "C253",
@@ -92,7 +90,7 @@
       "evidence": [
         "itemtypes/liquids/bloodportion.json; BlockEntityButcherHook.cs"
       ],
-      "resolution": "Whole carried litre required by tracker; 0.2 litre suffices only for sausage recipe. Wooden bucket supported; speculative saucepan and universal 2–4-block hook distance not asserted."
+      "resolution": "Whole carried litre required by tracker; 0.2 litre suffices only for sausage recipe. Wooden bucket supported; speculative saucepan and universal 2\u20134-block hook distance not asserted."
     },
     {
       "candidate_id": "C259",
@@ -219,13 +217,21 @@
       "status": "implemented",
       "quest_ids": [
         "butchering-metal-hook",
-        "butchering-smoking-rack"
+        "butchering-smoking-rack",
+        "butchering-bronze-component",
+        "butchering-iron-component",
+        "butchering-copper-skinning-hook",
+        "butchering-bronze-skinning-hook",
+        "butchering-iron-skinning-hook",
+        "butchering-copper-ceiling-hook",
+        "butchering-bronze-ceiling-hook",
+        "butchering-iron-ceiling-hook"
       ],
       "evidence": [
         "mods/butchering_1.14.3.zip!/assets/butchering/recipes/smithing/onebutcheringhook.json; fourbutcheringhook.json; itemtypes/tool/hook.json",
         "mods/butchering_1.14.3.zip!/assets/butchering/recipes/grid/smokingrack.json"
       ],
-      "resolution": "Metal-only component obtain and Butchering smoking-rack grid craft, distinct from Rustic Cookery machine."
+      "resolution": "Copper, any bronze alloy, then iron component and floor-hook tier chains, with matching ceiling alternatives; all metal-age gated. Smoking rack branches from common butchering, not an upgrade chain."
     },
     {
       "candidate_id": "C268",
