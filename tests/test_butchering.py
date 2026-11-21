@@ -30,7 +30,7 @@ class ButcheringTests(unittest.TestCase):
         manifests += sorted((ROOT / 'content').glob('*/modinfo.json'))
         manifests += sorted((ROOT / 'compat').glob('*/modinfo.json'))
         package_count = len(manifests)
-        self.assertEqual(15, package_count)
+        self.assertEqual(12, package_count)
         ci = (ROOT / '.github/workflows/ci.yml').read_text()
         release = (ROOT / '.github/workflows/release.yml').read_text()
         self.assertIn(f'len(manifests) == len(expected) == {package_count}', ci)

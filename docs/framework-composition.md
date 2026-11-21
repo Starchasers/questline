@@ -95,7 +95,7 @@ the loader rather than substituting regex assertions. Coverage includes:
 
 - Exhaustive small discovery/conflict permutations and discovery under two cultures.
 - Inactive extensions, stable duplicate diagnostics, editor precedence, and qualified cross-addon links.
-- 12 seeded shuffles of all 56 extracted chapter files.
+- 12 seeded shuffles of all 51 retained chapter files (469 quest records, 520 tasks and 453 distinct quest IDs).
 - All **16 intentional base-to-one-extension replacements** in the real content, including tasks, prose, and prerequisites.
 
 Game existence/lang lookups use permissive mocks. This verifies composition,
@@ -114,3 +114,8 @@ payload and authored art order despite quest conflicts, and check same-domain
 Every test restores `CurrentCulture` and `CurrentUICulture` in `finally`, even
 on failure. Registry presentation order remains separate from asset discovery
 order.
+
+Removing shipped packages does not delete existing `ModConfig/questline/working/`
+copies, saved progress, installed old ZIPs or previous build output. Editor copies
+still participate under the precedence rules above; removal is not a progress
+migration or an automatic working-copy cleanup.

@@ -37,22 +37,14 @@ namespace Questline.Tests
         }
 
         /// <summary>
-        /// Better Ruins' places, by the codes its ruins chapter visits, and every structure worldgen
-        /// recorded in the loaded map regions known by one of them: a recorded code the mapping
-        /// can't read would be a place no visit task ever counts.
+        /// Every structure worldgen recorded in loaded map regions is mapped by its config code.
+        /// Keep generic visit-task support independent of any shipped content integration.
         /// </summary>
         [VsTest]
-        public async Task BetterRuinsPlacesAreKnown()
+        public async Task GeneratedStructuresAreKnown()
         {
             await OnServer();
-            if (!Sapi.ModLoader.IsModEnabled("betterruins")) Skip("Better Ruins isn't loaded; pass --mods with the addon mods");
-
             var codes = Engine.Structures;
-            foreach (string code in new[] { "betterruins:largeforlornhopetower", "betterruins:crossroads", "betterruins:mine1", "betterruins:graves", "betterruins:quentin-waystones" })
-            {
-                Assert.True(codes.All.Contains(code), code);
-            }
-            Assert.Equal(22, Engine.Registry.ChaptersById["questline:ruins"].Quests.Count, "the ruins chapter loaded");
 
             int size = Sapi.WorldManager.RegionSize, found = 0;
             var unknown = new System.Collections.Generic.List<string>();

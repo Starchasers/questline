@@ -1,6 +1,14 @@
 # Butchering verification receipt
 
-## Website C252–C268 implementation receipt (current)
+## Integration-removal conflict reconciliation
+
+Merged main's removal of Better Ruins, Charcoal Kiln and Seafarer while retaining all five Butchering chapters, its owned English text, provider gates and production-loader checks. Current inventory is 12 ZIPs: framework, ten content packs and Toolsmith adapter; release assets also include `SHA256SUMS` (13 assets). Earlier 15-package receipts below describe historical inventories, not this merge.
+
+Fresh local checks: 15 Python content tests, 33 packaging tests and three Toolsmith source regressions passed. Localization reports zero errors with existing Chef's Tricks English warnings only. No local .NET SDK or Vintage Story SDK was available for this reconciliation; hosted CI must establish the exact pushed revision's builds and C# checks. Native/full-pack acceptance remains pending.
+
+Conflict decisions: combine main's retained-provider inventory with Butchering's additions in CI, README and package documentation/manifest; retain main's extraction/removal assertions scoped to inherited packs; update composition file count to 51 retained plus five Butchering chapters. Release assertions/notes and both package-count regressions follow the combined inventory, rather than either stale branch total.
+
+## Website C252–C268 implementation receipt (historical inventory; current content)
 
 Implementation base: `f464bfaab2c73f46b7f2ca5f5709950a649bb5ff`. Added thirteen quests and two provider-gated extensions, for **28 definitions / 27 added IDs**, with 21 obtain tasks, six supported grid crafts and the unchanged first-hunt kill. All existing saved quest/task IDs and all unrelated chapter bytes are preserved. No manual checkbox or duplicate fat/cleaver milestone was added. Every website candidate is reconciled in [the coverage ledger](butchering-website-coverage.json); this section supersedes the older counts below.
 

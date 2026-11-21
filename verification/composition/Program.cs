@@ -202,7 +202,7 @@ Test("all 17 shipped base-to-extension replacements survive shuffled real conten
     var files = Directory.GetFiles(Path.Combine(root, "content"), "*.json", SearchOption.AllDirectories)
         .Where(f => f.Replace('\\', '/').Contains("/questline/chapters/"))
         .Select(f => (Domain: new DirectoryInfo(Path.GetDirectoryName(f)).Parent.Parent.Name, Name: Path.GetFileNameWithoutExtension(f), Json: File.ReadAllText(f))).ToArray();
-    Check(files.Length == 61, $"expected 56 extracted plus 5 Butchering content files, got {files.Length}");
+    Check(files.Length == 56, $"expected 51 retained plus 5 Butchering content files, got {files.Length}");
     var baseline = Load(files);
     var qualified = files.Select(f => {
         var c = JsonConvert.DeserializeObject<ChapterDef>(f.Json);

@@ -170,7 +170,7 @@ public class TaskDef
     public string Entity;
     /// <summary>
     /// visit only: a structure worldgen places, by its code in the worldgen config that places it
-    /// and that file's domain: game:tobiascave, betterruins:largeforlornhopetower.
+    /// and that file's domain: game:tobiascave, example:watchtower.
     /// </summary>
     public string Structure;
     /// <summary>custom only: the key another mod reports progress under, e.g. mymod:caught-salmon.</summary>
@@ -206,7 +206,7 @@ public class TaskDef
 
     /// <summary>
     /// The lang entry naming a visit task's place: <c>&lt;domain&gt;:structure-&lt;code&gt;</c>, a wildcard's
-    /// star left off, so betterruins:megastructures-* is named by betterruins:structure-megastructures.
+    /// star left off, so example:towers-* is named by example:structure-towers.
     /// </summary>
     public static string StructureNameKey(string code)
     {
