@@ -1,0 +1,1174 @@
+{
+  "boundary": "Static variant expansion, not native game asset/handbook registration. Reproduce against hash-pinned export and official 1.22.7 SDK assets; JSON5 parser used for native asset syntax.",
+  "archiveSha256": "239c31aef93c0960bfb87c8d5e8a2dd0add2d4287ce18836ca36abdefbf4ac9d",
+  "icons": {
+    "butchering:bloodportion": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/liquids/bloodportion.json",
+      "sha256": "18368cdd18c36154463ad12070bc40081c932b24ecbe245bf96e642c50bdefd2",
+      "baseCode": "bloodportion",
+      "variantGroups": [],
+      "worldProperties": []
+    },
+    "butchering:butcherhook-copper-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "baseCode": "butcherhook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherhook-flint-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "baseCode": "butcherhook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherhook-iron-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "baseCode": "butcherhook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherhook-tinbronze-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "baseCode": "butcherhook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherhookceiling-copper-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "baseCode": "butcherhookceiling",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherhookceiling-iron-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "baseCode": "butcherhookceiling",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherhookceiling-tinbronze-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "baseCode": "butcherhookceiling",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butchertable-advanced-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butchertable.json",
+      "sha256": "0759856b0ba76dadaaebfbdb4246247807e69fa39c9588cdb84605a9b80bea24",
+      "baseCode": "butchertable",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "primitive",
+            "simple",
+            "advanced"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butchertable-primitive-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butchertable.json",
+      "sha256": "0759856b0ba76dadaaebfbdb4246247807e69fa39c9588cdb84605a9b80bea24",
+      "baseCode": "butchertable",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "primitive",
+            "simple",
+            "advanced"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butchertable-simple-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/butchertable.json",
+      "sha256": "0759856b0ba76dadaaebfbdb4246247807e69fa39c9588cdb84605a9b80bea24",
+      "baseCode": "butchertable",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "primitive",
+            "simple",
+            "advanced"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:butcherybag-primitive": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/tool/butcherybag.json",
+      "sha256": "d3f4c267830d49596ac861f48968992b52e84af9b262e972ed5a6277516cac2a",
+      "baseCode": "butcherybag",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "primitive",
+            "standard",
+            "leather",
+            "sturdyleather"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:deadhare-male-european-1-bledout": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/butchercreatures/hare.json",
+      "sha256": "543c13a292ae9705f94572c9ec6acbb7d24e06a6e9738a52a4bad674f88c11f8",
+      "baseCode": "deadhare",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "male",
+            "female",
+            "baby"
+          ]
+        },
+        {
+          "code": "skin",
+          "states": [
+            "arctic",
+            "cape",
+            "european",
+            "indian",
+            "jackblack",
+            "scrub"
+          ]
+        },
+        {
+          "code": "texture",
+          "states": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "code": "state",
+          "states": [
+            "dead",
+            "skinned",
+            "bledout",
+            "rotten"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:deadhare-male-european-1-dead": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/butchercreatures/hare.json",
+      "sha256": "543c13a292ae9705f94572c9ec6acbb7d24e06a6e9738a52a4bad674f88c11f8",
+      "baseCode": "deadhare",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "male",
+            "female",
+            "baby"
+          ]
+        },
+        {
+          "code": "skin",
+          "states": [
+            "arctic",
+            "cape",
+            "european",
+            "indian",
+            "jackblack",
+            "scrub"
+          ]
+        },
+        {
+          "code": "texture",
+          "states": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "code": "state",
+          "states": [
+            "dead",
+            "skinned",
+            "bledout",
+            "rotten"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:glueportion-hide-hot": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/liquids/glueportion.json",
+      "sha256": "3ecb55d8b3167cfccb9927cedfc9c350b04be0d237081e984656127fbd181476",
+      "baseCode": "glueportion",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "sinew",
+            "hide"
+          ]
+        },
+        {
+          "code": "state",
+          "states": [
+            "cold",
+            "hot"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:glueportion-sinew-cold": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/liquids/glueportion.json",
+      "sha256": "3ecb55d8b3167cfccb9927cedfc9c350b04be0d237081e984656127fbd181476",
+      "baseCode": "glueportion",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "sinew",
+            "hide"
+          ]
+        },
+        {
+          "code": "state",
+          "states": [
+            "cold",
+            "hot"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:hook-copper": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
+      "baseCode": "hook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:hook-flint": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
+      "baseCode": "hook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:hook-iron": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
+      "baseCode": "hook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:hook-tinbronze": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
+      "baseCode": "hook",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "iron",
+            "flint"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:offal-clean": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/resource/offal.json",
+      "sha256": "efbc333a9619d00eb7028c320b61e6d40184ec0a97a41edaf4aaf5720a4ae71a",
+      "baseCode": "offal",
+      "variantGroups": [
+        {
+          "code": "prepared",
+          "states": [
+            "bloody",
+            "clean"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:primemeat-raw": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/food/primemeat.json",
+      "sha256": "467926173c6dd03f834d26006b90f4db8fa48856be40b00f7e566235bc5790bf",
+      "baseCode": "primemeat",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "raw",
+            "curedhealing",
+            "cooked",
+            "healing"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:sausage-bloodsausage-raw": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/food/sausage.json",
+      "sha256": "464b0c5f0626a9adf37ed89afd7265501f4d6c86ab6660bd8079edeaa61510ed",
+      "baseCode": "sausage",
+      "variantGroups": [
+        {
+          "code": "prepared",
+          "states": [
+            "bloodsausage",
+            "blackpudding"
+          ]
+        },
+        {
+          "code": "type",
+          "states": [
+            "raw",
+            "cooked",
+            "smoked"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:sinew-dry": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/resource/sinew.json",
+      "sha256": "64066a82c77159e0495efe916e3b396896caff34913ab632803df7a6b0ef06c8",
+      "baseCode": "sinew",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "dry",
+            "wet",
+            "ground"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:smoked-none-redmeat": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/food/smoked.json",
+      "sha256": "953d09f42a4e026fc2d33db146db6130ee93978efa335d3d855766801c58d16d",
+      "baseCode": "smoked",
+      "variantGroups": [
+        {
+          "code": "prepared",
+          "states": [
+            "none",
+            "cured",
+            "healing"
+          ]
+        },
+        {
+          "code": "type",
+          "states": [
+            "redmeat",
+            "bushmeat",
+            "fish",
+            "primemeat"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "butchering:smokingrack-copper-north": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/blocktypes/smokingrack.json",
+      "sha256": "cb127e9c3f9617ed35e8b6c236ce48bf6acd5f6fe46612379a63a31b8430663e",
+      "baseCode": "smokingrack",
+      "variantGroups": [
+        {
+          "code": "material",
+          "states": [
+            "copper",
+            "iron"
+          ]
+        },
+        {
+          "code": "side",
+          "loadFromProperties": "abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    },
+    "butchering:strongbone": {
+      "provider": "Butchering 1.14.3",
+      "asset": "assets/butchering/itemtypes/resource/strongbone.json",
+      "sha256": "7b1ecdd10c777b91906a0158088348f09c73ab243fa0f0379c0eaaf5afa64974",
+      "baseCode": "strongbone",
+      "variantGroups": [],
+      "worldProperties": []
+    },
+    "game:hide-raw-small": {
+      "provider": "Vintage Story 1.22.7",
+      "asset": "survival/itemtypes/resource/hide.json",
+      "sha256": "3fb31789a8db675cdadf4dea27da81b16eb4a8febf1897d19385b67bb9eb4507",
+      "baseCode": "hide",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "raw",
+            "soaked",
+            "scraped",
+            "prepared",
+            "oiled",
+            "pelt",
+            "salted",
+            "chromium"
+          ]
+        },
+        {
+          "code": "size",
+          "states": [
+            "small",
+            "medium",
+            "large",
+            "huge"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "game:knife-generic-flint": {
+      "provider": "Vintage Story 1.22.7",
+      "asset": "survival/itemtypes/tool/knife.json",
+      "sha256": "64601416d7e8db87225d308c0261effdfc11d7eea251049b907923947c1451ac",
+      "baseCode": "knife",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "generic",
+            "dagger",
+            "stiletto",
+            "khanjar",
+            "baselard"
+          ]
+        },
+        {
+          "code": "material",
+          "states": [
+            "chert",
+            "granite",
+            "andesite",
+            "basalt",
+            "obsidian",
+            "peridotite",
+            "flint",
+            "copper",
+            "tinbronze",
+            "bismuthbronze",
+            "blackbronze",
+            "gold",
+            "silver",
+            "iron",
+            "meteoriciron",
+            "steel",
+            "bonechert",
+            "bonegranite",
+            "boneandesite",
+            "bonebasalt",
+            "boneobsidian",
+            "boneperidotite",
+            "boneflint",
+            "ruined"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "game:leather-normal-plain": {
+      "provider": "Vintage Story 1.22.7",
+      "asset": "survival/itemtypes/resource/leather.json",
+      "sha256": "7e3b29c5177c5bab2d862301d6d98d53de8c5fea559997219dfee83580796e8a",
+      "baseCode": "leather",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "normal",
+            "sturdy"
+          ]
+        },
+        {
+          "code": "color",
+          "states": [
+            "plain",
+            "orange",
+            "black",
+            "red",
+            "blue",
+            "purple",
+            "pink",
+            "white",
+            "yellow",
+            "gray",
+            "green"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "game:poultry-raw": {
+      "provider": "Vintage Story 1.22.7",
+      "asset": "survival/itemtypes/food/poultry.json",
+      "sha256": "da5d926b581f9be71a2b9947160a24f86675e78f6fb3247b827bdd91c8097822",
+      "baseCode": "poultry",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "raw",
+            "cooked",
+            "cured"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "game:redmeat-raw": {
+      "provider": "Vintage Story 1.22.7",
+      "asset": "survival/itemtypes/food/redmeat.json",
+      "sha256": "100bf85472595506c939c4dd5da7ee833d79ca07b4ee812a1bb52651b21d1328",
+      "baseCode": "redmeat",
+      "variantGroups": [
+        {
+          "code": "type",
+          "states": [
+            "raw",
+            "cooked",
+            "vintage",
+            "cured"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "rusticcookery:meatslab-redmeat-raw": {
+      "provider": "rusticcookery_1.2.0.zip",
+      "asset": "assets/rusticcookery/itemtypes/meatslab.json",
+      "sha256": "3f0b97f1dca54854515ec7953e0e11c0190d48c5b6a58aaeef9cf0852ec32fca",
+      "baseCode": "meatslab",
+      "variantGroups": [
+        {
+          "code": "meat",
+          "states": [
+            "redmeat",
+            "bushmeat"
+          ]
+        },
+        {
+          "code": "state",
+          "states": [
+            "raw",
+            "smoked"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "rusticcookery:meatslab-redmeat-smoked": {
+      "provider": "rusticcookery_1.2.0.zip",
+      "asset": "assets/rusticcookery/itemtypes/meatslab.json",
+      "sha256": "3f0b97f1dca54854515ec7953e0e11c0190d48c5b6a58aaeef9cf0852ec32fca",
+      "baseCode": "meatslab",
+      "variantGroups": [
+        {
+          "code": "meat",
+          "states": [
+            "redmeat",
+            "bushmeat"
+          ]
+        },
+        {
+          "code": "state",
+          "states": [
+            "raw",
+            "smoked"
+          ]
+        }
+      ],
+      "worldProperties": []
+    },
+    "rusticcookery:smokerack-east": {
+      "provider": "rusticcookery_1.2.0.zip",
+      "asset": "assets/rusticcookery/blocktypes/smokerack.json",
+      "sha256": "048aedfa5926d95d7944adac1ea641e338a6b0ad1947fea2726499fdf23b58d6",
+      "baseCode": "smokerack",
+      "variantGroups": [
+        {
+          "code": "side",
+          "loadFromProperties": "game:abstract/horizontalorientation"
+        }
+      ],
+      "worldProperties": [
+        {
+          "path": "survival/worldproperties/abstract/horizontalorientation.json",
+          "sha256": "9103291f9575e5330484567574cd3fbe88b5b3c62e5beb26a16badc725eea5ba",
+          "states": [
+            "north",
+            "east",
+            "south",
+            "west"
+          ]
+        }
+      ]
+    }
+  },
+  "taskExamples": {
+    "butchering-advanced-table": {
+      "code": "butchering:butchertable-advanced-north",
+      "asset": "assets/butchering/blocktypes/butchertable.json",
+      "sha256": "0759856b0ba76dadaaebfbdb4246247807e69fa39c9588cdb84605a9b80bea24",
+      "kind": "block"
+    },
+    "butchering-bag": {
+      "code": "butchering:butcherybag-primitive",
+      "asset": "assets/butchering/itemtypes/tool/butcherybag.json",
+      "sha256": "d3f4c267830d49596ac861f48968992b52e84af9b262e972ed5a6277516cac2a",
+      "kind": "item"
+    },
+    "butchering-bleed": {
+      "code": "butchering:deadbear-male-black-1-bledout",
+      "asset": "assets/butchering/itemtypes/butchercreatures/bear.json",
+      "sha256": "d382e8d397670514a9637859e7495270d277d18a4f8048eb6f55316da1b708b1",
+      "kind": "item"
+    },
+    "butchering-blood": {
+      "code": "butchering:bloodportion",
+      "asset": "assets/butchering/itemtypes/liquids/bloodportion.json",
+      "sha256": "18368cdd18c36154463ad12070bc40081c932b24ecbe245bf96e642c50bdefd2",
+      "kind": "item"
+    },
+    "butchering-blood-sausage": {
+      "code": "butchering:sausage-bloodsausage-raw",
+      "asset": "assets/butchering/itemtypes/food/sausage.json",
+      "sha256": "464b0c5f0626a9adf37ed89afd7265501f4d6c86ab6660bd8079edeaa61510ed",
+      "kind": "item"
+    },
+    "butchering-bones": {
+      "code": "butchering:strongbone",
+      "asset": "assets/butchering/itemtypes/resource/strongbone.json",
+      "sha256": "7b1ecdd10c777b91906a0158088348f09c73ab243fa0f0379c0eaaf5afa64974",
+      "kind": "item"
+    },
+    "butchering-bronze-ceiling-hook": {
+      "code": "butchering:butcherhookceiling-tinbronze-north",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "kind": "block"
+    },
+    "butchering-bronze-component": {
+      "code": "butchering:hook-tinbronze",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
+      "kind": "item"
+    },
+    "butchering-bronze-skinning-hook": {
+      "code": "butchering:butcherhook-tinbronze-north",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "kind": "block"
+    },
+    "butchering-copper-ceiling-hook": {
+      "code": "butchering:butcherhookceiling-copper-north",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "kind": "block"
+    },
+    "butchering-copper-skinning-hook": {
+      "code": "butchering:butcherhook-copper-north",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "kind": "block"
+    },
+    "butchering-hide-glue": {
+      "code": "butchering:glueportion-hide-cold",
+      "asset": "assets/butchering/itemtypes/liquids/glueportion.json",
+      "sha256": "3ecb55d8b3167cfccb9927cedfc9c350b04be0d237081e984656127fbd181476",
+      "kind": "item"
+    },
+    "butchering-hook": {
+      "code": "butchering:butcherhook-flint-north",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "kind": "block"
+    },
+    "butchering-iron-ceiling-hook": {
+      "code": "butchering:butcherhookceiling-iron-north",
+      "asset": "assets/butchering/blocktypes/butcherhookceiling.json",
+      "sha256": "ad22f0c099df53b7394cde22faf7cf462608449235571783eab3f7638f846edf",
+      "kind": "block"
+    },
+    "butchering-iron-component": {
+      "code": "butchering:hook-iron",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
+      "kind": "item"
+    },
+    "butchering-iron-skinning-hook": {
+      "code": "butchering:butcherhook-iron-north",
+      "asset": "assets/butchering/blocktypes/butcherhook.json",
+      "sha256": "cb0a8b7e76ef627f84e5d0afc32b7d282f82d61db6e84daac0dfc43b56e08e93",
+      "kind": "block"
+    },
+    "butchering-knapped-hook": {
+      "code": "butchering:hook-flint",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
+      "kind": "item"
+    },
+    "butchering-leather": {
+      "code": "game:leather-normal-plain",
+      "asset": "survival/itemtypes/resource/leather.json",
+      "sha256": "7e3b29c5177c5bab2d862301d6d98d53de8c5fea559997219dfee83580796e8a",
+      "kind": "item"
+    },
+    "butchering-metal-hook": {
+      "code": "butchering:hook-copper",
+      "asset": "assets/butchering/itemtypes/tool/hook.json",
+      "sha256": "66599a559fd3f74483da967c7803ec2996d12079ee0535dee65307d26b2dd4e8",
+      "kind": "item"
+    },
+    "butchering-offal": {
+      "code": "butchering:offal-clean",
+      "asset": "assets/butchering/itemtypes/resource/offal.json",
+      "sha256": "efbc333a9619d00eb7028c320b61e6d40184ec0a97a41edaf4aaf5720a4ae71a",
+      "kind": "item"
+    },
+    "butchering-prepare": {
+      "code": "game:knife-generic-chert",
+      "asset": "survival/itemtypes/tool/knife.json",
+      "sha256": "64601416d7e8db87225d308c0261effdfc11d7eea251049b907923947c1451ac",
+      "kind": "item"
+    },
+    "butchering-preserve": {
+      "code": "butchering:smoked-none-redmeat",
+      "asset": "assets/butchering/itemtypes/food/smoked.json",
+      "sha256": "953d09f42a4e026fc2d33db146db6130ee93978efa335d3d855766801c58d16d",
+      "kind": "item"
+    },
+    "butchering-prime": {
+      "code": "butchering:primemeat-raw",
+      "asset": "assets/butchering/itemtypes/food/primemeat.json",
+      "sha256": "467926173c6dd03f834d26006b90f4db8fa48856be40b00f7e566235bc5790bf",
+      "kind": "item"
+    },
+    "butchering-process": {
+      "code": "game:redmeat-raw",
+      "asset": "survival/itemtypes/food/redmeat.json",
+      "sha256": "100bf85472595506c939c4dd5da7ee833d79ca07b4ee812a1bb52651b21d1328",
+      "kind": "item"
+    },
+    "butchering-raw-slab": {
+      "code": "rusticcookery:meatslab-redmeat-raw",
+      "asset": "assets/rusticcookery/itemtypes/meatslab.json",
+      "sha256": "3f0b97f1dca54854515ec7953e0e11c0190d48c5b6a58aaeef9cf0852ec32fca",
+      "kind": "item"
+    },
+    "butchering-retrieve": {
+      "code": "butchering:deadbear-male-black-1-dead",
+      "asset": "assets/butchering/itemtypes/butchercreatures/bear.json",
+      "sha256": "d382e8d397670514a9637859e7495270d277d18a4f8048eb6f55316da1b708b1",
+      "kind": "item"
+    },
+    "butchering-rustic-rack": {
+      "code": "rusticcookery:smokerack-north",
+      "asset": "assets/rusticcookery/blocktypes/smokerack.json",
+      "sha256": "048aedfa5926d95d7944adac1ea641e338a6b0ad1947fea2726499fdf23b58d6",
+      "kind": "block"
+    },
+    "butchering-simple-table": {
+      "code": "butchering:butchertable-simple-north",
+      "asset": "assets/butchering/blocktypes/butchertable.json",
+      "sha256": "0759856b0ba76dadaaebfbdb4246247807e69fa39c9588cdb84605a9b80bea24",
+      "kind": "block"
+    },
+    "butchering-sinew": {
+      "code": "butchering:sinew-dry",
+      "asset": "assets/butchering/itemtypes/resource/sinew.json",
+      "sha256": "64066a82c77159e0495efe916e3b396896caff34913ab632803df7a6b0ef06c8",
+      "kind": "item"
+    },
+    "butchering-sinew-glue": {
+      "code": "butchering:glueportion-sinew-cold",
+      "asset": "assets/butchering/itemtypes/liquids/glueportion.json",
+      "sha256": "3ecb55d8b3167cfccb9927cedfc9c350b04be0d237081e984656127fbd181476",
+      "kind": "item"
+    },
+    "butchering-skin": {
+      "code": "game:hide-raw-small",
+      "asset": "survival/itemtypes/resource/hide.json",
+      "sha256": "3fb31789a8db675cdadf4dea27da81b16eb4a8febf1897d19385b67bb9eb4507",
+      "kind": "item"
+    },
+    "butchering-smoked-slab": {
+      "code": "rusticcookery:meatslab-redmeat-smoked",
+      "asset": "assets/rusticcookery/itemtypes/meatslab.json",
+      "sha256": "3f0b97f1dca54854515ec7953e0e11c0190d48c5b6a58aaeef9cf0852ec32fca",
+      "kind": "item"
+    },
+    "butchering-smoking-rack": {
+      "code": "butchering:smokingrack-copper-north",
+      "asset": "assets/butchering/blocktypes/smokingrack.json",
+      "sha256": "cb127e9c3f9617ed35e8b6c236ce48bf6acd5f6fe46612379a63a31b8430663e",
+      "kind": "block"
+    },
+    "butchering-table": {
+      "code": "butchering:butchertable-primitive-north",
+      "asset": "assets/butchering/blocktypes/butchertable.json",
+      "sha256": "0759856b0ba76dadaaebfbdb4246247807e69fa39c9588cdb84605a9b80bea24",
+      "kind": "block"
+    }
+  },
+  "guides": {
+    "assets/butchering/config/handbook/01_butcheringguide.json": "butcheringguide",
+    "assets/butchering/config/handbook/02_butcheringinfo.json": "butcheringinfo"
+  },
+  "stationDropMultipliers": {
+    "butcherhook-bismuthbronze-*": 1,
+    "butcherhook-blackbronze-*": 1,
+    "butcherhook-copper-*": 1,
+    "butcherhook-flint-*": 0.8,
+    "butcherhook-iron-*": 1.2,
+    "butcherhook-tinbronze-*": 1,
+    "butcherhookceiling-bismuthbronze-*": 1,
+    "butcherhookceiling-blackbronze-*": 1,
+    "butcherhookceiling-copper-*": 1,
+    "butcherhookceiling-iron-*": 1.2,
+    "butcherhookceiling-tinbronze-*": 1,
+    "butchertable-advanced-*": 1.2,
+    "butchertable-primitive-*": 0.8,
+    "butchertable-simple-*": 1
+  },
+  "configuredStationMultipliers": {
+    "butcheringTableLootMultiplier": 1.0,
+    "SkinningRackLootMultiplier": 1.0
+  }
+}

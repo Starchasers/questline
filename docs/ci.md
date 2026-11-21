@@ -31,7 +31,7 @@ server directory and put `dotnet` on `PATH`:
 
 ```sh
 python3 -m unittest discover -s tools/packaging -v
-python3 -m unittest discover -s tests -p 'test_content_extraction.py' -v
+python3 -m unittest discover -s tests -p 'test_*.py' -v
 python3 tools/lang/check.py
 python3 compat/toolsmith/tests/regression.py
 sh ./build.sh
@@ -42,7 +42,7 @@ dotnet run --project compat/toolsmith/tests/AdapterChecks.csproj -c Release -p:V
 ```
 
 CI also compares ZIP names and checksum entries with every owned package's
-`modinfo.json`. It requires exactly **11** packages: the framework, nine content packs (vanilla plus eight optional integrations),
+`modinfo.json`. It requires exactly **12** packages: the framework, ten content packs (vanilla plus nine optional integrations),
 and optional Toolsmith adapter. Core and adapter compile against real game
 assemblies; content packs are validated and packaged independently. Packages ship
 no build-only fixtures, game assemblies, or external providers.
@@ -60,7 +60,7 @@ skipped. Do not treat a failed check as evidence that later suites ran.
 
 Download these two artifacts after a successful run; retention is 14 days:
 
-- **questline-packages**: all 11 individually installable ZIPs and `SHA256SUMS`.
+- **questline-packages**: all 12 individually installable ZIPs and `SHA256SUMS`.
 - **questline-test-results**: text logs for each executed suite, build/checksum
   output, source commit, server archive checksum, and toolchain versions. These
   are not fabricated JUnit/TRX reports; executable suites use their own assertions
@@ -80,8 +80,8 @@ manifest version to the tag without its leading `v`; content and adapter package
 keep their own manifest versions.
 
 The publisher downloads verified artifacts from its own workflow run without
-rebuilding. It rechecks all 11 ZIP checksums, attests every ZIP, and attaches all
-11 ZIPs plus `SHA256SUMS` to the GitHub release. It then reads back all 12 release
+rebuilding. It rechecks all 12 ZIP checksums, attests every ZIP, and attaches all
+12 ZIPs plus `SHA256SUMS` to the GitHub release. It then reads back all 13 release
 assets, downloads them again, and checks their hashes against the verified checksum
 file. Release notes include checksums and recorded build inputs. The publisher
 refuses to overwrite an existing release; it never silently replaces assets.
@@ -96,7 +96,7 @@ workflow-run consumer executes PR code.
 
 ## Remote setup and remaining acceptance
 
-The 11-ZIP set is the current post-removal acceptance target, not evidence of a
+The 12-ZIP set includes the Butchering addon after the integration removals and is the current acceptance target, not evidence of a
 new hosted run. Earlier 14-ZIP build and packaging results describe the historical
 inventory; see [packaging verification](packaging-verification.md). Package removal
 does not clean `ModConfig/questline/working/` copies, saved progress or installed

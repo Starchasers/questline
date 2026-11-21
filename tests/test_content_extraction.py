@@ -69,7 +69,7 @@ class ContentExtractionTests(unittest.TestCase):
         return json.loads((ROOT / "docs/content-packages.json").read_text())
 
     def test_every_chapter_is_moved_once_byte_for_byte(self):
-        actual = list((ROOT / "content").glob("*/assets/questline/questline/chapters/*.json"))
+        actual = [p for p in (ROOT / "content").glob("*/assets/questline/questline/chapters/*.json") if p.parent.parent.parent.parent.parent.name in GROUPS]
         self.assertEqual(56, len(self.upstream))
         self.assertEqual(set(self.retained()), {p.name for p in actual})
         self.assertEqual(51, len(actual))
@@ -91,7 +91,8 @@ class ContentExtractionTests(unittest.TestCase):
     def test_package_metadata_and_explicit_dependency_closure(self):
         manifest = self.manifest()
         self.assertEqual(UPSTREAM, manifest["upstream"])
-        packages = manifest["packages"]
+        packages = [p for p in manifest["packages"] if p["key"] in GROUPS]
+        self.assertEqual(set(GROUPS) | {"butchering"}, {p["key"] for p in manifest["packages"]})
         self.assertEqual(set(GROUPS), {p["key"] for p in packages})
         self.assertEqual(9, len(packages))
         ids = set()
@@ -127,7 +128,7 @@ class ContentExtractionTests(unittest.TestCase):
             extensions = sorted((d["id"], d["extends"]) for d in docs if "extends" in d)
             return (len(docs), sum(ids.values()), tasks, len(ids)), replacements, extensions
         expected = signature(self.retained().values())
-        actual = signature(p.read_bytes() for p in (ROOT / "content").glob("*/assets/questline/questline/chapters/*.json"))
+        actual = signature(p.read_bytes() for group in GROUPS for p in (ROOT / "content" / group / LEGACY / "chapters").glob("*.json"))
         self.assertEqual((51, 469, 520, 453), expected[0])
         self.assertEqual(expected, actual)
         self.assertEqual(16, len(actual[1]))
@@ -154,7 +155,7 @@ class ContentExtractionTests(unittest.TestCase):
                     continue
                 self.assertIn(key, current, name)
                 self.assertEqual(value, current[key], f"{name}:{key}")
-        self.assertFalse(list((ROOT / "content").glob("*/assets/*/lang/*")))
+        self.assertFalse([p for group in GROUPS for p in (ROOT / "content" / group).glob("assets/*/lang/*")])
 
 
 if __name__ == "__main__":

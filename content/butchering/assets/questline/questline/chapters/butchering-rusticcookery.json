@@ -1,0 +1,97 @@
+{
+  "id": "butchering-rusticcookery",
+  "extends": "questline:butchering",
+  "requiresMod": [
+    "butchering",
+    "rusticcookery"
+  ],
+  "quests": [
+    {
+      "id": "butchering-raw-slab",
+      "pos": [
+        -12,
+        13.5
+      ],
+      "requires": "butchering-process",
+      "icon": "rusticcookery:meatslab-redmeat-raw",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "rusticcookery:meatslab-*-raw",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-raw-slab-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-rustic-rack",
+      "pos": [
+        -12,
+        15
+      ],
+      "requires": "butchering-raw-slab",
+      "icon": "rusticcookery:smokerack-east",
+      "tasks": [
+        {
+          "type": "craft",
+          "block": "rusticcookery:smokerack-*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-rustic-rack-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "butchering-smoked-slab",
+      "pos": [
+        -12,
+        17
+      ],
+      "requires": "butchering-rustic-rack",
+      "icon": "rusticcookery:meatslab-redmeat-smoked",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "rusticcookery:meatslab-*-smoked",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-smoked-slab-desc"
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

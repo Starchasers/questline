@@ -72,7 +72,7 @@ class PackagingTests(unittest.TestCase):
     def test_repository_inventory_excludes_removed_integrations(self):
         root = Path(__file__).resolve().parents[2]
         expected = {'questline', 'questlinetoolsmith'} | {
-            'questline' + key for key in ('vanilla', 'bricklayers', 'efchefstricks',
+            'questline' + key for key in ('vanilla', 'bricklayers', 'butchering', 'efchefstricks',
                 'efmealsmodule', 'expandedfoods', 'fromgoldencombs', 'hexsmech',
                 'tailorsdelight', 'wool')}
         assemblies = {}
@@ -81,7 +81,7 @@ class PackagingTests(unittest.TestCase):
             dll.write_bytes(b'MZ synthetic repository inventory fixture')
             assemblies[modid] = dll
         paths = packager.package_repo(root, self.out, assemblies)
-        self.assertEqual(11, len(paths))
+        self.assertEqual(12, len(paths))
         actual = set()
         for path in paths:
             with zipfile.ZipFile(path) as archive:
@@ -89,7 +89,7 @@ class PackagingTests(unittest.TestCase):
                 actual.add(info['modid'])
                 self.assertIsNone(archive.testzip())
         self.assertEqual(expected, actual)
-        self.assertEqual(11, len((self.out / 'SHA256SUMS').read_text().splitlines()))
+        self.assertEqual(12, len((self.out / 'SHA256SUMS').read_text().splitlines()))
 
     def test_content_requires_framework(self):
         self.mod('content/bad', 'bad', dependencies={'game': '1.22.0'})

@@ -1,0 +1,72 @@
+{
+  "id": "butchering-leatherwork",
+  "extends": "leatherwork",
+  "requiresMod": [
+    "butchering"
+  ],
+  "quests": [
+    {
+      "id": "butchering-leather",
+      "pos": [
+        0,
+        9
+      ],
+      "requires": "butchering-skin",
+      "icon": "game:leather-normal-plain",
+      "tasks": [
+        {
+          "type": "obtain",
+          "item": "game:leather-*",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-leather-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-leather-links",
+          "requiresQuest": [
+            "questline:get-hide",
+            "questline:soak-hide",
+            "questline:scrape-hide",
+            "questline:prepare-hide",
+            "questline:make-leather",
+            "questline:weak-tannin",
+            "questline:strong-tannin"
+          ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-iw-links",
+          "requiresMod": [
+            "immersivewoodworking"
+          ],
+          "requiresQuest": [
+            "questline:make-boards"
+          ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-tailor-links",
+          "requiresMod": [
+            "tailorsdelight"
+          ],
+          "requiresQuest": [
+            "questline:knap-awl",
+            "questline:make-needle"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

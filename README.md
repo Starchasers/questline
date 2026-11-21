@@ -5,10 +5,11 @@ A modular quest framework for Vintage Story, derived from dizzyd/questline v0.14
 ## Fork layout and verification
 
 - **Framework:** `questline/`, version 0.15.0. Ships no quest chapters.
-- **Questbooks:** `content/vanilla/` plus eight optional mod content packages. Install vanilla for the original shared book; add only the integrations you use.
+- **Questbooks:** `content/vanilla/` plus nine optional mod content packages. Install vanilla for the original shared book; add only the integrations you use.
 - **Executable adapters:** `compat/toolsmith/`, optional and separate from quest content.
 - **Rewards:** original material payouts become Quest Cookies; stage grants and claiming remain supported.
-- **Translations:** shared text still lives in the framework. Independent localization ownership is not implemented.
+- **Translations:** inherited shared text still lives in the framework. Butchering owns its new English keys; a full independent localization split is not implemented.
+- **Butchering journey:** [installation, evidence and directed map](docs/butchering.md).
 
 Native game/client/server acceptance is pending. Compilation, offline checks and synthetic Harmony tests do not prove in-world compatibility. Intermediate archives are **not validated releases**.
 

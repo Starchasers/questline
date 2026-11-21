@@ -1,0 +1,65 @@
+{
+  "id": "butchering-stone-age",
+  "extends": "stone-age",
+  "requiresMod": [
+    "butchering"
+  ],
+  "quests": [
+    {
+      "id": "first-hunt",
+      "pos": [
+        6,
+        4.5
+      ],
+      "requires": "make-spear",
+      "tasks": [
+        {
+          "type": "kill",
+          "entity": "game:chicken-*"
+        }
+      ],
+      "icon": "game:poultry-raw",
+      "rewards": [
+        {
+          "type": "item",
+          "item": "questline:questcookie",
+          "count": 1
+        }
+      ],
+      "page": [
+        {
+          "type": "text",
+          "lang": "butchering-hunt-desc"
+        },
+        {
+          "type": "text",
+          "lang": "butchering-hunt-link",
+          "requiresQuest": [
+            "questline:butchering-prepare"
+          ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-bh-link",
+          "requiresMod": [
+            "betterhusbandry"
+          ],
+          "requiresQuest": [
+            "questline:breed-animals"
+          ]
+        },
+        {
+          "type": "text",
+          "lang": "butchering-lw-link",
+          "requiresMod": [
+            "livestockwelfare"
+          ],
+          "requiresQuest": [
+            "questline:make-trough",
+            "questline:breed-animals"
+          ]
+        }
+      ]
+    }
+  ]
+}

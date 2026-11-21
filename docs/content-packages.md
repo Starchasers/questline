@@ -12,12 +12,13 @@ Build-script integration has separate ownership.
 Install the Questline framework (`questline`, minimum `0.15.0`). Add
 `content/vanilla` (`questlinevanilla`, minimum `0.14.0`) for the original vanilla
 progression. Framework-only installations have no default questline by design.
-The current inventory contains nine content packages: vanilla and eight optional integrations. Install optional integrations only for gameplay mods you use:
+The current inventory contains ten content packages: vanilla and nine optional integrations. Install optional integrations only for gameplay mods you use:
 
 | Directory | Mod ID | Chapters | Quest records |
 | --- | --- | ---: | ---: |
 | vanilla | questlinevanilla | 25 | 322 |
 | bricklayers | questlinebricklayers | 3 | 24 |
+| butchering | questlinebutchering | 4 | 35 |
 | efchefstricks | questlineefchefstricks | 3 | 4 |
 | efmealsmodule | questlineefmealsmodule | 1 | 1 |
 | expandedfoods | questlineexpandedfoods | 8 | 37 |
@@ -28,8 +29,9 @@ The current inventory contains nine content packages: vanilla and eight optional
 
 Declare `game >= 1.22.0` and `questline >= 0.15.0` in every package. Optional
 packages also depend on `questlinevanilla >= 0.14.0` and their same-named
-gameplay mod. Gameplay-mod minimum versions are `0.0.0`: the mod must be present,
-but this does not assert a specific tested release.
+gameplay mod. Inherited gameplay-mod minimum versions are `0.0.0`: the mod must
+be present, but this does not assert a specific tested release. The authored
+Butchering addon requires `butchering >= 1.14.3`; see its evidence below.
 
 Chef's Tricks and Meals Module also require `expandedfoods` and
 `questlineexpandedfoods >= 0.14.0`. Their original quests reference Expanded
@@ -95,3 +97,7 @@ and 1 error. Missing content/manifest and chapters still in core caused the
 expected failures; translation preservation already passed. After extraction,
 all 5 passed. These recorded structural results are not a new test run or proof
 of a native game installation or integration smoke test.
+
+## Authored Butchering addon
+
+Install `questlinebutchering_0.15.0.zip` alongside framework, vanilla and Butchering >= 1.14.3. Its four files add thirty-four quests and replace only `first-hunt` in place, retaining its kill task and saved ID. Other vanilla assets remain byte-identical. It owns only new English localization keys; other languages use the game's English fallback (not native-reviewed translations). This is separate from the historical extraction totals above. See [journey and evidence](butchering.md).
